@@ -91,7 +91,7 @@ addLayer("p", {
         20: {
             title: "This Is Overpowered",
             description: "Clicking symbols is more effective based on your Amoebas.",
-            cost: new Decimal(10^8),
+            cost: new Decimal(Math.pow(10,8)),
             effect() {
                 return player[this.layer].points.add(1).pow(0.6)
             },
