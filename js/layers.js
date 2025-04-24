@@ -35,7 +35,7 @@ addLayer("p", {
         12: {
             title: "Mitosis",
             description: "Rainbows scale based on your Amoebas.",
-            cost: new Decimal(15),
+            cost: new Decimal(10),
             effect() {
                 return player[this.layer].points.add(1).pow(0.5)
             },
@@ -46,7 +46,7 @@ addLayer("p", {
             description: "0.1x Rainbows\nRainbow gain now increases over time.",
             cost: new Decimal(50),
             effect() {
-                return Math.min(Math.pow(player[this.layer].resetTime+1,1.77)/10, 500)
+                return Math.min(Math.pow(player[this.layer].resetTime+1,1.7)/10, 100)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
