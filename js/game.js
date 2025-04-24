@@ -400,8 +400,8 @@ function hardReset(resetOptions) {
 const cudGrade16 = {
     image:"resources/aaaRune.png",
     spread: 20,
-	width: 50,
-	height: 50,
+	width: 66,
+	height: 66,
     time: 2.5,
 	color: "#006BF7",
     rotation (id) {
@@ -450,7 +450,7 @@ var interval = setInterval(function() {
 		needCanvasUpdate = false;
 	}
 	tmp.scrolled = document.getElementById('treeTab') && document.getElementById('treeTab').scrollTop > 30
-	if (hasUpgrade('p', 16) && Math.random()>= 0.96) {
+	if (hasUpgrade('p', 16) && Math.random()>= 0.92) {
 		makeShinies(cudGrade16, 1)
 	}	
 
