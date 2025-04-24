@@ -33,7 +33,7 @@ addLayer("p", {
             cost: new Decimal(5),
         },
         12: {
-            title: "Scaling",
+            title: "Mitosis",
             description: "Rainbows scale based on your Amoebas.",
             cost: new Decimal(15),
             effect() {
@@ -51,7 +51,7 @@ addLayer("p", {
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
         14: {
-            title: "Scalescaling",
+            title: "More Rainbow",
             description: "Rainbows scale based on your Rainbows.",
             cost: new Decimal(200),
             effect() {
@@ -63,6 +63,15 @@ addLayer("p", {
             title: "Stability ZEST",
             description: "1.77x Rainbows",
             cost: new Decimal(500),
+        },
+        16: {
+            title: "No More Waiting Simulator",
+            description: "Shapes begin to appear around the screen.\nClicking them increases Rainbow multiplier.",
+            cost: new Decimal(2000),
+            effect() {
+                return player.points.add(1).pow(0.25)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
     },
 })
