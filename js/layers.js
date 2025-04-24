@@ -89,6 +89,11 @@ addLayer("p", {
             cost: new Decimal(1234567),
         },
         20: {
+            title: "test",
+            description: "Your Rainbow multiplier from clicking symbols can't drop below triple the total # of symbols you've clicked.",
+            cost: new Decimal(1234567),
+        },
+        21: {
             title: "This Is Overpowered",
             description: "Clicking symbols is more effective based on your Amoebas.",
             cost: new Decimal(10000000),
