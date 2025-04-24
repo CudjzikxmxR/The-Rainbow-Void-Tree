@@ -398,16 +398,24 @@ function hardReset(resetOptions) {
 }
 
 const cudGrade16 = {
-    image:"aaaRune.png",
-    spread: 20,
-    gravity: 1,
-    time: 3,
+    time: 10,
+	id: particleID,
+	x: Math.random() * (tmp.other.screenWidth - 100) + 50,
+	y: Math.random() * (tmp.other.screenHeight - 100) + 50,
 	width: 50,
 	height: 50,
+	image: "resources/aaaRune.png",
+	angle: 0,
+	spread: 0,
+	offset: 0,
+	speed: 0,
+	xVel: 0,
+	yVel: 0,
+	rotation: 0,
+	gravity: 0,
 	fadeOutTime: 1,
-    speed() {
-        return (Math.random() + 1.2) * 15
-    },
+	fadeInTimer: 0,
+	fadeInTime: 0.5,
 	onClick() {
 		player.clickingMult+=1
 	},
