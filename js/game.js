@@ -476,7 +476,7 @@ var interval = setInterval(function() {
 	}
 	tmp.scrolled = document.getElementById('treeTab') && document.getElementById('treeTab').scrollTop > 30
 	if (hasUpgrade('p', 16) && Math.random()>= 0.95) {
-		makeShinies(cudGrade16)
+		makeParticles(cudGrade16, 1)
 	}	
 
 	updateTemp();
