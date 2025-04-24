@@ -421,7 +421,7 @@ const cudGrade16 = {
 */
 
 const cudGrade16 = {
-    image:"aaaRune.png",
+    image:"genericParticle.png",
     spread: 20,
     gravity: 2,
     time: 3,
