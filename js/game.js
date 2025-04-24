@@ -402,6 +402,9 @@ const cudGrade16 = {
     spread: 20,
     gravity: 1,
     time: 3,
+	width: 50,
+	height: 50,
+	fadeOutTime: 1,
     speed() {
         return (Math.random() + 1.2) * 15
     },
@@ -439,7 +442,7 @@ var interval = setInterval(function() {
 	}
 	tmp.scrolled = document.getElementById('treeTab') && document.getElementById('treeTab').scrollTop > 30
 	if (hasUpgrade('p', 16) && Math.random()>= 0.96) {
-		makeParticles(cudGrade16, 1, newParticles.shiny)
+		makeShinies()
 	}	
 
 	updateTemp();
