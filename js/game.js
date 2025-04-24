@@ -411,10 +411,10 @@ const cudGrade16 = {
         return (Math.random() - 0.5) * 10
     },
     speed() {
-        return (Math.random() + 0.5) * 8 
+        return (Math.random()) * 8 
     },
 	onClick() {
-		if (color != "#6225D1") {
+		if (this.color != "#6225D1") {
 			player.clickingMult+=2
 			this.color = "#6225D1"
 		}
