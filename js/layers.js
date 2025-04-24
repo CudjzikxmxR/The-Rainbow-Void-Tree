@@ -27,7 +27,7 @@ addLayer("p", {
     layerShown(){return true},
 
     upgrades: {
-        1: {
+        11: {
             title: "The Chaos Begins",
             description: "2x Rainbows",
             cost: new Decimal(5),
