@@ -400,25 +400,6 @@ function hardReset(resetOptions) {
 const cudGrade16 = {
     image:"aaaRune.png",
     spread: 20,
-    gravity: 1,
-    time: 3,
-	width: 50,
-	height: 50,
-	fadeOutTime: 1,
-    speed() {
-        return (Math.random() + 1.2) * 15
-    },
-	onClick() {
-		player.clickingMult+=1
-	},
-	onMouseOver() {
-
-	},
-}
-
-const cudGrade1777 = {
-    image:"options_wheel.png",
-    spread: 20,
     gravity: 2,
     time: 3,
     rotation (id) {
@@ -430,19 +411,12 @@ const cudGrade1777 = {
     speed() {
         return (Math.random() + 1.2) * 8 
     },
-    onClick() {
-        console.log("yay")
-    },
-    onMouseOver() {
-        console.log("hi")
-    },
-    onMouseLeave() {
-        console.log("bye")
-    },
-    update() {
-        //this.width += 1
-        //setDir(this, 135)
-    },
+	onClick() {
+		player.clickingMult+=1
+	},
+	onMouseOver() {
+
+	},
     layer: 'f',
 }
 
