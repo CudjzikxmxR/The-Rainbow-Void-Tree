@@ -400,7 +400,10 @@ function hardReset(resetOptions) {
 const cudGrade16 = {
     image:"resources/aaaRune.png",
     spread: 20,
-    time: 2,
+	width: 50,
+	height: 50,
+    time: 2.5,
+	color: "#006BF7",
     rotation (id) {
         return 20 * (id - 1.5) + (Math.random() - 0.5) * 10
     },
@@ -408,10 +411,13 @@ const cudGrade16 = {
         return (Math.random() - 0.5) * 10
     },
     speed() {
-        return (Math.random() + 1.2) * 8 
+        return (Math.random() + 0.5) * 8 
     },
 	onClick() {
-		player.clickingMult+=1
+		if (color != "#6225D1") {
+			player.clickingMult+=2
+			this.color = "#6225D1"
+		}
 	},
 	onMouseOver() {
 
