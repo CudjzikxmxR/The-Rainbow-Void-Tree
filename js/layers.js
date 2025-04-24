@@ -69,7 +69,7 @@ addLayer("p", {
             description: "Particles begin to appear around the screen.\nClicking them increases Rainbow multiplier temporarily.",
             cost: new Decimal(2000),
             effect() {
-                return player.clickingPower
+                return player.clickingMult
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
