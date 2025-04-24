@@ -32,5 +32,19 @@ addLayer("p", {
             description: "2x Rainbows",
             cost: new Decimal(5),
         },
+        12: {
+            title: "Scaling",
+            description: "Rainbows scale based on your Amoebas.",
+            cost: new Decimal(15),
+            effect() {
+                return player[this.layer].points.add(1).pow(0.5)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
+        },
+        13: {
+            title: "Procrastination",
+            description: "0.1x Rainbows\nRainbow gain now increases over time.",
+            cost: new Decimal(50),
+        },
     },
 })
