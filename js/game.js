@@ -398,7 +398,7 @@ function hardReset(resetOptions) {
 }
 
 const cudGrade16 = {
-    image:"aaaRune.png",
+    image:"resources/aaaRune.png",
     spread: 20,
     gravity: 2,
     time: 3,
