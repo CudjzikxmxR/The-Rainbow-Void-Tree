@@ -443,7 +443,9 @@ var interval = setInterval(function() {
 			player.offTime.remain -= offlineDiff
 			diff += offlineDiff
 			if (hasUpgrade('p', 19)) {
-				player.clickingMult = player.minimumClickMult*3
+				if (player.clickingMult > player.minimumClickMult*3) {
+					player.clickingMult = player.minimumClickMult*3
+				}
 			} else {
 				player.clickingMult = 1
 			}
