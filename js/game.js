@@ -397,6 +397,7 @@ function hardReset(resetOptions) {
 	window.location.reload();
 }
 
+/*
 const cudGrade16 = {
     image:"aaaRune.png",
     spread: 20,
@@ -408,14 +409,45 @@ const cudGrade16 = {
     speed() { // Randomize speed a bit
         return (Math.random() + 1.2) * 15
     },
-	/*
+	
 	onClick() {
 		player.clickingMult+=1
 	},
 	onMouseOver() {
 
 	},
-	*/
+	
+}
+*/
+
+const cudGrade16 = {
+    image:"aaaRune.png",
+    spread: 20,
+    gravity: 2,
+    time: 3,
+    rotation (id) {
+        return 20 * (id - 1.5) + (Math.random() - 0.5) * 10
+    },
+    dir() {
+        return (Math.random() - 0.5) * 10
+    },
+    speed() {
+        return (Math.random() + 1.2) * 8 
+    },
+    onClick() {
+        console.log("yay")
+    },
+    onMouseOver() {
+        console.log("hi")
+    },
+    onMouseLeave() {
+        console.log("bye")
+    },
+    update() {
+        //this.width += 1
+        //setDir(this, 135)
+    },
+    layer: 'f',
 }
 
 var ticking = false
