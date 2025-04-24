@@ -446,7 +446,7 @@ var interval = setInterval(function() {
 	}
 	tmp.scrolled = document.getElementById('treeTab') && document.getElementById('treeTab').scrollTop > 30
 	if (hasUpgrade('p', 16) && Math.random()>= 0.96) {
-		makeShinies(cudGrade1777, 1)
+		makeShinies(cudGrade16, 1)
 	}	
 
 	updateTemp();
