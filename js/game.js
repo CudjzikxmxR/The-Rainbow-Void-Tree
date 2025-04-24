@@ -442,7 +442,7 @@ var interval = setInterval(function() {
 	}
 	tmp.scrolled = document.getElementById('treeTab') && document.getElementById('treeTab').scrollTop > 30
 	if (hasUpgrade('p', 16) && Math.random()>= 0.96) {
-		makeParticles("cudGrade16", 1)
+		makeParticles(cudGrade16, 1)
 	}	
 
 	updateTemp();
