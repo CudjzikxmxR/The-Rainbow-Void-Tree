@@ -45,6 +45,10 @@ addLayer("p", {
             title: "Procrastination",
             description: "0.1x Rainbows\nRainbow gain now increases over time.",
             cost: new Decimal(50),
+            effect() {
+                return Performance.now()/10
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
     },
 })

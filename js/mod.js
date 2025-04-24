@@ -63,6 +63,11 @@ function isEndgame() {
 	return player.points.gte(new Decimal("e280000000"))
 }
 
+//Wait
+function wait(ms) {
+	return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 
 
 // Less important things beyond this point!
