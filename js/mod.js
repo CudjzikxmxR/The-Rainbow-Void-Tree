@@ -55,6 +55,8 @@ function getPointGen() {
 		gain = gain.times(1.77)
 	if (hasUpgrade('p', 16))
 		gain = gain.times(upgradeEffect('p', 16))
+	if (hasUpgrade('p', 18))
+		gain = gain.times(1.5)
 
 	return gain
 }
@@ -79,6 +81,17 @@ function isEndgame() {
 // Millisecond wait time
 function wait(ms) {
 	return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+// Get rune click power
+function getClickPower() {
+	let baseClickPower = 0.5
+	if (hasUpgrade('p', 18))
+		baseClickPower*=4
+	if (hasUpgrade('p', 20))
+		baseClickPower*=upgradeEffect('p', 20)
+
+	return baseClickPower
 }
 
 // Style for the background, can be a function

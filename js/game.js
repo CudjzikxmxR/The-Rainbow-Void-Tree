@@ -415,7 +415,7 @@ const cudGrade16 = {
     },
 	onClick() {
 		if (this.color != "#6225D1") {
-			player.clickingMult+=2
+			player.clickingMult+=getClickPower()
 			player.minimumClickMult+=1
 			this.color = "#6225D1"
 		}
@@ -443,7 +443,7 @@ var interval = setInterval(function() {
 			player.offTime.remain -= offlineDiff
 			diff += offlineDiff
 			if (hasUpgrade('p', 19)) {
-				player.clickingMult = player.minimumClickMult
+				player.clickingMult = player.minimumClickMult*3
 			} else {
 				player.clickingMult = 1
 			}
@@ -459,8 +459,14 @@ var interval = setInterval(function() {
 	if (hasUpgrade('p', 16) && Math.random()>= 0.92) {
 		makeShinies(cudGrade16, 1)
 	}
-	if ((hasUpgrade('p', 19) && player.clickingMult>player.minimumClickMult) || player.clickingMult > 1) {
-		player.clickingMult-=0.01
+	if ((hasUpgrade('p', 19) && player.clickingMult>player.minimumClickMult*3) || player.clickingMult > 1) {
+		player.clickingMult-=0.01*getClickPower()
+	} else {
+		if (hasUpgrade('p', 19) && player.clickingMult>player.minimumClickMult*3) {
+			player.clickingMult=player.minimumClickMult*3
+		} else {
+			player.clickingMult = 1
+		}
 	}
 
 	updateTemp();

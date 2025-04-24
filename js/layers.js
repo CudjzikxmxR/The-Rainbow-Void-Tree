@@ -33,7 +33,7 @@ addLayer("p", {
             cost: new Decimal(5),
         },
         12: {
-            title: "Mitosis",
+            title: "Single Celled",
             description: "Rainbows scale based on your Amoebas.",
             cost: new Decimal(10),
             effect() {
@@ -65,11 +65,35 @@ addLayer("p", {
             cost: new Decimal(500),
         },
         16: {
-            title: "No More Waiting Simulator",
+            title: "Activity Check",
             description: "Symbols now appear on the screen.\nClicking them gives temporary Rainbow multiplier.",
             cost: new Decimal(2000),
             effect() {
                 return player.clickingMult
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
+        },
+        17: {
+            title: "Mitosis",
+            description: "2x Amoebas",
+            cost: new Decimal(25000),
+        },
+        18: {
+            title: "Anomaly Annihilating",
+            description: "Clicking symbols is 4x as effective.\n1.5x Rainbows",
+            cost: new Decimal(100000),
+        },
+        19: {
+            title: "Clickity Clack",
+            description: "Your Rainbow multiplier from clicking symbols can't drop below triple the total # of symbols you've clicked.",
+            cost: new Decimal(1234567),
+        },
+        20: {
+            title: "This Is Overpowered!",
+            description: "Clicking symbols is more effective based on your Amoebas.",
+            cost: new Decimal(10^8),
+            effect() {
+                return player[this.layer].points.add(1).pow(0.6)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
