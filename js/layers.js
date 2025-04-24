@@ -90,10 +90,10 @@ addLayer("p", {
         },
         21: {
             title: "This Is Overpowered",
-            description: "Clicking symbols is more effective based on your Amoebas.",
+            description: "Clicking symbols is more effective based on your Amoebas and current click-related Rainbow multiplier.",
             cost: new Decimal(10000000),
             effect() {
-                return player[this.layer].points.add(1).pow(0.25)
+                return player[this.layer].points.add(1).pow(0.25+Math.pow(player.clickingMult,0.2)/100)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
