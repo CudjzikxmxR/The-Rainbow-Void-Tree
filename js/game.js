@@ -475,8 +475,8 @@ var interval = setInterval(function() {
 		needCanvasUpdate = false;
 	}
 	tmp.scrolled = document.getElementById('treeTab') && document.getElementById('treeTab').scrollTop > 30
-	if (hasUpgrade('p', 16) && Math.random()>= 0.95) {
-		makeParticles(cudGrade16, 1)
+	if (hasUpgrade('p', 16) && Math.random()>= 0.96) {
+		console.log("hi")
 	}	
 
 	updateTemp();
