@@ -60,7 +60,7 @@ addLayer("p", {
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
         15: {
-            title: "Stability ZEST",
+            title: "Stability Zest",
             description: "1.77x Rainbows",
             cost: new Decimal(500),
         },
