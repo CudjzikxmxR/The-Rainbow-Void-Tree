@@ -1,6 +1,6 @@
 addLayer("p", {
     name: "cuddy", // This is optional, only used in a few places, If absent it just uses the layer id.
-    symbol: "CUD", // This appears on the layer's node. Default is the id with the first letter capitalized
+    symbol: "A", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: true,
@@ -22,7 +22,7 @@ addLayer("p", {
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
-        {key: "p", description: "CUD: Reset for amoebas!!!", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "p", description: "A: Reset for amoebas!!!", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return true},
 
@@ -46,7 +46,7 @@ addLayer("p", {
             description: "0.1x Rainbows\nRainbow gain now increases over time.",
             cost: new Decimal(50),
             effect() {
-                return Math.pow(player[this.layer].resetTime+1,1.77)/10
+                return Math.min(Math.pow(player[this.layer].resetTime+1,1.77)/10, 500)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
@@ -66,10 +66,10 @@ addLayer("p", {
         },
         16: {
             title: "No More Waiting Simulator",
-            description: "Shapes begin to appear around the screen.\nClicking them increases Rainbow multiplier.",
+            description: "Particles begin to appear around the screen.\nClicking them increases Rainbow multiplier temporarily.",
             cost: new Decimal(2000),
             effect() {
-                return player.points.add(1).pow(0.25)
+                return 1
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },

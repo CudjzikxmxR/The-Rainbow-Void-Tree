@@ -53,6 +53,8 @@ function getPointGen() {
 		gain = gain.times(upgradeEffect('p', 14))
 	if (hasUpgrade('p', 15))
 		gain = gain.times(1.77)
+	if (hasUpgrade('p', 16))
+		gain = gain.times(upgradeEffect('p', 16))
 
 	return gain
 }
@@ -71,14 +73,12 @@ function isEndgame() {
 	return player.points.gte(new Decimal("e280000000"))
 }
 
-//Wait
+// Less important things beyond this point!
+
+// Millisecond wait time
 function wait(ms) {
 	return new Promise(resolve => setTimeout(resolve, ms));
 }
-
-
-
-// Less important things beyond this point!
 
 // Style for the background, can be a function
 var backgroundStyle = {

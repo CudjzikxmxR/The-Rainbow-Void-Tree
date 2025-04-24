@@ -397,6 +397,28 @@ function hardReset(resetOptions) {
 	window.location.reload();
 }
 
+const cudGrade16 = {
+    image:"aaaRune.png",
+    spread: 20,
+    gravity: 0,
+    time: 3,
+	width: Math.random()*50,
+	height: width,
+	fadeOutTime: 0.5,
+	rotation: Math.random()*360,
+	/*
+    speed() { // Randomize speed a bit
+        return (Math.random() + 1.2) * 15
+    },
+	onClick() {
+		player.clickPower+=1
+	},
+	onMouseOver() {
+
+	},
+	*/
+}
+
 var ticking = false
 
 var interval = setInterval(function() {
@@ -422,6 +444,10 @@ var interval = setInterval(function() {
 		needCanvasUpdate = false;
 	}
 	tmp.scrolled = document.getElementById('treeTab') && document.getElementById('treeTab').scrollTop > 30
+	if (hasUpgrade('p', 16) && Math.random()>= 0.95) {
+		makeShinies(cudGrade16)
+	}	
+
 	updateTemp();
 	updateOomps(diff);
 	updateWidth()
@@ -434,3 +460,4 @@ var interval = setInterval(function() {
 }, 50)
 
 setInterval(function() {needCanvasUpdate = true}, 500)
+
