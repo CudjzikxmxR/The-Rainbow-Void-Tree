@@ -460,7 +460,7 @@ var interval = setInterval(function() {
 		makeShinies(cudGrade16, 1)
 	}
 	if ((hasUpgrade('p', 19) && player.clickingMult>player.minimumClickMult*3) || player.clickingMult > 1) {
-		player.clickingMult-=0.01*getClickPower()
+		player.clickingMult-=0.02*getClickPower()
 	} else {
 		if (hasUpgrade('p', 19) && player.clickingMult>player.minimumClickMult*3) {
 			player.clickingMult=player.minimumClickMult*3

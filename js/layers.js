@@ -89,7 +89,7 @@ addLayer("p", {
             cost: new Decimal(1234567),
         },
         20: {
-            title: "This Is Overpowered!",
+            title: "This Is Overpowered",
             description: "Clicking symbols is more effective based on your Amoebas.",
             cost: new Decimal(10^8),
             effect() {
