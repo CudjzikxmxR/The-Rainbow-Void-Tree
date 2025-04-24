@@ -88,8 +88,8 @@ function getClickPower() {
 	let baseClickPower = 0.5
 	if (hasUpgrade('p', 18))
 		baseClickPower*=4
-	if (hasUpgrade('p', 20))
-		baseClickPower*=upgradeEffect('p', 20)
+	if (hasUpgrade('p', 21))
+		baseClickPower*=upgradeEffect('p', 21)
 
 	return baseClickPower
 }

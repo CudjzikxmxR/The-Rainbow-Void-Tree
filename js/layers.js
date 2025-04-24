@@ -88,17 +88,12 @@ addLayer("p", {
             description: "Your Rainbow multiplier from clicking symbols can't drop below triple the total # of symbols you've clicked.",
             cost: new Decimal(1234567),
         },
-        20: {
-            title: "test",
-            description: "Your Rainbow multiplier from clicking symbols can't drop below triple the total # of symbols you've clicked.",
-            cost: new Decimal(1234567),
-        },
         21: {
             title: "This Is Overpowered",
             description: "Clicking symbols is more effective based on your Amoebas.",
             cost: new Decimal(10000000),
             effect() {
-                return player[this.layer].points.add(1).pow(0.6)
+                return player[this.layer].points.add(1).pow(0.2)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
