@@ -476,7 +476,7 @@ var interval = setInterval(function() {
 	}
 	tmp.scrolled = document.getElementById('treeTab') && document.getElementById('treeTab').scrollTop > 30
 	if (hasUpgrade('p', 16) && Math.random()>= 0.96) {
-		player.clickingMult+=0.001
+		makeShinies()
 	}	
 
 	updateTemp();
