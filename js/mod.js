@@ -43,6 +43,7 @@ function getPointGen() {
 
 	let gain = new Decimal(1)
 	//Cud Layer Upgrades
+	/*
 	if (hasUpgrade('p', 11))
 		gain = gain.times(2)
 	if (hasUpgrade('p', 12))
@@ -55,6 +56,7 @@ function getPointGen() {
 		gain = gain.times(1.77)
 	if (hasUpgrade('p', 16))
 		gain = gain.times(upgradeEffect('p', 16))
+	*/
 
 	return gain
 }
