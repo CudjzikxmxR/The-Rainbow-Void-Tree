@@ -28,7 +28,7 @@ addLayer("p", {
 
     upgrades: {
         11: {
-            title: "The Chaos Begins",
+            title: "Pride Month",
             description: "2x Rainbows",
             cost: new Decimal(5),
         },
@@ -46,7 +46,7 @@ addLayer("p", {
             description: "0.1x Rainbows\nRainbow gain now increases over time.",
             cost: new Decimal(50),
             effect() {
-                return 1
+                return player.time/10
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
