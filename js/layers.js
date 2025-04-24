@@ -50,5 +50,19 @@ addLayer("p", {
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
+        14: {
+            title: "Scalescaling",
+            description: "Rainbows scale based on your Rainbows.",
+            cost: new Decimal(200),
+            effect() {
+                return player.points.add(1).pow(0.25)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
+        },
+        15: {
+            title: "Stability ZEST",
+            description: "1.77x Rainbows",
+            cost: new Decimal(500),
+        },
     },
 })
