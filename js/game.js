@@ -398,7 +398,7 @@ function hardReset(resetOptions) {
 }
 
 const cudGrade16 = {
-    image:"aaaRune.png",
+    image:"genericParticle.png",
     spread: 20,
     gravity: 1,
     time: 3,
@@ -442,7 +442,7 @@ var interval = setInterval(function() {
 	}
 	tmp.scrolled = document.getElementById('treeTab') && document.getElementById('treeTab').scrollTop > 30
 	if (hasUpgrade('p', 16) && Math.random()>= 0.95) {
-		makeParticles(cudGrade16)
+		makeParticles(cudGrade16,1)
 	}	
 
 	updateTemp();
