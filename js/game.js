@@ -402,10 +402,9 @@ const cudGrade16 = {
     spread: 20,
     gravity: 0,
     time: 3,
-	width: Math.random()*50,
-	height: width,
+	width: 50,
+	height: 50,
 	fadeOutTime: 0.5,
-	rotation: Math.random()*360,
     speed() { // Randomize speed a bit
         return (Math.random() + 1.2) * 15
     },
