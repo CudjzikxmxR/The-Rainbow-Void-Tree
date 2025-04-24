@@ -46,7 +46,7 @@ addLayer("p", {
             description: "0.1x Rainbows\nRainbow gain now increases over time.",
             cost: new Decimal(50),
             effect() {
-                return player[this.layer].resetTime/10
+                return player[this.layer].resetTime.add(1)/10
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
