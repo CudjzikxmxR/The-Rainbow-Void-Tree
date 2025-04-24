@@ -398,13 +398,10 @@ function hardReset(resetOptions) {
 }
 
 const cudGrade16 = {
-    image:"genericParticle.png",
+    image:"aaaRune.png",
     spread: 20,
     gravity: 1,
     time: 3,
-	width: 50,
-	height: 50,
-	fadeOutTime: 1,
     speed() { // Randomize speed a bit
         return (Math.random() + 1.2) * 15
     },
@@ -442,7 +439,7 @@ var interval = setInterval(function() {
 	}
 	tmp.scrolled = document.getElementById('treeTab') && document.getElementById('treeTab').scrollTop > 30
 	if (hasUpgrade('p', 16) && Math.random()>= 0.95) {
-		makeParticles(cudGrade16,1)
+		makeShinies(cudGrade16)
 	}	
 
 	updateTemp();

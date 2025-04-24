@@ -61,12 +61,12 @@ addLayer("p", {
         },
         15: {
             title: "Stability Zest",
-            description: "1.77x Rainbows",
+            description: "1.777x Rainbows",
             cost: new Decimal(500),
         },
         16: {
             title: "No More Waiting Simulator",
-            description: "Particles begin to appear around the screen.\nClicking them increases Rainbow multiplier temporarily.",
+            description: "Symbols now appear on the screen.\nClicking them gives temporary Rainbow multiplier.",
             cost: new Decimal(2000),
             effect() {
                 return player.clickingMult
