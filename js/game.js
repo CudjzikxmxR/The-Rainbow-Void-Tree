@@ -397,7 +397,6 @@ function hardReset(resetOptions) {
 	window.location.reload();
 }
 
-/*
 const cudGrade16 = {
     image:"aaaRune.png",
     spread: 20,
@@ -406,48 +405,15 @@ const cudGrade16 = {
 	width: 50,
 	height: 50,
 	fadeOutTime: 1,
-    speed() { // Randomize speed a bit
+    speed() {
         return (Math.random() + 1.2) * 15
     },
-	
 	onClick() {
 		player.clickingMult+=1
 	},
 	onMouseOver() {
 
 	},
-	
-}
-*/
-
-const cudGrade16 = {
-    image:"genericParticle.png",
-    spread: 20,
-    gravity: 2,
-    time: 3,
-    rotation (id) {
-        return 20 * (id - 1.5) + (Math.random() - 0.5) * 10
-    },
-    dir() {
-        return (Math.random() - 0.5) * 10
-    },
-    speed() {
-        return (Math.random() + 1.2) * 8 
-    },
-    onClick() {
-        console.log("yay")
-    },
-    onMouseOver() {
-        console.log("hi")
-    },
-    onMouseLeave() {
-        console.log("bye")
-    },
-    update() {
-        //this.width += 1
-        //setDir(this, 135)
-    },
-    layer: 'f',
 }
 
 var ticking = false
@@ -476,7 +442,7 @@ var interval = setInterval(function() {
 	}
 	tmp.scrolled = document.getElementById('treeTab') && document.getElementById('treeTab').scrollTop > 30
 	if (hasUpgrade('p', 16) && Math.random()>= 0.96) {
-		makeParticles("shiny", 1)
+		makeParticles("cudGrade16", 1)
 	}	
 
 	updateTemp();
