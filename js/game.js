@@ -459,7 +459,7 @@ var interval = setInterval(function() {
 	if (hasUpgrade('p', 16) && Math.random()>= 0.92) {
 		makeShinies(cudGrade16, 1)
 	}
-	if ((hasUpgrade('p', 19) && player.clickingMult>player.minimumClickMult*3) || player.clickingMult > 1) {
+	if ((hasUpgrade('p', 19) && player.clickingMult>player.minimumClickMult*3) || (!(hasUpgrade('p', 19)) && player.clickingMult > 1)) {
 		player.clickingMult-=0.02*getClickPower()
 	} else {
 		if (hasUpgrade('p', 19) && player.clickingMult>player.minimumClickMult*3) {
