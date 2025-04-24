@@ -400,8 +400,8 @@ function hardReset(resetOptions) {
 const cudGrade16 = {
     image:"resources/aaaRune.png",
     spread: 20,
-    gravity: 2,
-    time: 3,
+    gravity: 0.1,
+    time: 1,
     rotation (id) {
         return 20 * (id - 1.5) + (Math.random() - 0.5) * 10
     },
