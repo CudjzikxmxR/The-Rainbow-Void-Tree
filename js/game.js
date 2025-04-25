@@ -452,13 +452,7 @@ var interval = setInterval(function() {
 			let offlineDiff = Math.max(player.offTime.remain / 10, diff)
 			player.offTime.remain -= offlineDiff
 			diff += offlineDiff
-			if (hasUpgrade('p', 19)) {
-				if (player.clickingMult > player.minimumClickMult*3) {
-					player.clickingMult = player.minimumClickMult*3
-				}
-			} else {
-				player.clickingMult = 1
-			}
+			resetClickMult()
 		}
 		if (!options.offlineProd || player.offTime.remain <= 0) player.offTime = undefined
 	}
@@ -478,11 +472,7 @@ var interval = setInterval(function() {
 	if ((hasUpgrade('p', 19) && player.clickingMult>player.minimumClickMult*3) || (!(hasUpgrade('p', 19)) && player.clickingMult > 1)) {
 		player.clickingMult-=0.02*getClickPower()
 	} else {
-		if (hasUpgrade('p', 19) && player.clickingMult>player.minimumClickMult*3) {
-			player.clickingMult=player.minimumClickMult*3
-		} else if ((!(hasUpgrade('p', 19)) && player.clickingMult > 1)) {
-			player.clickingMult = 1
-		}
+		resetClickMult()
 	}
 
 	updateTemp();

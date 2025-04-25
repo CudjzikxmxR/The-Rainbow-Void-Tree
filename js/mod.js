@@ -109,6 +109,16 @@ function getClickPower() {
 	return baseClickPower
 }
 
+function resetClickMult() {
+	if (hasUpgrade('p', 19)) {
+		if (player.clickingMult > player.minimumClickMult*3) {
+			player.clickingMult = player.minimumClickMult*3
+		}
+	} else {
+		player.clickingMult = 1
+	}
+}
+
 // Style for the background, can be a function
 var backgroundStyle = {
 
