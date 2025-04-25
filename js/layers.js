@@ -140,6 +140,15 @@ addLayer("g", {
             description: "0.1x Rainbows\n5x Amoebas",
             cost: new Decimal(1),
         },
+        12: {
+            title: "RNG",
+            description: "This grants anywhere from 0.5x-5x Rainbows at any given moment.",
+            cost: new Decimal(7),
+            effect() {
+                return Math.max(Math.random()*5, 0.5)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
+        },
         
     },
 })
