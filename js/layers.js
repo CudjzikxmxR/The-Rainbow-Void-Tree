@@ -144,7 +144,7 @@ addLayer("g", {
             mult = mult.times(upgradeEffect('g', 14))
         }
         if (hasUpgrade('g', 18)) {
-            mult = mult.times(upgradeEffect('g', 18))
+            mult = mult.times(7)
         }
         return mult
     },
@@ -207,10 +207,10 @@ addLayer("g", {
         },
         18: {
             title: "I Love Crack",
-            description: "Amoebas and Cherries scale based on your Cherries and RNG.",
+            description: "Amoebas and Rainbows scale based on your Cherries and RNG. \n7x Cherries",
             cost: new Decimal(15000),
             effect() {
-                return player[this.layer].points.add(1).pow(0.25).times(Math.max(Math.random()*4, 0.5))
+                return player[this.layer].points.add(1).pow(0.25).times(Math.max(Math.random()*5, 0.5))
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
