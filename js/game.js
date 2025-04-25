@@ -414,7 +414,7 @@ const cudGrade16 = {
         return (Math.random()) * 4 
     },
 	onClick() {
-		if (this.color != "#6225D1") {
+		if (this.color == "#006BF7") {
 			player.clickingMult+=getClickPower()
 			player.minimumClickMult+=1
 			if (hasUpgrade('g', 14)) {
@@ -422,7 +422,7 @@ const cudGrade16 = {
 			}
 			if (hasUpgrade('g', 15) && Math.floor(Math.random()*10+1)==10) {
 				this.color = "#770000"
-				addPoints('p', player['p'].resetGain)
+				addPoints('p', player['p'.layer].resetGain)
 				updateMilestones('p')
 				updateAchievements('p')
 			} else {
