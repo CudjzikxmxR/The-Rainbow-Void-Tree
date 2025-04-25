@@ -24,6 +24,9 @@ addLayer("p", {
         if (hasUpgrade('g', 14)) {
             mult = mult.times(upgradeEffect('g', 14))
         }
+        if (hasUpgrade('g', 18)) {
+            mult = mult.times(upgradeEffect('g', 18))
+        }
         return mult
     },
     autoUpgrade() {
@@ -140,6 +143,9 @@ addLayer("g", {
         if (hasUpgrade('g', 14)) {
             mult = mult.times(upgradeEffect('g', 14))
         }
+        if (hasUpgrade('g', 18)) {
+            mult = mult.times(upgradeEffect('g', 18))
+        }
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -183,21 +189,35 @@ addLayer("g", {
         15: {
             title: "Lets Go Gambling",
             description: "Clicking symbols has a 1 in 10 chance to instantly grant you Amoebas equal to what you'd earn from reset.",
-            cost: new Decimal(150),
+            cost: new Decimal(500),
         },
         16: {
             title: "Cherry Tree",
             description: "Rainbows scale based on your Cherries.",
-            cost: new Decimal(250),
+            cost: new Decimal(1000),
             effect() {
                 return player[this.layer].points.add(1).pow(0.6)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
         17: {
-            title: "UpgradeNumberTenToFour",
+            title: "Alliance",
             description: "You automatically purchase Amoeba upgrades.",
-            cost: new Decimal(1000),
+            cost: new Decimal(5000),
+        },
+        18: {
+            title: "I Love Crack",
+            description: "Amoebas and Cherries scale based on your Cherries and RNG.",
+            cost: new Decimal(15000),
+            effect() {
+                return player[this.layer].points.add(1).pow(0.25).times(Math.max(Math.random()*5, 0.5))
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
+        },
+        19: {
+            title: "Chris Luck",
+            description: "Clicking symbols always grants Amoebas.",
+            cost: new Decimal(777777),
         },
     },
 })
