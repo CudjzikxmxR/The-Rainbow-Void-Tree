@@ -91,7 +91,7 @@ addLayer("p", {
         },
         19: {
             title: "Fallback",
-            description: "Your Rainbow multiplier from clicking symbols can't drop below triple the total # of symbols you've clicked.",
+            description: "Your Rainbow multiplier from clicking symbols can't drop below triple the total # of symbols you've EVER clicked.",
             cost: new Decimal(1234567),
         },
         21: {
@@ -149,6 +149,15 @@ addLayer("g", {
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
-        
+        13: {
+            title: "Clickity Clack [2]",
+            description: "Clicking symbols is 2x as effective. \n'Activity Check' is no longer reset.",
+            cost: new Decimal(17),
+        },
+        14: {
+            title: "Lets Go Gambling",
+            description: "Clicking symbols has a 1 in 10 chance to instantly grant you Amoebas equal to what you'd earn from reset.",
+            cost: new Decimal(27),
+        },
     },
 })

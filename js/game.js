@@ -411,7 +411,7 @@ const cudGrade16 = {
         return (Math.random() - 0.5) * 10
     },
     speed() {
-        return (Math.random()) * 8 
+        return (Math.random()) * 4 
     },
 	onClick() {
 		if (this.color != "#6225D1") {

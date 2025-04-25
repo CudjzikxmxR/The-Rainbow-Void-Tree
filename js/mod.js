@@ -96,6 +96,8 @@ function getClickPower() {
 		baseClickPower*=4
 	if (hasUpgrade('p', 21))
 		baseClickPower*=upgradeEffect('p', 21)
+	if (hasUpgrade('g', 13))
+		baseClickPower*=2
 
 	return baseClickPower
 }
