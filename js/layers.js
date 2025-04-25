@@ -98,7 +98,7 @@ addLayer("p", {
         },
         18: {
             title: "Anomaly Annihilating",
-            description: "Clicking symbols is 4x as effective.\n1.5x Rainbows",
+            description: "Clicking symbols is 4x as effective.\n2.5x Rainbows",
             cost: new Decimal(100000),
         },
         19: {
@@ -115,7 +115,7 @@ addLayer("p", {
             description: "Clicking symbols is more effective based on your Amoebas and current click-related Rainbow multiplier.",
             cost: new Decimal(10000000),
             effect() {
-                return player[this.layer].points.add(1).pow(0.25*Math.min((1+Math.pow(player.clickingMult,0.3)/100), 1.5))
+                return player[this.layer].points.add(1).pow(0.2*Math.min((1+Math.pow(player.clickingMult,0.25)/100), 1.5))
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
