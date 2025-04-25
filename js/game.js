@@ -418,7 +418,7 @@ const cudGrade16 = {
 			player.clickingMult+=getClickPower()
 			player.minimumClickMult+=1
 			if (hasUpgrade('g', 14)) {
-				player.cherryUpgrade16+=0.01
+				player.cherryUpgrade14+=0.01
 			}
 			if (hasUpgrade('g', 15) && Math.floor(Math.random()*10+1)==10) {
 				this.color = "#770000"
@@ -468,7 +468,7 @@ var interval = setInterval(function() {
 	tmp.scrolled = document.getElementById('treeTab') && document.getElementById('treeTab').scrollTop > 30
 	var symbolReq = 0.92
 	if (hasUpgrade('g', 13)) {
-		symbolReq = 0.87
+		symbolReq = 0.77
 	}
 	if (hasUpgrade('p', 16) && Math.random()>= symbolReq) {
 		makeShinies(cudGrade16, 1)

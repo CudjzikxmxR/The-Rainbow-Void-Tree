@@ -178,7 +178,7 @@ addLayer("g", {
     milestones: {
         0: {
             requirementDescription: "20 Cherries",
-            effectDescription: "'Activity Check' is no longer reset.",
+            effectDescription: ".",
             done() { return player[this.layer].points.gte(20) }
         }
     }
