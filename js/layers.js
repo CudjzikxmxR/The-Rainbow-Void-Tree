@@ -210,14 +210,14 @@ addLayer("g", {
             description: "Amoebas and Cherries scale based on your Cherries and RNG.",
             cost: new Decimal(15000),
             effect() {
-                return player[this.layer].points.add(1).pow(0.25).times(Math.max(Math.random()*5, 0.5))
+                return player[this.layer].points.add(1).pow(0.25).times(Math.max(Math.random()*2, 1))
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
         19: {
             title: "Chris Luck",
             description: "Clicking symbols always grants Amoebas.",
-            cost: new Decimal(777777),
+            cost: new Decimal(7777777),
         },
     },
 })
