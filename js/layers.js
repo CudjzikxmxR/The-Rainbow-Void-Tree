@@ -208,7 +208,7 @@ addLayer("g", {
         18: {
             title: "I Love Crack",
             description: "Amoebas and Rainbows scale based on your Cherries and RNG. \n7x Cherries",
-            cost: new Decimal(15000),
+            cost: new Decimal(100000),
             effect() {
                 return player[this.layer].points.add(1).pow(0.25).times(Math.max(Math.random()*5, 0.5))
             },
@@ -217,12 +217,12 @@ addLayer("g", {
         19: {
             title: "Chris Luck",
             description: "Clicking symbols always grants Amoebas.",
-            cost: new Decimal(7777777),
+            cost: new Decimal(77777777),
         },
         21: {
             title: "Perfect Shot",
             description: "The click-related Rainbow multiplier no longer drains.",
-            cost: new Decimal(77777777),
+            cost: new Decimal(7777777777),
         },
     },
 })
