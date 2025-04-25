@@ -221,7 +221,7 @@ addLayer("g", {
         },
         21: {
             title: "Slowing",
-            description: "The click-related Rainbow multiplier drains much slower.",
+            description: "The click-related Rainbow multiplier drains slower.",
             cost: new Decimal(77777777),
         },
     },

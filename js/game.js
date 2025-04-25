@@ -420,11 +420,11 @@ const cudGrade16 = {
 			if (hasUpgrade('g', 14)) {
 				player.cherryUpgrade14+=0.01
 			}
-			if (hasUpgrade('g', 15) && Math.floor(Math.random()*10+1)==10) {
+			if (hasUpgrade('g', 15) && (Math.floor(Math.random()*10+1)==10 && hasUpgrade('g', 19))) {
 				this.color = "#770000"
-				//addPoints(layers, player['p'].resetGain)
-				updateMilestones('p')
-				updateAchievements('p')
+				addPoints(layers['p'], layers['p'].resetGain)
+				updateMilestones(layers['p'])
+				updateAchievements(layers['p'])
 			} else {
 				this.color = "#6225D1"
 			}
@@ -471,7 +471,7 @@ var interval = setInterval(function() {
 	}
 	if ((hasUpgrade('p', 19) && player.clickingMult>player.minimumClickMult*3) || (!(hasUpgrade('p', 19)) && player.clickingMult > 1)) {
 		if (hasUpgrade('g', 21)) {
-			player.clickingMult-=0.001*getClickPower()
+			player.clickingMult-=0.0005*getClickPower()
 		} else {
 			player.clickingMult-=0.02*getClickPower()
 		}
