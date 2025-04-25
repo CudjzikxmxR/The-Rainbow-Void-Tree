@@ -414,6 +414,7 @@ const cudGrade16 = {
         return (Math.random()) * 4 
     },
 	onClick() {
+		/*
 		if (this.color == "#006BF7") {
 			player.clickingMult+=getClickPower()
 			player.minimumClickMult+=1
@@ -429,6 +430,7 @@ const cudGrade16 = {
 				this.color = "#6225D1"
 			}
 		}
+			*/
 	},
 	onMouseOver() {
 
