@@ -220,8 +220,8 @@ addLayer("g", {
             cost: new Decimal(7777777),
         },
         21: {
-            title: "Slowing",
-            description: "The click-related Rainbow multiplier drains slower.",
+            title: "Perfect Shot",
+            description: "The click-related Rainbow multiplier no longer drains.",
             cost: new Decimal(77777777),
         },
     },
