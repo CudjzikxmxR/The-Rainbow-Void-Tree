@@ -117,6 +117,7 @@ function resetClickMult() {
 	} else {
 		player.clickingMult = 1
 	}
+	player.clickingMult = 1
 }
 
 // Style for the background, can be a function
