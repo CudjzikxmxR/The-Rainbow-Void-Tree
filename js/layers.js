@@ -55,7 +55,7 @@ addLayer("p", {
             description: "Rainbows scale based on your Amoebas.",
             cost: new Decimal(10),
             effect() {
-                return player[this.layer].points.add(1).pow(0.5)
+                return player[this.layer].points.add(1).pow(0.505)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
