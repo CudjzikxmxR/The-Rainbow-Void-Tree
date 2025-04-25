@@ -96,6 +96,10 @@ addLayer("p", {
             title: "Fallback",
             description: "Your Rainbow multiplier from clicking symbols can't drop below triple the total # of symbols you've EVER clicked.",
             cost: new Decimal(1234567),
+            effect() {
+                return player.minimumClickMult
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+" total clicks" },
         },
         21: {
             title: "This Is Overpowered",
