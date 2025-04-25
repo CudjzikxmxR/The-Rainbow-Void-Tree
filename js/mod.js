@@ -60,9 +60,12 @@ function getPointGen() {
 
 	//Chris Layer Upgrades
 	if (hasUpgrade('g', 11))
-		gain = gain.times(0.1)
+		gain = gain.times(0.2)
 	if (hasUpgrade('g', 12))
 		gain = gain.times(upgradeEffect('g', 12))
+	if (hasUpgrade('g', 14)) {
+		gain = gain.times(upgradeEffect('g', 14))
+	}
 
 	return gain
 }
@@ -71,6 +74,7 @@ function getPointGen() {
 function addedPlayerData() { return {
 	clickingMult: 1,
 	minimumClickMult: 0,
+	cherryUpgrade14: 1,
 }}
 
 // Display extra things at the top of the page

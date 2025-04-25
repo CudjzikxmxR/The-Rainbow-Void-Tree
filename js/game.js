@@ -400,12 +400,12 @@ function hardReset(resetOptions) {
 const cudGrade16 = {
     image:"resources/aaaRune.png",
     spread: 20,
-	width: 66,
-	height: 66,
+	width: 70,
+	height: 70,
     time: 2.5,
 	color: "#006BF7",
     rotation (id) {
-        return 20 * (id - 1.5) + (Math.random() - 0.5) * 2
+        return 5 * (id - 1.5) + (Math.random() - 0.5) * 10
     },
     dir() {
         return (Math.random() - 0.5) * 10
@@ -417,7 +417,15 @@ const cudGrade16 = {
 		if (this.color != "#6225D1") {
 			player.clickingMult+=getClickPower()
 			player.minimumClickMult+=1
-			this.color = "#6225D1"
+			if (hasUpgrade('g', 14)) {
+				player.cherryUpgrade16+=0.01
+			}
+			if (hasUpgrade('g', 15) && Math.floor(Math.random()*10+1)==10) {
+				this.color = "#770000"
+				player.layer['p'].points += player.layer['p'].resetGain
+			} else {
+				this.color = "#6225D1"
+			}
 		}
 	},
 	onMouseOver() {
@@ -458,7 +466,11 @@ var interval = setInterval(function() {
 		needCanvasUpdate = false;
 	}
 	tmp.scrolled = document.getElementById('treeTab') && document.getElementById('treeTab').scrollTop > 30
-	if (hasUpgrade('p', 16) && Math.random()>= 0.92) {
+	var symbolReq = 0.92
+	if (hasUpgrade('g', 13)) {
+		symbolReq = 0.87
+	}
+	if (hasUpgrade('p', 16) && Math.random()>= symbolReq) {
 		makeShinies(cudGrade16, 1)
 	}
 	if ((hasUpgrade('p', 19) && player.clickingMult>player.minimumClickMult*3) || (!(hasUpgrade('p', 19)) && player.clickingMult > 1)) {

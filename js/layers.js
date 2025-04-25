@@ -16,11 +16,14 @@ addLayer("p", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         if (hasUpgrade('p', 17)) {
-           mult = mult.times(2)
+            mult = mult.times(2)
         }
         if (hasUpgrade('g', 11)) {
             mult = mult.times(7)
-         }
+        }
+        if (hasUpgrade('g', 14)) {
+            mult = mult.times(upgradeEffect('g', 14))
+        }
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -123,6 +126,9 @@ addLayer("g", {
     exponent: 0.5, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1+Math.random()*5)
+        if (hasUpgrade('g', 14)) {
+            mult = mult.times(upgradeEffect('g', 14))
+        }
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -137,7 +143,7 @@ addLayer("g", {
     upgrades: {
         11: {
             title: "Masochism",
-            description: "0.1x Rainbows \n7x Amoebas",
+            description: "0.2x Rainbows \n7x Amoebas",
             cost: new Decimal(1),
         },
         12: {
@@ -150,14 +156,30 @@ addLayer("g", {
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
         13: {
-            title: "Clickity Clack [2]",
-            description: "Clicking symbols is 2x as effective. \n'Activity Check' is no longer reset.",
+            title: "Clickity Clack",
+            description: "Clicking symbols is 2x as effective. \nSymbols spawn more often.",
             cost: new Decimal(17),
         },
         14: {
+            title: "Click Your Way To Victory",
+            description: "This increases by +0.01x multiplier for Rainbows, Amoebas, and Cherries for every symbol clicked.",
+            cost: new Decimal(27),
+            effect() {
+                return player.cherryUpgrade14
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
+        },
+        15: {
             title: "Lets Go Gambling",
             description: "Clicking symbols has a 1 in 10 chance to instantly grant you Amoebas equal to what you'd earn from reset.",
             cost: new Decimal(27),
         },
     },
+    milestones: {
+        0: {
+            requirementDescription: "20 Cherries",
+            effectDescription: "'Activity Check' is no longer reset.",
+            done() { return player[this.layer].points.gte(20) }
+        }
+    }
 })
