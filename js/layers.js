@@ -19,7 +19,7 @@ addLayer("p", {
            mult = mult.times(2)
         }
         if (hasUpgrade('g', 11)) {
-            mult = mult.times(5)
+            mult = mult.times(7)
          }
         return mult
     },
@@ -137,7 +137,7 @@ addLayer("g", {
     upgrades: {
         11: {
             title: "Masochism",
-            description: "0.1x Rainbows\n5x Amoebas",
+            description: "0.1x Rainbows \n7x Amoebas",
             cost: new Decimal(1),
         },
         12: {
