@@ -18,6 +18,9 @@ addLayer("p", {
         if (hasUpgrade('p', 17)) {
            mult = mult.times(2)
         }
+        if (hasUpgrade('g', 11)) {
+            mult = mult.times(5)
+         }
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -119,7 +122,7 @@ addLayer("g", {
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.5, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
-        mult = new Decimal(Math.random())
+        mult = new Decimal(1+Math.random()*5)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -133,8 +136,8 @@ addLayer("g", {
 
     upgrades: {
         11: {
-            title: "Idk",
-            description: "2x Amoebas",
+            title: "Masochism",
+            description: "0.1x Rainbows\n5x Amoebas",
             cost: new Decimal(1),
         },
         
