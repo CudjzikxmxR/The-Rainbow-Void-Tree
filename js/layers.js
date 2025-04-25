@@ -115,7 +115,7 @@ addLayer("p", {
             description: "Clicking symbols is more effective based on your Amoebas and current click-related Rainbow multiplier.",
             cost: new Decimal(10000000),
             effect() {
-                return player[this.layer].points.add(1).pow(0.3*Math.min((1+Math.pow(player.clickingMult,0.25)/100), 3))
+                return player[this.layer].points.add(1).pow(0.3*Math.min((1+Math.pow(player.clickingMult,0.25)/100), 2))
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
