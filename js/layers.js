@@ -163,7 +163,7 @@ addLayer("g", {
         14: {
             title: "Click Your Way To Victory",
             description: "This increases by +0.01x multiplier for Rainbows, Amoebas, and Cherries for every symbol clicked.",
-            cost: new Decimal(27),
+            cost: new Decimal(50),
             effect() {
                 return player.cherryUpgrade14
             },
@@ -172,14 +172,7 @@ addLayer("g", {
         15: {
             title: "Lets Go Gambling",
             description: "Clicking symbols has a 1 in 10 chance to instantly grant you Amoebas equal to what you'd earn from reset.",
-            cost: new Decimal(27),
+            cost: new Decimal(150),
         },
     },
-    milestones: {
-        0: {
-            requirementDescription: "20 Cherries",
-            effectDescription: ".",
-            done() { return player[this.layer].points.gte(20) }
-        }
-    }
 })
