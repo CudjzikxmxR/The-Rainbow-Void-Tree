@@ -49,7 +49,7 @@ addLayer("p", {
             description: "0.1x Rainbows\nRainbow gain now increases over time.",
             cost: new Decimal(50),
             effect() {
-                return Math.min(Math.pow(player[this.layer].resetTime*2+1,1.7)/10, 100)
+                return Math.min(Math.pow(player[this.layer].resetTime*2.5+1,1.77)/10, 500)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
@@ -87,7 +87,7 @@ addLayer("p", {
             cost: new Decimal(100000),
         },
         19: {
-            title: "Clickity Clack",
+            title: "Fallback",
             description: "Your Rainbow multiplier from clicking symbols can't drop below triple the total # of symbols you've clicked.",
             cost: new Decimal(1234567),
         },
@@ -96,7 +96,7 @@ addLayer("p", {
             description: "Clicking symbols is more effective based on your Amoebas and current click-related Rainbow multiplier.",
             cost: new Decimal(10000000),
             effect() {
-                return player[this.layer].points.add(1).pow(0.25*(1+Math.pow(player.clickingMult,0.3)/100))
+                return player[this.layer].points.add(1).pow(0.3*(1+Math.pow(player.clickingMult,0.3)/100))
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
