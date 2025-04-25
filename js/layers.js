@@ -26,6 +26,12 @@ addLayer("p", {
         }
         return mult
     },
+    autoUpgrade() {
+        if (hasUpgrade('g', 17)) {
+            return true
+        }
+        return false
+    },
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
@@ -94,7 +100,7 @@ addLayer("p", {
         },
         19: {
             title: "Fallback",
-            description: "Your Rainbow multiplier from clicking symbols can't drop below triple the total # of symbols you've EVER clicked.",
+            description: "Your Rainbow multiplier from clicking symbols can't decrease while below triple the total # of symbols you've EVER clicked.",
             cost: new Decimal(1234567),
             effect() {
                 return player.minimumClickMult
@@ -161,7 +167,7 @@ addLayer("g", {
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
         13: {
-            title: "Clickity Clack",
+            title: "I'm Gonna Shit",
             description: "Clicking symbols is 2x as effective. \nSymbols spawn more often.",
             cost: new Decimal(17),
         },
@@ -178,6 +184,20 @@ addLayer("g", {
             title: "Lets Go Gambling",
             description: "Clicking symbols has a 1 in 10 chance to instantly grant you Amoebas equal to what you'd earn from reset.",
             cost: new Decimal(150),
+        },
+        16: {
+            title: "Cherry Tree",
+            description: "Rainbows scale based on your Cherries.",
+            cost: new Decimal(250),
+            effect() {
+                return player[this.layer].points.add(1).pow(0.6)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
+        },
+        17: {
+            title: "UpgradeNumberTenToFour",
+            description: "You automatically purchase Amoeba upgrades.",
+            cost: new Decimal(1000),
         },
     },
 })
