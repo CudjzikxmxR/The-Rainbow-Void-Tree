@@ -200,7 +200,7 @@ addLayer("g", {
         },
         13: {
             title: "I'm Gonna Shit",
-            description: "Clicking symbols is 2x as effective. \nSymbols spawn more often.",
+            description: "Clicking symbols is 2x as effective. \nSymbols spawn more often and continue spawning without <b>Activity Check</b>.",
             cost: new Decimal(17),
         },
         14: {
