@@ -150,7 +150,7 @@ addLayer("p", {
     },
 })
 
-addLayer("a", {
+addLayer("A", {
     startData() { return {
         unlocked: true,
         points: new Decimal(0),
@@ -158,7 +158,7 @@ addLayer("a", {
     color: "#F7B100",
     resource: "achievement power", 
     row: "side",
-    image: "resources/aaaRune.png",
+    image: "resources/Achievements.png",
     tooltip() { // Optional, tooltip displays when the layer is locked
         return ("Achievements")
     },
