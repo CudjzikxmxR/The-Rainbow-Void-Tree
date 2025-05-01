@@ -156,11 +156,12 @@ addLayer("g", {
         {key: "g", description: "G: Gamble for cherries!!!", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){
-        if (this.baseAmount() > new Decimal(Math.pow(10, 19)) || hasUpgrade('g', 1)) {
+        if (tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt) || hasUpgrade('g', 1)) {
             return true
         }
         return false
     },
+    branches: ["p"],
 
     upgrades: {
         11: {
