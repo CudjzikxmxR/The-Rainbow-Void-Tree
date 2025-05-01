@@ -73,7 +73,7 @@ function getPointGen() {
 		gain = gain.pow(1.1)
 
 	//Achievements
-	gain = gain.times((new Decimal(1)).add((new Decimal(2)).times(player['A'].points)))
+	gain = gain.times((new Decimal(2)).pow(player['A'].points))
 
 	return gain
 }
