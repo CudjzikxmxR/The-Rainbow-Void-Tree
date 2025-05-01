@@ -156,7 +156,10 @@ addLayer("g", {
         {key: "g", description: "G: Gamble for cherries!!!", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){
-        return true
+        //return true
+        if (hasUpgrade('g', 1) || hasUpgrade('p', 21)) {
+            return true
+        }
         /*
         if (tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt) || hasUpgrade('g', 1)) {
             return true
@@ -165,7 +168,8 @@ addLayer("g", {
         */
     },
     canReset() {
-        return tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt)
+        return hasUpgrade('p', 21)
+        //return tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt)
     },
     branches: ["p"],
 
