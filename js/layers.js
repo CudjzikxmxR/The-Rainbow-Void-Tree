@@ -168,7 +168,7 @@ addLayer("A", {
             name: "The Gimmicky Nonsense Begins",
             //image: "discord.png",
             done() {return hasUpgrade('p', 16)},
-            toolTip: "Buy the <b>Activity Check</b> upgrade.<br>Award: 2x Rainbows", 
+            tooltip: "Buy the <b>Activity Check</b> upgrade.<br>Award: 2x Rainbows", 
         },
     },
     midsection: ["grid", "blank"],
