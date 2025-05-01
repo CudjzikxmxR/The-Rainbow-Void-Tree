@@ -416,7 +416,7 @@ const cudGrade16 = {
     },
 	onClick() {
 		if (this.color == "#006BF7") {
-			player.clickingMult+=1
+			player.clickingMult+=getClickPower()
 			player.minimumClickMult+=1
 			if (hasUpgrade('g', 14)) {
 				player.cherryUpgrade14+=0.01
