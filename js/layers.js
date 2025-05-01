@@ -46,11 +46,13 @@ addLayer("p", {
             title: "Pride Month",
             description: "2x Rainbows",
             cost: new Decimal(5),
+            style: {'width':'150px'},
         },
         12: {
             title: "Single Celled",
             description: "Rainbows scale based on your Amoebas.",
             cost: new Decimal(10),
+            style: {'width':'150px'},
             effect() {
                 return player[this.layer].points.add(1).pow(0.5)
             },
@@ -60,6 +62,7 @@ addLayer("p", {
             title: "Procrastination",
             description: "0.1x Rainbows\nRainbow gain now increases over time.",
             cost: new Decimal(50),
+            style: {'width':'150px'},
             effect() {
                 return Math.min(Math.pow(player[this.layer].resetTime*2.5+1,1.77)/10, 500)
             },
@@ -69,6 +72,7 @@ addLayer("p", {
             title: "More Rainbow",
             description: "Rainbows scale based on your Rainbows.",
             cost: new Decimal(150),
+            style: {'width':'150px'},
             effect() {
                 return player.points.add(1).pow(0.25)
             },
@@ -78,11 +82,13 @@ addLayer("p", {
             title: "Stability Zest",
             description: "1.777x Rainbows",
             cost: new Decimal(500),
+            style: {'width':'150px'},
         },
         16: {
             title: "Activity Check",
             description: "Symbols now appear on the screen.\nClicking them gives temporary Rainbow multiplier.",
             cost: new Decimal(2000),
+            style: {'width':'150px'},
             effect() {
                 return player.clickingMult
             },
@@ -92,6 +98,7 @@ addLayer("p", {
             title: "Mitosis",
             description: "2x Amoebas",
             cost: new Decimal(20000),
+            style: {'width':'150px'},
             unlocked() {
                 return hasUpgrade('p', 16)
             },
@@ -100,6 +107,7 @@ addLayer("p", {
             title: "Anomaly Annihilating",
             description: "Clicking symbols is 4x as effective.\n2.5x Rainbows",
             cost: new Decimal(100000),
+            style: {'width':'150px'},
             unlocked() {
                 return hasUpgrade('p', 16)
             },
@@ -108,6 +116,7 @@ addLayer("p", {
             title: "Fallback",
             description: "Your Rainbow multiplier from clicking symbols can't decrease while below triple the total # of symbols you've EVER clicked.",
             cost: new Decimal(1234567),
+            style: {'width':'150px'},
             effect() {
                 return player.minimumClickMult
             },
@@ -120,6 +129,7 @@ addLayer("p", {
             title: "This Is Overpowered",
             description: "Clicking symbols is more effective based on your Amoebas and current click-related Rainbow multiplier.",
             cost: new Decimal(10000000),
+            style: {'width':'150px'},
             effect() {
                 return player[this.layer].points.add(1).pow(0.2*Math.min((1+Math.pow(player.clickingMult,0.4)/100), 1.5))
             },
@@ -127,7 +137,6 @@ addLayer("p", {
             unlocked() {
                 return hasUpgrade('p', 16)
             },
-            style: {'width':'150px'},
         },
     },
     infoboxes: {
