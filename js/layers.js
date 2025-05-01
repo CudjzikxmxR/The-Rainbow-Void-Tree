@@ -207,11 +207,13 @@ addLayer("g", {
             title: "Masochism",
             description: "0.2x Rainbows<br>7x Amoebas",
             cost: new Decimal(1),
+            style: {'width':'160px'},
         },
         12: {
             title: "RNG",
             description: "This grants anywhere from 0.1x-10x Rainbows at any given moment.",
             cost: new Decimal(7),
+            style: {'width':'160px'},
             effect() {
                 return Math.max(Math.random()*10, 0.1)
             },
@@ -221,11 +223,13 @@ addLayer("g", {
             title: "I'm Gonna Shit",
             description: "Clicking symbols is 2x as effective. \nSymbols spawn more often and continue spawning without <b>Activity Check</b>.",
             cost: new Decimal(17),
+            style: {'width':'160px'},
         },
         14: {
             title: "Click Your Way To Victory",
             description: "This increases by +0.01x multiplier for Rainbows, Amoebas, and Cherries for every symbol clicked.",
             cost: new Decimal(50),
+            style: {'width':'160px'},
             effect() {
                 return player.cherryUpgrade14
             },
@@ -235,11 +239,13 @@ addLayer("g", {
             title: "Lets Go Gambling",
             description: "Clicking symbols has a 1 in 10 chance to instantly grant you Amoebas equal to what you'd earn from reset.",
             cost: new Decimal(500),
+            style: {'width':'160px'},
         },
         16: {
             title: "Cherry Tree",
             description: "Rainbows scale based on your Cherries.",
             cost: new Decimal(1000),
+            style: {'width':'160px'},
             effect() {
                 return player[this.layer].points.add(1).pow(0.4)
             },
@@ -249,6 +255,7 @@ addLayer("g", {
             title: "THE BROTHERS COCK",
             description: "You automatically purchase Amoeba upgrades.",
             cost: new Decimal(5000),
+            style: {'width':'160px'},
             unlocked() {
                 return hasUpgrade('g', 16)
             },
@@ -257,6 +264,7 @@ addLayer("g", {
             title: "I Love Crack",
             description: "7x Cherries<br>Rainbows scale based on your Cherries and RNG.",
             cost: new Decimal(100000),
+            style: {'width':'160px'},
             effect() {
                 return player[this.layer].points.add(1).pow(0.25).times(Math.max(Math.random()*5, 0.5))
             },
@@ -269,6 +277,7 @@ addLayer("g", {
             title: "Chris Luck",
             description: "Clicking symbols always grants Amoebas.",
             cost: new Decimal(77777777),
+            style: {'width':'160px'},
             unlocked() {
                 return hasUpgrade('g', 16)
             },
@@ -277,6 +286,7 @@ addLayer("g", {
             title: "Rigged Coin",
             description: "Coinflips always grant multiplier and reset nothing.",
             cost: new Decimal(7.777777e12),
+            style: {'width':'160px'},
             unlocked() {
                 return hasUpgrade('g', 19)
             },
@@ -285,6 +295,7 @@ addLayer("g", {
             title: "Adorable",
             description: "^1.1 Rainbows<br>This layer behaves as if you chose it first.<br>Add a picture of Axe Cat to this layer's menu.",
             cost: new Decimal(1e36),
+            style: {'width':'160px'},
             unlocked() {
                 return hasUpgrade('g', 19)
             },
