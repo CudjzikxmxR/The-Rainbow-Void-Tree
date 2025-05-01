@@ -158,7 +158,7 @@ addLayer("a", {
     color: "#F7B100",
     resource: "achievement power", 
     row: "side",
-    image: "resources/Achievement.png",
+    image: "resources/aaaRune.png",
     tooltip() { // Optional, tooltip displays when the layer is locked
         return ("Achievements")
     },
