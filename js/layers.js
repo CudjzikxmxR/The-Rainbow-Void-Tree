@@ -127,11 +127,12 @@ addLayer("p", {
             unlocked() {
                 return hasUpgrade('p', 16)
             },
+            style: {'width':'120px'},
         },
     },
     infoboxes: {
         clickCounter: {
-           // title: "Click Counter",
+            title: "Click Counter",
             body() { return "You have clicked " + player.minimumClickMult + " symbols." },
             unlocked() {
                 return hasUpgrade('p', 16)
