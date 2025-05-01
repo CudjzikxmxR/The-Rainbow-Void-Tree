@@ -177,7 +177,7 @@ addLayer("g", {
     upgrades: {
         11: {
             title: "Masochism",
-            description: "0.2x Rainbows\n\n7x Amoebas",
+            description: "0.2x Rainbows<br>7x Amoebas",
             cost: new Decimal(1),
         },
         12: {
