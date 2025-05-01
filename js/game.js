@@ -472,7 +472,7 @@ var interval = setInterval(function() {
 	}
 	if ((hasUpgrade('p', 19) && player.clickingMult>player.minimumClickMult*3) || (!(hasUpgrade('p', 19)) && player.clickingMult > 1)) {
 		if (!hasUpgrade('g', 21)) {
-			player.clickingMult = player.clickingMult.sub(getClickPower().times(0.02))
+			player.clickingMult -= getClickPower()/50
 		}
 	} else {
 		resetClickMult()
