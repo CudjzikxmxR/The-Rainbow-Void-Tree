@@ -156,7 +156,7 @@ addLayer("g", {
         {key: "g", description: "G: Gamble for cherries!!!", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){
-        if (player.points > new Decimal(Math.pow(10, 19))) {
+        if (player.points > new Decimal(Math.pow(10, 19)) || hasUpgrade('g', 1)) {
             return true
         }
         return false
@@ -201,7 +201,7 @@ addLayer("g", {
             description: "Rainbows scale based on your Cherries.",
             cost: new Decimal(1000),
             effect() {
-                return player[this.layer].points.add(1).pow(0.6)
+                return player[this.layer].points.add(1).pow(0.4)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
@@ -215,7 +215,7 @@ addLayer("g", {
             description: "Amoebas and Rainbows scale based on your Cherries and RNG. \n7x Cherries",
             cost: new Decimal(100000),
             effect() {
-                return player[this.layer].points.add(1).pow(0.25).times(Math.max(Math.random()*5, 0.5))
+                return player[this.layer].points.add(1).pow(0.2).times(Math.max(Math.random()*5, 0.5))
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
