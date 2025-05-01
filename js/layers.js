@@ -268,7 +268,8 @@ addLayer("g", {
             },
             unlocked() { return player[this.layer].unlocked }, 
             canClick() {
-                return tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt)
+                return false
+                //return tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt)
             },
             onClick() { 
                 doReset(layers[this.layer], true)
