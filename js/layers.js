@@ -262,13 +262,13 @@ addLayer("g", {
 
     clickables: {
         11: {
-            title: "Coinflip!",
+            title: "Flip A Coin!",
             display() { // Everything else displayed in the buyable button after the title
-                return "Force a Gamble reset without earning Cherries for a 50% chance to earn +1x Cherry multiplier.<br>(Requires 1e25 Rainbows)<br>Currently: "+format(player.CoinflipMult)+"x"
+                return "Force a Gamble reset without earning Cherries for a 50% chance to earn +1x Cherry multiplier.<br>(Requires 1.00e27 Rainbows)<br>Currently: "+format(player.CoinflipMult)+"x"
             },
             unlocked() { return player[this.layer].unlocked }, 
             canClick() {
-                return player.points.gte(new Decimal(1e25))
+                return player.points.gte(new Decimal(1e27))
                 //return tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt)
             },
             onClick() { 
