@@ -158,6 +158,7 @@ addLayer("a", {
     color: "#F7B100",
     resource: "achievement power", 
     row: "side",
+    image: "achievement_Icon.png",
     tooltip() { // Optional, tooltip displays when the layer is locked
         return ("Achievements")
     },
@@ -165,10 +166,9 @@ addLayer("a", {
     achievements: {
         11: {
             name: "The Gimmicky Nonsense Begins",
-            image: "discord.png",
+            //image: "discord.png",
             done() {return hasUpgrade('p', 16)},
-            goalTooltip: "Buy the <b>Activity Check</b> upgrade.<br>Award: 2x Rainbows", // Shows when achievement is not completed
-            doneTooltip: "You did it!", // Showed when the achievement is completed
+            toolTip: "Buy the <b>Activity Check</b> upgrade.<br>Award: 2x Rainbows", 
         },
     },
     midsection: ["grid", "blank"],
