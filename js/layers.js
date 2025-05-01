@@ -39,7 +39,7 @@ addLayer("p", {
         return new Decimal(1)
     },
     getResetGain() {
-        return getResetGain(this.layer, useType = "static")
+        return getResetGain(this.layer)
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
@@ -167,7 +167,7 @@ addLayer("g", {
         return new Decimal(1)
     },
     getResetGain() {
-        return getResetGain(this.layer, useType = "static")
+        return getResetGain(this.layer)
     },
     row: 1, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
