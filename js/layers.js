@@ -279,6 +279,7 @@ addLayer("g", {
                     player.CoinflipMult+=1
                 }
             },
+            style: {'height':'222px'},
         }
     }
 })
