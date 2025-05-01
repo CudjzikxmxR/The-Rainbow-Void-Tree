@@ -177,7 +177,7 @@ addLayer("g", {
     upgrades: {
         11: {
             title: "Masochism",
-            description: "0.2x Rainbows\n7x Amoebas",
+            description: "0.2x Rainbows\n\n7x Amoebas",
             cost: new Decimal(1),
         },
         12: {
@@ -224,7 +224,7 @@ addLayer("g", {
         },
         18: {
             title: "I Love Crack",
-            description: "7x Cherries\n Amoebas and Rainbows scale based on your Cherries and RNG.",
+            description: "7x Cherries\n\nAmoebas and Rainbows scale based on your Cherries and RNG.",
             cost: new Decimal(100000),
             effect() {
                 return player[this.layer].points.add(1).pow(0.2).times(Math.max(Math.random()*5, 0.5))
