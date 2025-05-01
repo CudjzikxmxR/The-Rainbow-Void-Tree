@@ -2,7 +2,6 @@ addLayer("p", {
     name: "cuddy", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "A", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
-    image: "discord.png",
     startData() { return {
         unlocked: true,
 		points: new Decimal(0),
@@ -159,7 +158,7 @@ addLayer("A", {
     color: "#F7B100",
     resource: "achievements", 
     row: "side",
-    image: "resources/Achievements.png",
+    image: "Achievements.png",
     tooltip() { // Optional, tooltip displays when the layer is locked
         return ("Achievements")
     },
