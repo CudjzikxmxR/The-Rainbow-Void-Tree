@@ -249,14 +249,14 @@ addLayer("g", {
             cost: new Decimal(77777777),
         },
         21: {
-            title: "Improbable",
-            description: "Coinflips are guaranteed to grant Cherry multiplier.",
-            cost: new Decimal(7777777777),
+            title: "Rigged Coin",
+            description: "Coinflips always grant multiplier and reset nothing.",
+            cost: new Decimal(7.777777e12),
         },
         22: {
             title: "Adorable",
             description: "^1.1 Rainbows<br>This layer behaves as if you chose it first.<br>Add a picture of Axe Cat to this layer's menu.",
-            cost: new Decimal(1e20),
+            cost: new Decimal(1e36),
         },
     },
 
@@ -275,7 +275,7 @@ addLayer("g", {
                 if (!hasUpgrade('g', 21)) {
                     doReset(this.layer, true)
                 }
-                if (Math.random() >= 0.5) {
+                if (Math.random() >= 0.5 || hasUpgrade('g', 21)) {
                     player.CoinflipMult+=1
                 }
             },
