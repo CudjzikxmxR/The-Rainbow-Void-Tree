@@ -157,11 +157,12 @@ addLayer("g", {
     ],
     layerShown(){
         //return true
-        if (hasUpgrade('g', 1) || hasUpgrade('p', 21)) {
+        if (hasUpgrade('g', 11) || hasUpgrade('p', 21) || player[this.layer].points.gte(new Decimal(1))) {
             return true
         }
+        return false
         /*
-        if (tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt) || hasUpgrade('g', 1)) {
+        if (tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt) || hasUpgrade('g', 11)) {
             return true
         }
         return false
