@@ -155,7 +155,12 @@ addLayer("g", {
     hotkeys: [
         {key: "g", description: "G: Gamble for cherries!!!", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return true},
+    layerShown(){
+        if (player.points > new Decimal(Math.pow(10, 19))) {
+            return true
+        }
+        return false
+    },
 
     upgrades: {
         11: {
