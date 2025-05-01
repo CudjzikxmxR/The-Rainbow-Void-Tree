@@ -255,7 +255,7 @@ addLayer("g", {
         },
         22: {
             title: "Adorable",
-            description: "10x Rainbows<br>This layer behaves as if you chose it first.<br>Add a picture of Axe Cat to this layer's menu.",
+            description: "^1.1 Rainbows<br>This layer behaves as if you chose it first.<br>Add a picture of Axe Cat to this layer's menu.",
             cost: new Decimal(1e20),
         },
     },
