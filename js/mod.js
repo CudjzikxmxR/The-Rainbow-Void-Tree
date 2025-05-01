@@ -80,6 +80,7 @@ function addedPlayerData() { return {
 	clickingMult: 1,
 	minimumClickMult: 0,
 	cherryUpgrade14: 1,
+	CoinflipMult: 1,
 }}
 
 // Display extra things at the top of the page
@@ -96,6 +97,10 @@ function isEndgame() {
 // Millisecond wait time
 function wait(ms) {
 	return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function randNum(min, max) {
+	return Math.ceil(Math.random()*(max-min))+min
 }
 
 // Get rune click power

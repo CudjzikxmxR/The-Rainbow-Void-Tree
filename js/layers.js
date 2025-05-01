@@ -95,11 +95,17 @@ addLayer("p", {
             title: "Mitosis",
             description: "2x Amoebas",
             cost: new Decimal(20000),
+            unlocked() {
+                return hasUpgrade('p', 16)
+            },
         },
         18: {
             title: "Anomaly Annihilating",
             description: "Clicking symbols is 4x as effective.\n2.5x Rainbows",
             cost: new Decimal(100000),
+            unlocked() {
+                return hasUpgrade('p', 16)
+            },
         },
         19: {
             title: "Fallback",
@@ -109,6 +115,9 @@ addLayer("p", {
                 return player.minimumClickMult
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+" total clicks" },
+            unlocked() {
+                return hasUpgrade('p', 16)
+            },
         },
         21: {
             title: "This Is Overpowered",
@@ -118,6 +127,9 @@ addLayer("p", {
                 return player[this.layer].points.add(1).pow(0.2*Math.min((1+Math.pow(player.clickingMult,0.25)/100), 1.5))
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
+            unlocked() {
+                return hasUpgrade('p', 16)
+            },
         },
     },
 })
@@ -242,9 +254,29 @@ addLayer("g", {
             cost: new Decimal(7777777777),
         },
         22: {
-            title: "Betray Meta",
+            title: "Adorable",
             description: "10x Rainbows<br>This layer behaves as if you chose it first.<br>Add a picture of Axe Cat to this layer's menu.",
             cost: new Decimal(1e20),
         },
     },
+
+    clickables: {
+        11: {
+            title: "Coinflip!",
+            display() { // Everything else displayed in the buyable button after the title
+                let data = getClickableState(this.layer, this.id)
+                return "Current state:<br>" + data
+            },
+            unlocked() { return player[this.layer].unlocked }, 
+            canClick() {
+                return tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt)
+            },
+            onClick() { 
+                doReset(player[this.layer], true)
+                if (Math.random() >= 0.5) {
+                    player.CoinflipMultiplier+=1
+                }
+            },
+        }
+    }
 })
