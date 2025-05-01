@@ -264,7 +264,7 @@ addLayer("g", {
         11: {
             title: "Coinflip!",
             display() { // Everything else displayed in the buyable button after the title
-                return "Force a gamble reset without earning Cherries for a 50% chance to earn +1x Cherry multiplier.<br>Currently: "+player.CoinflipMultiplier+"x"
+                return "Force a gamble reset without earning Cherries for a 50% chance to earn +1x Cherry multiplier.<br>Currently: "+format(player.CoinflipMultiplier)+"x"
             },
             unlocked() { return player[this.layer].unlocked }, 
             canClick() {
