@@ -55,7 +55,7 @@ addLayer("p", {
             description: "Rainbows scale based on your Amoebas.",
             cost: new Decimal(10),
             effect() {
-                return player[this.layer].points.add(1).pow(0.55)
+                return player[this.layer].points.add(1).pow(0.6)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
@@ -182,10 +182,10 @@ addLayer("g", {
         },
         12: {
             title: "RNG",
-            description: "This grants anywhere from 0.5x-5x Rainbows at any given moment.",
+            description: "This grants anywhere from 0.1x-10x Rainbows at any given moment.",
             cost: new Decimal(7),
             effect() {
-                return Math.max(Math.random()*5, 0.5)
+                return Math.max(Math.random()*10, 0.1)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
