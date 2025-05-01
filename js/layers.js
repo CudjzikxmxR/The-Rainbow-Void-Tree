@@ -147,6 +147,14 @@ addLayer("p", {
                 return hasUpgrade('p', 16)
             },
         },
+    },
+    achievements: {
+        11: {
+            name: "IDK",
+            done() {
+                return hasUpgrade('p', 16)
+            },
+        },
     }
 })
 
