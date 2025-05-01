@@ -127,7 +127,7 @@ addLayer("p", {
             unlocked() {
                 return hasUpgrade('p', 16)
             },
-            style: {'width':'120px'},
+            style: {'width':'150px'},
         },
     },
     infoboxes: {
