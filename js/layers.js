@@ -24,9 +24,6 @@ addLayer("p", {
         if (hasUpgrade('g', 14)) {
             mult = mult.times(upgradeEffect('g', 14))
         }
-        if (hasUpgrade('g', 18)) {
-            mult = mult.times(upgradeEffect('g', 18))
-        }
         return mult
     },
     autoUpgrade() {
@@ -233,30 +230,45 @@ addLayer("g", {
             title: "THE BROTHERS COCK",
             description: "You automatically purchase Amoeba upgrades.",
             cost: new Decimal(5000),
+            unlocked() {
+                return hasUpgrade('g', 16)
+            },
         },
         18: {
             title: "I Love Crack",
-            description: "7x Cherries<br>Amoebas and Rainbows scale based on your Cherries and RNG.",
+            description: "7x Cherries<br>Rainbows scale based on your Cherries and RNG.",
             cost: new Decimal(100000),
             effect() {
-                return player[this.layer].points.add(1).pow(0.2).times(Math.max(Math.random()*5, 0.5))
+                return player[this.layer].points.add(1).pow(0.25).times(Math.max(Math.random()*5, 0.5))
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
+            unlocked() {
+                return hasUpgrade('g', 16)
+            },
         },
         19: {
             title: "Chris Luck",
             description: "Clicking symbols always grants Amoebas.",
             cost: new Decimal(77777777),
+            unlocked() {
+                return hasUpgrade('g', 16)
+            },
         },
         21: {
             title: "Rigged Coin",
             description: "Coinflips always grant multiplier and reset nothing.",
             cost: new Decimal(7.777777e12),
+            unlocked() {
+                return hasUpgrade('g', 19)
+            },
         },
-        22: {
+        23: {
             title: "Adorable",
             description: "^1.1 Rainbows<br>This layer behaves as if you chose it first.<br>Add a picture of Axe Cat to this layer's menu.",
             cost: new Decimal(1e36),
+            unlocked() {
+                return hasUpgrade('g', 19)
+            },
         },
     },
 
