@@ -171,6 +171,13 @@ addLayer("A", {
             onComplete() {addPoints("A",1)},
             tooltip: "Buy the <b>Activity Check</b> upgrade.<br>Award: N/A", 
         },
+        12: {
+            name: "ehm",
+            //image: "discord.png",
+            done() {return true},
+            onComplete() {addPoints("A",1)},
+            tooltip: "Buy the <b>Activity Check</b> upgrade.<br>Award: N/A", 
+        },
     },
     midsection: ["grid", "blank"],
 })
