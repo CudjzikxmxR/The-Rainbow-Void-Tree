@@ -224,7 +224,7 @@ addLayer("g", {
         },
         18: {
             title: "I Love Crack",
-            description: "7x Cherries\n\nAmoebas and Rainbows scale based on your Cherries and RNG.",
+            description: "7x Cherries<br>Amoebas and Rainbows scale based on your Cherries and RNG.",
             cost: new Decimal(100000),
             effect() {
                 return player[this.layer].points.add(1).pow(0.2).times(Math.max(Math.random()*5, 0.5))
@@ -237,8 +237,8 @@ addLayer("g", {
             cost: new Decimal(77777777),
         },
         21: {
-            title: "Perfect Shot",
-            description: "The click-related Rainbow multiplier no longer drains.",
+            title: "Improbable",
+            description: "Coinflips are guaranteed to grant Cherry multiplier.",
             cost: new Decimal(7777777777),
         },
     },
