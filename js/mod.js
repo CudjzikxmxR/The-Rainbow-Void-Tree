@@ -77,8 +77,8 @@ function getPointGen() {
 
 // You can add non-layer related variables that should to into "player" and be saved here, along with default values
 function addedPlayerData() { return {
-	clickingMult: 1,
-	minimumClickMult: 0,
+	clickingMult: new Decimal(1),
+	minimumClickMult: new Decimal(0),
 	cherryUpgrade14: 1,
 	CoinflipMult: 1,
 }}
@@ -105,22 +105,22 @@ function randNum(min, max) {
 
 // Get rune click power
 function getClickPower() {
-	let baseClickPower = 0.5
+	let baseClickPower = new Decimal(0.5)
 	if (hasUpgrade('p', 18))
-		baseClickPower*=4
+		baseClickPower = baseClickPower.times(4)
 	if (hasUpgrade('p', 21))
-		baseClickPower*=upgradeEffect('p', 21)
+		baseClickPower = baseClickPower.times(upgradeEffect('p', 21))
 	if (hasUpgrade('g', 13))
-		baseClickPower*=2
+		baseClickPower = baseClickPower.times(2)
 
 	return baseClickPower
 }
 
 function resetClickMult() {
 	if (hasUpgrade('p', 19)) {
-		player.clickingMult = player.minimumClickMult*3
+		player.clickingMult = player.minimumClickMult.times(3)
 	} else {
-		player.clickingMult = 1
+		player.clickingMult = new Decimal(1)
 	}
 }
 
