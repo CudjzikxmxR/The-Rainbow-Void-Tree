@@ -272,7 +272,9 @@ addLayer("g", {
                 //return tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt)
             },
             onClick() { 
-                doReset(this.layer, true)
+                if (!hasUpgrade('g', 21)) {
+                    doReset(this.layer, true)
+                }
                 if (Math.random() >= 0.5) {
                     player.CoinflipMult+=1
                 }
