@@ -38,6 +38,9 @@ addLayer("p", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
+    getResetGain() {
+        return getResetGain(this.layer, useType = "static")
+    },
     row: 0, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "a", description: "A: Reset for amoebas!!!", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
@@ -143,7 +146,7 @@ addLayer("g", {
 		points: new Decimal(0),
     }},
     color: "#770000",
-    requires: new Decimal(Math.pow(10, 19)), // Can be a function that takes requirement increases into account
+    requires: new Decimal(1e20), // Can be a function that takes requirement increases into account
     resource: "cherries", // Name of prestige currency
     baseResource: "rainbows", // Name of resource prestige is based on
     resetDescription: "Gamble for ",
@@ -162,6 +165,9 @@ addLayer("g", {
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
+    },
+    getResetGain() {
+        return getResetGain(this.layer, useType = "static")
     },
     row: 1, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
@@ -230,7 +236,7 @@ addLayer("g", {
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
         17: {
-            title: "Alliance",
+            title: "THE BROTHERS COCK",
             description: "You automatically purchase Amoeba upgrades.",
             cost: new Decimal(5000),
         },
