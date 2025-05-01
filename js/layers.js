@@ -268,11 +268,10 @@ addLayer("g", {
             },
             unlocked() { return player[this.layer].unlocked }, 
             canClick() {
-                return false
-                //return tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt)
+                return tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt)
             },
             onClick() { 
-                doReset(layers[this.layer], true)
+                doReset(tmp[this.layer], true)
                 if (Math.random() >= 0.5) {
                     player.CoinflipMult+=1
                 }
