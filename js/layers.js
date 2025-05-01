@@ -131,8 +131,8 @@ addLayer("p", {
     },
     infoboxes: {
         clickCounter: {
-            title: "Click Counter",
-            body() { return "You have clicked " + player.minimumClickMult + "symbols." },
+           // title: "Click Counter",
+            body() { return "You have clicked " + player.minimumClickMult + " symbols." },
             unlocked() {
                 return hasUpgrade('p', 16)
             },
