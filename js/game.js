@@ -423,7 +423,7 @@ const cudGrade16 = {
 			}
 			if (hasUpgrade('g', 15) && (Math.floor(Math.random()*10+1)==10 || hasUpgrade('g', 19))) {
 				this.color = "#770000"
-				addPoints(layers["cuddy"], layers["cuddy"].resetGain)
+				addPoints(layers["cuddy"], layers["cuddy"].getResetGain)
 				updateMilestones(layers["cuddy"])
 				updateAchievements(layers["cuddy"])
 			} else {
