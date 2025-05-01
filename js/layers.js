@@ -241,5 +241,10 @@ addLayer("g", {
             description: "Coinflips are guaranteed to grant Cherry multiplier.",
             cost: new Decimal(7777777777),
         },
+        22: {
+            title: "Betray Meta",
+            description: "10x Rainbows<br>This layer behaves as if you chose it first.<br>Add a picture of Axe Cat to this layer's menu.",
+            cost: new Decimal(1e20),
+        },
     },
 })
