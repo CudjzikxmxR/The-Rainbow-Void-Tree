@@ -211,7 +211,7 @@ addLayer("A", {
             tooltip: "Achieve a cudillion (7^77 aka 1.18e65) amoebas.<br>Award: ^1.1 Rainbows", 
         },
     },
-    midsection: ["grid", "blank"],
+    //midsection: ["grid", "blank"],
 })
 
 addLayer("g", {
