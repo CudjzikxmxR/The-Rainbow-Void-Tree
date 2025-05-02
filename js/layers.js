@@ -383,7 +383,7 @@ addLayer("g", {
         18: {
             title: "I Love Crack",
             description: "7x Cherries<br>Rainbows scale based on your Cherries and RNG.",
-            cost: new Decimal(1e7),
+            cost: new Decimal(5e7),
             style: {'width':'160px'},
             effect() {
                 return player[this.layer].points.add(1).pow(0.25).times(Math.max(Math.random()*5, 0.5))
@@ -426,11 +426,11 @@ addLayer("g", {
         11: {
             title: "Flip A Coin!",
             display() { // Everything else displayed in the buyable button after the title
-                return "Force a Gamble reset without earning Cherries for a 50% chance to earn +1x Cherry multiplier.<br>(Requires 1.00e27 Rainbows)<br>Currently: "+format(player.CoinflipMult)+"x"
+                return "Force a Gamble reset without earning Cherries for a 50% chance to earn +1x Cherry multiplier.<br>(Requires 1.00e24 Rainbows)<br>Currently: "+format(player.CoinflipMult)+"x"
             },
             unlocked() { return player[this.layer].unlocked }, 
             canClick() {
-                return player.points.gte(new Decimal(1e27))
+                return player.points.gte(new Decimal(1e24))
                 //return tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt)
             },
             onClick() { 
