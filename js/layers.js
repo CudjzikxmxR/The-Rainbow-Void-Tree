@@ -674,9 +674,18 @@ addLayer("k", {
             },
         },
         13: {
+            title: "Good Thing I'm Straight",
+            description: "0.01x Rainbows<br>Clicking symbols is 6.66e6x as effective.",
+            cost: new Decimal(8),
+            style: {'width':'160px'},
+            onPurchase() {
+                player[this.layer].points = new Decimal(0)
+            },
+        },
+        14: {
             title: "Genocide",
             description: "Symbols spawn more often.<br>Clicking symbols is 10x as effective.",
-            cost: new Decimal(20),
+            cost: new Decimal(12),
             style: {'width':'160px'},
             onPurchase() {
                 player[this.layer].points = new Decimal(0)
