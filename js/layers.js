@@ -107,8 +107,8 @@ addLayer("p", {
                 let scaleExpo = 1.77
                 let scaleCap = 1000
                 if (hasMilestone('k', 14)) {
-                    scaleSpeed = 4
-                    scaleExpo = 2.17
+                    scaleSpeed = 5
+                    scaleExpo = 2.47
                     scaleCap = 5000
                 }
                 if (hasUpgrade(this.layer, 25)) {
