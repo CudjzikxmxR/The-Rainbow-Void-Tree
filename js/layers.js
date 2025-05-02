@@ -533,7 +533,7 @@ addLayer("k", {
     baseResource: "rainbows", // Name of resource prestige is based on
     resetDescription: "Kill for ",
     baseAmount() {return player.points}, // Get the current amount of baseResource
-    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent() { // Prestige currency exponent
         if (this.unlockOrder == 0 || hasUpgrade(this.layer, 23)) {
             return 0.5
