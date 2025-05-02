@@ -131,7 +131,7 @@ addLayer("p", {
             cost: new Decimal(10000000),
             style: {'width':'160px'},
             effect() {
-                return player[this.layer].points.add(1).pow(0.225*Math.min((1+Math.pow(player.clickingMult,0.5)/100), 2))
+                return player[this.layer].points.add(1).pow(0.225*Math.min((1+Math.pow(player.clickingMult,0.5)/100), 2)).min(new Decimal(1e7))
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
             unlocked() {
