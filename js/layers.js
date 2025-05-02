@@ -295,15 +295,26 @@ addLayer("g", {
     startData() { return {
         unlocked: true,
 		points: new Decimal(0),
+        unlockOrder: 0,
     }},
     color: "#770000",
-    requires: new Decimal(1e20), // Can be a function that takes requirement increases into account
+    requires() { // Can be a function that takes requirement increases into account
+        if (this.unlockOrder == 0 || hasUpgrade(this.layer, 23)) {
+            return new Decimal(1e20)
+        }
+        return new Decimal(1e500)
+    },
     resource: "cherries", // Name of prestige currency
     baseResource: "rainbows", // Name of resource prestige is based on
     resetDescription: "Gamble for ",
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 0.5, // Prestige currency exponent
+    exponent() { // Prestige currency exponent
+        if (this.unlockOrder == 0 || hasUpgrade(this.layer, 23)) {
+            return 0.5
+        }
+        return 0.1
+    }, 
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1+Math.random()*5)
         if (hasUpgrade('g', 14)) {
@@ -337,6 +348,7 @@ addLayer("g", {
         //return tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt)
     },
     branches: ["p"],
+    increaseUnlockOrder: ["k"],
 
     upgrades: {
         11: {
