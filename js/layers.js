@@ -696,7 +696,7 @@ addLayer("k", {
     exponent() { // Prestige currency exponent
         if (this.getUnlockOrder()==0) {
             if (hasUpgrade('p', 28)) {
-                return 1.65
+                return 1.6
             }
             if (hasUpgrade('p', 27)) {
                 return 1.8
