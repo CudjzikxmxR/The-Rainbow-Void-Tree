@@ -223,7 +223,7 @@ addLayer("a", {
             image: "resources/Amoeba_Icon.png",
             done() {return player['p'].points.gte(new Decimal(1.18181387e65))},
             unlocked() {return true},
-            tooltip: "Achieve a cudillion (7^77) amoebas.<br>Award: ^1.1 Rainbows", 
+            tooltip: "Achieve a cudillion (7^77) amoebas.<br>Award: ^1.07 Rainbows", 
         },
         14: {
             name: "I Love To Click",
@@ -471,7 +471,7 @@ addLayer("g", {
     milestones: {
         17: {
             requirementDescription: "Axe Cat is hungry...",
-            effectDescription: "You can feed Amoebas to Axe Cat, disabling Amoeba gain entirely and causing Catfood to spawn around the screen, but giving temporary Rainbow and Cherry multiplier for each Catfood clicked.",
+            effectDescription: "You can feed Axe Cat, disabling Amoeba gain entirely and causing Catfood to spawn around the screen, but giving temporary Rainbow and Cherry multiplier for each Catfood clicked.<br>Currently "+player.AxeCatPower+"x. (Capped at "+Math.log10(getClickPower())+"x)",
             toggles: [
                 ["p", "feedingAxeCat"], 
             ],

@@ -79,7 +79,7 @@ function getPointGen() {
 	if (hasUpgrade('g', 23))
 		gain = gain.pow(1.1)
 	if (hasAchievement('a', 13))
-		gain = gain.pow(1.1)
+		gain = gain.pow(1.07)
 
 	return gain
 }
@@ -90,6 +90,7 @@ function addedPlayerData() { return {
 	minimumClickMult: 0,
 	cherryUpgrade14: 1,
 	CoinflipMult: 1,
+	AxeCatMult: 1,
 }}
 
 // Display extra things at the top of the page
