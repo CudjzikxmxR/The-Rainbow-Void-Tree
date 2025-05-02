@@ -183,7 +183,7 @@ addLayer("A", {
             onComplete() {addPoints("A",1)},
             tooltip: "Achieve 1.00e12 amoebas.<br>Award: N/A", 
         },
-        13: {
+        14: {
             name: "A Cudillion Cuds",
             image: "resources/Amoeba_Icon.png",
             done() {return player['p'].points.gte(new Decimal(1.18181387e65))},
