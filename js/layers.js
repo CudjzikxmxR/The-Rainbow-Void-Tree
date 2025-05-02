@@ -470,10 +470,10 @@ addLayer("g", {
         11: {
             requirementDescription: "Axe Cat is hungry...",
             effectDescription: "You can feed Amoebas to Axe Cat, disabling Amoeba gain entirely and causing Catfood to spawn around the screen, but giving temporary Rainbow and Cherry multiplier for each Catfood clicked.",
-            done() { return hasUpgrade(this.layer, 23) },
             toggles: [
-                ["p", "feedingAxeCat"], 
+                ["p", "auto"], 
             ],
+            done() { return hasUpgrade(this.layer, 23) },
         }
     },
     tabFormat: [
