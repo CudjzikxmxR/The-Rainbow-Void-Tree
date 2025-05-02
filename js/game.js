@@ -508,12 +508,12 @@ var interval = setInterval(function() {
 		resetClickMult()
 	}
 	if ((hasMilestone('g', 17) && player['p'].getAxeStatus()) && Math.random()>= 0.8) {
-		//makeShinies(catFood, 1)
-	}
-	if (player.AxeCatMult > 1) {
-		player.AxeCatMult -= 0.05
-	} else {
-		player.AxeCatMult = 1
+		makeShinies(catFood, 1)
+		if (player.AxeCatMult > 1) {
+			player.AxeCatMult -= 0.05
+		} else {
+			player.AxeCatMult = 1
+		}
 	}
 
 	updateTemp();
