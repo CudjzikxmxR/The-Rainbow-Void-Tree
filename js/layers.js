@@ -56,7 +56,7 @@ addLayer("p", {
     layerShown(){return true},
     
     getAxeStatus() {
-        if (hasMilestone('g', 17)) {
+        if (this.feedingAxeCat && hasMilestone('g', 17)) {
             return true
         }
         return false
