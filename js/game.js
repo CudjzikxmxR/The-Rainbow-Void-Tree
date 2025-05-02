@@ -403,10 +403,10 @@ const cudGrade16 = {
     spread: 20,
 	width: 70,
 	height: 70,
-    time: 2.5,
+    time: 3,
 	color: "#006BF7",
     rotation (id) {
-        return 5 * (id - 1.5) + (Math.random() - 0.5) * 10
+        return 3 * (id - 1.5) + (Math.random() - 0.5) * 10
     },
     dir() {
         return (Math.random() - 0.5) * 10
