@@ -140,6 +140,20 @@ addLayer("p", {
             },
         },
     },
+    tabFormat: [
+        "main-display",
+    ["prestige-button"],
+    "blank",
+    ["display-text",
+        function() { return 'I have ' + format(player.points) + ' pointy points!' }],
+    "blank",
+    ["toggle", ["c", "beep"]],
+    "milestones",
+    "blank",
+    "blank",
+    "upgrades"
+    ],
+    /*
     infoboxes: {
         clickCounter: {
             title: "Click Counter",
@@ -149,6 +163,7 @@ addLayer("p", {
             },
         },
     },
+    */
 })
 
 addLayer("A", {
