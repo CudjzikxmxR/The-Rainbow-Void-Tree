@@ -65,7 +65,7 @@ addLayer("p", {
             cost: new Decimal(50),
             style: {'width':'160px'},
             effect() {
-                return Math.min(Math.pow(player[this.layer].resetTime*2.5+1,1.77)/10, 500)
+                return Math.min(Math.pow(player[this.layer].resetTime*2+1,1.77)/10, 1000)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
