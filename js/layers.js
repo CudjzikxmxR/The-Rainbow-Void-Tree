@@ -764,7 +764,7 @@ addLayer("k", {
                 doReset(this.layer, true)
             },
             effect() {
-                return player[this.layer].points.add(1).pow(1.5)
+                return player[this.layer].points.add(1).pow(2.25)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
