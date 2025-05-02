@@ -162,6 +162,9 @@ addLayer("A", {
     tooltip() { // Optional, tooltip displays when the layer is locked
         return ("Achievements")
     },
+    effectDescription() {
+        return "test"
+    },
     achievementPopups: true,
     achievements: {
         11: {
@@ -169,7 +172,7 @@ addLayer("A", {
             //image: "discord.png",
             done() {return hasUpgrade('p', 16)},
             onComplete() {addPoints("A",1)},
-            tooltip: "Buy the <b>Activity Check</b> upgrade.<br>Award: N/A", 
+            tooltip: "Buy the 'Activity Check' upgrade.<br>Award: N/A", 
         },
     },
     midsection: ["grid", "blank"],
