@@ -97,11 +97,13 @@ addLayer("p", {
             effect() {
                 let scaleSpeed = 2
                 let scaleExpo = 1.77
+                let scaleCap = 1000
                 if (hasMilestone('k', 14)) {
                     scaleSpeed = 4
                     scaleExpo = 2.17
+                    scaleCap = 5000
                 }
-                return Math.min(Math.pow(player[this.layer].resetTime*scaleSpeed+1,scaleExpo)/10, 1000)
+                return Math.min(Math.pow(player[this.layer].resetTime*scaleSpeed+1,scaleExpo)/10, scaleCap)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
@@ -176,7 +178,7 @@ addLayer("p", {
         },
         22: {
             title: "Woke Agenda?",
-            description: "3x Rainbows",
+            description: "10x Rainbows",
             cost: new Decimal(1e12),
             style: {'width':'160px'},
             unlocked() {
@@ -689,7 +691,7 @@ addLayer("k", {
         14: {
             requirementDescription: "5 Killstreak",
             effectDescription() {
-                return "Procrastination reaches its cap faster."
+                return "<b>Procrastination</b> reaches its cap faster.<br><b>Procrastination</b> now caps at 5000x."
             },
             done() {return player[this.layer].best.gte(5)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
