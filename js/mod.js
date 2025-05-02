@@ -80,10 +80,9 @@ function getPointGen() {
 	//Pac Layer Content
 	if (hasMilestone('k', 11))
 		gain = gain.times(2)
-	/*
 	if (hasMilestone('k', 16))
 		gain = gain.times(Math.pow((1.75+Math.max(0, (player['k'].milestones.length-8)/20)), player['k'].milestones.length))
-*/
+
 
 	//Achievements
 	gain = gain.times((new Decimal(2)).pow(player['a'].achievements.length))
