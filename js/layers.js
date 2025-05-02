@@ -662,6 +662,7 @@ addLayer("k", {
             style: {'width':'160px'},
             onPurchase() {
                 player[this.layer].points = new Decimal(0)
+                doReset(this.layer, true)
             },
         },
         12: {
@@ -671,6 +672,7 @@ addLayer("k", {
             style: {'width':'160px'},
             onPurchase() {
                 player[this.layer].points = new Decimal(0)
+                doReset(this.layer, true)
             },
         },
         13: {
@@ -680,6 +682,7 @@ addLayer("k", {
             style: {'width':'160px'},
             onPurchase() {
                 player[this.layer].points = new Decimal(0)
+                doReset(this.layer, true)
             },
         },
         14: {
@@ -689,6 +692,7 @@ addLayer("k", {
             style: {'width':'160px'},
             onPurchase() {
                 player[this.layer].points = new Decimal(0)
+                doReset(this.layer, true)
             },
         },
     },
@@ -830,7 +834,7 @@ addLayer("k", {
         "milestones",
         ["display-text",
             function() {
-                return "All Knife upgrades set your Knives to 0, effectively ending your Killstreak!"
+                return "Warning: All Knife upgrades force a Kill reset without awarding Knives and set your Knives to 0!"
              }],
         "blank",
         "upgrades",
