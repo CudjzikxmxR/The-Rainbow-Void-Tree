@@ -240,7 +240,7 @@ addLayer("a", {
             image: "resources/aaaRune.png",
             done() {return player.minimumClickMult >= 10000},
             unlocked() {return true},
-            tooltip: "Click 10000 symbols.<br>Award: More symbols spawn.", 
+            tooltip: "Click 10000 symbols.<br>Award: Symbols spawn more often.", 
         },
         16: {
             name: "Carpal Tunnel",
@@ -252,7 +252,7 @@ addLayer("a", {
         17: {
             name: "Let's Go Gambling",
             image: "resources/Cherries_Icon.png",
-            done() {return player['g'].points.gte(new Decimal(1))},
+            done() {return player['g'].points.gte(1)},
             unlocked() {return true},
             tooltip: "Perform a Gamble reset.<br>Award: N/A", 
         },
@@ -276,6 +276,20 @@ addLayer("a", {
             done() {return player['g'].points.gte(new Decimal(1e7))},
             unlocked() {return true},
             tooltip: "Achieve 1.00e77 Cherries.<br>Award: 7x Cherries", 
+        },
+        22: {
+            name: "Murder",
+            image: "resources/Knives_Icon.png",
+            done() {return player['k'].points.gte(1)},
+            unlocked() {return true},
+            tooltip: "Perform a Kill reset.<br>Award: N/A", 
+        },
+        23: {
+            name: "Knife Collection",
+            image: "resources/Knives_Icon.png",
+            done() {return player['k'].points.gte(10)},
+            unlocked() {return true},
+            tooltip: "Achieve 10 Knives.<br>Award: Symbols spawn more often.", 
         },
     },
     tabFormat: [
@@ -500,7 +514,8 @@ addLayer("g", {
             toggles: [
                 ["p", "feedingAxeCat"], 
             ],
-            done() { return hasUpgrade(this.layer, 23) },
+            done() {return hasUpgrade(this.layer, 23)},
+            unlocked() {return hasUpgrade(this.layer, 23)},
         }
     },
     tabFormat: [
@@ -586,6 +601,9 @@ addLayer("k", {
             description: "Unlock new Amoeba upgrades.",
             cost: new Decimal(1),
             style: {'width':'160px'},
+            onPurchase() {
+                player[this.layer].points.set(0)
+            },
         },
     },
 
@@ -595,14 +613,23 @@ addLayer("k", {
             effectDescription() {
                 return "2x Rainbows<br>1.25x Amoebas"
             },
-            done() { return player[this.layer].best.gte(1) },
+            done() {return player[this.layer].best.gte(1)},
         },
         12: {
             requirementDescription: "3 Killstreak",
             effectDescription() {
-                return 'You automatically "click" symbols by hovering over them.'
+                return 'You automatically "click" symbols when passing over them.'
             },
-            done() { return player[this.layer].best.gte(3) },
+            done() {return player[this.layer].best.gte(3)},
+            unlocked() {return hasMilestone(this.layer, this.id-1)}
+        },
+        13: {
+            requirementDescription: "5 Killstreak",
+            effectDescription() {
+                return "Procrastination reaches its cap faster."
+            },
+            done() {return player[this.layer].best.gte(5)},
+            unlocked() {return hasMilestone(this.layer, this.id-1)}
         },
     },
     tabFormat: [
@@ -612,6 +639,10 @@ addLayer("k", {
         "blank",
         "resource-display",
         "milestones",
+        ["display-text",
+            function() {
+                return "All Knife upgrades set your Knives to 0, effectively ending your Killstreak!"
+            }],
         "upgrades",
     ],
 })
