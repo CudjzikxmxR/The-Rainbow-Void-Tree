@@ -101,7 +101,6 @@ function getPointGen() {
 
 // You can add non-layer related variables that should to into "player" and be saved here, along with default values
 function addedPlayerData() { return {
-	clickingMult: 1,
 	minimumClickMult: 0,
 	cherryUpgrade14: 1,
 	CoinflipMult: 1,
@@ -150,11 +149,11 @@ function getClickPower() {
 }
 
 function resetClickMult() {
-	if (player.clickingMult) {
+	if (player['p'].clickingMult) {
 		if (hasUpgrade('p', 19)) {
-			player.clickingMult = player.minimumClickMult * 3
+			player['p'].clickingMult = player.minimumClickMult * 3
 		} else {
-			player.clickingMult = 1
+			player['p'].clickingMult = 1
 		}
 	}
 }
