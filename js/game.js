@@ -442,16 +442,16 @@ const catFood = {
     spread: 20,
 	width: 81,
 	height: 66,
-    time: 1.5,
+    time: 5,
 	pressed: false,
     rotation (id) {
-        return 0.5 * (id - 1.5) + (Math.random() - 0.5) * 10
+        return 0.2 * (id - 1.5) + (Math.random() - 0.5) * 10
     },
     dir() {
         return (Math.random() - 0.5) * 10
     },
     speed() {
-        return (Math.random()) * 4 
+        return (Math.random()) * 3 
     },
 	onClick() {
 		if (!this.pressed) {
@@ -514,7 +514,7 @@ var interval = setInterval(function() {
 		makeShinies(catFood, 1)
 	}
 	if (player.AxeCatMult > 1) {
-		player.AxeCatMult -= 0.01
+		player.AxeCatMult -= 0.02
 	} else {
 		player.AxeCatMult = 1
 	}
