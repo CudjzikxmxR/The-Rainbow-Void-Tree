@@ -117,6 +117,10 @@ addLayer("p", {
                 if (hasUpgrade(this.layer, 25)) {
                     scaleCap *= 10
                 }
+                if (hasUpgrade('k', 15)) {
+                    scaleSpeed *= 3
+                    scaleExpo *= 1.47
+                }
                 return Math.min(Math.pow(player[this.layer].resetTime*scaleSpeed+1,scaleExpo)/10, scaleCap)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
