@@ -692,6 +692,14 @@ addLayer("k", {
             unlocked() {return hasMilestone(this.layer, this.id-1)}
         },
         15: {
+            requirementDescription: "6 Killstreak",
+            effectDescription() {
+                return "1.5x Amoebas for every Killstreak milestone.<br>Currently: "+format(Math.pow(1.5, player['k'].milestones.length))+"x"
+            },
+            done() {return player[this.layer].best.gte(6)},
+            unlocked() {return hasMilestone(this.layer, this.id-1)}
+        },
+        16: {
             requirementDescription: "10 Killstreak",
             effectDescription() {
                 return "You can earn max knives from Kill resets."
