@@ -206,7 +206,7 @@ addLayer("a", {
     tabFormat: [
         //"main-display",
         ["display-text", function () {
-            return "Achievements: " + player["a"].achievements.length + "/" + (Object.keys(tmp["a"].achievements).length - 2)
+            return "You have " + player["a"].achievements.length + " achievements, which translates to a " + format(new Decimal(2).pow(player["a"].achievements.length)) + "x Rainbow multiplier."
         }],
         "blank",
         "blank",
