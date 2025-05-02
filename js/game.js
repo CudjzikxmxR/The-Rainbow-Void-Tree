@@ -443,7 +443,7 @@ const catFood = {
 	width: 162,
 	height: 132,
     time: 1.5,
-	pressed = false;
+	pressed: false,
     rotation (id) {
         return 3 * (id - 1.5) + (Math.random() - 0.5) * 10
     },
@@ -507,7 +507,7 @@ var interval = setInterval(function() {
 	} else {
 		resetClickMult()
 	}
-	if ((hasMilestone('g', 17)) && Math.random()>= 0.8) {
+	if ((hasMilestone('g', 17) && player['p'].getAxeStatus()) && Math.random()>= 0.8) {
 		makeShinies(catFood, 1)
 	}
 	if (player.AxeCatMult > 1) {
