@@ -168,12 +168,27 @@ addLayer("A", {
     },
     achievementPopups: true,
     achievements: {
+        //Cud Layer Achievements
         11: {
             name: "The Gimmicky Nonsense Begins",
-            //image: "discord.png",
+            image: "resources/Amoeba_Icon.png",
             done() {return hasUpgrade('p', 16)},
             onComplete() {addPoints("A",1)},
             tooltip: "Buy the 'Activity Check' upgrade.<br>Award: N/A", 
+        },
+        12: {
+            name: "Mocking My Cucks Mucks",
+            image: "resources/Amoeba_Icon.png",
+            done() {return player['p'].points.gte(new Decimal(1e12))},
+            onComplete() {addPoints("A",1)},
+            tooltip: "Achieve 1.00e12 amoebas.<br>Award: N/A", 
+        },
+        13: {
+            name: "A Cudillion Cuds",
+            image: "resources/Amoeba_Icon.png",
+            done() {return player['p'].points.gte((new Decimal(7)).pow(77))},
+            onComplete() {addPoints("A",1)},
+            tooltip: "Achieve a cudillion (7^77 aka 1.18e65) amoebas.<br>Award: ^1.1 Rainbows", 
         },
     },
     midsection: ["grid", "blank"],
@@ -183,7 +198,7 @@ addLayer("g", {
     name: "chris", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "C", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
-    image: "resources/Knives_Icon.png",
+    image: "resources/Cherries_Icon.png",
     startData() { return {
         unlocked: true,
 		points: new Decimal(0),
