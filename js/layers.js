@@ -56,7 +56,7 @@ addLayer("p", {
     
     feedingAxeCat: false,
     getAxeStatus() {
-        if (this.feedingAxeCat && hasMilestone('g', 11)) {
+        if (this.feedingAxeCat && hasMilestone('g', 17)) {
             return true
         }
         return false
@@ -469,7 +469,7 @@ addLayer("g", {
         }
     },
     milestones: {
-        11: {
+        17: {
             requirementDescription: "Axe Cat is hungry...",
             effectDescription: "You can feed Amoebas to Axe Cat, disabling Amoeba gain entirely and causing Catfood to spawn around the screen, but giving temporary Rainbow and Cherry multiplier for each Catfood clicked.",
             toggles: [
