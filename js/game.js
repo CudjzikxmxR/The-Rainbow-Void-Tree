@@ -433,7 +433,7 @@ const cudGrade16 = {
 	},
 	onMouseOver() {
 		if (hasMilestone('k', 12)) {
-			player.clickingMult+=getClickPower()
+			this.onClick()
 		}
 	},
 }
