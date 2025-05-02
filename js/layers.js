@@ -762,6 +762,9 @@ addLayer("k", {
             effectDescription() {
                 var kEffectBase = 1.25
                 var kScale = 0
+                if (hasMilestone(this.layer, 23)) {
+                    kScale = 0.25
+                }
                 return (kEffectBase+kScale)+"x click power for every Killstreak milestone past this point.<br>Currently: "+format(Math.pow((kEffectBase+kScale), player['k'].milestones.length-9))+"x"
             },
             done() {return player[this.layer].best.gte(30)},
