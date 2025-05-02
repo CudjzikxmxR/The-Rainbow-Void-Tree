@@ -242,7 +242,7 @@ addLayer("g", {
         if (hasUpgrade('g', 18)) {
             mult = mult.times(7)
         }
-        return mult.floor()
+        return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
@@ -265,7 +265,7 @@ addLayer("g", {
         */
     },
     canReset() {
-        return hasUpgrade('p', 21)
+        return hasUpgrade('p', 21) && player.points.gte(new Decimal(1e20))
         //return tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt)
     },
     branches: ["p"],
