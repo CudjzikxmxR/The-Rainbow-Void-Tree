@@ -457,6 +457,9 @@ const catFood = {
 		if (!this.pressed) {
 			this.pressed = true
 			player.AxeCatMult+=3
+			if (player.AxeCatMult > (1+Math.log(getClickPower())/Math.log(3.07))) {
+				player.AxeCatMult = (1+Math.log(getClickPower())/Math.log(3.07))
+			}
 			this.time = 0
 		}
 	},
@@ -507,11 +510,11 @@ var interval = setInterval(function() {
 	} else {
 		resetClickMult()
 	}
-	if ((hasMilestone('g', 17) && player['p'].feedingAxeCat) && Math.random()>= 0.9) {
+	if ((hasMilestone('g', 17) && player['p'].feedingAxeCat) && Math.random()>= 0.97) {
 		makeShinies(catFood, 1)
 	}
 	if (player.AxeCatMult > 1) {
-		player.AxeCatMult -= 0.03
+		player.AxeCatMult -= 0.01
 	} else {
 		player.AxeCatMult = 1
 	}
