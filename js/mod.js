@@ -141,10 +141,12 @@ function getClickPower() {
 	if (hasUpgrade('k', 13))
 		baseClickPower *= 10
 	if (hasMilestone('k', 19))
-		var kEffectBase = 1.25
-		var kScale = 0
-		baseClickPower *= Math.pow((kEffectBase+kScale), player['k'].milestones.length-9)
-
+		if (hasMilestone('k', 22)) {
+			baseClickPower *= Math.pow(1.5, player['k'].milestones.length-9)
+		} else {
+			baseClickPower *= Math.pow(1.25, player['k'].milestones.length-9)
+		}
+		
 	return baseClickPower
 }
 
