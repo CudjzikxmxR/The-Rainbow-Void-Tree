@@ -214,7 +214,7 @@ addLayer("a", {
         15: {
             name: "So Much Clicking",
             image: "resources/aaaRune.png",
-            done() {return player.minimumClickMult >= 1000},
+            done() {return player.minimumClickMult >= 10000},
             unlocked() {return true},
             tooltip: "Click 10000 symbols.<br>Award: More symbols spawn.", 
         },
