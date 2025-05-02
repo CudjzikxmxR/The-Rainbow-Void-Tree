@@ -211,7 +211,7 @@ addLayer("a", {
             image: "resources/Amoeba_Icon.png",
             done() {return player['p'].points.gte(new Decimal(1.18181387e65))},
             unlocked() {return true},
-            tooltip: "Achieve a cudillion (7^77 aka 1.18e65) amoebas.<br>Award: ^1.1 Rainbows", 
+            tooltip: "Achieve a cudillion (7^77) amoebas.<br>Award: ^1.1 Rainbows", 
         },
         14: {
             name: "I Love To Click",
@@ -425,12 +425,7 @@ addLayer("g", {
         },
         23: {
             title: "Surprise Guest Appearance",
-            description() {
-                if (hasUpgrade("g", 21)) {
-                    "^1.1 Rainbows<br>This layer behaves as if you chose it first.<br>OH MY GOD IT'S AXE CAT!!!"
-                }
-                return "^1.1 Rainbows<br>This layer behaves as if you chose it first.<br>Wait... is that... there's no way."
-            },
+            description: "^1.1 Rainbows<br>This layer behaves as if you chose it first.<br>Wait... is that... there's no way.",
             cost: new Decimal(1e36),
             style: {'width':'160px'},
             unlocked() {
