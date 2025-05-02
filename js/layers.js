@@ -299,7 +299,7 @@ addLayer("g", {
     }},
     color: "#770000",
     requires() { // Can be a function that takes requirement increases into account
-        if (this.unlockOrder()==0) {
+        if (this.getUnlockOrder()==0) {
             return new Decimal(1e20)
         }
         return (new Decimal(10)).pow(500)
@@ -310,7 +310,7 @@ addLayer("g", {
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent() { // Prestige currency exponent
-        if (this.unlockOrder()==0) {
+        if (this.getUnlockOrder()==0) {
             return 0.5
         }
         return 0.1
@@ -349,7 +349,7 @@ addLayer("g", {
     },
     branches: ["p"],
     increaseUnlockOrder: ["k"],
-    unlockOrder() {
+    getUnlockOrder() {
         if (hasUpgrade(this.layer, 23)) {
             return 0
         }
@@ -530,7 +530,7 @@ addLayer("k", {
     }},
     color: "#DCD200",
     requires() { // Can be a function that takes requirement increases into account
-        if (this.unlockOrder()==0) {
+        if (this.getUnlockOrder()==0) {
             return new Decimal(1e20)
         }
         return (new Decimal(10)).pow(500)
@@ -541,7 +541,7 @@ addLayer("k", {
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent() { // Prestige currency exponent
-        if (this.unlockOrder()==0) {
+        if (this.getUnlockOrder()==0) {
             return 0.75
         }
         return 0.1
@@ -570,7 +570,7 @@ addLayer("k", {
     },
     branches: ["p"],
     increaseUnlockOrder: ["g"],
-    unlockOrder() {
+    getUnlockOrder() {
         if (hasUpgrade(this.layer, 23)) {
             return 0
         }
