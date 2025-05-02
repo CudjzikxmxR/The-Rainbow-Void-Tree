@@ -797,6 +797,17 @@ addLayer("k", {
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
+        16: {
+            title: "This Is Overpowered [II]",
+            description: "5x Rainbows<br>4x Amoebas<br>Clicking is 3x as effective<br>2x Knives<br>Rainbows scale based on Rainbows again.",
+            cost: new Decimal(32),
+            style: {'width':'160px'},
+            onPurchase() {
+                player[this.layer].points = new Decimal(0)
+                doReset(this.layer, true)
+            },
+            effectDisplay() { return format(upgradeEffect('p', 14))+"x" },
+        },
     },
 
     milestones: {

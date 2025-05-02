@@ -84,7 +84,8 @@ function getPointGen() {
 		gain = gain.times(0.01)
 	if (hasMilestone('k', 16))
 		gain = gain.times(Math.pow((2.5+Math.max(0, (player['k'].milestones.length-7))/10), player['k'].milestones.length))
-
+	if (hasUpgrade('k', 16))
+		gain = gain.times(5*upgradeEffect('p', 14))
 
 	//Achievements
 	var achieveBase = 2
@@ -157,6 +158,8 @@ function getClickPower() {
 		} else {
 			baseClickPower *= Math.pow(1.25, player['k'].milestones.length-9)
 		}
+	if (hasUpgrade('k', 16))
+		baseClickPower *= 3
 		
 	return baseClickPower
 }
