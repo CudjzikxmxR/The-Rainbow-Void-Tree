@@ -263,7 +263,7 @@ addLayer("p", {
         },
         28: {
             title: "Achieve Big",
-            description: "+1 to achievement Rainbow multiplier base.<br>Achievements now give 2x Amoeba multiplier.<br?Knife requirement scaling is weaker.",
+            description: "+1 to achievement Rainbow multiplier base.<br>Achievements now give 2x Amoeba multiplier.<br>Knife requirement scaling is weaker.",
             cost: new Decimal(8.25e52),
             style: {'width':'160px'},
             unlocked() {
@@ -426,6 +426,9 @@ addLayer("a", {
             return "You have " + player["a"].achievements.length + " achievements, which translates to a " + format(new Decimal(achieveBase).pow(player["a"].achievements.length)) + "x Rainbow multiplier."
         }],
         ["display-text", function () {
+            if (!hasUpgrade('p', 28)) {
+               return null
+            }
             var achieveBase = 2
             return "Your achievements also translates to a " + format(new Decimal(achieveBase).pow(player["a"].achievements.length)) + "x Amoeba multiplier."
         }],
@@ -693,7 +696,7 @@ addLayer("k", {
     exponent() { // Prestige currency exponent
         if (this.getUnlockOrder()==0) {
             if (hasUpgrade('p', 28)) {
-                return 1.7
+                return 1.65
             }
             if (hasUpgrade('p', 27)) {
                 return 1.8
