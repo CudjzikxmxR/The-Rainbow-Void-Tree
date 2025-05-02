@@ -302,7 +302,7 @@ addLayer("g", {
         if (this.unlockOrder == 0 || hasUpgrade(this.layer, 23)) {
             return new Decimal(1e20)
         }
-        return new Decimal(1e500)
+        return (new Decimal(10)).pow(500)
     },
     resource: "cherries", // Name of prestige currency
     baseResource: "rainbows", // Name of resource prestige is based on
