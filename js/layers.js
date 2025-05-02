@@ -25,6 +25,9 @@ addLayer("p", {
         if (hasUpgrade('g', 14)) {
             mult = mult.times(upgradeEffect('g', 14))
         }
+        if (hasUpgrade('g', 22)) {
+            mult = mult.times(1.777)
+        }
         if (hasAchievement('a', 12)) {
             mult = mult.times(1.5)
         }
@@ -411,6 +414,15 @@ addLayer("g", {
                 return hasUpgrade('g', 19)
             },
         },
+        22: {
+            title: "Fortnite Balls",
+            description: "1.777x Amoebas.",
+            cost: new Decimal(1e24),
+            style: {'width':'160px'},
+            unlocked() {
+                return hasUpgrade('g', 19)
+            },
+        },
         23: {
             title: "Surprise Guest Appearance",
             description: "^1.1 Rainbows<br>This layer behaves as if you chose it first.<br>Wait... is that... there's no way.",
@@ -452,6 +464,9 @@ addLayer("g", {
         "blank",
         "resource-display",
         ["display-image", function () {
+            if (hasUpgrade('g', 23)) {
+                return "resources/AxeCat.png"
+            }
             return null
         }],
         "upgrades"
