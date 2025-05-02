@@ -25,6 +25,9 @@ addLayer("p", {
         if (hasUpgrade('g', 14)) {
             mult = mult.times(upgradeEffect('g', 14))
         }
+        if (hasAchievement('a', 12)) {
+            mult = mult.times(1.5)
+        }
         return mult
     },
     autoUpgrade() {
@@ -195,7 +198,7 @@ addLayer("a", {
             image: "resources/Amoeba_Icon.png",
             done() {return player['p'].points.gte(new Decimal(1e12))},
             unlocked() {return true},
-            tooltip: "Achieve 1.00e12 amoebas.<br>Award: N/A", 
+            tooltip: "Achieve 1.00e12 amoebas.<br>Award: 1.5x Amoebas", 
         },
         13: {
             name: "A Cudillion Cuds",
@@ -209,7 +212,7 @@ addLayer("a", {
             image: "resources/aaaRune.png",
             done() {return player.minimumClickMult >= 1000},
             unlocked() {return true},
-            tooltip: "Click 1000 symbols.<br>Award: Clicking symbols is 2x as effective.", 
+            tooltip: "Click 1000 symbols.<br>Award: Clicking symbols is 3x as effective.", 
         },
         15: {
             name: "So Much Clicking",

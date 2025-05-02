@@ -122,7 +122,7 @@ function getClickPower() {
 	if (hasUpgrade('g', 13))
 		baseClickPower *= 2
 	if (hasAchievement('a', 14))
-		baseClickPower *= 2
+		baseClickPower *= 3
 
 	return baseClickPower
 }
