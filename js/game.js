@@ -434,7 +434,6 @@ const cudGrade16 = {
 	onMouseOver() {
 
 	},
-    layer: 'f',
 }
 
 const catFood = {
@@ -463,7 +462,6 @@ const catFood = {
 			this.time = 0
 		}
 	},
-    layer: 'amongus',
 }
 
 var ticking = false

@@ -315,6 +315,7 @@ addLayer("g", {
         if (hasAchievement('a', 21)) {
             mult = mult.times(7)
         }
+        mult = mult.times(player.AxeCatMult)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -472,7 +473,7 @@ addLayer("g", {
         17: {
             requirementDescription: "Axe Cat is hungry...",
             effectDescription() {
-                return "You can feed Axe Cat, <b>completely disabling Amoeba gain</b> and causing Catfood to spawn around the screen, giving temporary Rainbow and Cherry multiplier for each Catfood clicked. The multiplier cap scales based on your clicking power.<br>Currently "+format(player.AxeCatMult)+"x. (Capped at "+format(1+Math.log(getClickPower())/Math.log(3.07))+"x)"
+                return "You can feed Axe Cat, <b>completely disabling Amoeba gain</b> and causing Catfood to spawn around the screen, giving temporary Rainbow and Cherry multiplier for each Catfood clicked. The multiplier cap scales based on your clicking power.<br><b>Currently "+format(player.AxeCatMult)+"x. (Capped at "+format(1+Math.log(getClickPower())/Math.log(3.07))+"x)</b>"
             },
             //effectDescription: "You can feed Axe Cat, disabling Amoeba gain entirely and causing Catfood to spawn around the screen, but giving temporary Rainbow and Cherry multiplier for each Catfood clicked.<br>Currently "+format(player.AxeCatMult)+"x. (Capped at "+format(Math.log10(getClickPower()))+"x)",
             toggles: [
