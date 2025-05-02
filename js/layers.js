@@ -648,7 +648,7 @@ addLayer("k", {
                 player[this.layer].points = new Decimal(0)
             },
         },
-        12: {
+        13: {
             title: "Genocide",
             description: "Symbols spawn more often.<br>Clicking symbols is 10x as effective.",
             cost: new Decimal(20),
