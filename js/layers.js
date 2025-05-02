@@ -169,21 +169,21 @@ addLayer("A", {
     achievementPopups: true,
     achievements: {
         //Cud Layer Achievements
-        1: {
+        11: {
             name: "The Gimmicky Nonsense Begins",
             image: "resources/Amoeba_Icon.png",
             done() {return hasUpgrade('p', 16)},
             onComplete() {addPoints("A",1)},
             tooltip: "Buy the 'Activity Check' upgrade.<br>Award: N/A", 
         },
-        2: {
+        12: {
             name: "Mocking My Cucks Mucks",
             image: "resources/Amoeba_Icon.png",
             done() {return player['p'].points.gte(new Decimal(1e12))},
             onComplete() {addPoints("A",1)},
             tooltip: "Achieve 1.00e12 amoebas.<br>Award: N/A", 
         },
-        3: {
+        13: {
             name: "A Cudillion Cuds",
             image: "resources/Amoeba_Icon.png",
             done() {return player['p'].points.gte(new Decimal(1.18181387e65))},
