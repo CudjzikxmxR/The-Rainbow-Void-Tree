@@ -228,6 +228,20 @@ addLayer("a", {
             unlocked() {return true},
             tooltip: "Click 1.00e6 symbols.<br>Award: 2x Knives", 
         },
+        17: {
+            name: "Let's Go Gambling",
+            image: "resources/Cherries_Icon.png",
+            done() {return player['g'].points.gte(new Decimal(1))},
+            unlocked() {return true},
+            tooltip: "Perform a Gamble reset.<br>Award: N/A", 
+        },
+        18: {
+            name: "Coinage",
+            image: "resources/Cherries_Icon.png",
+            done() {return player.CoinflipMult >= 1},
+            unlocked() {return true},
+            tooltip: "Successfully gain Cherry multiplier from flipping a coin.<br>Award: N/A", 
+        },
     },
     tabFormat: [
         //"main-display",
