@@ -212,7 +212,7 @@ addLayer("p", {
             cost: new Decimal(2e18),
             style: {'width':'160px'},
             effect() {
-                return player.points.add(1).log(5)
+                return 1
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
             unlocked() {
