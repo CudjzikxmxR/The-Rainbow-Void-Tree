@@ -596,7 +596,7 @@ addLayer("k", {
         //return tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt)
     },
     canBuyMax() {
-        return hasMilestone(this.layer, 14)
+        return true
     },
     branches: ["p"],
     increaseUnlockOrder: ["g"],
