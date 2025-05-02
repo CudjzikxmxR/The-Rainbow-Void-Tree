@@ -205,12 +205,6 @@ addLayer("a", {
             unlocked() {return true},
             tooltip: "Achieve a cudillion (7^77 aka 1.18e65) amoebas.<br>Award: ^1.1 Rainbows", 
         },
-        14: {
-            name: "Define Aspects",
-            done() { return player.light.unlocked && player.dark.unlocked },
-            tooltip: "Unlock Both Light And Dark Layers.<br>Rewards:They behave as they are unlocked first.",
-            image:"img/acv/define aspects.jpg"
-        },
     },
     tabFormat: [
         //"main-display",
