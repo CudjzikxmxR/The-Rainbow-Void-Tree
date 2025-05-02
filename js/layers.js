@@ -702,7 +702,8 @@ addLayer("k", {
         ["display-text",
             function() {
                 return "All Knife upgrades set your Knives to 0, effectively ending your Killstreak!"
-            }],
+             }],
+        "blank",
         "upgrades",
     ],
 })
