@@ -184,9 +184,9 @@ addLayer("p", {
             },
         },
         23: {
-            title: "Toxic Yaoi",
+            title: "Deep Cut",
             description: "Rainbows scale based on your Knives.",
-            cost: new Decimal(4e16),
+            cost: new Decimal(4e15),
             style: {'width':'160px'},
             effect() {
                 return player['k'].points.add(1).pow(1.25)
