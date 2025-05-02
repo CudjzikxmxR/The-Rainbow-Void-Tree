@@ -391,5 +391,13 @@ addLayer("g", {
             },
             style: {'height':'77px', 'width':'177px'},
         }
-    }
+    },
+    tabFormat: [
+        "main-display",
+        "prestige-button",
+        "clickables",
+        "blank",
+        "blank",
+        "upgrades"
+    ],
 })
