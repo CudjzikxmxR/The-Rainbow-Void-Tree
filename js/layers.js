@@ -171,10 +171,8 @@ addLayer("p", {
 addLayer("a", {
     startData() { return {
         unlocked: true,
-        points: new Decimal(0),
     }},
     color: "#F7B100",
-    resource: "achievements", 
     row: "side",
     image: "resources/AchievementIcon.png",
     effectDescription() {
@@ -188,7 +186,6 @@ addLayer("a", {
             image: "resources/Amoeba_Icon.png",
             done() {return hasUpgrade('p', 16)},
             unlocked() {return true},
-            onComplete() {addPoints("A",1)},
             tooltip: "Buy the 'Activity Check' upgrade.<br>Award: N/A", 
         },
         12: {
@@ -196,7 +193,6 @@ addLayer("a", {
             image: "resources/Amoeba_Icon.png",
             done() {return player['p'].points.gte(new Decimal(1e12))},
             unlocked() {return true},
-            onComplete() {addPoints("A",1)},
             tooltip: "Achieve 1.00e12 amoebas.<br>Award: N/A", 
         },
         13: {
@@ -204,12 +200,14 @@ addLayer("a", {
             image: "resources/Amoeba_Icon.png",
             done() {return player['p'].points.gte(new Decimal(1.18181387e65))},
             unlocked() {return true},
-            onComplete() {addPoints("A",1)},
             tooltip: "Achieve a cudillion (7^77 aka 1.18e65) amoebas.<br>Award: ^1.1 Rainbows", 
         },
     },
     tabFormat: [
-        "main-display",
+        //"main-display",
+        ["display-text", function () {
+            return "Achievements: " + player["a"].achievements.length + "/" + (Object.keys(tmp["a"].achievements).length - 2)
+        }],
         "blank",
         "blank",
         "achievements",
