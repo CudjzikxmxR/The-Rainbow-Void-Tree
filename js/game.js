@@ -423,7 +423,7 @@ const cudGrade16 = {
 			}
 			if (hasUpgrade('g', 15) && (Math.floor(Math.random()*10+1)==10 || hasUpgrade('g', 19))) {
 				this.color = "#770000"
-				//addPoints("p", getResetGain("p"))
+				addPoints("p", getResetGain("p"))
 				updateMilestones("p")
 				updateAchievements("p")
 			} else {
@@ -506,7 +506,7 @@ var interval = setInterval(function() {
 	if ((hasUpgrade('p', 16) || hasUpgrade('g', 13)) && Math.random()>= symbolReq) {
 		makeShinies(cudGrade16, 1)
 	}
-	if ((hasUpgrade('p', 19) && player['p'].clickingMult>player.minimumClickMult*3) || (!(hasUpgrade('p', 19)) && player['p'].clickingMult > 1)) {
+	if ((hasUpgrade('p', 19) && player['p'].clickingMult>player.minimumClickMult*3) || (!(hasUpgrade('p', 19)) &&  > 1)) {
 		if (!hasUpgrade('g', 21)) {
 			player['p'].clickingMult -= getClickPower()/50
 		}
