@@ -471,7 +471,7 @@ addLayer("g", {
     milestones: {
         17: {
             requirementDescription: "Axe Cat is hungry...",
-            effectDescription: "You can feed Axe Cat, disabling Amoeba gain entirely and causing Catfood to spawn around the screen, but giving temporary Rainbow and Cherry multiplier for each Catfood clicked.<br>Currently "+player.AxeCatPower+"x. (Capped at "+Math.log10(getClickPower())+"x)",
+            effectDescription: "You can feed Axe Cat, disabling Amoeba gain entirely and causing Catfood to spawn around the screen, but giving temporary Rainbow and Cherry multiplier for each Catfood clicked.<br>Currently "+format(player.AxeCatPower)+"x. (Capped at "+format(Math.log10(getClickPower()))+"x)",
             toggles: [
                 ["p", "feedingAxeCat"], 
             ],
