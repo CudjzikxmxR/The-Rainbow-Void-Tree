@@ -390,6 +390,13 @@ addLayer("a", {
             unlocked() {return true},
             tooltip: "Achieve 10 Knives.<br>Award: Symbols spawn more often.", 
         },
+        24: {
+            name: "Point of No Return",
+            image: "resources/Knives_Icon.png",
+            done() {return player['k'].points.gte(15)},
+            unlocked() {return true},
+            tooltip: "Achieve 15 Knives.<br>Award: N/A.", 
+        },
     },
     tabFormat: [
         //"main-display",
@@ -665,6 +672,9 @@ addLayer("k", {
     }, 
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+        if (hasUpgrade('p', 27)) {
+            mult = mult.times(1.25)
+        }
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
