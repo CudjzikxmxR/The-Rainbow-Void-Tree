@@ -243,7 +243,7 @@ addLayer("p", {
         },
         27: {
             title: "Premeditated",
-            description: "1.5x Knives",
+            description: "1.5x Knives<br>Knife requirement scaling is weaker.",
             cost: new Decimal(1e44),
             style: {'width':'160px'},
             unlocked() {
@@ -666,6 +666,9 @@ addLayer("k", {
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent() { // Prestige currency exponent
         if (this.getUnlockOrder()==0) {
+            if (hasUpgrade('p', 27)) {
+                return 1.8
+            }
             return 2
         }
         return 5
