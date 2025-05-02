@@ -595,6 +595,9 @@ addLayer("k", {
         return hasUpgrade('p', 21) && player.points.gte(this.requires())
         //return tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt)
     },
+    canBuyMax() {
+        return hasMilestone(this.layer, 14)
+    },
     branches: ["p"],
     increaseUnlockOrder: ["g"],
     getUnlockOrder() {
@@ -647,6 +650,14 @@ addLayer("k", {
                 return "Procrastination reaches its cap faster."
             },
             done() {return player[this.layer].best.gte(5)},
+            unlocked() {return hasMilestone(this.layer, this.id-1)}
+        },
+        14: {
+            requirementDescription: "10 Killstreak",
+            effectDescription() {
+                return "You can earn max knives from Kill resets."
+            },
+            done() {return player[this.layer].best.gte(10)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
         },
     },
