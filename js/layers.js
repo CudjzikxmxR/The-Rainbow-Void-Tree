@@ -55,7 +55,7 @@ addLayer("p", {
         {key: "a", description: "A: Reset for amoebas!!!", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return true},
-    /*
+    
     feedingAxeCat: false,
     getAxeStatus() {
         if (feedingAxeCat && hasMilestone('g', 11)) {
@@ -63,7 +63,7 @@ addLayer("p", {
         }
         return false
     },
-    */
+    
 
     upgrades: {
         11: {
