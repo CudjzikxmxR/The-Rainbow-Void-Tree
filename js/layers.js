@@ -338,7 +338,7 @@ addLayer("g", {
     ],
     layerShown(){
         //return true
-        if (hasUpgrade('g', 11) || hasUpgrade('p', 21) || player[this.layer].points.gte(new Decimal(1))) {
+        if (hasUpgrade(this.layer, 11) || hasUpgrade('p', 21) || player[this.layer].points.gte(new Decimal(1))) {
             return true
         }
         return false
@@ -524,7 +524,7 @@ addLayer("k", {
     position: 1, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     image: "resources/Knives_Icon.png",
     startData() { return {
-        unlocked: true,
+        unlocked: false,
 		points: new Decimal(0),
         unlockOrder: 0,
     }},
@@ -559,7 +559,7 @@ addLayer("k", {
     ],
     layerShown(){
         //return true
-        if (hasUpgrade('g', 11) || hasUpgrade('p', 21) || player[this.layer].points.gte(new Decimal(1))) {
+        if (hasUpgrade(this.layer, 11) || hasUpgrade('p', 21) || player[this.layer].points.gte(new Decimal(1))) {
             return true
         }
         return false
