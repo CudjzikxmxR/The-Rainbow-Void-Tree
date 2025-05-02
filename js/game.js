@@ -432,7 +432,9 @@ const cudGrade16 = {
 		}
 	},
 	onMouseOver() {
-
+		if (hasMilestone('k', 12)) {
+			this.onClick()
+		}
 	},
 }
 
