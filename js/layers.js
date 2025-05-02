@@ -243,7 +243,7 @@ addLayer("p", {
         },
         27: {
             title: "Premeditated",
-            description: "1.25x Knives",
+            description: "1.5x Knives",
             cost: new Decimal(1e44),
             style: {'width':'160px'},
             unlocked() {
@@ -673,7 +673,7 @@ addLayer("k", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         if (hasUpgrade('p', 27)) {
-            mult = mult.times(1.25)
+            mult = mult.times(1.5)
         }
         return mult
     },
