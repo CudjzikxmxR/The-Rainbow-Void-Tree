@@ -232,6 +232,33 @@ addLayer("p", {
                 return hasUpgrade(this.layer, 21) && hasUpgrade('k', 11)
             },
         },
+        26: {
+            title: "Pride Year",
+            description: "^1.1 Rainbows",
+            cost: new Decimal(5e35),
+            style: {'width':'160px'},
+            unlocked() {
+                return hasUpgrade(this.layer, 21) && hasUpgrade('k', 11)
+            },
+        },
+        27: {
+            title: "Premeditated",
+            description: "1.25x Knives",
+            cost: new Decimal(1e45),
+            style: {'width':'160px'},
+            unlocked() {
+                return hasUpgrade(this.layer, 26) && hasUpgrade('k', 11)
+            },
+        },
+        28: {
+            title: "Achieve Big",
+            description: "+1 to achievement Rainbow multiplier base.<br>Achievements now give 2x Amoeba multiplier.",
+            cost: new Decimal(8.25e62),
+            style: {'width':'160px'},
+            unlocked() {
+                return hasUpgrade(this.layer, 26) && hasUpgrade('k', 11)
+            },
+        },
     },
     tabFormat: [
         "main-display",
@@ -850,7 +877,7 @@ addLayer("k", {
         "milestones",
         ["display-text",
             function() {
-                return "Warning: All Knife upgrades force a Kill reset without awarding Knives and set your Knives to 0!"
+                return "<font color='rgb(255,0,0)'>All Knife upgrades set your Knives to 0 and force a Kill reset without awarding Knives!</font>"
              }],
         "blank",
         "upgrades",
