@@ -92,7 +92,7 @@ addLayer("p", {
                 let scaleSpeed = 2
                 let scaleExpo = 1.77
                 if (hasMilestone('k', 13)) {
-                    scaleSpeed = 3
+                    scaleSpeed = 4
                     scaleExpo = 2
                 }
                 return Math.min(Math.pow(player[this.layer].resetTime*scaleSpeed+1,scaleExpo)/10, 1000)
