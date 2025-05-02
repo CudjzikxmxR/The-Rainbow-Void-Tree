@@ -43,7 +43,7 @@ addLayer("p", {
             mult = mult.times(3)
         }
         if (hasUpgrade('p', 24)) {
-            mult = mult.times(upgradeEffect('g', 24))
+            mult = mult.times(upgradeEffect('p', 24))
         }
         if (hasMilestone('k', 15)) {
             mult = mult.times(Math.pow(Math.pow((1.5+Math.max(0, (player['k'].milestones.length-8)/20)), player['k'].milestones.length)))
