@@ -456,8 +456,8 @@ const catFood = {
 		if (!this.pressed) {
 			this.pressed = true
 			player.AxeCatMult+=10
-			if (player.AxeCatMult > (1+Math.log(getClickPower())/Math.log(1.77))) {
-				player.AxeCatMult = (1+Math.log(getClickPower())/Math.log(1.77))
+			if (player.AxeCatMult > (1+Math.log(getClickPower())/Math.log(3.07))*10) {
+				player.AxeCatMult = (1+Math.log(getClickPower())/Math.log(3.07)*10)
 			}
 			this.time = 0
 		}
