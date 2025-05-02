@@ -421,7 +421,7 @@ addLayer("g", {
                     player.CoinflipMult+=1
                 }
             },
-            style: {'height':'77px', 'width':'177px'},
+            style: {'height':'77px', 'width':'277px'},
         }
     },
     tabFormat: [
