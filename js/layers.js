@@ -313,7 +313,7 @@ addLayer("g", {
         if (this.getUnlockOrder()==0) {
             return 0.5
         }
-        return 0.1
+        return 2
     }, 
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1+Math.random()*5)
@@ -338,7 +338,7 @@ addLayer("g", {
     ],
     layerShown(){
         //return true
-        if (hasUpgrade(this.layer, 11) || hasUpgrade('p', 21) || player[this.layer].points.gte(new Decimal(1))) {
+        if (hasUpgrade(this.layer, 11) || hasMilestone("k", 11) || hasUpgrade('p', 21) || player[this.layer].points.gte(new Decimal(1))) {
             return true
         }
         return false
@@ -559,7 +559,7 @@ addLayer("k", {
     ],
     layerShown(){
         //return true
-        if (hasUpgrade(this.layer, 11) || hasUpgrade('p', 21) || player[this.layer].points.gte(new Decimal(1))) {
+        if (hasUpgrade(this.layer, 11) || hasUpgrade('g', 11) || hasUpgrade('p', 21) || player[this.layer].points.gte(new Decimal(1)) || player['g'].points.gte(new Decimal(1))) {
             return true
         }
         return false
