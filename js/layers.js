@@ -28,6 +28,9 @@ addLayer("p", {
         if (hasAchievement('a', 12)) {
             mult = mult.times(1.5)
         }
+        if (hasAchievement('a', 19)) {
+            mult = mult.times(2)
+        }
         return mult
     },
     autoUpgrade() {
@@ -242,6 +245,20 @@ addLayer("a", {
             unlocked() {return true},
             tooltip: "Successfully gain Cherry multiplier from flipping a coin.<br>Award: N/A", 
         },
+        19: {
+            name: "Crop Farming",
+            image: "resources/Cherries_Icon.png",
+            done() {return player['g'].points.gte(new Decimal(1e7))},
+            unlocked() {return true},
+            tooltip: "Achieve 1.00e7 Cherries.<br>Award: 2x Amoebas", 
+        },
+        21: {
+            name: "Crack Addict",
+            image: "resources/Cherries_Icon.png",
+            done() {return player['g'].points.gte(new Decimal(1e7))},
+            unlocked() {return true},
+            tooltip: "Achieve 1.00e77 Cherries.<br>Award: 7x Cherries", 
+        },
     },
     tabFormat: [
         //"main-display",
@@ -278,6 +295,9 @@ addLayer("g", {
             mult = mult.times(upgradeEffect('g', 14))
         }
         if (hasUpgrade('g', 18)) {
+            mult = mult.times(7)
+        }
+        if (hasAchievement('a', 21)) {
             mult = mult.times(7)
         }
         return mult
