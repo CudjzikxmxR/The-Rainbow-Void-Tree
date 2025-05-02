@@ -453,9 +453,9 @@ const catFood = {
         return (Math.random()) * 3 
     },
 	onClick() {
-		if (!this.pressed && player.AxeCatMult <= (1+Math.log(getClickPower())/Math.log(3.07))*10) {
+		if (!this.pressed && player.AxeCatMult <= (1+Math.log(getClickPower())/Math.log(3.07))*10*player.CoinflipMult/200) {
 			this.pressed = true
-			player.AxeCatMult=Math.min(player.AxeCatMult+20, (1+Math.log(getClickPower())/Math.log(3.07)*10))
+			player.AxeCatMult=Math.min(player.AxeCatMult+20, (1+Math.log(getClickPower())/Math.log(3.07)*10*player.CoinflipMult/200))
 			this.time = 0
 		}
 	},
@@ -509,7 +509,7 @@ var interval = setInterval(function() {
 		makeShinies(catFood, 1)
 	}
 	if (player.AxeCatMult > 1) {
-		player.AxeCatMult -= 0.1
+		player.AxeCatMult -= 0.1*player.CoinflipMult/200
 	} else {
 		player.AxeCatMult = 1
 	}
