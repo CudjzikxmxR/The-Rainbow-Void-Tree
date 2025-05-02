@@ -445,7 +445,7 @@ const catFood = {
     time: 1.5,
 	pressed: false,
     rotation (id) {
-        return 1.5 * (id - 1.5) + (Math.random() - 0.5) * 2
+        return 0.5 * (id - 1.5) + (Math.random() - 0.5) * 10
     },
     dir() {
         return (Math.random() - 0.5) * 10
