@@ -41,7 +41,7 @@ function getPointGen() {
 	if(!canGenPoints())
 		return new Decimal(0)
 
-	let gain = new Decimal(10000)
+	let gain = new Decimal(1)
 	//Cud Layer Upgrades
 	if (hasUpgrade('p', 11))
 		gain = gain.times(2)
@@ -131,6 +131,8 @@ function getClickPower() {
 		baseClickPower *= 2
 	if (hasAchievement('a', 14))
 		baseClickPower *= 3
+	if (hasUpgrade('k', 13))
+		baseClickPower *= 10
 
 	return baseClickPower
 }

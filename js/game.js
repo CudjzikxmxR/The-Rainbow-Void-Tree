@@ -500,6 +500,9 @@ var interval = setInterval(function() {
 	if (hasAchievement('a', 23)) {
 		symbolReq -= 0.07
 	}
+	if (hasUpgrade('k', 13)) {
+		symbolReq -= 0.05
+	}
 	if ((hasUpgrade('p', 16) || hasUpgrade('g', 13)) && Math.random()>= symbolReq) {
 		makeShinies(cudGrade16, 1)
 	}

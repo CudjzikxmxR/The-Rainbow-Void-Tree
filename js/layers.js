@@ -596,7 +596,7 @@ addLayer("k", {
         //return tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt)
     },
     canBuyMax() {
-        return true
+        return hasMilestone(this.layer, 14)
     },
     branches: ["p"],
     increaseUnlockOrder: ["g"],
@@ -621,6 +621,15 @@ addLayer("k", {
             title: "Blood Cells",
             description: "3x Amoebas",
             cost: new Decimal(4),
+            style: {'width':'160px'},
+            onPurchase() {
+                player[this.layer].points = new Decimal(0)
+            },
+        },
+        12: {
+            title: "Genocide",
+            description: "Symbols spawn more often.<b>Clicking symbols is 10x as effective.",
+            cost: new Decimal(20),
             style: {'width':'160px'},
             onPurchase() {
                 player[this.layer].points = new Decimal(0)
