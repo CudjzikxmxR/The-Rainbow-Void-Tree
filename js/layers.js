@@ -143,6 +143,7 @@ addLayer("p", {
         "main-display",
         "prestige-button",
         "blank",
+        "resource-display",
         ["display-text",
             function() {
                 if (!hasUpgrade('p', 16) && !hasUpgrade('g', 13)) {
@@ -395,6 +396,8 @@ addLayer("g", {
     tabFormat: [
         "main-display",
         "prestige-button",
+        "resource-display",
+        "blank",
         "clickables",
         "blank",
         "blank",
