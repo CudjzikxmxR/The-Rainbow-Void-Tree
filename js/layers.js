@@ -396,9 +396,10 @@ addLayer("g", {
     tabFormat: [
         "main-display",
         "prestige-button",
-        "resource-display",
         "blank",
         "clickables",
+        "blank",
+        "resource-display",
         "blank",
         "blank",
         "upgrades"
