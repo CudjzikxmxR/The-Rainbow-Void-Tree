@@ -327,14 +327,14 @@ addLayer("a", {
         12: {
             name: "Mocking My Cucks Mucks",
             image: "resources/Amoeba_Icon.png",
-            done() {return player.p.points.gte(new Decimal(1e12))},
+            done() {return player['p'].points.gte(new Decimal(1e12))},
             unlocked() {return true},
             tooltip: "Achieve 1.00e12 amoebas.<br>Award: 1.5x Amoebas", 
         },
         13: {
             name: "A Cudillion Cuds",
             image: "resources/Amoeba_Icon.png",
-            done() {return player['p'].points.gte(new Decimal(1.18181387e65))},
+            done() {return player.p.points.gte(new Decimal(1.18181387e65))},
             unlocked() {return true},
             tooltip: "Achieve a cudillion (7^77) amoebas.<br>Award: ^1.07 Rainbows", 
         },
