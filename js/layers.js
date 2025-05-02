@@ -363,7 +363,7 @@ addLayer("g", {
         18: {
             title: "I Love Crack",
             description: "7x Cherries<br>Rainbows scale based on your Cherries and RNG.",
-            cost: new Decimal(1e6),
+            cost: new Decimal(1e7),
             style: {'width':'160px'},
             effect() {
                 return player[this.layer].points.add(1).pow(0.25).times(Math.max(Math.random()*5, 0.5))
@@ -376,7 +376,7 @@ addLayer("g", {
         19: {
             title: "Chris Luck",
             description: "Clicking symbols always grants Amoebas.",
-            cost: new Decimal(7.7777777e9),
+            cost: new Decimal(7.7777777e11),
             style: {'width':'160px'},
             unlocked() {
                 return hasUpgrade('g', 16)
@@ -385,7 +385,7 @@ addLayer("g", {
         21: {
             title: "Deck of Cards",
             description: "52x Rainbows<br>Coinflips always grant multiplier and reset nothing.<br>The click-related Rainbow multiplier never decreases.",
-            cost: new Decimal(7.777777e13),
+            cost: new Decimal(7.777777e14),
             style: {'width':'160px'},
             unlocked() {
                 return hasUpgrade('g', 19)
