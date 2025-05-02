@@ -327,7 +327,7 @@ addLayer("a", {
         12: {
             name: "Mocking My Cucks Mucks",
             image: "resources/Amoeba_Icon.png",
-            done() {return player['p'].points.gte(new Decimal(1e12))},
+            done() {return player.p.points.gte(new Decimal(1e12))},
             unlocked() {return true},
             tooltip: "Achieve 1.00e12 amoebas.<br>Award: 1.5x Amoebas", 
         },
@@ -359,6 +359,7 @@ addLayer("a", {
             unlocked() {return true},
             tooltip: "Click 1.00e6 symbols.<br>Award: 2x Knives", 
         },
+        //Chris Layer Achievements
         17: {
             name: "Let's Go Gambling",
             image: "resources/Cherries_Icon.png",
@@ -387,6 +388,7 @@ addLayer("a", {
             unlocked() {return true},
             tooltip: "Achieve 1.00e77 Cherries.<br>Award: 7x Cherries", 
         },
+        //Pac Layer Achievements
         22: {
             name: "Murder",
             image: "resources/Knives_Icon.png",
