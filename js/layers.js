@@ -168,7 +168,7 @@ addLayer("p", {
     */
 })
 
-addLayer("A", {
+addLayer("a", {
     startData() { return {
         unlocked: true,
         points: new Decimal(0),

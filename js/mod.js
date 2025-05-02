@@ -76,7 +76,7 @@ function getPointGen() {
 	//Exponents
 	if (hasUpgrade('g', 23))
 		gain = gain.pow(1.1)
-	if (hasAchievement('A', 13))
+	if (hasAchievement('a', 13))
 		gain = gain.pow(1.1)
 
 	return gain
