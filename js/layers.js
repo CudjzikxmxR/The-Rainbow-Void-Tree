@@ -344,7 +344,7 @@ addLayer("g", {
         return false
     },
     canReset() {
-        return hasUpgrade('p', 21) && player.points.gte(new Decimal(1e20))
+        return hasUpgrade('p', 21) && player.points.gte(this.requires())
         //return tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt)
     },
     branches: ["p"],
@@ -492,6 +492,95 @@ addLayer("g", {
                 ["p", "feedingAxeCat"], 
             ],
             done() { return hasUpgrade(this.layer, 23) },
+        }
+    },
+    tabFormat: [
+        "main-display",
+        "prestige-button",
+        "blank",
+        "clickables",
+        "blank",
+        "resource-display",
+        ["display-image", function () {
+            if (hasUpgrade('g', 23)) {
+                return "resources/AxeCat.png"
+            }
+            return null
+        }],
+        "milestones",
+        "upgrades",
+    ],
+})
+
+addLayer("k", {
+    name: "pac", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "K", // This appears on the layer's node. Default is the id with the first letter capitalized
+    position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    image: "resources/Knives_Icon.png",
+    startData() { return {
+        unlocked: true,
+		points: new Decimal(0),
+        unlockOrder: 0,
+    }},
+    color: "#DCD200",
+    requires() { // Can be a function that takes requirement increases into account
+        if (this.unlockOrder == 0 || hasUpgrade(this.layer, 23)) {
+            return new Decimal(1e20)
+        }
+        return new Decimal(1e500)
+    },
+    resource: "knives", // Name of prestige currency
+    baseResource: "rainbows", // Name of resource prestige is based on
+    resetDescription: "Kill for ",
+    baseAmount() {return player.points}, // Get the current amount of baseResource
+    type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    exponent() { // Prestige currency exponent
+        if (this.unlockOrder == 0 || hasUpgrade(this.layer, 23)) {
+            return 0.5
+        }
+        return 0.1
+    }, 
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+        return mult
+    },
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        return new Decimal(1)
+    },
+    row: 1, // Row the layer is in on the tree (0 is the first row)
+    hotkeys: [
+        {key: "k", description: "K: Kill for knives!!!", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+    ],
+    layerShown(){
+        //return true
+        if (hasUpgrade('g', 11) || hasUpgrade('p', 21) || player[this.layer].points.gte(new Decimal(1))) {
+            return true
+        }
+        return false
+    },
+    canReset() {
+        return hasUpgrade('p', 21) && player.points.gte(this.requires())
+        //return tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt)
+    },
+    branches: ["p"],
+    increaseUnlockOrder: ["g"],
+
+    upgrades: {
+        11: {
+            title: "DLC",
+            description: "Unlock new Amoeba upgrades.",
+            cost: new Decimal(1),
+            style: {'width':'160px'},
+        },
+    },
+
+    milestones: {
+        11: {
+            requirementDescription: "First Kill",
+            effectDescription() {
+                return "2x Rainbows<br>1.25x Amoebas"
+            },
+            done() { return true },
         }
     },
     tabFormat: [
