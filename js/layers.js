@@ -376,7 +376,7 @@ addLayer("g", {
         19: {
             title: "Chris Luck",
             description: "Clicking symbols always grants Amoebas.",
-            cost: new Decimal(7.77e11),
+            cost: new Decimal(7.77e13),
             style: {'width':'160px'},
             unlocked() {
                 return hasUpgrade('g', 16)
@@ -385,7 +385,7 @@ addLayer("g", {
         21: {
             title: "Deck of Cards",
             description: "52x Rainbows<br>Coinflips always grant multiplier and reset nothing.<br>The click-related Rainbow multiplier never decreases.",
-            cost: new Decimal(7.77e14),
+            cost: new Decimal(7.77e17),
             style: {'width':'160px'},
             unlocked() {
                 return hasUpgrade('g', 19)
