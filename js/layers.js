@@ -238,7 +238,7 @@ addLayer("a", {
         18: {
             name: "Coinage",
             image: "resources/Cherries_Icon.png",
-            done() {return player.CoinflipMult >= 1},
+            done() {return player.CoinflipMult > 1},
             unlocked() {return true},
             tooltip: "Successfully gain Cherry multiplier from flipping a coin.<br>Award: N/A", 
         },
