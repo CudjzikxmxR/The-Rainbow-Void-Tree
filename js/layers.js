@@ -41,6 +41,9 @@ addLayer("p", {
         if (hasUpgrade('k', 12)) {
             mult = mult.times(3)
         }
+        if (hasMilestone('k', 16)) {
+            mult = mult.times(Math.pow(1.5, player['k'].milestones.length))
+        }
         if (this.getAxeStatus()) {
             mult = mult.times(0)
         }
