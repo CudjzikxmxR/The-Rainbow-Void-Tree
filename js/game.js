@@ -453,7 +453,7 @@ const catFood = {
         return (Math.random()) * 3 
     },
 	onClick() {
-		if (!this.pressed) {
+		if (!this.pressed && player.AxeCatMult <= (1+Math.log(getClickPower())/Math.log(3.07))*10) {
 			this.pressed = true
 			player.AxeCatMult+=10
 			if (player.AxeCatMult > (1+Math.log(getClickPower())/Math.log(3.07))*10) {
@@ -512,7 +512,7 @@ var interval = setInterval(function() {
 		makeShinies(catFood, 1)
 	}
 	if (player.AxeCatMult > 1) {
-		player.AxeCatMult -= 0.1
+		player.AxeCatMult -= 0.05
 	} else {
 		player.AxeCatMult = 1
 	}
