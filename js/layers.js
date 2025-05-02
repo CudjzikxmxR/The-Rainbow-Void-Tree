@@ -151,8 +151,7 @@ addLayer("p", {
                 }
                 return "You have clicked " + player.minimumClickMult + " symbols."
             }],
-        "blank",
-        "blank",
+        //"blank",
         "upgrades"
     ],
     /*
@@ -400,8 +399,6 @@ addLayer("g", {
         "clickables",
         "blank",
         "resource-display",
-        "blank",
-        "blank",
         "upgrades"
     ],
 })
