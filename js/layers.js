@@ -587,15 +587,8 @@ addLayer("k", {
         "main-display",
         "prestige-button",
         "blank",
-        "clickables",
         "blank",
         "resource-display",
-        ["display-image", function () {
-            if (hasUpgrade('g', 23)) {
-                return "resources/AxeCat.png"
-            }
-            return null
-        }],
         "milestones",
         "upgrades",
     ],
