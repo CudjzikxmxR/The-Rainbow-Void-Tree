@@ -61,7 +61,7 @@ addLayer("p", {
         },
         13: {
             title: "Procrastination",
-            description: "0.1x Rainbows\nRainbow gain now increases over time.",
+            description: "0.1x Rainbows<br>Rainbow gain now increases over time.",
             cost: new Decimal(50),
             style: {'width':'160px'},
             effect() {
@@ -177,9 +177,6 @@ addLayer("A", {
     resource: "achievements", 
     row: "side",
     image: "resources/AchievementIcon.png",
-    tooltip() { // Optional, tooltip displays when the layer is locked
-        return ("Achievements")
-    },
     effectDescription() {
         return "which multiplies Rainbow gain by " + format((new Decimal(2)).pow(player['A'].points)) +"x"
     },
