@@ -412,12 +412,12 @@ addLayer("g", {
             },
         },
         23: {
-            title: "Adorable",
+            title: "Surprise Guest Appearance",
             description: "^1.1 Rainbows<br>This layer behaves as if you chose it first.<br>Add a picture of Axe Cat to this layer's menu.",
             cost: new Decimal(1e36),
             style: {'width':'160px'},
             unlocked() {
-                return hasUpgrade('g', 19)
+                return hasUpgrade('g', 21)
             },
         },
     },
