@@ -206,19 +206,7 @@ addLayer("p", {
                 return hasUpgrade(this.layer, 21) && hasUpgrade('k', 11)
             },
         },
-        24: {
-            title: "[LITTLE SPONGE]",
-            description: "Amoebas lightly scale based on your Rainbows.",
-            cost: new Decimal(2e18),
-            style: {'width':'160px'},
-            effect() {
-                return 1
-            },
-            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
-            unlocked() {
-                return hasUpgrade(this.layer, 21) && hasUpgrade('k', 11)
-            },
-        },
+        
     },
     tabFormat: [
         "main-display",
@@ -255,9 +243,11 @@ addLayer("a", {
     color: "#F7B100",
     row: "side",
     image: "resources/AchievementIcon.png",
+    /*
     effectDescription() {
         return "which multiplies Rainbow gain by " + format((new Decimal(2)).pow(player['A'].points)) +"x"
     },
+    */
     tooltip() {
         return ("Achievements")
     },
