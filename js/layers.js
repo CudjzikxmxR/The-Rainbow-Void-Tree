@@ -52,6 +52,9 @@ addLayer("p", {
             mult = mult.times(Math.pow((1.75+Math.max(0, (player['k'].milestones.length-7))/10), player['k'].milestones.length))
           // mult = mult.times(Math.pow(Math.pow((1.5+Math.max(0, (player['k'].milestones.length-7))/20), player['k'].milestones.length)))
         }
+        if (hasMilestone('k', 17)) {
+            mult = mult.times(20)
+        }
         if (this.getAxeStatus()) {
             mult = mult.times(0)
         }
@@ -243,7 +246,7 @@ addLayer("p", {
         },
         27: {
             title: "Premeditated",
-            description: "1.5x Knives<br>Knife requirement scaling is weaker.",
+            description: "Knife requirement scaling is weaker.",
             cost: new Decimal(1e44),
             style: {'width':'160px'},
             unlocked() {
@@ -676,7 +679,7 @@ addLayer("k", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         if (hasUpgrade('p', 27)) {
-            mult = mult.times(1.5)
+            mult = mult.times(0.5)
         }
         return mult
     },
