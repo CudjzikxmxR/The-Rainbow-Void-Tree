@@ -204,6 +204,27 @@ addLayer("a", {
             unlocked() {return true},
             tooltip: "Achieve a cudillion (7^77 aka 1.18e65) amoebas.<br>Award: ^1.1 Rainbows", 
         },
+        14: {
+            name: "I Love To Click",
+            image: "resources/aaaRune.png",
+            done() {return player.minimumClickMult >= 1000},
+            unlocked() {return true},
+            tooltip: "Click 1000 symbols.<br>Award: Clicking symbols is 2x as effective.", 
+        },
+        15: {
+            name: "So Much Clicking",
+            image: "resources/aaaRune.png",
+            done() {return player.minimumClickMult >= 1000},
+            unlocked() {return true},
+            tooltip: "Click 10000 symbols.<br>Award: More symbols spawn.", 
+        },
+        16: {
+            name: "Carpal Tunnel",
+            image: "resources/aaaRune.png",
+            done() {return player.minimumClickMult >= 1e6},
+            unlocked() {return true},
+            tooltip: "Click 1.00e6 symbols.<br>Award: 2x Knives", 
+        },
     },
     tabFormat: [
         //"main-display",
@@ -257,12 +278,6 @@ addLayer("g", {
             return true
         }
         return false
-        /*
-        if (tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt) || hasUpgrade('g', 11)) {
-            return true
-        }
-        return false
-        */
     },
     canReset() {
         return hasUpgrade('p', 21) && player.points.gte(new Decimal(1e20))

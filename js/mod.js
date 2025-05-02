@@ -121,6 +121,8 @@ function getClickPower() {
 		baseClickPower *= (upgradeEffect('p', 21))
 	if (hasUpgrade('g', 13))
 		baseClickPower *= 2
+	if (hasAchievement('a', 14))
+		baseClickPower *= 2
 
 	return baseClickPower
 }
