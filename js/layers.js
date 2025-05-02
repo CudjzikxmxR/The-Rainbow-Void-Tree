@@ -293,7 +293,7 @@ addLayer("g", {
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     image: "resources/Cherries_Icon.png",
     startData() { return {
-        unlocked: true,
+        unlocked: false,
 		points: new Decimal(0),
         unlockOrder: 0,
     }},
@@ -349,6 +349,12 @@ addLayer("g", {
     },
     branches: ["p"],
     increaseUnlockOrder: ["k"],
+    unlockOrder() {
+        if (hasUpgrade(this.layer, 23)) {
+            return 0
+        }
+        return player[this.layer].unlockOrder
+    },
 
     upgrades: {
         11: {
@@ -564,6 +570,12 @@ addLayer("k", {
     },
     branches: ["p"],
     increaseUnlockOrder: ["g"],
+    unlockOrder() {
+        if (hasUpgrade(this.layer, 23)) {
+            return 0
+        }
+        return player[this.layer].unlockOrder
+    },
 
     upgrades: {
         11: {
