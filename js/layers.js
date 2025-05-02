@@ -115,13 +115,12 @@ addLayer("p", {
         },
         19: {
             title: "Fallback",
-            description: "Your Rainbow multiplier from clicking symbols can't decrease while below triple the total # of symbols you've EVER clicked.",
+            description: "Your Rainbow multiplier from clicking symbols can't decrease while below triple the total # of symbols you've ever clicked.",
             cost: new Decimal(1234567),
             style: {'width':'160px'},
             effect() {
                 return player.minimumClickMult
             },
-            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+" total clicks" },
             unlocked() {
                 return hasUpgrade('p', 16)
             },
