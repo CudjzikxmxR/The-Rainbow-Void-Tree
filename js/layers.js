@@ -493,7 +493,7 @@ addLayer("g", {
             }
             return null
         }],
-        "miletones",
+        "milestones",
         "upgrades",
     ],
 })
