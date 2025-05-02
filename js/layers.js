@@ -34,11 +34,9 @@ addLayer("p", {
         if (hasAchievement('a', 19)) {
             mult = mult.times(2)
         }
-        /*
         if (this.getAxeStatus()) {
             mult = mult.times(0)
         }
-        */
         return mult
     },
     autoUpgrade() {
