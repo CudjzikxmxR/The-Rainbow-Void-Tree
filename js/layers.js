@@ -426,7 +426,7 @@ addLayer("g", {
         23: {
             title: "Surprise Guest Appearance",
             description() {
-                if (hasUpgrade(this.layer, this.id)) {
+                if (hasUpgrade(this.layer, 23)) {
                     "^1.1 Rainbows<br>This layer behaves as if you chose it first.<br>OH MY GOD IT'S AXE CAT!!!"
                 }
                 return "^1.1 Rainbows<br>This layer behaves as if you chose it first.<br>Wait... is that... there's no way."
