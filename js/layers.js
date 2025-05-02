@@ -145,8 +145,12 @@ addLayer("p", {
     "prestige-button",
     "blank",
     ["display-text",
-        function() { return 'I have ' + format(player.points) + ' pointy points!' }],
-    "blank",
+        function() {
+            if (!hasUpgrade('p', 16)) {
+                return ""
+            }
+            return "You have clicked " + player.minimumClickMult + " symbols."
+        }],
     "blank",
     "blank",
     "upgrades"
