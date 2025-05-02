@@ -890,7 +890,7 @@ addLayer("k", {
         "milestones",
         ["display-text",
             function() {
-                return "<font color='rgb(255, 0, 0)'>All Knife upgrades set your Knives to 0 and force a Kill reset without awarding Knives!"
+                return "<font color='rgb(255, 255, 0)'>All Knife upgrades set your Knives to 0 and force a Kill reset without awarding Knives!"
              }],
         "blank",
         "upgrades",
