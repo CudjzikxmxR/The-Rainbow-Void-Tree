@@ -189,7 +189,7 @@ addLayer("p", {
             cost: new Decimal(4e15),
             style: {'width':'160px'},
             effect() {
-                return player['k'].points.add(1).pow(1.25)
+                return player['k'].points.add(1).pow(2)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
             unlocked() {
