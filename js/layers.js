@@ -889,7 +889,7 @@ addLayer("k", {
         20: {
             requirementDescription: "50 Killstreak",
             effectDescription() {
-                return "^1.05 Rainbows."
+                return "^1.5 Rainbows."
             },
             done() {return player[this.layer].best.gte(50)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
