@@ -244,7 +244,7 @@ addLayer("p", {
         27: {
             title: "Premeditated",
             description: "1.25x Knives",
-            cost: new Decimal(1e45),
+            cost: new Decimal(1e44),
             style: {'width':'160px'},
             unlocked() {
                 return hasUpgrade(this.layer, 26) && hasUpgrade('k', 11)
