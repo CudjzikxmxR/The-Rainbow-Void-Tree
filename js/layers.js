@@ -34,6 +34,9 @@ addLayer("p", {
         if (hasAchievement('a', 19)) {
             mult = mult.times(2)
         }
+        if (this.getAxeStatus()) {
+            mult = mult.times(0)
+        }
         return mult
     },
     autoUpgrade() {
@@ -50,6 +53,13 @@ addLayer("p", {
         {key: "a", description: "A: Reset for amoebas!!!", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return true},
+    feedingAxeCat: false,
+    getAxeStatus() {
+        if (feedingAxeCat && hasMilestone('g', 11)) {
+            return true
+        }
+        return false
+    },
 
     upgrades: {
         11: {
@@ -456,6 +466,16 @@ addLayer("g", {
             style: {'height':'77px', 'width':'277px'},
         }
     },
+    milestones: {
+        11: {
+            requirementDescription: "Axe Cat is hungry...",
+            effectDescription: "You can feed Amoebas to Axe Cat, disabling Amoeba gain entirely and causing Catfood to spawn around the screen, but giving temporary Rainbow and Cherry multiplier for each Catfood clicked.",
+            done() { return hasUpgrade(this.layer, 23) },
+            toggles: [
+                ["p", "feedingAxeCat"], 
+            ],
+        }
+    },
     tabFormat: [
         "main-display",
         "prestige-button",
@@ -469,6 +489,7 @@ addLayer("g", {
             }
             return null
         }],
-        "upgrades"
+        "miletones",
+        "upgrades",
     ],
 })
