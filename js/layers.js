@@ -174,7 +174,7 @@ addLayer("p", {
         22: {
             title: "Woke Agenda?",
             description: "3x Rainbows",
-            cost: new Decimal(1e21),
+            cost: new Decimal(1e12),
             style: {'width':'160px'},
             unlocked() {
                 return hasUpgrade(this.layer, 21) && hasUpgrade('k', 11)
@@ -183,7 +183,7 @@ addLayer("p", {
         23: {
             title: "Toxic Yaoi",
             description: "Rainbows scale based on your Knives.",
-            cost: new Decimal(4e25),
+            cost: new Decimal(4e16),
             style: {'width':'160px'},
             effect() {
                 return player['k'].points.add(1).pow(1.25)
@@ -650,7 +650,7 @@ addLayer("k", {
         },
         12: {
             title: "Genocide",
-            description: "Symbols spawn more often.<b>Clicking symbols is 10x as effective.",
+            description: "Symbols spawn more often.<br>Clicking symbols is 10x as effective.",
             cost: new Decimal(20),
             style: {'width':'160px'},
             onPurchase() {
