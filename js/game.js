@@ -467,7 +467,7 @@ var interval = setInterval(function() {
 	if (hasUpgrade('g', 13)) {
 		symbolReq = 0.77
 	}
-	if (hasUpgrade('p', 16) && Math.random()>= symbolReq) {
+	if ((hasUpgrade('p', 16) || hasUpgrade('g', 13)) && Math.random()>= symbolReq) {
 		makeShinies(cudGrade16, 1)
 	}
 	if ((hasUpgrade('p', 19) && player.clickingMult>player.minimumClickMult*3) || (!(hasUpgrade('p', 19)) && player.clickingMult > 1)) {

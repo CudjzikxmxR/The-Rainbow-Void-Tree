@@ -106,7 +106,7 @@ addLayer("p", {
         },
         18: {
             title: "Anomaly Annihilating",
-            description: "Clicking symbols is 4x as effective.\n2.5x Rainbows",
+            description: "2.5x Rainbows<br>Clicking symbols is 4x as effective.",
             cost: new Decimal(100000),
             style: {'width':'160px'},
             unlocked() {
@@ -146,7 +146,7 @@ addLayer("p", {
         "blank",
         ["display-text",
             function() {
-                if (!hasUpgrade('p', 16)) {
+                if (!hasUpgrade('p', 16) && !hasUpgrade('g', 13)) {
                     return ""
                 }
                 return "You have clicked " + player.minimumClickMult + " symbols."
@@ -287,7 +287,7 @@ addLayer("g", {
         },
         13: {
             title: "I'm Gonna Shit",
-            description: "Clicking symbols is 2x as effective. \nSymbols spawn more often and continue spawning without <b>Activity Check</b>.",
+            description: "Clicking symbols is 2x as effective.<br>Symbols spawn more often and continue spawning without <b>Activity Check</b>.",
             cost: new Decimal(17),
             style: {'width':'160px'},
         },
