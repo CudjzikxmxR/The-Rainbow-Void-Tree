@@ -35,6 +35,9 @@ addLayer("p", {
         if (hasAchievement('a', 19)) {
             mult = mult.times(2)
         }
+        if (hasMilestone('k', 11)) {
+            mult = mult.times(1.25)
+        }
         if (this.getAxeStatus()) {
             mult = mult.times(0)
         }
@@ -588,12 +591,19 @@ addLayer("k", {
 
     milestones: {
         11: {
-            requirementDescription: "First Kill",
+            requirementDescription: "1 Killstreak",
             effectDescription() {
                 return "2x Rainbows<br>1.25x Amoebas"
             },
-            done() { return true },
-        }
+            done() { return player[this.layer].best.gte(1) },
+        },
+        12: {
+            requirementDescription: "3 Killstreak",
+            effectDescription() {
+                return 'You automatically "click" symbols by hovering over them.'
+            },
+            done() { return player[this.layer].best.gte(3) },
+        },
     },
     tabFormat: [
         "main-display",

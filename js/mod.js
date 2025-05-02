@@ -72,6 +72,10 @@ function getPointGen() {
 	if (hasUpgrade('g', 21))
 		gain = gain.times(52)
 
+	//Pac Layer Content
+	if (hasMilestone('k', 11))
+		gain = gain.times(2)
+
 	//Achievements
 	gain = gain.times((new Decimal(2)).pow(player['a'].achievements.length))
 
