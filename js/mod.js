@@ -87,7 +87,10 @@ function getPointGen() {
 
 
 	//Achievements
-	gain = gain.times((new Decimal(2)).pow(player['a'].achievements.length))
+	var achieveBase = 2
+	if (hasMilestone('p', 28))
+		achieveBase += 1
+	gain = gain.times((new Decimal(achieveBase)).pow(player['a'].achievements.length))
 
 	//Other
 	gain = gain.times(player.AxeCatMult)

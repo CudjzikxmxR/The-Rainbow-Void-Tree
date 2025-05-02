@@ -55,6 +55,10 @@ addLayer("p", {
         if (hasMilestone('k', 17)) {
             mult = mult.times(20)
         }
+        if (hasUpgrade('p', 28)) {
+            var achieveBase = 2
+            mult = mult.times((new Decimal(achieveBase)).pow(player['a'].achievements.length))
+        }
         if (this.getAxeStatus()) {
             mult = mult.times(0)
         }
@@ -259,8 +263,8 @@ addLayer("p", {
         },
         28: {
             title: "Achieve Big",
-            description: "+1 to achievement Rainbow multiplier base.<br>Achievements now give 2x Amoeba multiplier.",
-            cost: new Decimal(8.25e62),
+            description: "+1 to achievement Rainbow multiplier base.<br>Achievements now give 2x Amoeba multiplier.<br?Knife requirement scaling is weaker.",
+            cost: new Decimal(8.25e52),
             style: {'width':'160px'},
             unlocked() {
                 return hasUpgrade(this.layer, 26) && hasUpgrade('k', 11)
@@ -404,11 +408,26 @@ addLayer("a", {
             unlocked() {return true},
             tooltip: "Achieve 15 Knives.<br>Award: N/A.", 
         },
+        25: {
+            name: "The Achieving Achievement",
+            image: "resources/Knives_Icon.png",
+            done() {return hasUpgrade('p', 28)},
+            unlocked() {return true},
+            tooltip: "Purchase <b>Achieve Big</b>.<br>Award: N/A.", 
+        },
     },
     tabFormat: [
         //"main-display",
         ["display-text", function () {
-            return "You have " + player["a"].achievements.length + " achievements, which translates to a " + format(new Decimal(2).pow(player["a"].achievements.length)) + "x Rainbow multiplier."
+            var achieveBase = 2
+            if (hasUpgrade('p', 28)) {
+                achieveBase += 1
+            }
+            return "You have " + player["a"].achievements.length + " achievements, which translates to a " + format(new Decimal(achieveBase).pow(player["a"].achievements.length)) + "x Rainbow multiplier."
+        }],
+        ["display-text", function () {
+            var achieveBase = 2
+            return "Your achievements also translates to a " + format(new Decimal(achieveBase).pow(player["a"].achievements.length)) + "x Amoeba multiplier."
         }],
         "blank",
         "blank",
@@ -673,6 +692,9 @@ addLayer("k", {
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent() { // Prestige currency exponent
         if (this.getUnlockOrder()==0) {
+            if (hasUpgrade('p', 28)) {
+                return 1.7
+            }
             if (hasUpgrade('p', 27)) {
                 return 1.8
             }
