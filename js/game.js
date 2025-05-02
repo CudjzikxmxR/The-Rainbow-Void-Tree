@@ -440,12 +440,12 @@ const cudGrade16 = {
 const catFood = {
     image:"resources/CatFood.png",
     spread: 20,
-	width: 162,
-	height: 132,
+	width: 81,
+	height: 66,
     time: 1.5,
 	pressed: false,
     rotation (id) {
-        return 3 * (id - 1.5) + (Math.random() - 0.5) * 10
+        return 1.5 * (id - 1.5) + (Math.random() - 0.5) * 2
     },
     dir() {
         return (Math.random() - 0.5) * 10
@@ -456,7 +456,7 @@ const catFood = {
 	onClick() {
 		if (!this.pressed) {
 			this.pressed = true
-			player.AxeCatMult+=1
+			player.AxeCatMult+=3
 			this.time = 0
 		}
 	},
@@ -507,13 +507,13 @@ var interval = setInterval(function() {
 	} else {
 		resetClickMult()
 	}
-	if ((hasMilestone('g', 17) && player['p'].feedingAxeCat) && Math.random()>= 0.8) {
+	if ((hasMilestone('g', 17) && player['p'].feedingAxeCat) && Math.random()>= 0.9) {
 		makeShinies(catFood, 1)
-		if (player.AxeCatMult > 1) {
-			player.AxeCatMult -= 0.05
-		} else {
-			player.AxeCatMult = 1
-		}
+	}
+	if (player.AxeCatMult > 1) {
+		player.AxeCatMult -= 0.03
+	} else {
+		player.AxeCatMult = 1
 	}
 
 	updateTemp();
