@@ -110,7 +110,7 @@ addLayer("p", {
             cost: new Decimal(20000),
             style: {'width':'160px'},
             unlocked() {
-                return hasUpgrade('p', 16)
+                return hasUpgrade(this.layer, 16)
             },
         },
         18: {
@@ -119,7 +119,7 @@ addLayer("p", {
             cost: new Decimal(100000),
             style: {'width':'160px'},
             unlocked() {
-                return hasUpgrade('p', 16)
+                return hasUpgrade(this.layer, 16)
             },
         },
         19: {
@@ -131,7 +131,7 @@ addLayer("p", {
                 return player.minimumClickMult
             },
             unlocked() {
-                return hasUpgrade('p', 16)
+                return hasUpgrade(this.layer, 16)
             },
         },
         21: {
@@ -144,7 +144,7 @@ addLayer("p", {
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
             unlocked() {
-                return hasUpgrade('p', 16)
+                return hasUpgrade(this.layer, 16)
             },
         },
     },
@@ -380,7 +380,7 @@ addLayer("g", {
             cost: new Decimal(5000),
             style: {'width':'160px'},
             unlocked() {
-                return hasUpgrade('g', 16)
+                return hasUpgrade(this.layer, 16)
             },
         },
         18: {
@@ -393,7 +393,7 @@ addLayer("g", {
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
             unlocked() {
-                return hasUpgrade('g', 16)
+                return hasUpgrade(this.layer, 16)
             },
         },
         19: {
@@ -402,7 +402,7 @@ addLayer("g", {
             cost: new Decimal(7.77e13),
             style: {'width':'160px'},
             unlocked() {
-                return hasUpgrade('g', 16)
+                return hasUpgrade(this.layer, 16)
             },
         },
         21: {
@@ -411,7 +411,7 @@ addLayer("g", {
             cost: new Decimal(7.77e17),
             style: {'width':'160px'},
             unlocked() {
-                return hasUpgrade('g', 19)
+                return hasUpgrade(this.layer, 19)
             },
         },
         22: {
@@ -420,16 +420,21 @@ addLayer("g", {
             cost: new Decimal(1e24),
             style: {'width':'160px'},
             unlocked() {
-                return hasUpgrade('g', 19)
+                return hasUpgrade(this.layer, 19)
             },
         },
         23: {
             title: "Surprise Guest Appearance",
-            description: "^1.1 Rainbows<br>This layer behaves as if you chose it first.<br>Wait... is that... there's no way.",
+            description() {
+                if (hasUpgrade(this.layer, this.id)) {
+                    "^1.1 Rainbows<br>This layer behaves as if you chose it first.<br>OH MY GOD IT'S AXE CAT!!!"
+                }
+                return "^1.1 Rainbows<br>This layer behaves as if you chose it first.<br>Wait... is that... there's no way."
+            },
             cost: new Decimal(1e36),
             style: {'width':'160px'},
             unlocked() {
-                return hasUpgrade('g', 21)
+                return hasUpgrade(this.layer, 21)
             },
         },
     },
