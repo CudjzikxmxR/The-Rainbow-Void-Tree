@@ -544,7 +544,7 @@ addLayer("k", {
         if (this.getUnlockOrder()==0) {
             return 0.75
         }
-        return 0.1
+        return 0.01
     }, 
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
