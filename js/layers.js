@@ -142,18 +142,18 @@ addLayer("p", {
     },
     tabFormat: [
         "main-display",
-    "prestige-button",
-    "blank",
-    ["display-text",
-        function() {
-            if (!hasUpgrade('p', 16)) {
-                return ""
-            }
-            return "You have clicked " + player.minimumClickMult + " symbols."
-        }],
-    "blank",
-    "blank",
-    "upgrades"
+        "prestige-button",
+        "blank",
+        ["display-text",
+            function() {
+                if (!hasUpgrade('p', 16)) {
+                    return ""
+                }
+                return "You have clicked " + player.minimumClickMult + " symbols."
+            }],
+        "blank",
+        "blank",
+        "upgrades"
     ],
     /*
     infoboxes: {
@@ -211,6 +211,12 @@ addLayer("A", {
             tooltip: "Achieve a cudillion (7^77 aka 1.18e65) amoebas.<br>Award: ^1.1 Rainbows", 
         },
     },
+    tabFormat: [
+        "main-display",
+        "blank",
+        "blank",
+        "achievements",
+    ],
     //midsection: ["grid", "blank"],
 })
 
