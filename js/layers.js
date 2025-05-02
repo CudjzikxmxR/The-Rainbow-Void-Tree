@@ -56,7 +56,7 @@ addLayer("p", {
     layerShown(){return true},
     
     getAxeStatus() {
-        if (this.feedingAxeCat && hasMilestone('g', 17)) {
+        if (player[this.layer].feedingAxeCat && hasMilestone('g', 17)) {
             return true
         }
         return false
