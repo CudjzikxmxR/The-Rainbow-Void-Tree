@@ -89,7 +89,11 @@ addLayer("p", {
             cost: new Decimal(50),
             style: {'width':'160px'},
             effect() {
-                return Math.min(Math.pow(player[this.layer].resetTime*2+1,1.77)/10, 1000)
+                let scaleSpeed = 2
+                if (hasMilestone('k'), 13) {
+                    scaleSpeed = 4
+                }
+                return Math.min(Math.pow(player[this.layer].resetTime*scaleSpeed+1,1.77)/10, 1000)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
