@@ -6,6 +6,7 @@ addLayer("p", {
     startData() { return {
         unlocked: true,
 		points: new Decimal(0),
+        feedingAxeCat: false,
     }},
     color: "#006BF7",
     requires: new Decimal(5), // Can be a function that takes requirement increases into account
@@ -54,9 +55,8 @@ addLayer("p", {
     ],
     layerShown(){return true},
     
-    feedingAxeCat: false,
     getAxeStatus() {
-        if (this.feedingAxeCat) {
+        if (this.startData.feedingAxeCat && hasMilestone('g', 17)) {
             return true
         }
         return false
