@@ -754,6 +754,20 @@ addLayer("k", {
                 doReset(this.layer, true)
             },
         },
+        15: {
+            title: "Adrenaline",
+            description: "Procrastination reaches its cap faster.<br>Amoebas scale based on your knives.",
+            cost: new Decimal(20),
+            style: {'width':'160px'},
+            onPurchase() {
+                player[this.layer].points = new Decimal(0)
+                doReset(this.layer, true)
+            },
+            effect() {
+                return player[this.layer].points.add(1).pow(1.5)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
+        },
     },
 
     milestones: {
@@ -823,11 +837,11 @@ addLayer("k", {
             unlocked() {return hasMilestone(this.layer, this.id-1)}
         },
         18: {
-            requirementDescription: "25 Killstreak",
+            requirementDescription: "20 Killstreak",
             effectDescription() {
                 return "+0.1 to the <b>6 Killstreak</b> and <b>10 Killstreak</b> effect base for every Killstreak milestone past this point, including this.<br>Currently: "+format((player['k'].milestones.length-7)/10)
             },
-            done() {return player[this.layer].best.gte(25)},
+            done() {return player[this.layer].best.gte(20)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
         },
         19: {
@@ -854,7 +868,7 @@ addLayer("k", {
         21: {
             requirementDescription: "100 Killstreak",
             effectDescription() {
-                return "1.5x Knives"
+                return "2x Knives"
             },
             done() {return player[this.layer].best.gte(100)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
