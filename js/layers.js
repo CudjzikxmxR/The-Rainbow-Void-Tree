@@ -163,7 +163,7 @@ addLayer("A", {
         return ("Achievements")
     },
     effectDescription() {
-        return "test"
+        return "which multiplies Rainbow gain by " + format((new Decimal(2)).pow(player['A'].points)) +"x"
     },
     achievementPopups: true,
     achievements: {
