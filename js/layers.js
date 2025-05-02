@@ -49,7 +49,7 @@ addLayer("p", {
             mult = mult.times(upgradeEffect('p', 13))
         }
         if (hasMilestone('k', 15)) {
-            mult = mult.times(Math.pow((1.5+Math.max(0, (player['k'].milestones.length-7))/20), player['k'].milestones.length))
+            mult = mult.times(Math.pow((1.75+Math.max(0, (player['k'].milestones.length-7))/10), player['k'].milestones.length))
           // mult = mult.times(Math.pow(Math.pow((1.5+Math.max(0, (player['k'].milestones.length-7))/20), player['k'].milestones.length)))
         }
         if (this.getAxeStatus()) {
@@ -788,10 +788,10 @@ addLayer("k", {
         15: {
             requirementDescription: "6 Killstreak",
             effectDescription() {
-                var kEffectBase = 1.5
+                var kEffectBase = 1.75
                 var kScale = 0
                 if (hasAchievement(this.layer, 18)) {
-                    kScale = (player['k'].milestones.length-7)/20
+                    kScale = (player['k'].milestones.length-7)/10
                 }
                 return (kEffectBase+kScale)+"x Amoebas for every Killstreak milestone.<br>Currently: "+format(Math.pow((kEffectBase+kScale), player['k'].milestones.length))+"x"
             },
@@ -801,10 +801,10 @@ addLayer("k", {
         16: {
             requirementDescription: "10 Killstreak",
             effectDescription() {
-                var kEffectBase = 1.75
+                var kEffectBase = 2.5
                 var kScale = 0
                 if (hasAchievement(this.layer, 18)) {
-                    kScale = (player['k'].milestones.length-7)/20
+                    kScale = (player['k'].milestones.length-7)/10
                 }
                 return (kEffectBase+kScale)+"x Rainbows for every Killstreak milestone.<br>Currently: "+format(Math.pow((kEffectBase+kScale), player['k'].milestones.length))+"x"
             },
