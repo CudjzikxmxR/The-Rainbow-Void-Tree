@@ -585,7 +585,7 @@ addLayer("k", {
     color: "#DCD200",
     requires() { // Can be a function that takes requirement increases into account
         if (this.getUnlockOrder()==0) {
-            return new Decimal(1e20)
+            return new Decimal(1e21)
         }
         return (new Decimal(10)).pow(500)
     },
@@ -619,7 +619,7 @@ addLayer("k", {
         return false
     },
     canReset() {
-        return hasUpgrade('p', 21) && player.points.gte(tmp[this.layer].requires())
+        return hasUpgrade('p', 21) && player.points.gte(this.layer.requires())
         //return tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt)
     },
     canBuyMax() {
