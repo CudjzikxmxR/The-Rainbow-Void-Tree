@@ -171,6 +171,28 @@ addLayer("p", {
                 return hasUpgrade(this.layer, 16)
             },
         },
+        22: {
+            title: "Woke Agenda?",
+            description: "3x Rainbows",
+            cost: new Decimal(1e21),
+            style: {'width':'160px'},
+            unlocked() {
+                return hasUpgrade(this.layer, 21) && hasUpgrade('k', 11)
+            },
+        },
+        23: {
+            title: "Toxic Yaoi",
+            description: "Rainbows scale based on your Knives.",
+            cost: new Decimal(4e25),
+            style: {'width':'160px'},
+            effect() {
+                return player['k'].points.add(1).pow(1.25)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
+            unlocked() {
+                return hasUpgrade(this.layer, 21) && hasUpgrade('k', 11)
+            },
+        },
     },
     tabFormat: [
         "main-display",

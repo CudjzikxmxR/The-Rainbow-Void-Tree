@@ -57,6 +57,11 @@ function getPointGen() {
 		gain = gain.times(upgradeEffect('p', 16))
 	if (hasUpgrade('p', 18))
 		gain = gain.times(2.5)
+	//Cud Layer Extension (from Pac Layer)
+	if (hasUpgrade('p', 22))
+		gain = gain.times(3)
+	if (hasUpgrade('p', 23))
+		gain = gain.times(upgradeEffect('p', 23))
 
 	//Chris Layer Upgrades
 	if (hasUpgrade('g', 11))
