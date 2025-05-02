@@ -41,8 +41,16 @@ addLayer("p", {
         if (hasUpgrade('k', 12)) {
             mult = mult.times(3)
         }
+        if (hasUpgrade('p', 24)) {
+            mult = mult.times(upgradeEffect('g', 24))
+        }
         if (hasMilestone('k', 15)) {
-            mult = mult.times(Math.pow(1.5, player['k'].milestones.length))
+            var kEffectBase = 1.75
+            var kScale = 0
+            if (hasAchievement('k', 18)) {
+                kScale = (player['k'].milestones.length-8)/20
+            }
+            mult = mult.times(Math.pow((kEffectBase+kScale), player['k'].milestones.length))
         }
         if (this.getAxeStatus()) {
             mult = mult.times(0)
@@ -192,6 +200,19 @@ addLayer("p", {
             style: {'width':'160px'},
             effect() {
                 return player['k'].points.add(1).pow(2)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
+            unlocked() {
+                return hasUpgrade(this.layer, 21) && hasUpgrade('k', 11)
+            },
+        },
+        24: {
+            title: "[LITTLE SPONGE]",
+            description: "Amoebas lightly scale based on your Rainbows.",
+            cost: new Decimal(2e18),
+            style: {'width':'160px'},
+            effect() {
+                return player.points.add(1).log(5)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
             unlocked() {
@@ -699,7 +720,12 @@ addLayer("k", {
         15: {
             requirementDescription: "6 Killstreak",
             effectDescription() {
-                return "1.5x Amoebas for every Killstreak milestone.<br>Currently: "+format(Math.pow(1.5, player['k'].milestones.length))+"x"
+                var kEffectBase = 1.5
+                var kScale = 0
+                if (hasAchievement(this.layer, 18)) {
+                    kScale = (player['k'].milestones.length-8)/20
+                }
+                return (kEffectBase+kScale)+"x Amoebas for every Killstreak milestone.<br>Currently: "+format(Math.pow((kEffectBase+kScale), player['k'].milestones.length))+"x"
             },
             done() {return player[this.layer].best.gte(6)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
@@ -707,9 +733,80 @@ addLayer("k", {
         16: {
             requirementDescription: "10 Killstreak",
             effectDescription() {
-                return "You can earn max knives from Kill resets."
+                var kEffectBase = 1.75
+                var kScale = 0
+                if (hasAchievement(this.layer, 18)) {
+                    kScale = (player['k'].milestones.length-8)/20
+                }
+                return (kEffectBase+kScale)+"x Rainbows for every Killstreak milestone.<br>Currently: "+format(Math.pow((kEffectBase+kScale), player['k'].milestones.length))+"x"
             },
             done() {return player[this.layer].best.gte(10)},
+            unlocked() {return hasMilestone(this.layer, this.id-1)}
+        },
+        17: {
+            requirementDescription: "15 Killstreak",
+            effectDescription() {
+                return "Disarm the <b>Bomb Strapped To Your Chest</b>."
+            },
+            done() {return player[this.layer].best.gte(15)},
+            unlocked() {return hasMilestone(this.layer, this.id-1)}
+        },
+        18: {
+            requirementDescription: "25 Killstreak",
+            effectDescription() {
+                return "+0.05 to the <b>6 Killstreak</b> and <b>10 Killstreak</> effect base for every Killstreak milestone past this point.<br>Currently: "+format((player['k'].milestones.length-8)/20)
+            },
+            done() {return player[this.layer].best.gte(25)},
+            unlocked() {return hasMilestone(this.layer, this.id-1)}
+        },
+        19: {
+            requirementDescription: "30 Killstreak",
+            effectDescription() {
+                var kEffectBase = 1.25
+                var kScale = 0
+                return (kEffectBase+kScale)+"x click power for every Killstreak milestone past this point.<br>Currently: "+format(Math.pow((kEffectBase+kScale), player['k'].milestones.length-9))+"x"
+            },
+            done() {return player[this.layer].best.gte(30)},
+            unlocked() {return hasMilestone(this.layer, this.id-1)}
+        },
+        20: {
+            requirementDescription: "50 Killstreak",
+            effectDescription() {
+                return "^1.05 Rainbows."
+            },
+            done() {return player[this.layer].best.gte(50)},
+            unlocked() {return hasMilestone(this.layer, this.id-1)}
+        },
+        21: {
+            requirementDescription: "100 Killstreak",
+            effectDescription() {
+                return "1.5x Knives"
+            },
+            done() {return player[this.layer].best.gte(100)},
+            unlocked() {return hasMilestone(this.layer, this.id-1)}
+        },
+        22: {
+            requirementDescription: "200 Killstreak",
+            effectDescription() {
+                return "10x Amoebas<br>Symbols spawn more often."
+            },
+            done() {return player[this.layer].best.gte(200)},
+            unlocked() {return hasMilestone(this.layer, this.id-1)}
+        },
+        23: {
+            requirementDescription: "500 Killstreak",
+            effectDescription() {
+                return "+0.25 to <b>30 Killstreak</b> effect base."
+            },
+            done() {return player[this.layer].best.gte(500)},
+            unlocked() {return hasMilestone(this.layer, this.id-1)}
+        },
+        24: {
+            requirementDescription: "1000 Killstreak",
+            effectDescription() {
+                return "Unlock... ???"
+            },
+            done() {return player[this.layer].best.gte(1000)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
         },
     },

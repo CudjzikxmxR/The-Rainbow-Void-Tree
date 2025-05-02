@@ -80,6 +80,13 @@ function getPointGen() {
 	//Pac Layer Content
 	if (hasMilestone('k', 11))
 		gain = gain.times(2)
+	if (hasMilestone('k', 16))
+		var kEffectBase = 1.75
+		var kScale = 0
+		if (hasAchievement('k', 18)) {
+			kScale = (player['k'].milestones.length-8)/20
+		}
+		gain = gain.times(Math.pow((kEffectBase+kScale), player['k'].milestones.length))
 
 	//Achievements
 	gain = gain.times((new Decimal(2)).pow(player['a'].achievements.length))
@@ -138,6 +145,10 @@ function getClickPower() {
 		baseClickPower *= 3
 	if (hasUpgrade('k', 13))
 		baseClickPower *= 10
+	if (hasMilestone('k', 19))
+		var kEffectBase = 1.25
+		var kScale = 0
+		baseClickPower *= Math.pow((kEffectBase+kScale), player['k'].milestones.length-9)
 
 	return baseClickPower
 }
