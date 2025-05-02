@@ -38,6 +38,9 @@ addLayer("p", {
         if (hasMilestone('k', 11)) {
             mult = mult.times(1.25)
         }
+        if (hasUpgrade('k', 12)) {
+            mult = mult.times(3)
+        }
         if (this.getAxeStatus()) {
             mult = mult.times(0)
         }
@@ -608,7 +611,16 @@ addLayer("k", {
             cost: new Decimal(1),
             style: {'width':'160px'},
             onPurchase() {
-                player[this.layer].points.set(0)
+                player[this.layer].points = new Decimal(0)
+            },
+        },
+        12: {
+            title: "Blood Cells",
+            description: "3x Amoebas",
+            cost: new Decimal(4),
+            style: {'width':'160px'},
+            onPurchase() {
+                player[this.layer].points = new Decimal(0)
             },
         },
     },
