@@ -45,6 +45,9 @@ addLayer("p", {
         if (hasUpgrade('p', 24)) {
             mult = mult.times(upgradeEffect('p', 24))
         }
+        if (hasUpgrade('p', 25)) {
+            mult = mult.times(upgradeEffect('p', 13))
+        }
         if (hasMilestone('k', 15)) {
             mult = mult.times(Math.pow((1.5+Math.max(0, (player['k'].milestones.length-8))/20), player['k'].milestones.length))
           // mult = mult.times(Math.pow(Math.pow((1.5+Math.max(0, (player['k'].milestones.length-8))/20), player['k'].milestones.length)))
@@ -107,6 +110,9 @@ addLayer("p", {
                     scaleSpeed = 4
                     scaleExpo = 2.17
                     scaleCap = 5000
+                }
+                if (hasUpgrade(this.layer, 25)) {
+                    scaleCap *= 10
                 }
                 return Math.min(Math.pow(player[this.layer].resetTime*scaleSpeed+1,scaleExpo)/10, scaleCap)
             },
@@ -212,6 +218,16 @@ addLayer("p", {
                 return player.points.add(1).max(0).log(5)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
+            unlocked() {
+                return hasUpgrade(this.layer, 21) && hasUpgrade('k', 11)
+            },
+        },
+        25: {
+            title: "Army of Amoebas",
+            description: "<b>Procrastination</b>'s cap is 10x larger. <b>Procrastination</b> has an effect on Amoebas.",
+            cost: new Decimal(1e23),
+            style: {'width':'160px'},
+            effectDisplay() { return format(upgradeEffect(this.layer, 13))+"x" },
             unlocked() {
                 return hasUpgrade(this.layer, 21) && hasUpgrade('k', 11)
             },
