@@ -433,21 +433,7 @@ const cudGrade16 = {
 	},
 	onMouseOver() {
 		if (hasMilestone('k', 12)) {
-			if (this.color == "#006BF7") {
-				player.clickingMult+=getClickPower()
-				player.minimumClickMult+=1
-				if (hasUpgrade('g', 14)) {
-					player.cherryUpgrade14+=0.01
-				}
-				if (hasUpgrade('g', 15) && (Math.floor(Math.random()*10+1)==10 || hasUpgrade('g', 19))) {
-					this.color = "#770000"
-					addPoints("p", getResetGain("p"))
-					updateMilestones("p")
-					updateAchievements("p")
-				} else {
-					this.color = "#6225D1"
-				}
-			}
+			player.clickingMult+=getClickPower()
 		}
 	},
 }
