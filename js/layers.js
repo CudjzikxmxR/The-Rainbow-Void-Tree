@@ -413,7 +413,7 @@ addLayer("g", {
         },
         23: {
             title: "Surprise Guest Appearance",
-            description: "^1.1 Rainbows<br>This layer behaves as if you chose it first.<br>Add a picture of Axe Cat to this layer's menu.",
+            description: "^1.1 Rainbows<br>This layer behaves as if you chose it first.<br>Wait... is that... there's no way.",
             cost: new Decimal(1e36),
             style: {'width':'160px'},
             unlocked() {
@@ -451,6 +451,9 @@ addLayer("g", {
         "clickables",
         "blank",
         "resource-display",
+        ["display-image", function () {
+            return null
+        }],
         "upgrades"
     ],
 })
