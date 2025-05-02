@@ -822,7 +822,7 @@ addLayer("k", {
         18: {
             requirementDescription: "25 Killstreak",
             effectDescription() {
-                return "+0.05 to the <b>6 Killstreak</b> and <b>10 Killstreak</b> effect base for every Killstreak milestone past this point, including this.<br>Currently: "+format((player['k'].milestones.length-7)/20)
+                return "+0.1 to the <b>6 Killstreak</b> and <b>10 Killstreak</b> effect base for every Killstreak milestone past this point, including this.<br>Currently: "+format((player['k'].milestones.length-7)/10)
             },
             done() {return player[this.layer].best.gte(25)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
