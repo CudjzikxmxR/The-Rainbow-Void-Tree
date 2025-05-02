@@ -545,7 +545,7 @@ addLayer("k", {
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent() { // Prestige currency exponent
         if (this.getUnlockOrder()==0) {
-            return 1.5
+            return 2
         }
         return 5
     }, 
