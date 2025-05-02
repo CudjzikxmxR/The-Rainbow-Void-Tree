@@ -460,7 +460,7 @@ const catFood = {
 			this.time = 0
 		}
 	},
-    layer: 'f',
+    layer: 'amongus',
 }
 
 var ticking = false
