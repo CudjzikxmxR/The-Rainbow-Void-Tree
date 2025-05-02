@@ -151,7 +151,7 @@ addLayer("p", {
                 }
                 return "You have clicked " + player.minimumClickMult + " symbols."
             }],
-        //"blank",
+        "blank",
         "upgrades"
     ],
     /*
