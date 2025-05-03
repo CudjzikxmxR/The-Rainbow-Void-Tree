@@ -272,7 +272,7 @@ addLayer("p", {
         },
         29: {
             title: "Bomb Strapped To Your Chest",
-            description: "1000x Rainbows<br>After this upgrade is purchased, you have 10 seconds before a Kill reset is forced without awarding Knives.",
+            description: "1.00e7x Rainbows<br>After this upgrade is purchased, you have 10 seconds before a Kill reset is forced without awarding Knives.",
             cost: new Decimal(3e56),
             style: {'width':'160px'},
             unlocked() {

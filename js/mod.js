@@ -63,7 +63,7 @@ function getPointGen() {
 	if (hasUpgrade('p', 23))
 		gain = gain.times(upgradeEffect('p', 23))
 	if (hasUpgrade('p', 29))
-		gain = gain.times(1000)
+		gain = gain.times(1e7)
 
 	//Chris Layer Upgrades
 	if (hasUpgrade('g', 11))
