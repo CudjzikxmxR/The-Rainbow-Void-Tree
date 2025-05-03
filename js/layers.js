@@ -76,7 +76,7 @@ addLayer("p", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         exp = new Decimal(1)
         if (hasMilestone('k', 21)) {
-            exp = exp.times(1.1)
+            exp = exp.times(1.05)
         }
         return exp
     },
@@ -935,7 +935,7 @@ addLayer("k", {
         20: {
             requirementDescription: "100 Killstreak",
             effectDescription() {
-                return "^1.25 Rainbows."
+                return "^1.15 Rainbows."
             },
             done() {return player[this.layer].best.gte(50)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
@@ -943,7 +943,7 @@ addLayer("k", {
         21: {
             requirementDescription: "150 Killstreak",
             effectDescription() {
-                return "^1.1 Amoebas"
+                return "^1.05 Amoebas"
             },
             done() {return player[this.layer].best.gte(100)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
