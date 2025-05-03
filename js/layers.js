@@ -59,6 +59,9 @@ addLayer("p", {
             var achieveBase = 2
             mult = mult.times((new Decimal(achieveBase)).pow(player['a'].achievements.length))
         }
+        if (hasUpgrade('k', 16)) {
+            mult = mult.times(4)
+        }
         if (this.getAxeStatus()) {
             mult = mult.times(0)
         }
@@ -724,6 +727,13 @@ addLayer("k", {
         mult = new Decimal(1)
         if (hasUpgrade('p', 27)) {
             mult = mult.times(0.5)
+        }
+        return mult
+    },
+    directMult() {
+        mult = new Decimal(1)
+        if (hasUpgrade('k', 16)) {
+            mult = mult.times(2)
         }
         return mult
     },
