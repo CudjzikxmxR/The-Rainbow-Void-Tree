@@ -199,7 +199,7 @@ addLayer("p", {
             style: {'width':'160px'},
             effect() {
                 if (player[this.layer].clickingMult > 1e7) {
-                    return new 100000
+                    return new Decimal(100000)
                 }
                 return player[this.layer].points.add(1).pow(0.225*Math.min((1+Math.pow(player[this.layer].clickingMult,0.5)/100), 2)).min(new Decimal(1e5))
             },
