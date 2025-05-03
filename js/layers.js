@@ -282,8 +282,9 @@ addLayer("p", {
                 return hasUpgrade(this.layer, 26) && hasUpgrade('k', 11)
             },
             onPurchase() {
-                wait(10000)
-                doReset('k', true)
+                setTimeout(function () {
+                    doReset('k', true)
+                }, 10000);
             }
         },
     },
@@ -824,7 +825,7 @@ addLayer("k", {
         },
         16: {
             title: "This Is Overpowered [II]",
-            description: "5x Rainbows<br>4x Amoebas<br>Clicking is 3x as effective<br>2x Knives<br>Rainbows scale based on Rainbows again.",
+            description: "4x Amoebas<br>Clicking is 3x as effective<br>2x Knives<br>Rainbows scale based on Rainbows again.",
             cost: new Decimal(32),
             style: {'width':'160px'},
             onPurchase() {
