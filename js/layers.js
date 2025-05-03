@@ -287,7 +287,9 @@ addLayer("p", {
             },
             onPurchase() {
                 setTimeout(function () {
-                    doReset('k', true)
+                    if (!hasMilestone('k', 22)) {
+                        doReset('k', true)
+                    }
                 }, 10000);
             }
         },
