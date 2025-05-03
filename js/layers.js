@@ -280,7 +280,7 @@ addLayer("p", {
             },
             onPurchase() {
                 wait(10000)
-                doReset(this.layer, true)
+                doReset('k', true)
             }
         },
     },
