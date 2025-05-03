@@ -270,6 +270,19 @@ addLayer("p", {
                 return hasUpgrade(this.layer, 26) && hasUpgrade('k', 11)
             },
         },
+        29: {
+            title: "Bomb Strapped To Your Chest",
+            description: "1000x Rainbows<br>After this upgrade is purchased, you have 10 seconds before a Kill reset is forced without awarding Knives.",
+            cost: new Decimal(3e56),
+            style: {'width':'160px'},
+            unlocked() {
+                return hasUpgrade(this.layer, 26) && hasUpgrade('k', 11)
+            },
+            onPurchase() {
+                wait(10000)
+                doReset(this.layer, true)
+            }
+        },
     },
     tabFormat: [
         "main-display",
@@ -348,9 +361,9 @@ addLayer("a", {
         15: {
             name: "So Much Clicking",
             image: "resources/aaaRune.png",
-            done() {return player.minimumClickMult >= 10000},
+            done() {return player.minimumClickMult >= 5000},
             unlocked() {return true},
-            tooltip: "Click 10000 symbols.<br>Award: Symbols spawn more often.", 
+            tooltip: "Click 5000 symbols.<br>Award: Symbols spawn more often.", 
         },
         16: {
             name: "Carpal Tunnel",
