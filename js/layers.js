@@ -74,7 +74,10 @@ addLayer("p", {
         return false
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
-        return new Decimal(1)
+        exp = new Decimal(1)
+        if (hasMilestone('k', 21)) {
+            exp = exp.times(1.1)
+        }
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
@@ -736,6 +739,9 @@ addLayer("k", {
         if (hasUpgrade('k', 16)) {
             mult = mult.times(2)
         }
+        if (hasMilestone('k', 22)) {
+            mult = mult.times(1.5)
+        }
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -924,27 +930,27 @@ addLayer("k", {
             unlocked() {return hasMilestone(this.layer, this.id-1)}
         },
         20: {
-            requirementDescription: "50 Killstreak",
+            requirementDescription: "100 Killstreak",
             effectDescription() {
-                return "^1.5 Rainbows."
+                return "^1.25 Rainbows."
             },
             done() {return player[this.layer].best.gte(50)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
         },
         21: {
-            requirementDescription: "100 Killstreak",
+            requirementDescription: "150 Killstreak",
             effectDescription() {
-                return "2x Knives"
+                return "^1.1 Amoebas"
             },
             done() {return player[this.layer].best.gte(100)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
         },
         22: {
-            requirementDescription: "200 Killstreak",
+            requirementDescription: "250 Killstreak",
             effectDescription() {
-                return "10x Amoebas<br>Symbols spawn more often."
+                return "1.5x Knives<br>Symbols spawn more often.<br>The <b>Bomb Strapped To Your Chest</b> is disarmed."
             },
-            done() {return player[this.layer].best.gte(200)},
+            done() {return player[this.layer].best.gte(250)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
         },
         23: {
