@@ -78,6 +78,7 @@ addLayer("p", {
         if (hasMilestone('k', 21)) {
             exp = exp.times(1.1)
         }
+        return exp
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
