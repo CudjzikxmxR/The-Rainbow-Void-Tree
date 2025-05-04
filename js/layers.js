@@ -295,6 +295,15 @@ addLayer("p", {
                 }, 10000);
             }
         },
+        31: {
+            title: "Eternal Algebra Class",
+            description: "Unlock the Math sublayer. This feature is currently uncoded, and you have beaten the game!! Yay",
+            cost: new Decimal("e7e9"),
+            style: {'width':'160px'},
+            unlocked() {
+                return hasUpgrade(this.layer, 26) && hasMilestone('k', 24)
+            },
+        },
     },
     tabFormat: [
         "main-display",
@@ -995,11 +1004,11 @@ addLayer("k", {
             unlocked() {return hasMilestone(this.layer, this.id-1)}
         },
         24: {
-            requirementDescription: "1000 Killstreak",
+            requirementDescription: "10000 Killstreak",
             effectDescription() {
-                return "Unlock... ???  (not ingame yet sorry lol)"
+                return "Unlock... a new Amoeba upgrade."
             },
-            done() {return player[this.layer].best.gte(1000)},
+            done() {return player[this.layer].best.gte(10000)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
         },
     },
