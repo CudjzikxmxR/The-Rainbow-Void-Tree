@@ -33,7 +33,7 @@ These are the existing components, but you can create more in [components.js](/j
 
 - raw-html: Displays some basic HTML, can also be a function.
 
-- blank: Adds empty space. The default dimensions are 8px x 17px. The argument changes the dimensions. If it's a single value (e.g. "20px"), that determines the height. If You currently have a pair of arguments, the first is width and the second is height.
+- blank: Adds empty space. The default dimensions are 8px x 17px. The argument changes the dimensions. If it's a single value (e.g. "20px"), that determines the height. If You have a pair of arguments, the first is width and the second is height.
 
 - row: Display a list of components horizontally. The argument is an array of components in the tab layout format.
 

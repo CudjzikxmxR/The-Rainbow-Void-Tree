@@ -17,7 +17,7 @@ Additionally, if you want the main layout to not be a tree, you can edit the "tr
 ## Trees
 
 The tree component is defined as an array of arrays of names of layers or nodes to show in the tree. They work just like layers/
-nodes in the main tree (but branches between nodes will only work on the first node if You currently have duplicates.)
+nodes in the main tree (but branches between nodes will only work on the first node if You have duplicates.)
 
 Here is an example tree:
 ```js
