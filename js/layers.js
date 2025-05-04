@@ -735,7 +735,7 @@ addLayer("k", {
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent() { // Prestige currency exponent
-        if (this.getUnlockOrder()==0) {
+        if (this.getUnlockOrder()==0 || hasUpgrade(this.layer, 16)) {
             if (hasUpgrade('p', 28)) {
                 return 1.6
             }
@@ -744,7 +744,7 @@ addLayer("k", {
             }
             return 2
         }
-        return 5
+        return 4
     }, 
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
@@ -827,7 +827,7 @@ addLayer("k", {
         },
         14: {
             title: "Genocide",
-            description: "Symbols spawn more often.<br>Clicking symbols is 10x as effective.",
+            description: "Symbols spawn more often.<br>Clicking symbols is 10x as effective.<br>This layer behaves as if you chose it first.",
             cost: new Decimal(12),
             style: {'width':'160px'},
             onPurchase() {
