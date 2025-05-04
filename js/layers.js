@@ -577,13 +577,13 @@ addLayer("g", {
         15: {
             title: "Lets Go Gambling",
             description: "Clicking symbols has a 1 in 10 chance to instantly grant you Amoebas equal to what you'd earn from reset.",
-            cost: new Decimal(500),
+            cost: new Decimal(1000),
             style: {'width':'160px'},
         },
         16: {
             title: "Cherry Tree",
             description: "Rainbows scale based on your Cherries.",
-            cost: new Decimal(1000),
+            cost: new Decimal(5000),
             style: {'width':'160px'},
             effect() {
                 return player[this.layer].points.add(1).pow(0.4)
@@ -593,7 +593,7 @@ addLayer("g", {
         17: {
             title: "THE BROTHERS COCK",
             description: "You automatically purchase Amoeba upgrades.",
-            cost: new Decimal(5000),
+            cost: new Decimal(15000),
             style: {'width':'160px'},
             unlocked() {
                 return hasUpgrade(this.layer, 16)
@@ -654,11 +654,15 @@ addLayer("g", {
         11: {
             title: "Flip A Coin!",
             display() { // Everything else displayed in the buyable button after the title
-                return "Force a Gamble reset without earning Cherries for a 50% chance to earn +1x Cherry multiplier.<br>(Requires 1.00e24 Rainbows)<br>Currently: "+format(player.CoinflipMult)+"x"
+                var coinReq = 1e24
+                coinReq *= Math.log2(player.CoinflipMult)*10
+                return "Force a Gamble reset without earning Cherries for a 50% chance to earn Cherry multiplier.<br>(Requires {{format(coinReq)}} Rainbows)<br>Currently: "+format(player.CoinflipMult)+"x"
             },
             unlocked() { return player[this.layer].unlocked }, 
             canClick() {
-                return player.points.gte(new Decimal(1e24))
+                var coinReq = 1e24
+                coinReq *= Math.log2(player.CoinflipMult)*10
+                return player.points.gte(new Decimal(coinReq))
                 //return tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt)
             },
             onClick() { 
@@ -666,7 +670,11 @@ addLayer("g", {
                     doReset(this.layer, true)
                 }
                 if (Math.random() >= 0.5 || hasUpgrade('g', 21)) {
-                    player.CoinflipMult+=1
+                    if (player.CoinflipMult<64) {
+                        player.CoinflipMult*=2
+                    } else {
+                        player.CoinflipMult+=7
+                    }
                 }
             },
             style: {'height':'77px', 'width':'277px'},
