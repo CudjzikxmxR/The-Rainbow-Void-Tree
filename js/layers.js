@@ -542,7 +542,7 @@ addLayer("g", {
         11: {
             title: "Masochism",
             description: "0.2x Rainbows<br>7x Amoebas",
-            cost: new Decimal(1),
+            cost: new Decimal(7),
             style: {'width':'160px'},
         },
         12: {
