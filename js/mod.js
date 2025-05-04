@@ -116,7 +116,6 @@ let tipMessages = [
 	"Placeholder Tip",
 	"What kind of woke liberal created this game...",
 	"Hope you enjoy manual labor, this TPT mod won't be very kind with automation past earlygame.",
-	"There are currently " + this.length + " tips in the game!",
 	'Majority of these "tips" are far from actually helpful.',
 	"Whaaaaaat, nooooo! These tip popups weren't inspired by any kind of cookie related clicking game!...",
 	"Fortnite balls, all in yo face. Aye!",
@@ -142,6 +141,7 @@ let tipMessages = [
 			return "Hopefully you made the right choice."
 		}
 	},
+	"There are currently " + tipMessages.length + " tips in the game!",
 
 	//Update
 	"This game currently has 3 total main layers.",
@@ -165,7 +165,7 @@ var displayThings = [
 ]
 function prepareTipRand() {
 	tipTick+=1
-	if (tipTick%120==0) {
+	if (tipTick%100==0) {
 		tipTick = 0
 		randomTipIndex = Math.floor(Math.random() * tipMessages.length)
 	}
