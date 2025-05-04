@@ -224,7 +224,7 @@ ul {
 .rainbowThing {
 	z-index: 10000;
 	pointer-events:auto;
-	animation: colorChange 2s infinite;
+	animation: colorChange 4s infinite;
 }
 
 .sideLayers {
