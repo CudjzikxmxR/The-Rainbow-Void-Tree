@@ -7,7 +7,7 @@ addLayer("p", {
         unlocked: true,
 		points: new Decimal(0),
         feedingAxeCat: false,
-        clickingMult: 1,
+        clickingMult: new Decimal(1),
     }},
     color: "#006BF7",
     requires: new Decimal(5), // Can be a function that takes requirement increases into account
@@ -198,10 +198,10 @@ addLayer("p", {
             cost: new Decimal(10000000),
             style: {'width':'160px'},
             effect() {
-                if (player[this.layer].clickingMult > 1e7) {
+                if (player[this.layer].clickingMult.gte(1e7)) {
                     return new Decimal(100000)
                 }
-                return player[this.layer].points.add(1).pow(0.225*Math.min((1+Math.pow(player[this.layer].clickingMult,0.5)/100), 2)).min(new Decimal(1e5))
+                return player[this.layer].points.add(1).pow(new Decimal(0.225).min((new Decimal(1).add(player[this.layer].clickingMult.pow(0.5).times(0.01))))).min(new Decimal(1e5))
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
             unlocked() {
