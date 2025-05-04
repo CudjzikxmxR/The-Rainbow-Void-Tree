@@ -125,8 +125,8 @@ let tipMessages = [
 	"Upgrades in the 'This Is Overpowered' series are usually the last upgrade you purchase before you can access a new main layer.",
 	"Make sure to tie the poll.",
 	"<font color='#ff0000'>Beware the wrath of yes_man.</font>",
-	"Fun Fact: This game delayed Stability Test 1.7 by a week.",
-	"vwow ., wh[at] a <b >STUPID<///b ga.me, ppl4y St7b7l7t7 T7st_ insT-instea. :p",
+	"Fun Fact: This game's inital release delayed Stability Test 1.7 by a week.",
+	"vwow ., wh[at] a <b. >STUPID<///b ga.me, ppl4y St7b7l7t7 T7st_ insT-instea. :p",
 
 	function() {
 		if (hasUpgrade('p', 16)) {
@@ -165,7 +165,7 @@ var displayThings = [
 ]
 function prepareTipRand() {
 	tipTick+=1
-	if (tipTick%50==0) {
+	if (tipTick%120==0) {
 		tipTick = 0
 		randomTipIndex = Math.floor(Math.random() * tipMessages.length)
 	}
