@@ -656,7 +656,7 @@ addLayer("g", {
             display() { // Everything else displayed in the buyable button after the title
                 var coinReq = 1e24
                 coinReq *= Math.log2(player.CoinflipMult)*10
-                return "Force a Gamble reset without earning Cherries for a 50% chance to earn Cherry multiplier.<br>(Requires {{format(coinReq)}} Rainbows)<br>Currently: "+format(player.CoinflipMult)+"x"
+                return "Force a Gamble reset without earning Cherries for a 50% chance to earn Cherry multiplier.<br>(Requires " + format(coinReq) + " Rainbows)<br>Currently: "+format(player.CoinflipMult)+"x"
             },
             unlocked() { return player[this.layer].unlocked }, 
             canClick() {
