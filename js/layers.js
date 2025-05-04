@@ -1008,7 +1008,7 @@ addLayer("k", {
         ["display-text",
             function() {
                 if (player[this.layer].points.gte(this.softcap)) {
-                   return "Knife gain is softcapped after " + format(this.softcap) + "."
+                   return "Knife gain is softcapped after " + this.softcap + "."
                 }
                 return null
              }],
