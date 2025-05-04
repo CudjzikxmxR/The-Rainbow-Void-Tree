@@ -194,14 +194,11 @@ addLayer("p", {
         },
         21: {
             title: "This Is Overpowered",
-            description: "Clicking symbols is more effective based on your Amoebas and current click-related Rainbow multiplier.",
+            description: "Clicking symbols is more effective based on your current click-related Rainbow multiplier.",
             cost: new Decimal(10000000),
             style: {'width':'160px'},
             effect() {
-                if (player[this.layer].clickingMult.gte(1e7)) {
-                    return new Decimal(100000)
-                }
-                return player[this.layer].points.add(1).pow(new Decimal(0.225).min((new Decimal(1).add(player[this.layer].clickingMult.pow(0.5).times(0.01))))).min(new Decimal(1e5))
+                return player[this.layer].clickingMult.min(100000)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
             unlocked() {
