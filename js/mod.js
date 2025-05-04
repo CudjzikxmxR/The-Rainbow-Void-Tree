@@ -163,7 +163,7 @@ function prepareTipRand() {
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.points.gte(new Decimal("ee6"))
+	return player.points.gte(new Decimal("eee6"))
 }
 
 // Less important things beyond this point!
