@@ -744,7 +744,7 @@ addLayer("k", {
             }
             return 2
         }
-        return 4
+        return 5
     }, 
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
