@@ -615,7 +615,7 @@ addLayer("g", {
         19: {
             title: "Chris Luck",
             description: "Clicking symbols always grants Amoebas.",
-            cost: new Decimal(7.77e13),
+            cost: new Decimal(7.77e17),
             style: {'width':'160px'},
             unlocked() {
                 return hasUpgrade(this.layer, 16)
@@ -624,7 +624,7 @@ addLayer("g", {
         21: {
             title: "Deck of Cards",
             description: "52x Rainbows<br>Coinflips always grant multiplier and reset nothing.<br>The click-related Rainbow multiplier never decreases.",
-            cost: new Decimal(7.77e17),
+            cost: new Decimal(7.77e21),
             style: {'width':'160px'},
             unlocked() {
                 return hasUpgrade(this.layer, 19)
@@ -670,10 +670,10 @@ addLayer("g", {
                     doReset(this.layer, true)
                 }
                 if (Math.random() >= 0.5 || hasUpgrade('g', 21)) {
-                    if (player.CoinflipMult<128) {
+                    if (player.CoinflipMult<1024) {
                         player.CoinflipMult*=2
                     } else {
-                        player.CoinflipMult+=77
+                        player.CoinflipMult+=777
                     }
                 }
             },
