@@ -113,9 +113,39 @@ function getPointGen() {
 
 //"Tip" messages that appear at the top of the screen
 let tipMessages = [
-	"Tip1",
-	"You are really cool!",
-	"skibidi ohio rizz"
+	"Placeholder Tip",
+	"What kind of woke liberal created this game...",
+	"Hope you enjoy manual labor, this TPT mod won't be very kind with automation past earlygame.",
+	"There are currently " + this.length + " tips in the game!",
+	'Majority of these "tips" are far from actually helpful.',
+	"Whaaaaaat, nooooo! These tip popups weren't inspired by any kind of cookie related clicking game!...",
+	"Fortnite balls, all in yo face. Aye!",
+	"If you're close to completing an achievement, go for it before doing any kind of significant reset.",
+	"The first of the 'This Is Overpowered' upgrades used to work differently, but it crashed the game a lot so it was changed.",
+	"Upgrades in the 'This Is Overpowered' series are usually the last upgrade you purchase before you can access a new main layer.",
+	"Make sure to tie the poll.",
+	"<font color='#ff0000'>Beware the wrath of yes_man.</font>",
+	"Fun Fact: This game delayed Stability Test 1.7 by a week.",
+	"vwow ., wh[at] a <b >STUPID<///b ga.me, ppl4y St7b7l7t7 T7st_ insT-instea. :p",
+
+	function() {
+		if (hasUpgrade('p', 16)) {
+			return "Make sure to be clicking those symbols!"
+		}
+		return "🤓"
+	},
+
+	function() {
+		if (player.points.lte(1e20)) {
+			return "The Cherry layer takes less time than the Knife layer, but it involves RNG. Otherwise, the Knife layer is faster."
+		} else if (player.points.lte((new Decimal(10)).pow(500))) {
+			return "Hopefully you made the right choice."
+		}
+	},
+
+	//Update
+	"This game currently has 3 total main layers.",
+	"At this current moment of you playing this game, Stability Test 1.7 is not released.",
 ]
 let tipTick = 0
 let randomTipIndex = Math.floor(Math.random() * tipMessages.length)
@@ -135,7 +165,7 @@ var displayThings = [
 ]
 function prepareTipRand() {
 	tipTick+=1
-	if (tipTick%10==0) {
+	if (tipTick%50==0) {
 		tipTick = 0
 		randomTipIndex = Math.floor(Math.random() * tipMessages.length)
 	}
