@@ -509,7 +509,7 @@ var interval = setInterval(function() {
 	if ((hasUpgrade('p', 16) || hasUpgrade('g', 13)) && Math.random()>= symbolReq) {
 		makeShinies(cudGrade16, 1)
 	}
-	if ((hasUpgrade('p', 19) && player['p'].clickingMult.gte(player.minimumClickMult*3)) || (!(hasUpgrade('p', 19)) && player['p'].clickingMult > 1)) {
+	if ((hasUpgrade('p', 19) && player['p'].clickingMult.gt(player.minimumClickMult*3)) || (!(hasUpgrade('p', 19)) && player['p'].clickingMult.gt(1))) {
 		if (!hasUpgrade('g', 21)) {
 			player['p'].clickingMult.add(-getClickPower()/50)
 		}
