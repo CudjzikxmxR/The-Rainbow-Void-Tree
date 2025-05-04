@@ -96,7 +96,7 @@ function getPointGen() {
 	gain = gain.times((new Decimal(achieveBase)).pow(player['a'].achievements.length))
 
 	//Other
-	gain = gain.times(player.AxeCatMult)
+	//gain = gain.times(player.AxeCatMult)
 
 	//Exponents
 	if (hasUpgrade('g', 23))
@@ -108,7 +108,7 @@ function getPointGen() {
 	if (hasMilestone('k', 20))
 		gain = gain.pow(1.15)
 
-	return gain.max(1.5)
+	return gain
 }
 
 //"Tip" messages that appear at the top of the screen
