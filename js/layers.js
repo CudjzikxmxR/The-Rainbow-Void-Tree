@@ -194,13 +194,9 @@ addLayer("p", {
         },
         21: {
             title: "This Is Overpowered",
-            description: "Clicking symbols is more effective based on your current click-related Rainbow multiplier, capped at 100000x.",
+            description: "Clicking symbols is 100000x as effective.",
             cost: new Decimal(10000000),
             style: {'width':'160px'},
-            effect() {
-                return player[this.layer].clickingMult.min(100000)
-            },
-            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
             unlocked() {
                 return hasUpgrade(this.layer, 16)
             },
