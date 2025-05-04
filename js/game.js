@@ -519,10 +519,12 @@ var interval = setInterval(function() {
 	if ((hasMilestone('g', 17) && player['p'].feedingAxeCat) && Math.random()>= 0.96) {
 		makeShinies(catFood, 1)
 	}
-	if (player.AxeCatMult > 1) {
-		player.AxeCatMult -= 0.2*player.CoinflipMult/200
-	} else {
-		player.AxeCatMult = 1
+	if (player.AxeCatMult) {
+		if (player.AxeCatMult > 1) {
+			player.AxeCatMult -= player.CoinflipMult/1500
+		} else {
+			player.AxeCatMult = 1
+		}
 	}
 
 	prepareTipRand()
