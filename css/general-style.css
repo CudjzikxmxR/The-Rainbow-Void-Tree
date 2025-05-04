@@ -31,11 +31,11 @@ h1, h2, h3, b, input {
 }
 
 .bought {
-	background-color: colorChange;
+	background-color: #77bf5f;
 	cursor: default;
 }
 
 #points {
 	color: var(--points);
-	text-shadow: 0 0 10px var(--points);
+	text-shadow: 0 0 50px var(--points);
 }
