@@ -52,6 +52,7 @@ h1, h2, h3, b, input {
 }
 
 #points {
-	color: var(colorChange);
-	text-shadow: 0 0 10px var(colorChange);
+	color: var(--points);
+	animation: colorChange;
+	text-shadow: 0 0 10px var(--points);
 }
