@@ -453,7 +453,7 @@ addLayer("a", {
             if (hasUpgrade('p', 28)) {
                 achieveBase += 1
             }
-            return "You have " + player["a"].achievements.length + " achievements, which translates to a " + format(new Decimal(achieveBase).pow(player["a"].achievements.length)) + "x Rainbow multiplier."
+            return "You have <font color='#F7B100'>" + player["a"].achievements.length + "</font> achievements, which translates to a " + format(new Decimal(achieveBase).pow(player["a"].achievements.length)) + "x Rainbow multiplier."
         }],
         ["display-text", function () {
             if (!hasUpgrade('p', 28)) {
