@@ -514,7 +514,7 @@ var interval = setInterval(function() {
 			player['p'].clickingMult.add(-getClickPower()/50)
 		}
 	} else {
-		resetClickMult()
+		//resetClickMult()
 	}
 	if ((hasMilestone('g', 17) && player['p'].feedingAxeCat) && Math.random()>= 0.96) {
 		makeShinies(catFood, 1)
