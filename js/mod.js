@@ -122,7 +122,7 @@ function addedPlayerData() { return {
 // Display extra things at the top of the page
 var displayThings = [
 	function() {return " "},
-	function() {if (player.points.gte(69)) return "Tee hee!"},
+	function() {if (player.points.gte(69)) return "Tee hee!!!"},
 ]
 
 // Determines when the game "ends"
