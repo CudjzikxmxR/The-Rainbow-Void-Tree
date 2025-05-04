@@ -417,7 +417,6 @@ const cudGrade16 = {
 	onClick() {
 		if (this.color == "#006BF7") {
 			player['p'].clickingMult.add(getClickPower())
-			console.log(getClickPower())
 			player.minimumClickMult+=1
 			if (hasUpgrade('g', 14)) {
 				player.cherryUpgrade14+=0.01
@@ -515,7 +514,7 @@ var interval = setInterval(function() {
 			player['p'].clickingMult.add(-getClickPower()/50)
 		}
 	} else {
-		resetClickMult()
+		//resetClickMult()
 	}
 	if ((hasMilestone('g', 17) && player['p'].feedingAxeCat) && Math.random()>= 0.96) {
 		makeShinies(catFood, 1)
