@@ -202,14 +202,18 @@ ul {
 
 @keyframes colorChange {
     0% { color: red; }
-    12.5% { color: orange; }
-    25% { color: yellow; }
-	37.5% { color: lightgreen; }
-    50% { color: green; }
-    62.5% { color: blue; }
-	75% { color: blueviolet; }
-	87.5% { color: violet; }
-	100% { color: pink; }
+    8.33% { color: orange; }
+    16.67% { color: yellow; }
+	25% { color: lightgreen; }
+    33.33% { color: blue; }
+	41.67% { color: blueviolet; }
+	50% { color: violet; }
+	58.33% { color: blueviolet; }
+	66.67% { color: blue; }
+	75% { color: lightgreen; }
+	83.33% { color: yellow; }
+	91.67% { color: orange; }
+	100% { color: red; }
 }
 
 .overlayThing {
