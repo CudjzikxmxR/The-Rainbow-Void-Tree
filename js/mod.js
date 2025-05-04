@@ -125,7 +125,7 @@ let tipMessages = [
 	"Make sure to tie the poll.",
 	"<font color='#ff0000'>Beware the wrath of yes_man.</font>",
 	"Fun Fact: This game's inital release delayed Stability Test 1.7 by a week.",
-	"vwow ., wh[at] a <b. >STUPID<///b ga.me, ppl4y St7b7l7t7 T7st_ insT-instea. :p",
+	"vwow ., wh[at] a [b. >STUPID<///b> ga.me, ppl4y St7b7l7t7 T7st_ insT-instea. :p",
 
 	function() {
 		if (hasUpgrade('p', 16)) {
