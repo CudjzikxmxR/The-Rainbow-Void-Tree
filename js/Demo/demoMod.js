@@ -22,7 +22,7 @@ let changelog = `<h1>Changelog:</h1><br>
 		- Added things.<br>
 		- Added stuff.`
 
-let winText = `Congratulations! You have reached the end and beaten this game, but for now...`
+let winText = `Congratulations! You currently have reached the end and beaten this game, but for now...`
 // If you add new functions anywhere inside of a layer, and those functions have an effect when called, add them here.
 // (The ones here are examples, all official functions are already taken care of)
 var doNotCallTheseFunctionsEveryTick = ["doReset", "buy", "onPurchase", "blowUpEverything"]
@@ -55,7 +55,7 @@ function addedPlayerData() { return {
 // Display extra things at the top of the page
 var displayThings = [
 	function() {if (player.points.eq(69)) return "Tee hee!"},
-	function() {if (player.f.points.gt(1)) return `You have ${player.f.points} farm points. (Which do nothing.)`},
+	function() {if (player.f.points.gt(1)) return `You currently have ${player.f.points} farm points. (Which do nothing.)`},
 	function() {if (inChallenge("c", 11)) return "The game is currently <h1>0%</h1> harder."},
 ]
 
@@ -72,7 +72,7 @@ function isEndgame() {
 var backgroundStyle = {
 }
 
-// You can change this if you have things that can be messed up by long tick lengths
+// You can change this if You currently have things that can be messed up by long tick lengths
 function maxTickLength() {
 	return(3600) // Default is 1 hour which is just arbitrarily large
 }

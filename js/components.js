@@ -236,7 +236,7 @@ function loadVue() {
 	Vue.component('main-display', {
 		props: ['layer', 'data'],
 		template: `
-		<div><span v-if="player[layer].points.lt('1e1000')">You have </span><h2 v-bind:style="{'color': tmp[layer].color, 'text-shadow': '0px 0px 10px ' + tmp[layer].color}">{{data ? format(player[layer].points, data) : formatWhole(player[layer].points)}}</h2> {{tmp[layer].resource}}<span v-if="layers[layer].effectDescription">, <span v-html="run(layers[layer].effectDescription, layers[layer])"></span></span><br><br></div>
+		<div><span v-if="player[layer].points.lt('1e1000')">You currently have </span><h2 v-bind:style="{'color': tmp[layer].color, 'text-shadow': '0px 0px 10px ' + tmp[layer].color}">{{data ? format(player[layer].points, data) : formatWhole(player[layer].points)}}</h2> {{tmp[layer].resource}}<span v-if="layers[layer].effectDescription">, <span v-html="run(layers[layer].effectDescription, layers[layer])"></span></span><br><br></div>
 		`
 	})
 
@@ -249,7 +249,7 @@ function loadVue() {
 			<span v-if="tmp[layer].passiveGeneration"><br>You are gaining {{format(tmp[layer].resetGain.times(tmp[layer].passiveGeneration))}} {{tmp[layer].resource}} per second</span>
 			<br><br>
 			<span v-if="tmp[layer].showBest">Your best {{tmp[layer].resource}} is {{formatWhole(player[layer].best)}}<br></span>
-			<span v-if="tmp[layer].showTotal">You have currently made a total of {{formatWhole(player[layer].total)}} {{tmp[layer].resource}}<br></span>
+			<span v-if="tmp[layer].showTotal">You currently have made a total of {{formatWhole(player[layer].total)}} {{tmp[layer].resource}}<br></span>
 		</div>
 		`
 	})

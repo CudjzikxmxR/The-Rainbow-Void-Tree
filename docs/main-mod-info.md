@@ -12,7 +12,7 @@ Here's a breakdown of what's in it:
     - pointsName: This changes what is displayed instead of "points" for the main currency. (It does not affect it in the code.)
     - modFiles: An array of file addresses which will be loaded for this mod. Using smaller files makes it easier to find what you're looking for.
     
-    - discordName, discordLink: If you have a Discord server or other discussion place, you can add a link to it.
+    - discordName, discordLink: If You currently have a Discord server or other discussion place, you can add a link to it.
 
         "discordName" is the text on the link, and "discordLink" is the url of an invite. If you're using a Discord invite, please make sure it's set to never expire.
 
@@ -58,6 +58,6 @@ Less important things beyond this point!
 
 - backgroundStyle: A CSS object containing the styling for the background of the full game. Can be a function!
 
-- maxTickLength(): Returns the maximum tick length, in milliseconds. Only really useful if you have something that reduces over time, which long ticks mess up (usually a challenge).
+- maxTickLength(): Returns the maximum tick length, in milliseconds. Only really useful if You currently have something that reduces over time, which long ticks mess up (usually a challenge).
 
 - fixOldSave(): Can be used to modify a save file when loading into a new version of the game. Use this to undo inflation, never forcibly hard reset your players.

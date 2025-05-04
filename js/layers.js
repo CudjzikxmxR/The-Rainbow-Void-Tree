@@ -281,7 +281,7 @@ addLayer("p", {
         },
         29: {
             title: "Bomb Strapped To Your Chest",
-            description: "1.00e7x Rainbows<br>After this upgrade is purchased, you have 10 seconds before a Kill reset is forced without awarding Knives.",
+            description: "1.00e7x Rainbows<br>After this upgrade is purchased, You currently have 10 seconds before a Kill reset is forced without awarding Knives.",
             cost: new Decimal(3e56),
             style: {'width':'160px'},
             unlocked() {
@@ -306,7 +306,7 @@ addLayer("p", {
                 if (!hasUpgrade('p', 16) && !hasUpgrade('g', 13)) {
                     return ""
                 }
-                return "You have clicked " + player.minimumClickMult + " symbols."
+                return "You currently have clicked " + player.minimumClickMult + " symbols."
             }],
         "blank",
         "upgrades"
@@ -315,7 +315,7 @@ addLayer("p", {
     infoboxes: {
         clickCounter: {
             title: "Click Counter",
-            body() { return "You have clicked " + player.minimumClickMult + " symbols." },
+            body() { return "You currently have clicked " + player.minimumClickMult + " symbols." },
             unlocked() {
                 return hasUpgrade('p', 16)
             },
@@ -453,7 +453,7 @@ addLayer("a", {
             if (hasUpgrade('p', 28)) {
                 achieveBase += 1
             }
-            return "You have " + player["a"].achievements.length + " achievements, which translates to a " + format(new Decimal(achieveBase).pow(player["a"].achievements.length)) + "x Rainbow multiplier."
+            return "You currently have " + player["a"].achievements.length + " achievements, which translates to a " + format(new Decimal(achieveBase).pow(player["a"].achievements.length)) + "x Rainbow multiplier."
         }],
         ["display-text", function () {
             if (!hasUpgrade('p', 28)) {
