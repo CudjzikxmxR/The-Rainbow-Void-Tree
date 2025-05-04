@@ -31,7 +31,7 @@ h1, h2, h3, b, input {
 }
 
 .bought {
-	background-color: #77bf5f;
+	background-color: colorChange;
 	cursor: default;
 }
 
