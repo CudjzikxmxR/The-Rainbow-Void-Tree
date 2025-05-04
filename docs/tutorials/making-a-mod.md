@@ -1,6 +1,6 @@
 # Making a Mod
 
-This guide assumes You have already gone through the [getting started guide](getting-started.md). It will walk you through the basics of using TMT to create a mod. Let's get started!
+This guide assumes you have already gone through the [getting started guide](getting-started.md). It will walk you through the basics of using TMT to create a mod. Let's get started!
 
 ## Setting up mod info
 

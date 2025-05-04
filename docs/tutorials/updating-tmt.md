@@ -1,8 +1,8 @@
 # Updating The Modding Tree
 
-This tutorial assumes that You have used [the Getting Started Tutorial](getting-started.md), and are using Github Desktop and VSCode for your mod.
+This tutorial assumes that you have used [the Getting Started Tutorial](getting-started.md), and are using Github Desktop and VSCode for your mod.
 
-Here's what You have to do when there's a TMT update:
+Here's what you have to do when there's a TMT update:
 
 1. Look at the changelog. It will warn you if the update will break anything or require any changes. Decide if you want to try to update.
 
@@ -10,7 +10,7 @@ Here's what You have to do when there's a TMT update:
 
 3. Click where it says "current branch: master" at the top middle, and at the bottom of the thing that appears, click "choose a branch to merge into master".
 
-4. Select upstream/master. It will likely say there are conflicts, but You have tools to resolve them. Click "Merge upstream/master into master".
+4. Select upstream/master. It will likely say there are conflicts, but you have tools to resolve them. Click "Merge upstream/master into master".
 
 5. A conflict happens when the things you're trying to merge have both made changes in the same place. Click "open in Visual Studio Code" next to the first file. 
 

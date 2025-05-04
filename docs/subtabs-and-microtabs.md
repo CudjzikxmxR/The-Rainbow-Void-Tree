@@ -55,5 +55,5 @@ Normal subtabs and microtab subtabs both use the same features:
 - glowColor: **optional**, specifies the color that the subtab glows. If this subtab is causing the main layer to node glow
     (and it would't otherwise) the node also glows this color. Is NOT overridden by embedding a layer.
 
-- embedLayer: **SIGNIFICANT**, the id of another layer. If You have this, it will override "content", "style" and "shouldNotify",
+- embedLayer: **SIGNIFICANT**, the id of another layer. If you have this, it will override "content", "style" and "shouldNotify",
                 instead displaying the entire layer in the subtab.
