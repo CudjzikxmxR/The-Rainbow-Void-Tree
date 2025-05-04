@@ -123,17 +123,18 @@ let tipMessages = [
 	"The first of the 'This Is Overpowered' upgrades used to work differently, but it crashed the game a lot so it was changed.",
 	"Upgrades in the 'This Is Overpowered' series are usually the last upgrade you purchase before you can access a new main layer.",
 	"Make sure to tie the poll.",
-	"<h3><font color='#ff0000'>Beware the wrath of yes_man.</font></h3>",
+	"<h2><font color='#ff0000'>Beware the wrath of yes_man.</font></h2>",
 	"Fun Fact: This game's inital release delayed Stability Test 1.7 by a week.",
 	"vwow ., wh[at] a [b. >STUPID<///b> ga.me, ppl4y St7b7l7t7 T7st_ insT-instea. :p",
 	"🤓",
 	"Make sure to be clicking those symbols!",
 	"You'll have to revisit earlier layers a lot throughout the game.",
 	'in the stripped club. straight up "jorkin it". and by "it", haha, well. '+"let's justr say. My peanits",
+	"Meow",
 
 	//Update
 	"This game currently has 3 total main layers.",
-	"There are currently 20 tips in the game!",
+	"There are currently 21 tips in the game!",
 	"At this current moment of you playing this game, Stability Test 1.7 is not released.",
 ]
 let tipTick = 0
