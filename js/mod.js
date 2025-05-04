@@ -123,7 +123,7 @@ let tipMessages = [
 	"The first of the 'This Is Overpowered' upgrades used to work differently, but it crashed the game a lot so it was changed.",
 	"Upgrades in the 'This Is Overpowered' series are usually the last upgrade you purchase before you can access a new main layer.",
 	"Make sure to tie the poll.",
-	"<font color='#ff0000'>Beware the wrath of yes_man.</font>",
+	"<h3><font color='#ff0000'>Beware the wrath of yes_man.</font></h3>",
 	"Fun Fact: This game's inital release delayed Stability Test 1.7 by a week.",
 	"vwow ., wh[at] a [b. >STUPID<///b> ga.me, ppl4y St7b7l7t7 T7st_ insT-instea. :p",
 	"🤓",
@@ -150,7 +150,7 @@ function addedPlayerData() { return {
 // Display extra things at the top of the page
 var displayThings = [
 	function() {return "<div class='ghost'>aaa</div>"},
-	function() {return "<div class='overlayThing'>"+tipMessages[randomTipIndex]+"</div>"},
+	function() {return tipMessages[randomTipIndex]},
 ]
 function prepareTipRand() {
 	tipTick+=1
