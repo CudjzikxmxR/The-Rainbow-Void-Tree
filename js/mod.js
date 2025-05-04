@@ -96,7 +96,7 @@ function getPointGen() {
 	gain = gain.times((new Decimal(achieveBase)).pow(player['a'].achievements.length))
 
 	//Other
-	//gain = gain.times(player.AxeCatMult)
+	gain = gain.times(player.AxeCatMult)
 
 	//Exponents
 	if (hasUpgrade('g', 23))
