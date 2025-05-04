@@ -117,6 +117,7 @@ let tipMessages = [
 	"You are really cool!",
 	"skibidi ohio rizz"
 ]
+let tipTick = 0
 let randomTipIndex = Math.floor(Math.random() * tipMessages.length)
 
 // You can add non-layer related variables that should to into "player" and be saved here, along with default values
@@ -132,6 +133,13 @@ var displayThings = [
 	function() {return "<div class='ghost'>aaa</div>"},
 	function() {return tipMessages[randomTipIndex]},
 ]
+function prepareTipRand() {
+	tipTick+=1
+	if (tipTick%10==0) {
+		tipTick = 0
+		randomTipIndex = Math.floor(Math.random() * tipMessages.length)
+	}
+}
 
 // Determines when the game "ends"
 function isEndgame() {

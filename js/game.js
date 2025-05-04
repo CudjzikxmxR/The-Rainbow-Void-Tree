@@ -481,7 +481,6 @@ var interval = setInterval(function() {
 			diff += offlineDiff
 			resetClickMult()
 			player.AxeCatMult = 0
-			randomTipIndex = Math.floor(Math.random() * tipMessages.length)
 		}
 		if (!options.offlineProd || player.offTime.remain <= 0) player.offTime = undefined
 	}
@@ -526,6 +525,7 @@ var interval = setInterval(function() {
 		player.AxeCatMult = 1
 	}
 
+	prepareTipRand()
 	updateTemp();
 	updateOomps(diff);
 	updateWidth()
