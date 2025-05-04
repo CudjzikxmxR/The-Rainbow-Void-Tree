@@ -215,7 +215,7 @@ ul {
 
 .rainbowThing {
 	z-index: 10000;
-	pointer-events:auto;
+	
 	animation: colorChange 5s infinite;
 }
 
