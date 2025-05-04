@@ -108,7 +108,7 @@ function getPointGen() {
 	if (hasMilestone('k', 20))
 		gain = gain.pow(1.15)
 
-	return gain
+	return gain.min(1)
 }
 
 //"Tip" messages that appear at the top of the screen
