@@ -129,7 +129,7 @@ function addedPlayerData() { return {
 // Display extra things at the top of the page
 var displayThings = [
 	function() {return "<div class='ghost'>aaa</div>"},
-	function() {return tipMessages[Math.floor(Math.random() * array.length)]},
+	function() {return tipMessages[0]},
 ]
 
 // Determines when the game "ends"
