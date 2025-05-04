@@ -670,10 +670,10 @@ addLayer("g", {
                     doReset(this.layer, true)
                 }
                 if (Math.random() >= 0.5 || hasUpgrade('g', 21)) {
-                    if (player.CoinflipMult<64) {
+                    if (player.CoinflipMult<128) {
                         player.CoinflipMult*=2
                     } else {
-                        player.CoinflipMult+=7
+                        player.CoinflipMult+=77
                     }
                 }
             },
