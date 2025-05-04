@@ -705,6 +705,7 @@ addLayer("g", {
                 }
                 return null
              }],
+        "blank",
         "prestige-button",
         "blank",
         "clickables",
