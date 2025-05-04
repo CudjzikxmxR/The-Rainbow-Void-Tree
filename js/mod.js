@@ -141,10 +141,10 @@ let tipMessages = [
 			return "Hopefully you made the right choice."
 		}
 	},
-	"There are currently " + tipMessages.length + " tips in the game!",
 
 	//Update
 	"This game currently has 3 total main layers.",
+	"There are currently 20 tips in the game!",
 	"At this current moment of you playing this game, Stability Test 1.7 is not released.",
 ]
 let tipTick = 0
