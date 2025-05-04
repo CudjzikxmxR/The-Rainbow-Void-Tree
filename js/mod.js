@@ -141,7 +141,7 @@ function randNum(min, max) {
 
 // Get rune click power
 function getClickPower() {
-	baseClickPower = new Decimal(0.5)
+	let baseClickPower = new Decimal(0.5)
 	if (hasUpgrade('p', 18))
 		baseClickPower = baseClickPower.times(4)
 	if (hasUpgrade('p', 21))
