@@ -642,7 +642,7 @@ addLayer("g", {
         23: {
             title: "Surprise Guest Appearance",
             description: "^1.1 Rainbows<br>This layer behaves as if you chose it first.<br>A special little friend invades this reset layer...",
-            cost: new Decimal(1e36),
+            cost: new Decimal(1e32),
             style: {'width':'160px'},
             unlocked() {
                 return hasUpgrade(this.layer, 21)
