@@ -202,10 +202,14 @@ ul {
 
 @keyframes colorChange {
     0% { color: red; }
-    25% { color: blue; }
+    12.5% { color: orange; }
+    25% { color: yellow; }
+	37.5% { color: lightgreen; }
     50% { color: green; }
-    75% { color: yellow; }
-    100% { color: red; }
+    62.5% { color: blue; }
+	75% { color: blueviolet; }
+	87.5% { color: violet; }
+	100% { color: pink; }
 }
 
 .overlayThing {
@@ -214,9 +218,9 @@ ul {
 }
 
 .rainbowThing {
-	
+	z-index: 10000;
 	pointer-events:auto;
-	animation: colorChange 5s infinite;
+	animation: colorChange 2s infinite;
 }
 
 .sideLayers {
