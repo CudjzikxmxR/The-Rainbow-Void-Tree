@@ -515,7 +515,7 @@ addLayer("g", {
         return new Decimal(1)
     },
     softcap: new Decimal("e5e6"), 
-    softcapPower: new Decimal(0.3), 
+    softcapPower: new Decimal(0.1), 
     row: 1, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "g", description: "G: Gamble for cherries!!!", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
