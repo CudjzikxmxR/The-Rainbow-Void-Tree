@@ -104,7 +104,7 @@ var systemComponents = {
 
 	'overlay-head': {
 		template: `			
-		<div class="overlayThing" style="padding-bottom:7px; width: 90%; z-index: 1000; position: relative">
+		<div class="overlayThing" style="padding-bottom:7px; width: 20%; z-index: 1000; position: relative">
 		<span v-if="player.devSpeed && player.devSpeed != 1" class="overlayThing">
 			<br>Dev Speed: {{format(player.devSpeed)}}x<br>
 		</span>
@@ -114,9 +114,9 @@ var systemComponents = {
 		<br>
 		<span v-if="player.points.lt('1e1000')"  class="overlayThing">You have </span>
 		<h2  class="rainbowThing" id="points">{{format(player.points)}}</h2>
-		<span v-if="player.points.lt('1e1e6')"  class="overlayThing"> {{modInfo.pointsName}}</span>
+		<span v-if="player.points.lt('1e1e6')"  class="rainbowThing"> {{modInfo.pointsName}}</span>
 		<br>
-		<span v-if="canGenPoints()"  class="overlayThing">({{tmp.other.oompsMag != 0 ? format(tmp.other.oomps) + " OOM" + (tmp.other.oompsMag < 0 ? "^OOM" : tmp.other.oompsMag > 1 ? "^" + tmp.other.oompsMag : "") + "s" : formatSmall(getPointGen())}}/sec)</span>
+		<span v-if="canGenPoints()"  class="rainbowThing">({{tmp.other.oompsMag != 0 ? format(tmp.other.oomps) + " OOM" + (tmp.other.oompsMag < 0 ? "^OOM" : tmp.other.oompsMag > 1 ? "^" + tmp.other.oompsMag : "") + "s" : formatSmall(getPointGen())}}/sec)</span>
 		<div v-for="thing in tmp.displayThings" class="overlayThing"><span v-if="thing" v-html="thing"></span></div>
 	</div>
 	`
