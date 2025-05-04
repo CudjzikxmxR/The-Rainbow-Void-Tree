@@ -515,7 +515,7 @@ addLayer("g", {
         return new Decimal(1)
     },
     softcap: new Decimal("e5e6"), 
-    softcapPower: new Decimal(0.4), 
+    softcapPower: new Decimal(0.3), 
     row: 1, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "g", description: "G: Gamble for cherries!!!", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
@@ -745,7 +745,7 @@ addLayer("k", {
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     softcap: new Decimal(1e6), 
-    softcapPower: new Decimal(0.3), 
+    softcapPower: new Decimal(0.2), 
     exponent() { // Prestige currency exponent
         if (this.getUnlockOrder()==0 || hasUpgrade(this.layer, 16)) {
             if (hasUpgrade('p', 28)) {
