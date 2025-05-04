@@ -150,7 +150,7 @@ function addedPlayerData() { return {
 // Display extra things at the top of the page
 var displayThings = [
 	function() {return "<div class='ghost'>aaa</div>"},
-	function() {return "<h3>"+tipMessages[randomTipIndex]+"</h3>"},
+	function() {return "<div class='overlayThing'>"+tipMessages[randomTipIndex]+"</div>"},
 ]
 function prepareTipRand() {
 	tipTick+=1
