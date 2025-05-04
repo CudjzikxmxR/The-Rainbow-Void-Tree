@@ -701,7 +701,7 @@ addLayer("g", {
         ["display-text",
             function() {
                 if (player[this.layer].points.gte(this.softcap)) {
-                   return "Cherry gain is softcapped after e5.00e6."
+                   return "Cherry gain is softcapped after " + format(this.softcap) + "."
                 }
                 return null
              }],
@@ -936,7 +936,7 @@ addLayer("k", {
         17: {
             requirementDescription: "15 Killstreak",
             effectDescription() {
-                return "20x Amoebas.<br>Unlock the <b>Tophat Factory.<b>"
+                return "20x Amoebas.<br>Unlock the <b>Tophat Factory (not ingame yet sorry lol).<b>"
             },
             done() {return player[this.layer].best.gte(15)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
@@ -997,7 +997,7 @@ addLayer("k", {
         24: {
             requirementDescription: "1000 Killstreak",
             effectDescription() {
-                return "Unlock... ???"
+                return "Unlock... ???  (not ingame yet sorry lol)"
             },
             done() {return player[this.layer].best.gte(1000)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
@@ -1005,6 +1005,13 @@ addLayer("k", {
     },
     tabFormat: [
         "main-display",
+        ["display-text",
+            function() {
+                if (player[this.layer].points.gte(this.softcap)) {
+                   return "Knife gain is softcapped after " + format(this.softcap) + "."
+                }
+                return null
+             }],
         "prestige-button",
         "blank",
         "blank",
