@@ -412,7 +412,7 @@ addLayer("a", {
         21: {
             name: "Crack Addict",
             image: "resources/Cherries_Icon.png",
-            done() {return player['g'].points.gte(new Decimal(1e7))},
+            done() {return player['g'].points.gte(new Decimal(1e77))},
             unlocked() {return true},
             tooltip: "Achieve 1.00e77 Cherries.<br>Award: 7x Cherries", 
         },
@@ -602,7 +602,7 @@ addLayer("g", {
         18: {
             title: "I Love Crack",
             description: "7x Cherries<br>Rainbows scale based on your Cherries and RNG.",
-            cost: new Decimal(7e9),
+            cost: new Decimal(7e10),
             style: {'width':'160px'},
             effect() {
                 return player[this.layer].points.add(1).pow(0.25).times(Math.max(Math.random()*5, 0.5))
