@@ -416,7 +416,7 @@ const cudGrade16 = {
     },
 	onClick() {
 		if (this.color == "#006BF7") {
-			player['p'].clickingMult+=getClickPower()
+			player['p'].clickingMult.add(getClickPower())
 			player.minimumClickMult+=1
 			if (hasUpgrade('g', 14)) {
 				player.cherryUpgrade14+=0.01
@@ -509,9 +509,9 @@ var interval = setInterval(function() {
 	if ((hasUpgrade('p', 16) || hasUpgrade('g', 13)) && Math.random()>= symbolReq) {
 		makeShinies(cudGrade16, 1)
 	}
-	if ((hasUpgrade('p', 19) && player['p'].clickingMult>player.minimumClickMult*3) || (!(hasUpgrade('p', 19)) && player['p'].clickingMult > 1)) {
+	if ((hasUpgrade('p', 19) && player['p'].clickingMult.gt(player.minimumClickMult*3)) || (!(hasUpgrade('p', 19)) && player['p'].clickingMult.gt(1))) {
 		if (!hasUpgrade('g', 21)) {
-			player['p'].clickingMult -= getClickPower()/50
+			player['p'].clickingMult.add(-getClickPower()/50)
 		}
 	} else {
 		resetClickMult()

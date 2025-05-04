@@ -198,7 +198,7 @@ addLayer("p", {
             cost: new Decimal(10000000),
             style: {'width':'160px'},
             effect() {
-                return Math.min(player[this.layer].clickingMult,100000)
+                return player[this.layer].clickingMult.min(100000)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
             unlocked() {

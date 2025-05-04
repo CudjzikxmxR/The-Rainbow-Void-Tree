@@ -169,9 +169,9 @@ function getClickPower() {
 function resetClickMult() {
 	if (player['p'].clickingMult) {
 		if (hasUpgrade('p', 19)) {
-			player['p'].clickingMult = player.minimumClickMult * 3
+			player['p'].clickingMult = new Decimal(player.minimumClickMult * 3)
 		} else {
-			player['p'].clickingMult = 1
+			player['p'].clickingMult = new Decimal(1)
 		}
 	}
 }
