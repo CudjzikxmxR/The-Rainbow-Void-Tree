@@ -514,6 +514,8 @@ addLayer("g", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
+    softcap: (new Decimal(10)).pow(new Decimal(5000000)), 
+    softcapPower: new Decimal(0.5), 
     row: 1, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "g", description: "G: Gamble for cherries!!!", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
