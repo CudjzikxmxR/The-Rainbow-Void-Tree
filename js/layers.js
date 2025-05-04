@@ -602,7 +602,7 @@ addLayer("g", {
         18: {
             title: "I Love Crack",
             description: "7x Cherries<br>Rainbows scale based on your Cherries and RNG.",
-            cost: new Decimal(7e11),
+            cost: new Decimal(1.77e11),
             style: {'width':'160px'},
             effect() {
                 return player[this.layer].points.add(1).pow(0.25).times(Math.max(Math.random()*5, 0.5))
