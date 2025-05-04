@@ -179,6 +179,9 @@ addLayer("p", {
             unlocked() {
                 return hasUpgrade(this.layer, 16)
             },
+            onPurchase() {
+                resetClickMult()
+            },
         },
         19: {
             title: "Fallback",
@@ -366,6 +369,9 @@ addLayer("a", {
             done() {return player.minimumClickMult >= 1000},
             unlocked() {return true},
             tooltip: "Click 1000 symbols.<br>Award: Clicking symbols is 3x as effective.", 
+            onComplete() {
+                resetClickMult()
+            },
         },
         15: {
             name: "So Much Clicking",
@@ -554,6 +560,9 @@ addLayer("g", {
             description: "Clicking symbols is 2x as effective.<br>Symbols spawn more often and continue spawning without <b>Activity Check</b>.",
             cost: new Decimal(17),
             style: {'width':'160px'},
+            onPurchase() {
+                resetClickMult()
+            },
         },
         14: {
             title: "Click Your Way To Victory",
@@ -805,6 +814,7 @@ addLayer("k", {
             onPurchase() {
                 player[this.layer].points = new Decimal(0)
                 doReset(this.layer, true)
+                resetClickMult()
             },
         },
         14: {
@@ -839,6 +849,7 @@ addLayer("k", {
             onPurchase() {
                 player[this.layer].points = new Decimal(0)
                 doReset(this.layer, true)
+                resetClickMult()
             },
             effectDisplay() { return format(upgradeEffect('p', 14))+"x" },
         },
