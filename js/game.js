@@ -520,7 +520,7 @@ var interval = setInterval(function() {
 		makeShinies(catFood, 1)
 	}
 	if (player.AxeCatMult) {
-		if (player.AxeCatMult > 1) {
+		if (player.AxeCatMult > player.CoinflipMult/1500) {
 			player.AxeCatMult -= player.CoinflipMult/1500
 		} else {
 			player.AxeCatMult = 1
