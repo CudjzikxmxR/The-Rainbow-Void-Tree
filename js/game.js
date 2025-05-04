@@ -480,7 +480,7 @@ var interval = setInterval(function() {
 			player.offTime.remain -= offlineDiff
 			diff += offlineDiff
 			resetClickMult()
-			player.AxeCatMult = 0
+			player.AxeCatMult = 1
 		}
 		if (!options.offlineProd || player.offTime.remain <= 0) player.offTime = undefined
 	}
