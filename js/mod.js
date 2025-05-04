@@ -145,7 +145,7 @@ function getClickPower() {
 	if (hasUpgrade('p', 18))
 		baseClickPower = baseClickPower.times(4)
 	if (hasUpgrade('p', 21))
-		baseClickPower = baseClickPower.times(upgradeEffect('p', 21))
+		baseClickPower = baseClickPower.times(10000)
 	if (hasUpgrade('g', 13))
 		baseClickPower = baseClickPower.times(2)
 	if (hasAchievement('a', 14))
