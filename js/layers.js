@@ -583,7 +583,7 @@ addLayer("g", {
         16: {
             title: "Cherry Tree",
             description: "Rainbows scale based on your Cherries.",
-            cost: new Decimal(30000),
+            cost: new Decimal(1000000),
             style: {'width':'160px'},
             effect() {
                 return player[this.layer].points.add(1).pow(0.4)
@@ -593,7 +593,7 @@ addLayer("g", {
         17: {
             title: "THE BROTHERS COCK",
             description: "You automatically purchase Amoeba upgrades.",
-            cost: new Decimal(100000),
+            cost: new Decimal(5000000),
             style: {'width':'160px'},
             unlocked() {
                 return hasUpgrade(this.layer, 16)
