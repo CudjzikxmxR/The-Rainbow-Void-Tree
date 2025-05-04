@@ -698,6 +698,13 @@ addLayer("g", {
     },
     tabFormat: [
         "main-display",
+        ["display-text",
+            function() {
+                if (player[this.layer].points.gte(this.softcap)) {
+                   return "Cherry gain is softcapped after e5.00e6."
+                }
+                return null
+             }],
         "prestige-button",
         "blank",
         "clickables",
