@@ -827,7 +827,7 @@ addLayer("k", {
         },
         14: {
             title: "Genocide",
-            description: "Symbols spawn more often.<br>Clicking symbols is 10x as effective.<br>This layer behaves as if you chose it first.",
+            description: "Symbols spawn more often.<br>Clicking symbols is 10x as effective.",
             cost: new Decimal(12),
             style: {'width':'160px'},
             onPurchase() {
@@ -851,7 +851,7 @@ addLayer("k", {
         },
         16: {
             title: "This Is Overpowered [II]",
-            description: "4x Amoebas<br>Clicking is 3x as effective<br>2x Knives<br>Rainbows scale based on Rainbows again.",
+            description: "4x Amoebas<br>Clicking is 3x as effective<br>2x Knives<br>This layer behaves as if you chose it first.<br>Rainbows scale based on Rainbows again.",
             cost: new Decimal(32),
             style: {'width':'160px'},
             onPurchase() {
