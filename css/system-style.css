@@ -204,13 +204,13 @@ ul {
     0% { color: red; }
     8.33% { color: orange; }
     16.67% { color: yellow; }
-	25% { color: lightgreen; }
+	25% { color:#4BFF32; }
     33.33% { color: blue; }
 	41.67% { color: blueviolet; }
-	50% { color: violet; }
+	50% { color: #FF50C8; }
 	58.33% { color: blueviolet; }
 	66.67% { color: blue; }
-	75% { color: lightgreen; }
+	75% { color:#4BFF32; }
 	83.33% { color: yellow; }
 	91.67% { color: orange; }
 	100% { color: red; }
