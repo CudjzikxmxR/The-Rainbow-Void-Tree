@@ -141,27 +141,27 @@ function randNum(min, max) {
 
 // Get rune click power
 function getClickPower() {
-	var baseClickPower = 0.5
+	baseClickPower = new Decimal(0.5)
 	if (hasUpgrade('p', 18))
-		baseClickPower *= 4
+		baseClickPower = baseClickPower.times(4)
 	if (hasUpgrade('p', 21))
-		baseClickPower *= (upgradeEffect('p', 21))
+		baseClickPower = baseClickPower.times(upgradeEffect('p', 21))
 	if (hasUpgrade('g', 13))
-		baseClickPower *= 2
+		baseClickPower = baseClickPower.times(2)
 	if (hasAchievement('a', 14))
-		baseClickPower *= 3
+		baseClickPower = baseClickPower.times(3)
 	if (hasUpgrade('k', 13))
-		baseClickPower *= 6.66e6
+		baseClickPower = baseClickPower.times(6.66e6)
 	if (hasUpgrade('k', 14))
-		baseClickPower *= 10
+		baseClickPower = baseClickPower.times(10)
 	if (hasMilestone('k', 19))
 		if (hasMilestone('k', 23)) {
-			baseClickPower *= Math.pow(1.5, player['k'].milestones.length-9)
+			baseClickPower = baseClickPower.times(Math.pow(1.5, player['k'].milestones.length-9))
 		} else {
-			baseClickPower *= Math.pow(1.25, player['k'].milestones.length-9)
+			baseClickPower = baseClickPower.times(Math.pow(1.25, player['k'].milestones.length-9))
 		}
 	if (hasUpgrade('k', 16))
-		baseClickPower *= 3
+		baseClickPower = baseClickPower.times(3)
 		
 	return baseClickPower
 }
