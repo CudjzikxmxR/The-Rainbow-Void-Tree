@@ -111,6 +111,13 @@ function getPointGen() {
 	return gain
 }
 
+//"Tip" messages that appear at the top of the screen
+let tipMessages = [
+	"Tip1",
+	"You are really cool!",
+	"skibidi ohio rizz"
+]
+
 // You can add non-layer related variables that should to into "player" and be saved here, along with default values
 function addedPlayerData() { return {
 	minimumClickMult: 0,
@@ -122,7 +129,7 @@ function addedPlayerData() { return {
 // Display extra things at the top of the page
 var displayThings = [
 	function() {return "<div class='ghost'>aaa</div>"},
-	function() {if (player.points.gte(69)) return "Tee hee!!!"},
+	function() {return tipMessages[Math.floor(Math.random() * array.length)]},
 ]
 
 // Determines when the game "ends"
