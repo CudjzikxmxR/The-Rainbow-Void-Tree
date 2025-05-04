@@ -200,6 +200,14 @@ ul {
 	z-index: 30000
 }
 
+@keyframes colorChange {
+    0% { color: red; }
+    25% { color: blue; }
+    50% { color: green; }
+    75% { color: yellow; }
+    100% { color: red; }
+}
+
 .overlayThing {
 	z-index: 10000;
 	pointer-events:auto;
@@ -208,6 +216,7 @@ ul {
 .rainbowThing {
 	z-index: 10000;
 	pointer-events:auto;
+	animation: colorChange 5s infinite;
 }
 
 .sideLayers {
