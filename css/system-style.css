@@ -205,6 +205,11 @@ ul {
 	pointer-events:auto;
 }
 
+.rainbowThing {
+	z-index: 10000;
+	pointer-events:auto;
+}
+
 .sideLayers {
 	z-index: 10000;
 	pointer-events:auto;
