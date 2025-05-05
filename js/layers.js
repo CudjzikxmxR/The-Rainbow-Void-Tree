@@ -971,7 +971,7 @@ addLayer("k", {
                 var kEffectBase = 3
                 var kScale = 0
                 if (hasMilestone(this.layer, 23)) {
-                    kScale = 4
+                    kScale = 7
                 }
                 return (kEffectBase+kScale)+"x click power for every Killstreak milestone past this point.<br>Currently: "+format(Math.pow((kEffectBase+kScale), player['k'].milestones.length-9))+"x"
             },
@@ -1005,7 +1005,7 @@ addLayer("k", {
         23: {
             requirementDescription: "225 Killstreak",
             effectDescription() {
-                return "2x Knives<br>+4.0 to <b>30 Killstreak</b> effect base."
+                return "2x Knives<br>+7 to <b>30 Killstreak</b> effect base."
             },
             done() {return player[this.layer].best.gte(225)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
