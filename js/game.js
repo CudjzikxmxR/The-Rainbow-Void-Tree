@@ -506,7 +506,6 @@ var interval = setInterval(function() {
 	if (hasMilestone('k', 22)) {
 		symbolReq /= 1.1
 	}
-	symbolReq = 0
 	if ((hasUpgrade('p', 16) || hasUpgrade('g', 13)) && Math.random()>= symbolReq) {
 		makeShinies(cudGrade16, 1)
 	}
