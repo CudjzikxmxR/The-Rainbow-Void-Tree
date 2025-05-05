@@ -986,7 +986,7 @@ addLayer("k", {
         21: {
             requirementDescription: "120 Killstreak",
             effectDescription() {
-                return "^1.1 Amoebas<br>Click power scales based on your Rainbows.<br>Currently: "+format(player.points.add(1).max(0).log(4))+"x"
+                return "^1.1 Amoebas<br>Click power scales based on your Rainbows.<br>Currently: "+format(player.points.add(1).max(0).log(2))+"x"
             },
             done() {return player[this.layer].best.gte(120)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
