@@ -980,7 +980,7 @@ addLayer("k", {
             effectDescription() {
                 return "^1.15 Rainbows."
             },
-            done() {return player[this.layer].best.gte(50)},
+            done() {return player[this.layer].best.gte(100)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
         },
         21: {
@@ -988,7 +988,7 @@ addLayer("k", {
             effectDescription() {
                 return "^1.01 Amoebas"
             },
-            done() {return player[this.layer].best.gte(100)},
+            done() {return player[this.layer].best.gte(150)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
         },
         22: {
