@@ -925,7 +925,7 @@ addLayer("k", {
             effectDescription() {
                 var kEffectBase = 1.75
                 var kScale = 0
-                if (hasAchievement(this.layer, 18)) {
+                if (hasMilestone(this.layer, 18)) {
                     kScale = (player['k'].milestones.length-7)/10
                 }
                 return (kEffectBase+kScale)+"x Amoebas for every Killstreak milestone.<br>Currently: "+format(Math.pow((kEffectBase+kScale), player['k'].milestones.length))+"x"
@@ -938,7 +938,7 @@ addLayer("k", {
             effectDescription() {
                 var kEffectBase = 2.5
                 var kScale = 0
-                if (hasAchievement(this.layer, 18)) {
+                if (hasMilestone(this.layer, 18)) {
                     kScale = (player['k'].milestones.length-7)/10
                 }
                 return (kEffectBase+kScale)+"x Rainbows for every Killstreak milestone.<br>Currently: "+format(Math.pow((kEffectBase+kScale), player['k'].milestones.length))+"x"
@@ -965,10 +965,10 @@ addLayer("k", {
         19: {
             requirementDescription: "30 Killstreak",
             effectDescription() {
-                var kEffectBase = 1.25
+                var kEffectBase = 2
                 var kScale = 0
                 if (hasMilestone(this.layer, 23)) {
-                    kScale = 0.25
+                    kScale = 0.5
                 }
                 return (kEffectBase+kScale)+"x click power for every Killstreak milestone past this point.<br>Currently: "+format(Math.pow((kEffectBase+kScale), player['k'].milestones.length-9))+"x"
             },
@@ -1002,7 +1002,7 @@ addLayer("k", {
         23: {
             requirementDescription: "500 Killstreak",
             effectDescription() {
-                return "+0.25 to <b>30 Killstreak</b> effect base."
+                return "+0.5 to <b>30 Killstreak</b> effect base."
             },
             done() {return player[this.layer].best.gte(500)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
