@@ -273,7 +273,7 @@ addLayer("p", {
         28: {
             title: "Achieve Big",
             description: "+1 to achievement Rainbow multiplier base.<br>Achievements now give 2x Amoeba multiplier.<br>Knife requirement scaling is weaker.",
-            cost: new Decimal(8.25e52),
+            cost: new Decimal(3.25e52),
             style: {'width':'160px'},
             unlocked() {
                 return hasUpgrade(this.layer, 26) && hasUpgrade('k', 11)
