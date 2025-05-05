@@ -88,6 +88,8 @@ function getPointGen() {
 		gain = gain.times(Math.pow((2.5+Math.max(0, (player['k'].milestones.length-7))*15/100), player['k'].milestones.length))
 	if (hasUpgrade('k', 16))
 		gain = gain.times(upgradeEffect('k', 16))
+	if (hasUpgrade('k', 23))
+		gain = gain.times(1e9)
 
 	//Achievements
 	var achieveBase = 2

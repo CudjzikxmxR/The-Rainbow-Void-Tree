@@ -62,6 +62,9 @@ addLayer("p", {
         if (hasUpgrade('k', 16)) {
             mult = mult.times(4)
         }
+        if (hasMilestone('k', 23)) {
+            mult = mult.times(1000)
+        }
         if (this.getAxeStatus()) {
             mult = mult.times(0)
         }
@@ -1005,7 +1008,7 @@ addLayer("k", {
         23: {
             requirementDescription: "225 Killstreak",
             effectDescription() {
-                return "2x Knives<br>+7 to <b>30 Killstreak</b> effect base."
+                return "1.00e9x Rainbows<br>1000x Amoebas<br>2x Knives<br>+7 to <b>30 Killstreak</b> effect base."
             },
             done() {return player[this.layer].best.gte(225)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
