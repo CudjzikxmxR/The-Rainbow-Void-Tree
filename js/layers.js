@@ -709,7 +709,7 @@ addLayer("g", {
         "main-display",
         ["display-text",
             function() {
-                if (player[this.layer].points.gte(this.softcap)) {
+                if (player[this.layer].points.gte(new Decimal("e5e6"))) {
                    return "Cherry gain is softcapped after e5.00e6."
                 }
                 return null
@@ -1016,7 +1016,7 @@ addLayer("k", {
         "main-display",
         ["display-text",
             function() {
-                if (player[this.layer].points.gte(this.softcap)) {
+                if (player[this.layer].points.gte(1e6)) {
                    return "Knife gain is softcapped after 1.00e6."
                 }
                 return null
