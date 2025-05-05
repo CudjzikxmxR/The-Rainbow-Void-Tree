@@ -945,7 +945,7 @@ addLayer("k", {
         17: {
             requirementDescription: "15 Killstreak",
             effectDescription() {
-                return "20x Amoebas.<br>Unlock the <b>Tophat Factory (not ingame yet sorry lol).<b>"
+                return "20x Amoebas.<br>Unlock the <b>Tophat Factory.<b> (not ingame yet sorry lol)"
             },
             done() {return player[this.layer].best.gte(15)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
