@@ -799,7 +799,7 @@ addLayer("k", {
         return false
     },
     canReset() {
-        return hasUpgrade('p', 21) && return tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt)
+        return hasUpgrade('p', 21) && tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt)
         //return hasUpgrade('p', 21) && player.points.gte(tmp[this.layer].requires())
         //return tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt)
     },
