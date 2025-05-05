@@ -637,7 +637,7 @@ addLayer("g", {
         },
         21: {
             title: "Deck of Cards",
-            description: "52x Rainbows<br>Coinflips always grant multiplier and reset nothing.<br>The click-related Rainbow multiplier never decreases.",
+            description: "52x Rainbows<br>Coinflips always grant multiplier and reset nothing.<br>Click-related multipliers can no longer drain..",
             cost: new Decimal(7.77e21),
             style: {'width':'160px'},
             unlocked() {
@@ -1016,7 +1016,7 @@ addLayer("k", {
         24: {
             requirementDescription: "500 Killstreak",
             effectDescription() {
-                return "Click power scales based on your current click-related Rainbow multiplier.<br>Currently: "+format(upgradeEffect('p', 16).pow(0.25))+"x"
+                return "Click-related multipliers can no longer drain.<br>Click power scales based on your current click-related Rainbow multiplier.<br>Currently: "+format(upgradeEffect('p', 16).pow(0.25))+"x"
             },
             done() {return player[this.layer].best.gte(500)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}

@@ -510,7 +510,7 @@ var interval = setInterval(function() {
 		makeShinies(cudGrade16, 1)
 	}
 	if ((hasUpgrade('p', 19) && player['p'].clickingMult.gt(player.minimumClickMult*3)) || (!(hasUpgrade('p', 19)) && player['p'].clickingMult.gt(1))) {
-		if (!hasUpgrade('g', 21)) {
+		if (!hasUpgrade('g', 21) && !hasMilestone('k', 24)) {
 			var minClickM = new Decimal(1)
 			if (hasUpgrade('p', 19)) {
 				minClickM = new Decimal(player.minimumClickMult * 3)
