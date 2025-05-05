@@ -992,11 +992,11 @@ addLayer("k", {
             unlocked() {return hasMilestone(this.layer, this.id-1)}
         },
         22: {
-            requirementDescription: "250 Killstreak",
+            requirementDescription: "150 Killstreak",
             effectDescription() {
                 return "1.5x Knives<br>Symbols spawn more often."
             },
-            done() {return player[this.layer].best.gte(250)},
+            done() {return player[this.layer].best.gte(150)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
         },
         23: {
