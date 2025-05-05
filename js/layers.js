@@ -880,7 +880,10 @@ addLayer("k", {
                 doReset(this.layer, true)
                 resetClickMult()
             },
-            effectDisplay() { return format(upgradeEffect('p', 14))+"x" },
+            effect() {
+                return player.points.add(1).pow(0.05)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
     },
 
