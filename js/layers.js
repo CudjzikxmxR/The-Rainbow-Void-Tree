@@ -76,7 +76,7 @@ addLayer("p", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         exp = new Decimal(1)
         if (hasMilestone('k', 21)) {
-            exp = exp.times(1.05)
+            exp = exp.times(1.1)
         }
         return exp
     },
