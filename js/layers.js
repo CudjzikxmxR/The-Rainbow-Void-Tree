@@ -1000,11 +1000,11 @@ addLayer("k", {
             unlocked() {return hasMilestone(this.layer, this.id-1)}
         },
         23: {
-            requirementDescription: "500 Killstreak",
+            requirementDescription: "225 Killstreak",
             effectDescription() {
                 return "+4.0 to <b>30 Killstreak</b> effect base."
             },
-            done() {return player[this.layer].best.gte(500)},
+            done() {return player[this.layer].best.gte(225)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
         },
         24: {
