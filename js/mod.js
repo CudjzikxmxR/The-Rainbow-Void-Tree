@@ -115,7 +115,7 @@ function getPointGen() {
 let tipMessages = [
 	"Placeholder Tip",
 	"What kind of woke liberal created this game...",
-	"Hope you enjoy manual labor, this TPT mod won't be very kind with automation past earlygame.",
+	"Hope you enjoy manual labor, this game won't be very kind with automation past earlygame.",
 	'Majority of these "tips" are far from actually helpful.',
 	"Whaaaaaat, nooooo! These tip popups weren't inspired by any kind of cookie related clicking game!...",
 	"Fortnite balls, all in yo face. Aye!",
@@ -133,7 +133,8 @@ let tipMessages = [
 	"Meow",
 	"The <div class='rainbowThing'>gayest</div> upgrade tree to ever exist.",
 	"Layers with direct relation to the Knife layer will tend to be static requirements. Layers with direct relation to the Cherry layer will tend to involve RNG in some way.",
-	"resources/genericParticle.png",
+	"What the- What the fuck is Televex doing here??",
+	"Balala > Balatro",
 
 	//Update
 	"This game currently has 3 total main layers.",
