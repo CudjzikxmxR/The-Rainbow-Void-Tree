@@ -245,7 +245,7 @@ addLayer("p", {
         25: {
             title: "Army of Amoebas",
             description: "<b>Procrastination</b>'s cap is 10x larger. <b>Procrastination</b> has an effect on Amoebas.",
-            cost: new Decimal(1e23),
+            cost: new Decimal(5e22),
             style: {'width':'160px'},
             effectDisplay() { return format(upgradeEffect(this.layer, 13))+"x" },
             unlocked() {
