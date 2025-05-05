@@ -37,7 +37,7 @@ addLayer("p", {
             mult = mult.times(2)
         }
         if (hasMilestone('k', 11)) {
-            mult = mult.times(1.25)
+            mult = mult.times(1.5)
         }
         if (hasUpgrade('k', 12)) {
             mult = mult.times(3)
@@ -888,7 +888,7 @@ addLayer("k", {
         11: {
             requirementDescription: "1 Killstreak",
             effectDescription() {
-                return "2x Rainbows<br>1.25x Amoebas"
+                return "3x Rainbows<br>1.5x Amoebas"
             },
             done() {return player[this.layer].best.gte(1)},
         },

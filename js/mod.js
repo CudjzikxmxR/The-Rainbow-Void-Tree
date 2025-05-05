@@ -81,7 +81,7 @@ function getPointGen() {
 
 	//Pac Layer Content
 	if (hasMilestone('k', 11))
-		gain = gain.times(2)
+		gain = gain.times(3)
 	if (hasUpgrade('k', 13))
 		gain = gain.times(0.01)
 	if (hasMilestone('k', 16))
