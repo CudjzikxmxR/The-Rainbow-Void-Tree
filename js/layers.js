@@ -965,10 +965,10 @@ addLayer("k", {
         19: {
             requirementDescription: "30 Killstreak",
             effectDescription() {
-                var kEffectBase = 2
+                var kEffectBase = 3
                 var kScale = 0
                 if (hasMilestone(this.layer, 23)) {
-                    kScale = 0.5
+                    kScale = 4
                 }
                 return (kEffectBase+kScale)+"x click power for every Killstreak milestone past this point.<br>Currently: "+format(Math.pow((kEffectBase+kScale), player['k'].milestones.length-9))+"x"
             },
@@ -1002,7 +1002,7 @@ addLayer("k", {
         23: {
             requirementDescription: "500 Killstreak",
             effectDescription() {
-                return "+0.5 to <b>30 Killstreak</b> effect base."
+                return "+4.0 to <b>30 Killstreak</b> effect base."
             },
             done() {return player[this.layer].best.gte(500)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}

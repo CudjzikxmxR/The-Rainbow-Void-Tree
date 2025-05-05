@@ -199,9 +199,9 @@ function getClickPower() {
 		baseClickPower = baseClickPower.times(10)
 	if (hasMilestone('k', 19))
 		if (hasMilestone('k', 23)) {
-			baseClickPower = baseClickPower.times(Math.pow(2.5, player['k'].milestones.length-9))
+			baseClickPower = baseClickPower.times(Math.pow(7, player['k'].milestones.length-9))
 		} else {
-			baseClickPower = baseClickPower.times(Math.pow(2, player['k'].milestones.length-9))
+			baseClickPower = baseClickPower.times(Math.pow(3, player['k'].milestones.length-9))
 		}
 	if (hasMilestone('k', 21))
 		baseClickPower = baseClickPower.times(player.points.add(1).max(0).log(1.25))
