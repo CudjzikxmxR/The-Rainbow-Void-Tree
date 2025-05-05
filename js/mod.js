@@ -131,10 +131,13 @@ let tipMessages = [
 	"You'll have to revisit earlier layers a lot throughout the game.",
 	'in the stripped club. straight up "jorkin it". and by "it", haha, well. '+"let's justr say. My peanits",
 	"Meow",
+	"The <div class='rainbowThing'>gayest</div> upgrade tree to ever exist.",
+	"Layers with direct relation to the Knife layer will tend to be static requirements. Layers with direct relation to the Cherry layer will tend to involve RNG in some way.",
+	"resources/genericParticle.png",
 
 	//Update
 	"This game currently has 3 total main layers.",
-	"There are currently 21 tips in the game!",
+	"There are currently 23 tips in the game!",
 	"At this current moment of you playing this game, Stability Test 1.7 is not released.",
 ]
 let tipTick = 0
