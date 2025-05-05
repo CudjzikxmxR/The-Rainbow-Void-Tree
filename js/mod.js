@@ -137,7 +137,7 @@ let tipMessages = [
 
 	//Update
 	"This game currently has 3 total main layers.",
-	"There are currently 23 tips in the game!",
+	"There are currently 24 tips in the game!",
 	"At this current moment of you playing this game, Stability Test 1.7 is not released.",
 ]
 let tipTick = 0
