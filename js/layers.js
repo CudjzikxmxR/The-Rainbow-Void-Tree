@@ -872,7 +872,7 @@ addLayer("k", {
         },
         16: {
             title: "This Is Overpowered [II]",
-            description: "4x Amoebas<br>Clicking is 3x as effective<br>2x Knives<br>This layer behaves as if you chose it first.<br>Rainbows scale based on Rainbows again.",
+            description: "4x Amoebas<br>Clicking is 3x as effective<br>2x Knives<br>This layer behaves as if you chose it first.<br>Rainbows scale based on Rainbows again, but weaker.",
             cost: new Decimal(32),
             style: {'width':'160px'},
             onPurchase() {
