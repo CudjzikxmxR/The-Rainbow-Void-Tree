@@ -301,7 +301,7 @@ addLayer("p", {
             cost: new Decimal("ee9"),
             style: {'width':'160px'},
             unlocked() {
-                return hasUpgrade(this.layer, 26) && hasMilestone('k', 24)
+                return hasUpgrade(this.layer, 26) && hasMilestone('k', 25)
             },
         },
     },
@@ -782,6 +782,9 @@ addLayer("k", {
         if (hasMilestone('k', 22)) {
             mult = mult.times(1.5)
         }
+        if (hasMilestone('k', 23)) {
+            mult = mult.times(2)
+        }
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -1002,12 +1005,17 @@ addLayer("k", {
         23: {
             requirementDescription: "225 Killstreak",
             effectDescription() {
-                return "+4.0 to <b>30 Killstreak</b> effect base."
+                return "2x Knives<br>+4.0 to <b>30 Killstreak</b> effect base."
             },
             done() {return player[this.layer].best.gte(225)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
         },
         24: {
+            requirementDescription: "500 Killstreak",
+            done() {return player[this.layer].best.gte(500)},
+            unlocked() {return hasMilestone(this.layer, this.id-1)}
+        },
+        25: {
             requirementDescription: "10000 Killstreak",
             effectDescription() {
                 return "Unlock... a new Amoeba upgrade."
