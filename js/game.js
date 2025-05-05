@@ -511,7 +511,11 @@ var interval = setInterval(function() {
 	}
 	if ((hasUpgrade('p', 19) && player['p'].clickingMult.gt(player.minimumClickMult*3)) || (!(hasUpgrade('p', 19)) && player['p'].clickingMult.gt(1))) {
 		if (!hasUpgrade('g', 21)) {
-			player['p'].clickingMult = player['p'].clickingMult.add(-getClickPower()/50)
+			var minClickM = new Decimal(1)
+			if (hasUpgrade('p', 19)) {
+				minClickM = new Decimal(player.minimumClickMult * 3)
+			}
+			player['p'].clickingMult = player['p'].clickingMult.add(-getClickPower()/50).max(minClickM)
 		}
 	} else {
 		resetClickMult()
@@ -520,7 +524,7 @@ var interval = setInterval(function() {
 		makeShinies(catFood, 1)
 	}
 	if (player.AxeCatMult) {
-		if (player.AxeCatMult > Math.max(player.CoinflipMult/2000, 1)) {
+		if (player.AxeCatMult > Math.max(player.CoinflipMult/1500, 1)) {
 			player.AxeCatMult -= player.CoinflipMult/1500
 		} else {
 			player.AxeCatMult = 1
