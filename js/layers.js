@@ -899,7 +899,7 @@ addLayer("k", {
         12: {
             requirementDescription: "3 Killstreak",
             effectDescription() {
-                return 'You automatically "click" symbols when passing over them. This effect persists while this layer is disabled.'
+                return 'You automatically "click" symbols when passing over them.<br>This effect persists while this layer is disabled.'
             },
             done() {return player[this.layer].best.gte(3)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
