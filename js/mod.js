@@ -131,7 +131,7 @@ let tipMessages = [
 	"You'll have to revisit earlier layers a lot throughout the game.",
 	'in the stripped club. straight up "jorkin it". and by "it", haha, well. '+"let's justr say. My peanits",
 	"Meow",
-	"The <rainbowThing>gayest</rainbowThing> upgrade tree to ever exist.",
+	"The gayest upgrade tree to ever exist.",
 	"Layers with direct relation to the Knife layer will tend to be static requirements. Layers with direct relation to the Cherry layer will tend to involve RNG in some way.",
 	"What the- What the fuck is Televex doing here??",
 	"Balala > Balatro",
