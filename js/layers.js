@@ -984,11 +984,11 @@ addLayer("k", {
             unlocked() {return hasMilestone(this.layer, this.id-1)}
         },
         21: {
-            requirementDescription: "125 Killstreak",
+            requirementDescription: "120 Killstreak",
             effectDescription() {
-                return "^1.05 Amoebas"
+                return "^1.1 Amoebas"
             },
-            done() {return player[this.layer].best.gte(125)},
+            done() {return player[this.layer].best.gte(120)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
         },
         22: {
