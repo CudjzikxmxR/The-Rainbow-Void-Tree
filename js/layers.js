@@ -289,7 +289,7 @@ addLayer("p", {
             },
             onPurchase() {
                 setTimeout(function () {
-                    if (!hasMilestone('k', 22) && !hasUpgrade('g', 23)) {
+                    if (!hasMilestone('k', 20) && !hasUpgrade('g', 23)) {
                         doReset('k', true)
                     }
                 }, 10000);
@@ -899,7 +899,7 @@ addLayer("k", {
         12: {
             requirementDescription: "3 Killstreak",
             effectDescription() {
-                return 'You automatically "click" symbols when passing over them.'
+                return 'You automatically "click" symbols when passing over them. This effect persists while this layer is disabled.'
             },
             done() {return player[this.layer].best.gte(3)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
@@ -978,7 +978,7 @@ addLayer("k", {
         20: {
             requirementDescription: "100 Killstreak",
             effectDescription() {
-                return "^1.15 Rainbows."
+                return "^1.15 Rainbows.<br>The <b>Bomb Strapped To Your Chest</b> is disarmed."
             },
             done() {return player[this.layer].best.gte(100)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
@@ -994,7 +994,7 @@ addLayer("k", {
         22: {
             requirementDescription: "250 Killstreak",
             effectDescription() {
-                return "1.5x Knives<br>Symbols spawn more often.<br>The <b>Bomb Strapped To Your Chest</b> is disarmed."
+                return "1.5x Knives<br>Symbols spawn more often."
             },
             done() {return player[this.layer].best.gte(250)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
