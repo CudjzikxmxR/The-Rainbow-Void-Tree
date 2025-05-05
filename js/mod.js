@@ -41,7 +41,7 @@ function getPointGen() {
 	if(!canGenPoints())
 		return new Decimal(0)
 
-	let gain = new Decimal(1000)
+	let gain = new Decimal(1e7)
 	//Cud Layer Upgrades
 	if (hasUpgrade('p', 11))
 		gain = gain.times(2)
