@@ -49,7 +49,7 @@ addLayer("p", {
             mult = mult.times(upgradeEffect('p', 13))
         }
         if (hasMilestone('k', 15)) {
-            mult = mult.times(Math.pow((1.75+Math.max(0, (player['k'].milestones.length-7))/10), player['k'].milestones.length))
+            mult = mult.times(Math.pow((1.75+Math.max(0, (player['k'].milestones.length-7))*15/100), player['k'].milestones.length))
           // mult = mult.times(Math.pow(Math.pow((1.5+Math.max(0, (player['k'].milestones.length-7))/20), player['k'].milestones.length)))
         }
         if (hasMilestone('k', 17)) {
@@ -926,7 +926,7 @@ addLayer("k", {
                 var kEffectBase = 1.75
                 var kScale = 0
                 if (hasMilestone(this.layer, 18)) {
-                    kScale = (player['k'].milestones.length-7)/10
+                    kScale = (player['k'].milestones.length-7)*15/100
                 }
                 return (kEffectBase+kScale)+"x Amoebas for every Killstreak milestone.<br>Currently: "+format(Math.pow((kEffectBase+kScale), player['k'].milestones.length))+"x"
             },
@@ -939,7 +939,7 @@ addLayer("k", {
                 var kEffectBase = 2.5
                 var kScale = 0
                 if (hasMilestone(this.layer, 18)) {
-                    kScale = (player['k'].milestones.length-7)/10
+                    kScale = (player['k'].milestones.length-7)*15/100
                 }
                 return (kEffectBase+kScale)+"x Rainbows for every Killstreak milestone.<br>Currently: "+format(Math.pow((kEffectBase+kScale), player['k'].milestones.length))+"x"
             },
@@ -957,7 +957,7 @@ addLayer("k", {
         18: {
             requirementDescription: "20 Killstreak",
             effectDescription() {
-                return "+0.1 to the <b>6 Killstreak</b> and <b>10 Killstreak</b> effect base for every Killstreak milestone past this point, including this.<br>Currently: "+format((player['k'].milestones.length-7)/10)
+                return "+0.15 to the <b>6 Killstreak</b> and <b>10 Killstreak</b> effect base for every Killstreak milestone past this point, including this.<br>Currently: "+format((player['k'].milestones.length-7)/10)
             },
             done() {return player[this.layer].best.gte(20)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}

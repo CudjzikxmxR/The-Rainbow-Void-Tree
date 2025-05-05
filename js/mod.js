@@ -85,7 +85,7 @@ function getPointGen() {
 	if (hasUpgrade('k', 13))
 		gain = gain.times(0.01)
 	if (hasMilestone('k', 16))
-		gain = gain.times(Math.pow((2.5+Math.max(0, (player['k'].milestones.length-7))/10), player['k'].milestones.length))
+		gain = gain.times(Math.pow((2.5+Math.max(0, (player['k'].milestones.length-7))*15/100), player['k'].milestones.length))
 	if (hasUpgrade('k', 16))
 		gain = gain.times(upgradeEffect('k', 16))
 
