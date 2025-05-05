@@ -210,7 +210,7 @@ function getClickPower() {
 	if (hasUpgrade('k', 16))
 		baseClickPower = baseClickPower.times(3)
 	if (hasMilestone('k', 24))
-		baseClickPower = baseClickPower.times(upgradeEffect('p', 16).pow(0.3))
+		baseClickPower = baseClickPower.times(upgradeEffect('p', 16).pow(0.325))
 	
 	return baseClickPower
 }
