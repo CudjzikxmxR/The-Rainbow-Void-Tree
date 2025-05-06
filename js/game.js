@@ -21,12 +21,18 @@ function getResetGain(layer, useType = null) {
 		if ((!tmp[layer].canBuyMax) || tmp[layer].baseAmount.lt(tmp[layer].requires)) return decimalOne
 		let gain = tmp[layer].baseAmount.div(tmp[layer].requires).div(tmp[layer].gainMult).max(1).log(tmp[layer].base).times(tmp[layer].gainExp).pow(Decimal.pow(tmp[layer].exponent, -1))
 		gain = gain.times(tmp[layer].directMult)
+		if (gain.gte(tmp[layer].softcap)&&player[layer].points.lt(tmp[layer].softcap)) {
+			gain = tmp[layer].softcap
+		}
 		return gain.floor().sub(player[layer].points).add(1).max(1);
 	} else if (type=="normal"){
 		if (tmp[layer].baseAmount.lt(tmp[layer].requires)) return decimalZero
 		let gain = tmp[layer].baseAmount.div(tmp[layer].requires).pow(tmp[layer].exponent).times(tmp[layer].gainMult).pow(tmp[layer].gainExp)
 		if (gain.gte(tmp[layer].softcap)) gain = gain.pow(tmp[layer].softcapPower).times(tmp[layer].softcap.pow(decimalOne.sub(tmp[layer].softcapPower)))
 		gain = gain.times(tmp[layer].directMult)
+		if (gain.gte(tmp[layer].softcap)&&player[layer].points.lt(tmp[layer].softcap)) {
+			gain = tmp[layer].softcap
+		}
 		return gain.floor().max(0);
 	} else if (type=="custom"){
 		return layers[layer].getResetGain()
@@ -189,9 +195,6 @@ function doReset(layer, force=false) {
 		if (layers[layer].onPrestige){
 			updateMilestones(layer)
 			run(layers[layer].onPrestige, layers[layer], gain)
-		}
-		if (gain.gte(tmp[layer].softcap)&&player[layer].points.lt(tmp[layer].softcap)) {
-			gain = tmp[layer].softcap
 		}
 		
 		addPoints(layer, gain)
