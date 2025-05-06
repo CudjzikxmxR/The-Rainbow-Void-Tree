@@ -299,8 +299,8 @@ addLayer("p", {
             }
         },
         31: {
-            title: "Badaxe Madaxe",
-            description: "Clicking symbols is 5.55e55x as effective.<br>You feed Axe Cat 100x as much.<br>Axe cat now slightly exponentates your Cherry gain.",
+            title: "Madaxe Badaxe",
+            description: "Clicking symbols is 5.55e55x as effective.<br>You feed Axe Cat 10x as much.<br>Axe cat now slightly exponentates your Cherry gain.",
             cost: new Decimal("1e39000"),
             style: {'width':'160px'},
             unlocked() {
@@ -537,7 +537,11 @@ addLayer("g", {
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
-        return new Decimal(1)
+        exp = new Decimal(1)
+        if (hasUpgrade('p', 31)) {
+            exp = exp.times(1+Math.log2(player.AxeCatMult)/100)
+        }
+        return exp
     },
     softcap: new Decimal("e7777"), 
     softcapPower: new Decimal(0.1), 

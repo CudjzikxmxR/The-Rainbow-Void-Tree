@@ -109,6 +109,8 @@ function getPointGen() {
 		gain = gain.pow(1.1)
 	if (hasMilestone('k', 20))
 		gain = gain.pow(1.15)
+	if (hasUpgrade('[', 31))
+		gain = gain.pow(1+Math.log2(player.AxeCatMult)/100)
 
 	return gain
 }
