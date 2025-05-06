@@ -153,6 +153,8 @@ function addedPlayerData() { return {
 	cherryUpgrade14: 1,
 	CoinflipMult: 1,
 	AxeCatMult: 1,
+	SymbolQOL: 0,
+	LayerTwoChoice: null,
 }}
 
 // Display extra things at the top of the page

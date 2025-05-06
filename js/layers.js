@@ -511,6 +511,9 @@ addLayer("g", {
     }, 
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1+Math.random()*5)
+        if (this.getUnlockOrder()!=0) {
+            return mult
+        }
         if (hasUpgrade('g', 14)) {
             mult = mult.times(upgradeEffect('g', 14))
         }
@@ -551,6 +554,18 @@ addLayer("g", {
         }
         return player[this.layer].unlockOrder
     },
+    onReset() {
+        if (this.getUnlockOrder()!=0) {
+            this.unlockOrder = 0
+            player.LayerTwoChoice = "g"
+        }
+    },
+    deactivated() {
+        if (player.LayerTwoChoice && player.LayerTwoChoice!=this.layer) {
+            return true
+        }
+        return false
+    },
 
     upgrades: {
         11: {
@@ -590,9 +605,16 @@ addLayer("g", {
         },
         15: {
             title: "Lets Go Gambling",
-            description: "Clicking symbols has a 1 in 10 chance to instantly grant you Amoebas equal to what you'd earn from reset.",
+            description: "Clicking symbols has a 1 in 10 chance to instantly grant you Amoebas equal to what you'd earn from reset.<br>This effect persists while this layer is disabled.",
             cost: new Decimal(5000),
             style: {'width':'160px'},
+            onPurchase() {
+                if (player.SymbolQOL==0) {
+                    player.SymbolQOL=1
+                } else {
+                    player.SymbolQOL=3
+                }
+            }
         },
         16: {
             title: "Cherry Tree",
@@ -655,11 +677,14 @@ addLayer("g", {
         },
         23: {
             title: "Surprise Guest Appearance",
-            description: "^1.1 Rainbows<br>This layer behaves as if you chose it first.<br>A special little friend invades this reset layer...",
+            description: "^1.1 Rainbows<br>If this layer was picked second, re-enable the Knife layer.<br>A special little friend invades this reset layer...",
             cost: new Decimal(1e32),
             style: {'width':'160px'},
             unlocked() {
                 return hasUpgrade(this.layer, 21)
+            },
+            onPurchase() {
+                player.LayerTwoChoice = null
             },
         },
     },
@@ -820,6 +845,18 @@ addLayer("k", {
         }
         return player[this.layer].unlockOrder
     },
+    onReset() {
+        if (this.getUnlockOrder()!=0) {
+            this.unlockOrder = 0
+            player.LayerTwoChoice = "p"
+        }
+    },
+    deactivated() {
+        if (player.LayerTwoChoice && player.LayerTwoChoice!=this.layer) {
+            return true
+        }
+        return false
+    },
 
     upgrades: {
         11: {
@@ -908,7 +945,14 @@ addLayer("k", {
                 return 'You automatically "click" symbols when passing over them.<br>This effect persists while this layer is disabled.'
             },
             done() {return player[this.layer].best.gte(3)},
-            unlocked() {return hasMilestone(this.layer, this.id-1)}
+            unlocked() {return hasMilestone(this.layer, this.id-1)},
+            onComplete() {
+                if (player.SymbolQOL==0) {
+                    player.SymbolQOL=2
+                } else {
+                    player.SymbolQOL=3
+                }
+            }
         },
         13: {
             requirementDescription: "4 Killstreak",

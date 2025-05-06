@@ -421,7 +421,7 @@ const cudGrade16 = {
 			if (hasUpgrade('g', 14)) {
 				player.cherryUpgrade14+=0.01
 			}
-			if (hasUpgrade('g', 15) && (Math.floor(Math.random()*10+1)==10 || hasUpgrade('g', 19))) {
+			if ((hasUpgrade('g', 15) || player.SymbolQOL==1 || player.SymbolQOL==3) && (Math.floor(Math.random()*10+1)==10 || hasUpgrade('g', 19))) {
 				this.color = "#770000"
 				addPoints("p", getResetGain("p"))
 				updateMilestones("p")
@@ -432,7 +432,7 @@ const cudGrade16 = {
 		}
 	},
 	onMouseLeave() {
-		if (hasMilestone('k', 12)) {
+		if (hasMilestone('k', 12) || player.SymbolQOL==2 || player.SymbolQOL==3) {
 			this.onClick()
 		}
 	},
