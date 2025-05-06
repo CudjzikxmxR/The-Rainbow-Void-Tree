@@ -299,7 +299,7 @@ addLayer("p", {
             }
         },
         31: {
-            title: "I Have To Axe You A Question",
+            title: "Badaxe Madaxe",
             description: "Clicking symbols is 5.55e55x as effective.<br>You feed Axe Cat 100x as much.<br>Axe cat now slightly exponentates your Cherry gain.",
             cost: new Decimal("1e39000"),
             style: {'width':'160px'},
@@ -733,7 +733,13 @@ addLayer("g", {
         17: {
             requirementDescription: "Axe Cat is hungry...",
             effectDescription() {
-                return "You can feed Axe Cat, completely disabling Amoeba gain and causing Catfood to spawn around the screen, giving temporary Rainbow and Cherry multiplier for each Catfood clicked. The multiplier cap scales based on your clicking power. Both the multiplier cap and the multiplier per click scales based on your coinflip counter.<br><b>Currently "+format(player.AxeCatMult)+"x. (Capped at "+format((1+Math.log(getClickPower())/Math.log(3.07)*10*player.CoinflipMult/200))+"x)</b>"
+                desc = "You can feed Axe Cat, completely disabling Amoeba gain and causing Catfood to spawn around the screen, boostng your Rainbow and Cherry gain for each Catfood clicked. The cap scales based on your clicking power. Both the cap and the boost per click scales based on your coinflip-related Cherry multiplier.<br><b>Currently "+format(player.AxeCatMult)+"x"
+                if (hasUpgrade('p', 31)) {
+                    desc+=" and ^"+format(Math.log2(player.AxeCatMult)/100)+". (Capped at "+format((1+Math.log(getClickPower())/Math.log(3.07)*10*player.CoinflipMult/200))+"x and "+format(Math.log2(p(1+Math.log(getClickPower())/Math.log(3.07)*10*player.CoinflipMult/200))/100)+"</b>"
+                } else {
+                    desc+=". (Capped at "+format((1+Math.log(getClickPower())/Math.log(3.07)*10*player.CoinflipMult/200))+"x)</b>"
+                }
+                return desc
             },
             //effectDescription: "You can feed Axe Cat, disabling Amoeba gain entirely and causing Catfood to spawn around the screen, but giving temporary Rainbow and Cherry multiplier for each Catfood clicked.<br>Currently "+format(player.AxeCatMult)+"x. (Capped at "+format(Math.log10(getClickPower()))+"x)",
             toggles: [
