@@ -745,7 +745,7 @@ addLayer("g", {
              }],
         ["display-text",
         function() {
-            if (this.deactivated()) {
+            if(player.LayerTwoChoice!=null && player.LayerTwoChoice!=this.layer) {
                 return "This layer is currently deactivated!"
             }
             return null
@@ -1096,7 +1096,7 @@ addLayer("k", {
              }],
         ["display-text",
         function() {
-            if (this.deactivated()) {
+            if(player.LayerTwoChoice!=null && player.LayerTwoChoice!=this.layer) {
                 return "This layer is currently deactivated!"
             }
             return null
