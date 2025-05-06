@@ -745,7 +745,7 @@ addLayer("g", {
              }],
         ["display-text",
         function() {
-            if (tmp[this.layer].deactivated()) {
+            if (player[this.layer].deactivated()) {
                 return "This layer is currently deactivated!"
             }
             return null
@@ -1096,7 +1096,7 @@ addLayer("k", {
              }],
         ["display-text",
         function() {
-            if (tmp[this.layer].deactivated()) {
+            if (player[this.layer].deactivated()) {
                 return "This layer is currently deactivated!"
             }
             return null
