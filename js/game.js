@@ -461,14 +461,10 @@ const catFood = {
         return (Math.random()) * 3 
     },
 	onClick() {
-		catMult = 1
-		if (hasUpgrade('p', 31)) {
-			catMult = 100
-		}
-		if ((!this.pressed && player.AxeCatMult <= (1+Math.log(getClickPower())/Math.log(3.07))*10*player.CoinflipMult/200)*catMult) {
+		if ((!this.pressed && player.AxeCatMult <= (1+Math.log(getClickPower())/Math.log(3.07))*10*player.CoinflipMult/200)) {
 			this.pressed = true
 			
-			player.AxeCatMult=Math.min(player.AxeCatMult+20*catMult*player.CoinflipMult/200, (1+Math.log(getClickPower())/Math.log(3.07)*10*player.CoinflipMult/200)*catMult)
+			player.AxeCatMult=Math.min(player.AxeCatMult+20*player.CoinflipMult/200, (1+Math.log(getClickPower())/Math.log(3.07)*10*player.CoinflipMult/200))
 			this.time = 0
 		}
 	},
