@@ -539,7 +539,7 @@ addLayer("g", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         exp = new Decimal(1)
         if (hasUpgrade('p', 31)) {
-            exp = exp.times(1+Math.log2(player.AxeCatMult)/100)
+            exp = exp.times(1+Math.log(player.AxeCatMult)/Math.log(5)/100)
         }
         return exp
     },
@@ -738,7 +738,7 @@ addLayer("g", {
             requirementDescription: "Axe Cat is hungry...",
             effectDescription() {
                 if (hasUpgrade('p', 31)) {
-                    return "You can feed Axe Cat, completely disabling Amoeba gain and causing Catfood to spawn around the screen, boosting your Rainbow and Cherry gain for each Catfood clicked. The cap scales based on your clicking power. Both the cap and the boost per click scales based on your coinflip-related Cherry multiplier.<br><b>Currently "+format(player.AxeCatMult)+"x and ^"+format(1+Math.log2(player.AxeCatMult)/100)+". (Capped at "+format((1+Math.log(getClickPower())/Math.log(3.07)*10*player.CoinflipMult/200))+"x and ^"+format(1+Math.log2((1+Math.log(getClickPower())/Math.log(3.07)*10*player.CoinflipMult/200))/100)+")</b>"
+                    return "You can feed Axe Cat, completely disabling Amoeba gain and causing Catfood to spawn around the screen, boosting your Rainbow and Cherry gain for each Catfood clicked. The cap scales based on your clicking power. Both the cap and the boost per click scales based on your coinflip-related Cherry multiplier.<br><b>Currently "+format(player.AxeCatMult)+"x and ^"+format(1+Math.log(player.AxeCatMult)/Math.log(5)/100)+". (Capped at "+format((1+Math.log(getClickPower())/Math.log(3.07)*10*player.CoinflipMult/200))+"x and ^"+format(1+Math.log((1+Math.log(getClickPower())/Math.log(3.07)*10*player.CoinflipMult/200))/Math.log(5)/100)+")</b>"
                 } else {
                     return "You can feed Axe Cat, completely disabling Amoeba gain and causing Catfood to spawn around the screen, boosting your Rainbow and Cherry gain for each Catfood clicked. The cap scales based on your clicking power. Both the cap and the boost per click scales based on your coinflip-related Cherry multiplier.<br><b>Currently "+format(player.AxeCatMult)+"x. (Capped at "+format((1+Math.log(getClickPower())/Math.log(3.07)*10*player.CoinflipMult/200))+"x)</b>"
                 }

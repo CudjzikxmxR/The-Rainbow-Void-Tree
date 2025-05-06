@@ -540,6 +540,8 @@ var interval = setInterval(function() {
 			player.AxeCatMult = 1
 		}
 	}
+	player['g'].points = new Decimal(1)
+	player.points = new Decimal(1)
 
 	prepareTipRand()
 	updateTemp();
