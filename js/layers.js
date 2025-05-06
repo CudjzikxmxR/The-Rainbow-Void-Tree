@@ -530,7 +530,7 @@ addLayer("g", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
-    softcap: new Decimal("e5e6"), 
+    softcap: new Decimal("e7777"), 
     softcapPower: new Decimal(0.1), 
     row: 1, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
