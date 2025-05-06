@@ -300,7 +300,7 @@ addLayer("p", {
         },
         31: {
             title: "I Have To Axe You A Question",
-            description: "Clicking symbols is 5.55e55x as effective.<br>You feed Axe Cat 100x as much.",
+            description: "Clicking symbols is 5.55e55x as effective.<br>You feed Axe Cat 100x as much.<br>Axe cat now slightly exponentates your Cherry gain.",
             cost: new Decimal("1e39000"),
             style: {'width':'160px'},
             unlocked() {
