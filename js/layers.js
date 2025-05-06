@@ -678,7 +678,7 @@ addLayer("g", {
         },
         23: {
             title: "Surprise Guest Appearance",
-            description: "^1.1 Rainbows<br>If this layer was picked second, re-enable the Knife layer.<br>A special little friend invades this reset layer...",
+            description: "^1.1 Rainbows<br>If this layer was picked last, re-enable the Knife layer.<br>A special little friend invades this reset layer...",
             cost: new Decimal(1e32),
             style: {'width':'160px'},
             unlocked() {
@@ -1061,7 +1061,7 @@ addLayer("k", {
         24: {
             requirementDescription: "500 Killstreak",
             effectDescription() {
-                return "Click-related multipliers can no longer drain.<br>If this layer was picked second, re-enable the Cherry layer.<br>Click power scales based on your current click-related Rainbow multiplier.<br>Currently: "+format(upgradeEffect('p', 16).pow(0.4))+"x"
+                return "Click-related multipliers can no longer drain.<br>If this layer was picked last, re-enable the Cherry layer.<br>Click power scales based on your current click-related Rainbow multiplier.<br>Currently: "+format(upgradeEffect('p', 16).pow(0.4))+"x"
             },
             done() {return player[this.layer].best.gte(500)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
