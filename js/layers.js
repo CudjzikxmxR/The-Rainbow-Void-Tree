@@ -510,7 +510,7 @@ addLayer("g", {
         return 0.08
     }, 
     gainMult() { // Calculate the multiplier for main currency from bonuses
-        mult = new Decimal(1+Math.random()*5)
+        mult = new Decimal(1+Math.random()*4.77)
         if (this.getUnlockOrder()!=0) {
             mult = mult.times(1.7)
             return mult
@@ -743,6 +743,13 @@ addLayer("g", {
                 }
                 return null
              }],
+        ["display-text",
+        function() {
+            if (tmp[this.layer].deactivated()) {
+                return "This layer is currently deactivated!"
+            }
+            return null
+            }],
         "blank",
         "prestige-button",
         "blank",
@@ -1087,6 +1094,13 @@ addLayer("k", {
                 }
                 return null
              }],
+        ["display-text",
+        function() {
+            if (tmp[this.layer].deactivated()) {
+                return "This layer is currently deactivated!"
+            }
+            return null
+            }],
         "prestige-button",
         "blank",
         "blank",
