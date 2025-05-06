@@ -738,8 +738,8 @@ addLayer("g", {
         "main-display",
         ["display-text",
             function() {
-                if (player[this.layer].points.gte(new Decimal("e5e6"))) {
-                   return "Cherry gain is softcapped after e5.00e6."
+                if (player[this.layer].points.gte(new Decimal("e7777"))) {
+                   return "Cherry gain is softcapped after 1.00e7777."
                 }
                 return null
              }],
