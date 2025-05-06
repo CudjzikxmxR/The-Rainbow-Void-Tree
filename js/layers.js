@@ -550,7 +550,7 @@ addLayer("g", {
     branches: ["p"],
     increaseUnlockOrder: ["k"],
     getUnlockOrder() {
-        if (hasUpgrade(this.layer, 23)) {
+        if (hasUpgrade(this.layer, 23)||player.LayerTwoChoice==this.layer) {
             return 0
         }
         return player[this.layer].unlockOrder
@@ -841,7 +841,7 @@ addLayer("k", {
     branches: ["p"],
     increaseUnlockOrder: ["g"],
     getUnlockOrder() {
-        if (hasUpgrade(this.layer, 23)) {
+        if (player.LayerTwoChoice==this.layer) {
             return 0
         }
         return player[this.layer].unlockOrder
