@@ -554,7 +554,7 @@ addLayer("g", {
         }
         return player[this.layer].unlockOrder
     },
-    onReset() {
+    onPrestige() {
         if (this.getUnlockOrder()!=0) {
             this.unlockOrder = 0
             player.LayerTwoChoice = "g"
@@ -845,7 +845,7 @@ addLayer("k", {
         }
         return player[this.layer].unlockOrder
     },
-    onReset() {
+    onPrestige() {
         if (this.getUnlockOrder()!=0) {
             this.unlockOrder = 0
             player.LayerTwoChoice = "p"
