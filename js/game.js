@@ -190,6 +190,9 @@ function doReset(layer, force=false) {
 			updateMilestones(layer)
 			run(layers[layer].onPrestige, layers[layer], gain)
 		}
+		if (gain.gte(layer.softcap)&&player[layer].points.lt(layer.softcap)) {
+			gain = layer.softcap
+		}
 		
 		addPoints(layer, gain)
 		updateMilestones(layer)
