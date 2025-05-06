@@ -467,7 +467,7 @@ const catFood = {
 			if (hasUpgrade('p', 31)) {
 				catMult = 100
 			}
-			player.AxeCatMult=Math.min(player.AxeCatMult+20*player.CoinflipMult/200, (1+Math.log(getClickPower())/Math.log(3.07)*10*player.CoinflipMult/200))
+			player.AxeCatMult=Math.min(player.AxeCatMult+20*catMult*player.CoinflipMult/200, (1+Math.log(getClickPower())/Math.log(3.07)*10*player.CoinflipMult/200)*catMult)
 			this.time = 0
 		}
 	},
