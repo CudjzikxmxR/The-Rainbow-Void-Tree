@@ -154,7 +154,7 @@ function addedPlayerData() { return {
 	CoinflipMult: 1,
 	AxeCatMult: 1,
 	SymbolQOL: 0,
-	LayerTwoChoice: null,
+	LayerTwoChoice: "N/A",
 }}
 
 // Display extra things at the top of the page
