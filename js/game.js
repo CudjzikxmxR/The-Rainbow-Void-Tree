@@ -191,7 +191,7 @@ function doReset(layer, force=false) {
 			run(layers[layer].onPrestige, layers[layer], gain)
 		}
 		if (gain.gte(layer.softcap)&&player[layer].points.lt(layer.softcap)) {
-			gain = layer.softcap
+			gain = new Decimal(1)
 		}
 		
 		addPoints(layer, gain)
@@ -533,7 +533,6 @@ var interval = setInterval(function() {
 			player.AxeCatMult = 1
 		}
 	}
-	player['g'].points = new Decimal(1)
 
 	prepareTipRand()
 	updateTemp();
