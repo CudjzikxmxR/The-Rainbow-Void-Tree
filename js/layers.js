@@ -1101,8 +1101,8 @@ addLayer("k", {
             }
             return null
             }],
-        "prestige-button",
         "blank",
+        "prestige-button",
         "blank",
         "resource-display",
         "milestones",
