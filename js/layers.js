@@ -543,7 +543,7 @@ addLayer("g", {
         return false
     },
     canReset() {
-        return hasUpgrade('p', 21) && player.points.gte(this.requires())
+        return player.points.gte(this.requires())
         //return tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt)
     },
     branches: ["p"],
@@ -830,7 +830,7 @@ addLayer("k", {
         return false
     },
     canReset() {
-        return hasUpgrade('p', 21) && tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt)
+        return tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt)
         //return hasUpgrade('p', 21) && player.points.gte(tmp[this.layer].requires())
         //return tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt)
     },
