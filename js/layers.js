@@ -739,7 +739,8 @@ addLayer("g", {
                 } else {
                     desc = desc+". (Capped at "+format((1+Math.log(getClickPower())/Math.log(3.07)*10*player.CoinflipMult/200))+"x)</b>"
                 }
-                return desc
+                return "a"
+                //return desc
             },
             //effectDescription: "You can feed Axe Cat, disabling Amoeba gain entirely and causing Catfood to spawn around the screen, but giving temporary Rainbow and Cherry multiplier for each Catfood clicked.<br>Currently "+format(player.AxeCatMult)+"x. (Capped at "+format(Math.log10(getClickPower()))+"x)",
             toggles: [
