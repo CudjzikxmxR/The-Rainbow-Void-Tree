@@ -301,7 +301,7 @@ addLayer("p", {
         31: {
             title: "I Have To Axe You A Question",
             description: "Clicking symbols is 5.55e55x as effective.<br>Multiply Axe Cat's mult/click and mult cap by 100.",
-            cost: new Decimal("1e72000"),
+            cost: new Decimal("1e39000"),
             style: {'width':'160px'},
             unlocked() {
                 return hasUpgrade(this.layer, 26) && hasMilestone('k', 25)
