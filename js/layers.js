@@ -493,7 +493,7 @@ addLayer("g", {
     }},
     color: "#770000",
     requires() { // Can be a function that takes requirement increases into account
-        if (this.getUnlockOrder()==0) {
+        if (this.getUnlockOrder()==0||player.LayerTwoChoice==this.layer) {
             return new Decimal(1e21)
         }
         return (new Decimal(10)).pow(500)
@@ -772,7 +772,7 @@ addLayer("k", {
     }},
     color: "#DCD200",
     requires() { // Can be a function that takes requirement increases into account
-        if (this.getUnlockOrder()==0) {
+        if (this.getUnlockOrder()==0||player.LayerTwoChoice==this.layer) {
             return new Decimal(1e21)
         }
         return (new Decimal(10)).pow(500)
