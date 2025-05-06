@@ -1079,7 +1079,7 @@ addLayer("k", {
         25: {
             requirementDescription: "10000 Killstreak",
             effectDescription() {
-                return "Unlock... a new Amoeba upgrade."
+                return "Unlock more Amoeba upgrades."
             },
             done() {return player[this.layer].best.gte(10000)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
