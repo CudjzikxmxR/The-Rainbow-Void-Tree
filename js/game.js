@@ -463,7 +463,10 @@ const catFood = {
 	onClick() {
 		if (!this.pressed && player.AxeCatMult <= (1+Math.log(getClickPower())/Math.log(3.07))*10*player.CoinflipMult/200) {
 			this.pressed = true
-			
+			catMult = 1
+			if (hasUpgrade('p', 31)) {
+				catMult = 100
+			}
 			player.AxeCatMult=Math.min(player.AxeCatMult+20*player.CoinflipMult/200, (1+Math.log(getClickPower())/Math.log(3.07)*10*player.CoinflipMult/200))
 			this.time = 0
 		}
