@@ -561,7 +561,7 @@ addLayer("g", {
         }
     },
     deactivated() {
-        if (player.LayerTwoChoice!="N/A" && player.LayerTwoChoice!=this.layer) {
+        if (player.LayerTwoChoice!=null && player.LayerTwoChoice!=this.layer) {
             return true
         }
         return false
@@ -852,7 +852,7 @@ addLayer("k", {
         }
     },
     deactivated() {
-        if (player.LayerTwoChoice!="N/A" && player.LayerTwoChoice!=this.layer) {
+        if (player.LayerTwoChoice!=null && player.LayerTwoChoice!=this.layer) {
             return true
         }
         return false
