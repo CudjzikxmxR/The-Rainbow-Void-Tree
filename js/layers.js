@@ -1064,7 +1064,10 @@ addLayer("k", {
                 return "Click-related multipliers can no longer drain.<br>If this layer was picked last, re-enable the Cherry layer.<br>Click power scales based on your current click-related Rainbow multiplier.<br>Currently: "+format(upgradeEffect('p', 16).pow(0.4))+"x"
             },
             done() {return player[this.layer].best.gte(500)},
-            unlocked() {return hasMilestone(this.layer, this.id-1)}
+            unlocked() {return hasMilestone(this.layer, this.id-1)},
+            onComplete() {
+                player.LayerTwoChoice = null
+            }
         },
         25: {
             requirementDescription: "10000 Killstreak",
