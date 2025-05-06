@@ -853,7 +853,7 @@ addLayer("k", {
     },
     deactivated() {
         if (player.LayerTwoChoice && player.LayerTwoChoice!=this.layer) {
-            return true
+           // return true
         }
         return false
     },
