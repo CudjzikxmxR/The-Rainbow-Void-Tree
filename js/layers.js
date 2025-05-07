@@ -351,7 +351,7 @@ addLayer("p", {
         },
         34: {
             title: "Truly Symbolic",
-            description: "<b>Click Your Way To Freedom</b> multiplies coinflips.<br>Clicking symbols is ^1.05 as effective.<br>1.5x Knives",
+            description: "<b>Click Your Way To Victory</b> scales 50x faster and multiplies coinflips.<br>Clicking symbols is ^1.05 as effective.<br>1.5x Knives",
             cost: new Decimal("1e150000"),
             style: {'width':'160px'},
             unlocked() {

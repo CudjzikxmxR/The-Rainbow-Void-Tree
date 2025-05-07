@@ -425,7 +425,11 @@ const cudGrade16 = {
 			player['p'].clickingMult = player['p'].clickingMult.add(getClickPower())
 			player.minimumClickMult+=1
 			if (hasUpgrade('g', 14)) {
-				player.cherryUpgrade14+=0.01
+				if (hasUpgrade('p', 34)) {
+					player.cherryUpgrade14+=0.5
+				} else {
+					player.cherryUpgrade14+=0.01
+				}
 			}
 			if ((hasUpgrade('g', 15) || player.SymbolQOL==1 || player.SymbolQOL==3) && (Math.floor(Math.random()*10+1)==10 || hasUpgrade('g', 19))) {
 				this.color = "#770000"
