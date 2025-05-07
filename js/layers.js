@@ -87,9 +87,6 @@ addLayer("p", {
         if (hasUpgrade('p', 33)) {
             exp = exp.times(1.1)
         }
-        if (hasMilestone('k', 26)) {
-            exp = exp.times(1.05)
-        }
         return exp
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
@@ -1180,7 +1177,7 @@ addLayer("k", {
         26: {
             requirementDescription: "40000 Killstreak",
             effectDescription() {
-                return "^1.05 Amoebas"
+                return "Symbols spawn more often."
             },
             done() {return player[this.layer].best.gte(40000)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
