@@ -124,7 +124,7 @@ addLayer("p", {
                 let scaleExpo = 1.77
                 let scaleCap = new Decimal(1000)
                 if (hasUpgrade(this.layer, 32)) {
-                    scaleSpeed = player[this.layer].resetTime*2
+                    scaleSpeed = player[this.layer].resetTime*4
                     scaleExpo = 2+player[this.layer].resetTime/2
                     scaleCap = getClickPower().add(1)
                 }
@@ -143,6 +143,7 @@ addLayer("p", {
                 if (hasUpgrade(this.layer, 32)) {
                     scaleSpeed *= 7
                     scaleExpo *= 3.77
+                    scaleCap = scaleCap.pow(1.5)
                 }
                 return (((new Decimal(player[this.layer].resetTime)).times(scaleSpeed+1)).pow(scaleExpo)).min(scaleCap)
                 //return Math.min(Math.pow(player[this.layer].resetTime*scaleSpeed+1,scaleExpo)/10, scaleCap)
@@ -319,7 +320,7 @@ addLayer("p", {
         },
         32: {
             title: "Energy Drink",
-            description: "<b>Procrastination</b>'s base cap is now equal to your click power and scales faster.",
+            description: "<b>Procrastination</b>'s base cap is now equal to your click power and scales faster over time.<br>Raise <b>Procrastination</b>'s cap ^1.5.",
             cost: new Decimal("1e82000"),
             style: {'width':'160px'},
             unlocked() {
