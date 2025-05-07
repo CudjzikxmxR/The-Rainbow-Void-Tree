@@ -563,6 +563,9 @@ var interval = setInterval(function() {
 			player.AxeCatMult = 1
 		}
 	}
+	if (player.LayerTwoChoice=="p") {
+		player.LayerTwoChoice = "k"
+	}
 
 	prepareTipRand()
 	updateTemp();
