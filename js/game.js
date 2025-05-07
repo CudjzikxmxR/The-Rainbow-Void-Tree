@@ -465,7 +465,7 @@ const catFood = {
 			this.pressed = true
 			catMult = 1
 			if (hasUpgrade('p', 31)) {
-				catMult = 2
+				catMult = 3
 			}
 			player.AxeCatMult=Math.min(player.AxeCatMult+20*catMult*player.CoinflipMult/200, (1+Math.log(getClickPower())/Math.log(3.07)*10*player.CoinflipMult/200))
 			this.time = 0
@@ -534,8 +534,12 @@ var interval = setInterval(function() {
 		makeShinies(catFood, 1)
 	}
 	if (player.AxeCatMult) {
-		if (player.AxeCatMult > Math.max(player.CoinflipMult/1500, 1)) {
-			player.AxeCatMult -= player.CoinflipMult/1500
+		catMult = 1
+			if (hasUpgrade('p', 31)) {
+				catMult = 3
+			}
+		if (player.AxeCatMult > Math.max(player.CoinflipMult/1500*catMult, 1)) {
+			player.AxeCatMult = Math.max(player.CoinflipMult/1500*catMult, 1)
 		} else {
 			player.AxeCatMult = 1
 		}
