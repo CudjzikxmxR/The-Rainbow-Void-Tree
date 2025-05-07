@@ -475,6 +475,11 @@ const catFood = {
 			this.time = 0
 		}
 	},
+	onMouseLeave() {
+		if (hasUpgrade('p', 36)) {
+			this.onClick()
+		}
+	},
 }
 
 var ticking = false
@@ -534,7 +539,11 @@ var interval = setInterval(function() {
 	} else {
 		resetClickMult()
 	}
-	if ((hasMilestone('g', 17) && player['p'].feedingAxeCat) && Math.random()>= 0.96) {
+	var catfoodChance = 0.96
+	if (hasUpgrade('p', 36)) {
+		catfoodChance = 0.92
+	}
+	if ((hasMilestone('g', 17) && player['p'].feedingAxeCat) && Math.random()>=catfoodChance) {
 		makeShinies(catFood, 1)
 	}
 	if (player.AxeCatMult) {

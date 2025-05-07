@@ -359,7 +359,7 @@ addLayer("p", {
             },
         },
         35: {
-            title: "MALWARE",
+            title: "<font color='#ff0000'>MALWARE</font>",
             description: "<font color='#ff0000'>Ameoba upgrades no-longer autobuy.<br>Axe Cat gets hungrier faster.</font>",
             cost: new Decimal("1e150012"),
             style: {'width':'160px'},
@@ -368,9 +368,18 @@ addLayer("p", {
             },
         },
         36: {
+            title: "I Literally Clicked It Four Times Dude",
+            description: "^1.07 Rainbows<br>You can feed Catfood to Axe Cat by passing over them.<br>More catfood spawns.",
+            cost: new Decimal("1e150000"),
+            style: {'width':'160px'},
+            unlocked() {
+                return hasUpgrade(this.layer, 26) && hasMilestone('k', 25)
+            },
+        },
+        37: {
             title: "Eternal Algebra Class",
             description: "Unlock the Math sublayer. This feature is currently uncoded, and you have beaten the game!! Yay",
-            cost: new Decimal("ee9"),
+            cost: new Decimal("ee6"),
             style: {'width':'160px'},
             unlocked() {
                 return hasUpgrade(this.layer, 26) && hasMilestone('k', 25)
