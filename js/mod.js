@@ -144,10 +144,11 @@ let tipMessages = [
 	"What the- What the fuck is Televex doing here??",
 	"Balala > Balatro",
 	"Whenever there's a choice between multiple layers, you will be forced to play through all of the layers individually without access to the content of the other layers, excluding certain QoL features.",
+	"If it isn't clear, "+'"click power" refers to how much multiplier you gain from clicking symbols.',
 
 	//Update
 	"This game currently has 3 total main layers.",
-	"There are currently 25 tips in the game!",
+	"There are currently 26 tips in the game!",
 	"At this current moment of you playing this game, Stability Test 1.7 is not released.",
 ]
 let tipTick = 0
