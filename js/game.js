@@ -536,7 +536,10 @@ var interval = setInterval(function() {
 	if (player.AxeCatMult) {
 		catMult = 1
 			if (hasUpgrade('p', 31)) {
-				catMult = 3
+				catMult *= 3
+			}
+			if (hasUpgrade('p', 35) && !player.AntivirusLevel>0) {
+				catMult *= 3
 			}
 		if (player.AxeCatMult > Math.max(player.CoinflipMult/1000*catMult, 1)) {
 			player.AxeCatMult = Math.max(player.AxeCatMult-player.CoinflipMult/1000*catMult, 1)

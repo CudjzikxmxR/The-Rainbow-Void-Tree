@@ -71,6 +71,9 @@ addLayer("p", {
         return mult
     },
     autoUpgrade() {
+        if (hasUpgrade(this.layer, 35) && !player.AntivirusLevel>0) {
+            return false
+        }
         if (hasUpgrade('g', 17)) {
             return true
         }

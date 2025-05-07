@@ -159,6 +159,7 @@ function addedPlayerData() { return {
 	AxeCatMult: 1,
 	SymbolQOL: 0,
 	LayerTwoChoice: null,
+	AntivirusLevel: 0,
 }}
 
 // Display extra things at the top of the page
