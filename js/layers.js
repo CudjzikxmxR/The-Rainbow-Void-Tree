@@ -141,8 +141,8 @@ addLayer("p", {
                     scaleExpo *= 1.47
                 }
                 if (hasUpgrade(this.layer, 32)) {
-                    scaleSpeed *= 7
-                    scaleExpo *= 3.77
+                    scaleSpeed *= 77
+                    scaleExpo *= 7
                     scaleCap = scaleCap.pow(1.5)
                 }
                 return (((new Decimal(player[this.layer].resetTime)).times(scaleSpeed+1)).pow(scaleExpo)).min(scaleCap)
