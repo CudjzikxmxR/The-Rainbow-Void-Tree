@@ -125,6 +125,7 @@ addLayer("p", {
                 let scaleCap = new Decimal(1000)
                 if (hasUpgrade(this.layer, 32)) {
                     scaleCap = getClickPower()
+                    scaleSpeed = player[this.layer].resetTime
                 }
                 if (hasMilestone('k', 14)) {
                     scaleSpeed = 5
@@ -140,7 +141,7 @@ addLayer("p", {
                 }
                 if (hasUpgrade(this.layer, 32)) {
                     scaleSpeed *= 7
-                    scaleExpo *= 3.77
+                    scaleExpo *= 1.77
                 }
                 return (((new Decimal(player[this.layer].resetTime)).times(scaleSpeed+1)).pow(scaleExpo)).min(scaleCap)
                 //return Math.min(Math.pow(player[this.layer].resetTime*scaleSpeed+1,scaleExpo)/10, scaleCap)
