@@ -764,7 +764,7 @@ addLayer("g", {
                 return hasUpgrade(this.layer, 21)
             },
             onPurchase() {
-                if (player.LayerTwoChoice=="k") {
+                if (player.LayerTwoChoice=="g") {
                     player.LayerTwoChoice = "!"
                 }
             },
@@ -1035,8 +1035,7 @@ addLayer("k", {
         11: {
             requirementDescription: "1 Killstreak",
             effectDescription() {
-                return player.LayerTwoChoice
-                //return "3x Rainbows<br>1.5x Amoebas"
+                return "3x Rainbows<br>1.5x Amoebas"
             },
             done() {return player[this.layer].best.gte(1)},
         },
@@ -1166,7 +1165,7 @@ addLayer("k", {
             done() {return player[this.layer].best.gte(500)},
             unlocked() {return hasMilestone(this.layer, this.id-1)},
             onComplete() {
-                if (player.LayerTwoChoice=="g") {
+                if (player.LayerTwoChoice=="k") {
                     player.LayerTwoChoice = "!"
                 }
             }
