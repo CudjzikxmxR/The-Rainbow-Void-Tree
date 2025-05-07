@@ -327,7 +327,7 @@ addLayer("p", {
         32: {
             title: "Energy Drink",
             description: "<b>Procrastination</b>'s base cap is now equal to your click power and scales faster over time.<br>Raise <b>Procrastination</b>'s cap ^1.5.",
-            cost: new Decimal("1e82000"),
+            cost: new Decimal("1e77000"),
             style: {'width':'160px'},
             unlocked() {
                 return hasUpgrade(this.layer, 26) && hasMilestone('k', 25)
@@ -336,7 +336,7 @@ addLayer("p", {
         33: {
             title: "Cud Luck",
             description: "^1.1 Amoebas<br>This grants anywhere from ^0.95 to ^1 Rainbows at any given moment.",
-            cost: new Decimal("7e84007"),
+            cost: new Decimal("7e80007"),
             style: {'width':'160px'},
             unlocked() {
                 return hasUpgrade(this.layer, 26) && hasMilestone('k', 25)
