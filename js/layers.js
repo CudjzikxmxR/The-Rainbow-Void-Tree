@@ -87,6 +87,9 @@ addLayer("p", {
         if (hasUpgrade('p', 33)) {
             exp = exp.times(1.1)
         }
+        if (hasMilestone('k', 26)) {
+            exp = exp.times(1.1)
+        }
         return exp
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
@@ -783,7 +786,11 @@ addLayer("g", {
                     if (player.CoinflipMult<1024) {
                         player.CoinflipMult*=2
                     } else {
-                        player.CoinflipMult+=777
+                        coinScaleNum = 777
+                        if (hasUpgrade('p', 34)) {
+                            coinScaleNum*=player.cherryUpgrade14
+                        }
+                        player.CoinflipMult+=coinScaleNum
                     }
                 }
             },
@@ -894,6 +901,9 @@ addLayer("k", {
         }
         if (hasMilestone('k', 23)) {
             mult = mult.times(2)
+        }
+        if (hasUpgrade('p', 34)) {
+            mult = mult.times(1.5)
         }
         return mult
     },
@@ -1156,6 +1166,22 @@ addLayer("k", {
                 return "Unlock more Amoeba upgrades."
             },
             done() {return player[this.layer].best.gte(10000)},
+            unlocked() {return hasMilestone(this.layer, this.id-1)}
+        },
+        26: {
+            requirementDescription: "40000 Killstreak",
+            effectDescription() {
+                return "^1.1 Amoebas"
+            },
+            done() {return player[this.layer].best.gte(40000)},
+            unlocked() {return hasMilestone(this.layer, this.id-1)}
+        },
+        27: {
+            requirementDescription: "700000 Killstreak",
+            effectDescription() {
+                return "nothing lmao the game isnt that long yet"
+            },
+            done() {return player[this.layer].best.gte(700000)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
         },
     },

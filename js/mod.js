@@ -221,6 +221,9 @@ function getClickPower() {
 	if (hasUpgrade('p', 31))
 		baseClickPower = baseClickPower.times(5.55e55)
 
+	if (hasUpgrade('p', 34))
+		baseClickPower = baseClickPower.pow(1.05)
+
 	return baseClickPower
 }
 
