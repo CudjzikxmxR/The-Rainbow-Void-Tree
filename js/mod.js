@@ -147,10 +147,12 @@ let tipMessages = [
 	"If it isn't clear, "+'"click power" refers to how much multiplier you gain from clicking symbols.',
 	"Huh? What's wrong with the word Festival???",
 	"R.I.P. TFS tree.",
+	"🍞",
+	"It's probably in your best bet to double-click the symbols. The onClick function is an asshole.",
 
 	//Update
 	"This game currently has 3 total main layers.",
-	"There are currently 28 tips in the game!",
+	"There are currently 30 tips in the game!",
 	"At this current moment of you playing this game, Stability Test 1.7 is not released.",
 ]
 let tipTick = 0

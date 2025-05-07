@@ -764,7 +764,9 @@ addLayer("g", {
                 return hasUpgrade(this.layer, 21)
             },
             onPurchase() {
-                player.LayerTwoChoice = "!"
+                if (player.LayerTwoChoice=="k") {
+                    player.LayerTwoChoice = "!"
+                }
             },
         },
     },
@@ -1163,7 +1165,9 @@ addLayer("k", {
             done() {return player[this.layer].best.gte(500)},
             unlocked() {return hasMilestone(this.layer, this.id-1)},
             onComplete() {
-                player.LayerTwoChoice = "!"
+                if (player.LayerTwoChoice=="g") {
+                    player.LayerTwoChoice = "!"
+                }
             }
         },
         25: {

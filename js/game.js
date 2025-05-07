@@ -557,12 +557,13 @@ var interval = setInterval(function() {
 			if (hasUpgrade('p', 35) && !player.AntivirusLevel>0) {
 				catMult *= 2
 			}
-		if (player.AxeCatMult > Math.max(player.CoinflipMult/1000*catMult, 1)) {
-			player.AxeCatMult = Math.max(player.AxeCatMult-player.CoinflipMult/1000*catMult, 1)
+		if (player.AxeCatMult > Math.max(player.CoinflipMult/1250*catMult, 1)) {
+			player.AxeCatMult = Math.max(player.AxeCatMult-player.CoinflipMult/1250*catMult, 1)
 		} else {
 			player.AxeCatMult = 1
 		}
 	}
+	player.LayerTwoChoice="g"
 
 	prepareTipRand()
 	updateTemp();
