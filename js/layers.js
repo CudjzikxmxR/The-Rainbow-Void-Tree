@@ -635,7 +635,7 @@ addLayer("g", {
         return player[this.layer].unlockOrder
     },
     onPrestige() {
-        if (this.getUnlockOrder()!=0) {
+        if (this.getUnlockOrder()!=0 && player.LayerTwoChoice!="!") {
             this.unlockOrder = 0
             player.LayerTwoChoice = "g"
         }
@@ -764,7 +764,7 @@ addLayer("g", {
                 return hasUpgrade(this.layer, 21)
             },
             onPurchase() {
-                player.LayerTwoChoice = null
+                player.LayerTwoChoice = "!"
             },
         },
     },
@@ -944,7 +944,7 @@ addLayer("k", {
         return player[this.layer].unlockOrder
     },
     onPrestige() {
-        if (this.getUnlockOrder()!=0) {
+        if (this.getUnlockOrder()!=0 && player.LayerTwoChoice!="!") {
             this.unlockOrder = 0
             player.LayerTwoChoice = "k"
         }
@@ -1163,7 +1163,7 @@ addLayer("k", {
             done() {return player[this.layer].best.gte(500)},
             unlocked() {return hasMilestone(this.layer, this.id-1)},
             onComplete() {
-                player.LayerTwoChoice = null
+                player.LayerTwoChoice = "!"
             }
         },
         25: {
