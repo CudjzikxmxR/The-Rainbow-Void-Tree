@@ -685,7 +685,7 @@ addLayer("g", {
         },
         15: {
             title: "Lets Go Gambling",
-            description: "Clicking symbols has a 1 in 10 chance to instantly grant you Amoebas equal to what you'd earn from reset.<br>This effect persists while this layer is disabled.",
+            description: "Clicking symbols has a 1 in 7 chance to instantly grant you Amoebas equal to what you'd earn from reset.<br>This effect persists while this layer is disabled.",
             cost: new Decimal(5000),
             style: {'width':'160px'},
             onPurchase() {
