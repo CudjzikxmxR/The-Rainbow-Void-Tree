@@ -367,7 +367,7 @@ addLayer("p", {
         36: {
             title: "I Literally Clicked It Four Times Dude",
             description: "^1.07 Rainbows<br>You can feed Catfood to Axe Cat by passing over them.<br>More catfood spawns.",
-            cost: new Decimal("1e250000"),
+            cost: new Decimal("1e500000"),
             style: {'width':'160px'},
             unlocked() {
                 return hasUpgrade(this.layer, 26) && hasMilestone('k', 25)
