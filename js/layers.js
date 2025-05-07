@@ -122,20 +122,28 @@ addLayer("p", {
             effect() {
                 let scaleSpeed = 2
                 let scaleExpo = 1.77
-                let scaleCap = 1000
+                let scaleCap = new Decimal(1000)
+                if (hasUpgrade(this.layer, 32)) {
+                    scaleCap = getClickPower()
+                }
                 if (hasMilestone('k', 14)) {
                     scaleSpeed = 5
                     scaleExpo = 2.47
-                    scaleCap = 5000
+                    scaleCap = scaleCap.times(5)
                 }
                 if (hasUpgrade(this.layer, 25)) {
-                    scaleCap *= 10
+                    scaleCap = scaleCap.times(10)
                 }
                 if (hasUpgrade('k', 15)) {
                     scaleSpeed *= 3
                     scaleExpo *= 1.47
                 }
-                return Math.min(Math.pow(player[this.layer].resetTime*scaleSpeed+1,scaleExpo)/10, scaleCap)
+                if (hasUpgrade(this.layer, 32)) {
+                    scaleSpeed *= 7
+                    scaleExpo *= 3.77
+                }
+                return (((new Decimal(player[this.layer].resetTime)).times(scaleSpeed+1)).pow(scaleExpo)).min(scaleCap)
+                //return Math.min(Math.pow(player[this.layer].resetTime*scaleSpeed+1,scaleExpo)/10, scaleCap)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
@@ -299,9 +307,18 @@ addLayer("p", {
             }
         },
         31: {
-            title: "Madaxe Badaxe",
-            description: "Clicking symbols is 5.55e55x as effective.<br>You feed Axe Cat 2x as much.<br>Axe cat now slightly exponentates your Cherry gain.",
+            title: "Becoming Brave",
+            description: "Clicking symbols is 5.55e55x as effective.<br>You feed Axe Cat 2x as much.<br>Axe cat evolves! It now slightly exponentates your Cherry gain.",
             cost: new Decimal("1e39000"),
+            style: {'width':'160px'},
+            unlocked() {
+                return hasUpgrade(this.layer, 26) && hasMilestone('k', 25)
+            },
+        },
+        32: {
+            title: "Energy Drink",
+            description: "<b>Procrastination</b>'s base cap is now equal to your click power and scales faster.",
+            cost: new Decimal("1e82000"),
             style: {'width':'160px'},
             unlocked() {
                 return hasUpgrade(this.layer, 26) && hasMilestone('k', 25)
