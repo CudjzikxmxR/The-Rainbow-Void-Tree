@@ -124,8 +124,8 @@ addLayer("p", {
                 let scaleExpo = 1.77
                 let scaleCap = new Decimal(1000)
                 if (hasUpgrade(this.layer, 32)) {
-                    scaleSpeed = player[this.layer].resetTime*4
-                    scaleExpo = 2+player[this.layer].resetTime/2
+                    scaleSpeed = player[this.layer].resetTime*7
+                    scaleExpo = 77+player[this.layer].resetTime*2
                     scaleCap = getClickPower().add(1)
                 }
                 if (hasMilestone('k', 14)) {
