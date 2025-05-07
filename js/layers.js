@@ -88,7 +88,7 @@ addLayer("p", {
             exp = exp.times(1.1)
         }
         if (hasMilestone('k', 26)) {
-            exp = exp.times(1.1)
+            exp = exp.times(1.05)
         }
         return exp
     },
@@ -1171,7 +1171,7 @@ addLayer("k", {
         26: {
             requirementDescription: "40000 Killstreak",
             effectDescription() {
-                return "^1.1 Amoebas"
+                return "^1.05 Amoebas"
             },
             done() {return player[this.layer].best.gte(40000)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
