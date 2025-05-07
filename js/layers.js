@@ -1130,7 +1130,7 @@ addLayer("k", {
             effectDescription() {
                 return "^1.15 Rainbows.<br>The <b>Bomb Strapped To Your Chest</b> is disarmed."
             },
-            done() {return player[this.layer].best.gte(100)},
+            done() {return player[this.layer].best.gte(90)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
         },
         21: {
