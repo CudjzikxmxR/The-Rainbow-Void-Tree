@@ -426,7 +426,7 @@ const cudGrade16 = {
 			player.minimumClickMult+=1
 			if (hasUpgrade('g', 14)) {
 				if (hasUpgrade('p', 34)) {
-					player.cherryUpgrade14+=0.5
+					player.cherryUpgrade14+=5
 				} else {
 					player.cherryUpgrade14+=0.01
 				}
