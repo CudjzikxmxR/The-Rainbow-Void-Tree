@@ -866,7 +866,7 @@ addLayer("k", {
     }},
     color: "#DCD200",
     requires() { // Can be a function that takes requirement increases into account
-        if (this.getUnlockOrder()==0||player.LayerTwoChoice==this.layer||player.LayerTwoChoice=="!") {
+        if (this.getUnlockOrder()==0||player.LayerTwoChoice==this.layer) {
             return new Decimal(1e21)
         }
         return (new Decimal(10)).pow(500)
@@ -938,7 +938,7 @@ addLayer("k", {
     branches: ["p"],
     increaseUnlockOrder: ["g"],
     getUnlockOrder() {
-        if (player.LayerTwoChoice==this.layer) {
+        if (player.LayerTwoChoice==this.layer||player.LayerTwoChoice=="!") {
             return 0
         }
         return player[this.layer].unlockOrder
@@ -1033,8 +1033,7 @@ addLayer("k", {
         11: {
             requirementDescription: "1 Killstreak",
             effectDescription() {
-                return player.LayerTwoChoice
-                //return "3x Rainbows<br>1.5x Amoebas"
+                return "3x Rainbows<br>1.5x Amoebas"
             },
             done() {return player[this.layer].best.gte(1)},
         },
