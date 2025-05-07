@@ -111,6 +111,8 @@ function getPointGen() {
 		gain = gain.pow(1.15)
 	if (hasUpgrade('p', 31))
 		gain = gain.pow(1+Math.log(player.AxeCatMult)/Math.log(5)/200)
+	if (hasUpgrade('p', 33))
+		gain = gain.pow(upgradeEffect('p', 33))
 
 	return gain
 }

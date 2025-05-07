@@ -81,6 +81,9 @@ addLayer("p", {
         if (hasMilestone('k', 21)) {
             exp = exp.times(1.1)
         }
+        if (hasUpgrade('p', 33)) {
+            exp = exp.times(1.1)
+        }
         return exp
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
@@ -326,6 +329,19 @@ addLayer("p", {
             unlocked() {
                 return hasUpgrade(this.layer, 26) && hasMilestone('k', 25)
             },
+        },
+        33: {
+            title: "Cud Luck",
+            description: "^1.1 Amoebas<br>This grants anywhere from ^0.95 to ^1 Rainbows at any given moment.",
+            cost: new Decimal("7e84007"),
+            style: {'width':'160px'},
+            unlocked() {
+                return hasUpgrade(this.layer, 26) && hasMilestone('k', 25)
+            },
+            effect() {
+                return 0.9+Math.max(Math.random()/10, 0.05)
+            },
+            effectDisplay() { return "^"+format(upgradeEffect(this.layer, this.id))},
         },
         34: {
             title: "Eternal Algebra Class",

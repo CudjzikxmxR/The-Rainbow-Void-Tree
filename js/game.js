@@ -538,8 +538,8 @@ var interval = setInterval(function() {
 			if (hasUpgrade('p', 31)) {
 				catMult = 3
 			}
-		if (player.AxeCatMult > Math.max(player.CoinflipMult/1500*catMult, 1)) {
-			player.AxeCatMult = Math.max(player.AxeCatMult-player.CoinflipMult/1500*catMult, 1)
+		if (player.AxeCatMult > Math.max(player.CoinflipMult/1000*catMult, 1)) {
+			player.AxeCatMult = Math.max(player.AxeCatMult-player.CoinflipMult/1000*catMult, 1)
 		} else {
 			player.AxeCatMult = 1
 		}
