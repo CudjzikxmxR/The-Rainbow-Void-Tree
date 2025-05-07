@@ -126,7 +126,7 @@ addLayer("p", {
                 if (hasUpgrade(this.layer, 32)) {
                     scaleSpeed = player[this.layer].resetTime
                     scaleExpo = 2+player[this.layer].resetTime/10
-                    scaleCap = getClickPower()
+                    scaleCap = getClickPower().add(1)
                 }
                 if (hasMilestone('k', 14)) {
                     scaleSpeed = 5
