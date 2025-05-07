@@ -832,7 +832,7 @@ addLayer("g", {
              }],
         ["display-text",
         function() {
-            if(player.LayerTwoChoice!=null && player.LayerTwoChoice!=this.layer) {
+            if(player.LayerTwoChoice!=null && player.LayerTwoChoice!=this.layer && player.LayerTwoChoice!="!") {
                 return "This layer is currently deactivated!"
             }
             return null
@@ -1202,7 +1202,7 @@ addLayer("k", {
              }],
         ["display-text",
         function() {
-            if(player.LayerTwoChoice!=null && player.LayerTwoChoice!=this.layer) {
+            if(player.LayerTwoChoice!=null && player.LayerTwoChoice!=this.layer && player.LayerTwoChoice!="!") {
                 return "This layer is currently deactivated!"
             }
             return null
