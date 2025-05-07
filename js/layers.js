@@ -353,7 +353,7 @@ addLayer("p", {
             },
         },
         35: {
-            title: "M41_w4r3!!_ :3",
+            title: "MALWARE",
             description: "<font color='#ff0000'>Ameoba upgrades no-longer autobuy.<br>Axe Cat gets hungrier faster.</font>",
             cost: new Decimal("1e150012"),
             style: {'width':'160px'},
