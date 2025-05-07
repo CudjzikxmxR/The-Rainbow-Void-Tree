@@ -174,7 +174,7 @@ var displayThings = [
 ]
 function prepareTipRand() {
 	tipTick+=1
-	if (tipTick%150==0) {
+	if (tipTick%250==0) {
 		tipTick = 0
 		randomTipIndex = Math.floor(Math.random() * tipMessages.length)
 	}
