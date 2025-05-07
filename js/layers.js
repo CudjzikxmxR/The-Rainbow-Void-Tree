@@ -629,7 +629,7 @@ addLayer("g", {
     branches: ["p"],
     increaseUnlockOrder: ["k"],
     getUnlockOrder() {
-        if (hasUpgrade(this.layer, 23)||player.LayerTwoChoice==this.layer) {
+        if (hasUpgrade(this.layer, 23)||player.LayerTwoChoice==this.layer||player.LayerTwoChoice=="!") {
             return 0
         }
         return player[this.layer].unlockOrder
@@ -866,7 +866,7 @@ addLayer("k", {
     }},
     color: "#DCD200",
     requires() { // Can be a function that takes requirement increases into account
-        if (this.getUnlockOrder()==0||player.LayerTwoChoice==this.layer) {
+        if (this.getUnlockOrder()==0||player.LayerTwoChoice==this.layer||player.LayerTwoChoice=="!") {
             return new Decimal(1e21)
         }
         return (new Decimal(10)).pow(500)
