@@ -344,6 +344,24 @@ addLayer("p", {
             effectDisplay() { return "^"+format(upgradeEffect(this.layer, this.id))},
         },
         34: {
+            title: "Truly Symbolic",
+            description: "<b>Click Your Way To Freedom</b> multiplies coinflips.<br>Clicking symbols is ^1.05 as effective.<br>1.5x Knives",
+            cost: new Decimal("1e150000"),
+            style: {'width':'160px'},
+            unlocked() {
+                return hasUpgrade(this.layer, 26) && hasMilestone('k', 25)
+            },
+        },
+        35: {
+            title: "M41_w4r3!!_ :3",
+            description: "<font color='#ff0000'>Ameoba upgrades no-longer autobuy.<br>Axe Cat gets hungrier faster.</font>",
+            cost: new Decimal("1e150012"),
+            style: {'width':'160px'},
+            unlocked() {
+                return hasUpgrade(this.layer, 34) && hasMilestone('k', 25)
+            },
+        },
+        36: {
             title: "Eternal Algebra Class",
             description: "Unlock the Math sublayer. This feature is currently uncoded, and you have beaten the game!! Yay",
             cost: new Decimal("ee9"),
