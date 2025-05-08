@@ -326,7 +326,7 @@ addLayer("p", {
         },
         32: {
             title: "Energy Drink",
-            description: "<b>Procrastination</b>'s base cap is now equal to your click power and scales faster over time.<br>Raise <b>Procrastination</b>'s cap ^1.5.",
+            description: "<b>Procrastination</b>'s base cap is now equal to your click power and scales faster over time.<br>Raise <b>Procrastination</b>'s cap ^1.5.<br>Coinflips are tripled.",
             cost: new Decimal("1e77000"),
             style: {'width':'160px'},
             unlocked() {
@@ -797,6 +797,9 @@ addLayer("g", {
                         coinScaleNum = 777
                         if (hasUpgrade('p', 34)) {
                             coinScaleNum*=player.cherryUpgrade14
+                        }
+                        if (hasUpgrade('p', 32)) {
+                            coinScaleNum*=3
                         }
                         player.CoinflipMult+=coinScaleNum
                     }
