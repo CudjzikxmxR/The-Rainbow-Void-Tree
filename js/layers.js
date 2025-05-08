@@ -779,7 +779,7 @@ addLayer("g", {
         },
         21: {
             title: "Deck of Cards",
-            description: "52x Rainbows<br>Coinflips always grant multiplier and reset nothing.<br>Click-related multipliers can no longer drain.",
+            description: "52x Rainbows<br>Click-related multipliers can no longer drain.",
             cost: new Decimal(7.77e21),
             style: {'width':'140px'},
             unlocked() {
@@ -788,8 +788,8 @@ addLayer("g", {
         },
         22: {
             title: "Fortnite Balls",
-            description: "1.777x Amoebas.",
-            cost: new Decimal(1e24),
+            description: "1.777x Amoebas<br>Coinflips always grant multiplier and reset nothing.",
+            cost: new Decimal(1e25),
             style: {'width':'140px'},
             unlocked() {
                 return hasUpgrade(this.layer, 19)
@@ -831,10 +831,10 @@ addLayer("g", {
                 //return tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt)
             },
             onClick() { 
-                if (!hasUpgrade('g', 21)) {
+                if (!hasUpgrade('g', 22)) {
                     doReset(this.layer, true)
                 }
-                if (Math.random() >= 0.5 || hasUpgrade('g', 21)) {
+                if (Math.random() >= 0.5 || hasUpgrade('g', 22)) {
                     if (player.CoinflipMult<Math.pow(2,22)) {
                         player.CoinflipMult*=2
                     } else {
