@@ -1240,462 +1240,75 @@ addLayer("AAA", {
     achievements: {
         11: {
             name: "An Essence of the Broken World",
-            done() { return player.mem.points.gte(100) },
+            //done() { return player.mem.points.gte(100) },
             tooltip: "Gain 100 Memories.<br>Rewards:Fragments generation is a little faster.",
             image: "img/acv/mem crystal.jpg",
         },
         12: {
             name: "A Stack",
-            done() { return player.points.gte(9999) },
+            //done() { return player.points.gte(9999) },
             tooltip: "Gain 9999 Fragments.",
             image: "img/acv/12.png",
         },
         13: {
             name: "Two Stacks for Sure",
-            done() { return player.points.gte(19998) && hasUpgrade("mem", 33) },
+            //done() { return player.points.gte(19998) && hasUpgrade("mem", 33) },
             tooltip: "Gain 19998 Fragments With Directly Transfer.Rewards:You start at 5 Memories when reset.",
             image: "img/acv/13.png",
         },
         14: {
             name: "Define Aspects",
-            done() { return player.light.unlocked && player.dark.unlocked },
+           // done() { return player.light.unlocked && player.dark.unlocked },
             tooltip: "Unlock Both Light And Dark Layers.<br>Rewards:They behave as they are unlocked first.",
             image:"img/acv/define aspects.jpg"
         },
         15: {
             name: "Does Anybody Say sth About Softcap?",
-            done() { return tmp['mem'].softcap.gte(1e13) },
+           // done() { return tmp['mem'].softcap.gte(1e13) },
             tooltip: "Push Memory Softcap starts x1,000 later.<br>Rewards:Memories gain x1.5, regardless of softcap.",
         },
         21: {
             name: "Eternal Core",
-            done() { return hasUpgrade('mem', 41) },
+           // done() { return hasUpgrade('mem', 41) },
             tooltip: "Build up the Core.<br>Rewards:Unlock L&D milestones and you won't lose Eternal Core.",
         },
         22: {
             name: "Define Aspects™",
-            done() { return hasMilestone('light', 0) && hasMilestone('dark', 0) },
+           // done() { return hasMilestone('light', 0) && hasMilestone('dark', 0) },
             tooltip: "Reach L&D's 1st milestone.<br>Rewards:Conclusion no longer decreases Memories gain.Optimistic Thoughts&Force Operation will always give back their cost.",
             image:"img/acv/define aspects™.jpg"
         },
         23: {
             name: "Now You Are Useless",
-            done() { return hasAchievement('a', 22) && hasUpgrade('mem', 34) },
+           // done() { return hasAchievement('a', 22) && hasUpgrade('mem', 34) },
             tooltip: "Buy Conclusion When it is useless.<br>Rewards:When you buy Conclusion, it makes your Memory softcap start later but effect decreases based on your Time since Memory Reset.",
         },
         24: {
             name: "Eternal Core^2",
-            done() { return hasAchievement('a', 21) && (player.mem.points.gte(1e23) && player.light.points.gte(65) && player.dark.points.gte(65)) },
+           // done() { return hasAchievement('a', 21) && (player.mem.points.gte(1e23) && player.light.points.gte(65) && player.dark.points.gte(65)) },
             tooltip: "Make you can afford Eternal Core again after you have it.",
         },
         25: {
             name: "Stacks^Stacks",
-            done() { return player.points.gte(9.99e18) },
+          //  done() { return player.points.gte(9.99e18) },
             tooltip: "Gain 9.99e18 Fragments.<br>Rewards:Fragments now make Memory softcap starts later.",
             image: "img/acv/25.png",
         },
         31: {
             name: "Other Angles",
-            done() { return player.kou.unlocked && player.lethe.unlocked },
+           // done() { return player.kou.unlocked && player.lethe.unlocked },
             tooltip: "Unlock Both Red And Forgotten Layers.<br>Rewards:They behave as they are unlocked first.",
         },
         32: {
             name: "Finally I Get Rid of You!",
-            done() { return hasMilestone('kou', 2) && hasMilestone('lethe', 2) },
+           // done() { return hasMilestone('kou', 2) && hasMilestone('lethe', 2) },
             tooltip: "Reach R&F's 3rd milestone.<br>Rewards:Keep Directly Transfer when L or D reset, and Fragment Sympathy will always give back its cost.",
             image: "img/acv/32.png",
         },
         33: {
             name: "Plenty of them",
-            done() { return player.light.points.gte(200) && player.dark.points.gte(200) },
+           // done() { return player.light.points.gte(200) && player.dark.points.gte(200) },
             tooltip: "Have more than 200 on both Light Tachyons&Dark Matters.<br>Rewards:Their effects increase based on their own reset time.",
-        },
-        34: {
-            name: "Introducing: The AutoMate™",
-            done() { return hasMilestone('kou', 4) && hasMilestone('lethe', 4) },
-            tooltip: "Reach R&F's 5th milestone.<br>Rewards:Unlock L&D's Autobuyer.",
-        },
-        35: {
-            name: "Plenty*1.5 of them",
-            done() { return player.light.points.gte(300) && player.dark.points.gte(300) },
-            tooltip: "Have more than 300 on both Light Tachyons&Dark Matters.<br>Rewards:L's effect boosts R's gain, D's effect boosts F's gain.",
-        },
-        41: {
-            name: "Scepter of The Soul Guide",
-            done() { return player.lethe.upgrades.length >= 1 },
-            tooltip: "Buy your first Guiding Beacon.<br>Rewards: Always gain 20% of Memories gain every second.",
-            image:"img/acv/Scepter of The Soul Guide.jpg"
-        },
-        42: {
-            name: "Toyhouse",
-            done() { return hasChallenge('kou', 11) },
-            tooltip() {
-                return "Finish Broken Toyhouse challenge.<br>Rewards:Guiding Beacons costing Red Dolls will give back Red Dolls cost by Achievement." + ((hasAchievement('a', 42)) ? ("<br>Currently:" + format(achievementEffect('a', 42)) + "x") : "")
-            },
-            effect() {
-                let eff = new Decimal(0.5);
-                eff = eff.plus((player.a.achievements.length - 17) / 10);
-                if (eff.gt(1)) eff = new Decimal(1);
-                return eff;
-            },
-            image:"img/acv/toyhouse.jpg"
-        },
-        43: {
-            name: "Force Balance",
-            done() { return (player.light.points.gte(900) && player.dark.points.gte(900) && player.light.points.sub(player.dark.points).abs().lte(5)) },
-            tooltip: "Have more than 900 Light Tachyons&Dark Matters and difference between the two is not more than 5.<br>Rewards:When one of L or D is fall behind by another, its gain will be boosted.",
-            image:"img/acv/Force balance.jpg"
-        },
-        44: {
-            name: "I Can Idle (For) Now",
-            done() { return hasUpgrade('lethe', 15) && hasUpgrade('lethe', 51) && hasAchievement('a', 33) },
-            tooltip: "Make L,D,R,F's effects increases over their own reset time.<br>Rewards:Memory softcap starts later based on its own reset time.",
-        },
-        45: {
-            name: "9 isn't a lie!",
-            done() { return player.lethe.upgrades.length >= 9 },
-            tooltip: "Have 9 Guiding Beacons.<br>Rewards:Guiding Scythes level boosts Forgotten Drops effect.",
-        },
-        51: {
-            name: "e(An Essence) of the Broken World",
-            done() { return player.mem.points.gte(1e100) },
-            tooltip: "Gain 1e100 Memories.<br>Rewards:Starts at 100 Memories when reset.",
-            image: "img/acv/e(mem).png",
-        },
-        52: {
-            name: "Stacks e(Stacks)",
-            done() { return player.points.gte(9.99e99) },
-            tooltip: "Gain 9.99e99 Fragments.",
-            image: "img/acv/52.png",
-        },
-        53: {
-            name: "Beacons Beside Lethe",
-            done() { return player.lethe.upgrades.length >= 25 },
-            tooltip: "Have 25 Guiding Beacons.",
-            image: "img/acv/beacons beside lethe.jpg",
-        },
-        54: {
-            name: "Why Did I Watch This?",
-            done() { return hasChallenge('kou', 51) },
-            tooltip: "Finish Red Comet challenge.<br>Rewards:You become more curious about what you are witnessing.",
-        },
-        55: {
-            name: "The Lab.",
-            done() { return hasUpgrade('mem', 42) },
-            tooltip: "Set up the Lab.<br>Rewards:Unlock Lab layer and gain 1 Research Point.",
-        },
-        61: {
-            name: "\"A Professional lab in its……field.\"",
-            done() { return hasMilestone('lab', 7) },
-            tooltip: "Build up your reputation among scientists.",
-        },
-        62: {
-            name: "A Working Lab",
-            done() { return player.lab.points.gte(1000) },
-            tooltip: "Gain 1000 Research Points.",
-        },
-        63: {
-            name: "Head into Anonymous",
-            done() { return player.rei.unlocked && player.yugamu.unlocked },
-            tooltip: "Unlock both Anonymous Layers.<br>Rewards:Keep Red Comet Challenge Finished when reset.",
-            onComplete() {
-                if (!hasChallenge('kou', 51)) player.kou.challenges[51] = 1;
-            },
-        },
-        64: {
-            name: "Glance into The World",
-            done() { return player.world.unlocked },
-            tooltip: "Unlock World Layer.",
-        },
-        65: {
-            name: "The True Presbyter of The World",
-            done() { return player.rei.roses.gte(100) },
-            tooltip: "Gain 100 Glowing Roses.<br>Rewards:Glowing Roses now boosts The Speed of World Steps gain.",
-            effect() {
-                if (player['rei'].roses.lte(0)) return new Decimal(1);
-                let eff = player.rei.roses.plus(1).log10().plus(1);
-                if (hasAchievement('a', 85)) eff = player.rei.roses.plus(1).log(7.5).plus(1);
-                if (hasAchievement('a', 93)) eff = eff.times(tmp.etoluna.starPointeffect);
-                if (hasUpgrade('lethe', 63)) eff = eff.times(upgradeEffect('lethe', 63));
-                if (hasUpgrade('lethe', 64)) eff = eff.times(upgradeEffect('lethe', 64));
-                if (hasUpgrade('lethe', 65)) eff = eff.times(upgradeEffect('lethe', 65));
-                if (hasUpgrade('lethe', 75)) eff = eff.times(upgradeEffect('lethe', 75));
-                if (hasUpgrade('lethe', 85)) eff = eff.times(upgradeEffect('lethe', 85));
-                return eff;
-            },
-            image:"img/acv/The true Presbyter of the world.jpg"
-        },
-        71: {
-            name: "Dire Straits",
-            done() { return player.yugamu.timesmoved.gte(10) },
-            tooltip: "Move more than 10 times in the Maze<br>Rewards:Gain more 5 moves in the Maze.",
-        },
-        72: {
-            name: "Triangulation",
-            done() { return hasMilestone('rei', 4) && hasMilestone('yugamu', 4) },
-            tooltip: "Reach LC & FL's 5th milestone.<br>Rewards:The speed of World Steps gain x1.5.",
-        },
-        73: {
-            name: "Nothing Can Stop Us",
-            done() { return player.world.restrictionnum.gte(1) && player.world.fixednum.gte(1) },
-            tooltip: "Gone through both difficult World Steps.<br>Rewards:You can choose among two directions in Maze.",
-        },
-        74: {
-            name: "Doll House",
-            done() { return player.kou.points.gte(100) },
-            tooltip: "Have more than 100 Red Dolls.<br>Rewards:Red Dolls itself boosts The Speed of World Steps gain.",
-            effect() {
-                return player.kou.points.plus(1).log10().div(1.5).max(1);
-            },
-        },
-        75: {
-            name: "Anthemy",
-            done() { return player.rei.roses.gte(1000) },
-            tooltip: "Gain 1000 Glowing Roses.<br>Rewards:Entering Zero Sky halves your GR instead of resetting them.",
-        },
-        81: {
-            name: "Currently, nothing here",
-            done() { return player.storylayer.unlocked },
-            tooltip: "Begin your stories.",
-            image: "img/acv/81.png",
-        },
-        82: {
-            name: "Lossy Move",
-            done() { return player.yugamu.timesmoved.gte(100) },
-            tooltip: "Move more than 100 times in the Maze<br>Rewards:You can choose among three directions in Maze.",
-        },
-        83: {
-            name: "Restrictions™",
-            done() { return layers.world.restrictReward().gte(30) },
-            tooltip: "Let Restriction Steps' reward ≥30.00x<br>Rewards:Restriction Steps' reward's softcap starts at 25.00x",
-        },
-        84: {
-            name: "There is No Limit!",
-            done() { return player.mem.points.gte(Number.MAX_VALUE) },
-            tooltip: "Gain 1.79e308 Memories.",
-            image: "img/acv/84.png",
-        },
-        85: {
-            name: "Thats Not Intended",
-            done() { return hasUpgrade('storylayer', 14) && inChallenge('rei', 11) && player.world.restrictChallenge },
-            tooltip: "Endure Zero Sky & Restriction Challenge at the same time.<br>Rewards:Glowing Roses boost The Speed of World Steps gain better.",
-        },
-        91: {
-            name: "Higher And Higher",
-            done() { return player.world.points.gte(1000) },
-            tooltip: "Gain 1000 World Steps.<br>Rewards:You can choose among all four directions in Maze.",
-            image: "img/acv/Higher And Higher.jpg",
-        },
-        92: {
-            name: "Building Group",
-            done() { return player.rei.points.gte(10) && player.yugamu.points.gte(10) },
-            tooltip: "Gain both 10 Luminous Churches&Flourish Labyrinths.<br>Rewards:Stories you have gone through boost Fragments generation.",
-            effect() {
-                return player.storylayer.points.plus(1);
-            }
-        },
-        93: {
-            name: "\"Oh, No. Another BA.\"",
-            done() { return player.etoluna.starPoint.gte(250) && player.etoluna.moonPoint.gte(250) },
-            tooltip: "Gain both 250 Star Points&Moon Points.<br>Rewards:Unlock their buffs.",
-            effect() {
-                return player.storylayer.points.plus(1);
-            },
-            image: "img/acv/93.png",
-            //style:{'background-position':'center'}
-        },
-        94: {
-            name: "Being others",
-            done() { return challengeCompletions('saya', 11) >= 1 },
-            tooltip: "Complete Memory Adjustment Challenge once.<br>Rewards:Keep World upgrades when reset, and you gain moves in maze 2x.",
-        },
-        95: {
-            name: "Suspicious Spots",
-            done() { return player.saya.unlocked && player.etoluna.unlocked },
-            tooltip: "Unlock both Gemini & Knives Layers.<br>Rewards:You keep your World Atlas when reset.",
-            effect() {
-                return player.storylayer.points.plus(1);
-            }
-        },
-        101: {
-            name: "sizeof(double)",
-            done() { return player.points.gte(Number.MAX_VALUE) },
-            tooltip: "Gain 1.79e308 Fragments.",
-            image: "img/acv/101.png",
-        },
-        102: {
-            name: "\"I told you it's useless\"",
-            done() { return (inChallenge('saya', 41) || (player.saya.CurrentPairChallenge!=null && tmp.saya.grid.ChallengeDepth[7]!=-1)) && inChallenge('rei', 11) },
-            tooltip: "Enter Zero Sky while in Otherside of Godess Challenge.<br>Rewards:Everflashing Knives also effect Glowing roses Gain.",
-        },
-        103: {
-            name: "Hypersense",
-            done() { return player.etoluna.points.gte(100) },
-            tooltip: "Gain 100 Gemini Bounds.<br>Rewards:Gemini Bounds give more speed on Star/Moon Points gaining.",
-        },
-        104: {
-            name: "\"Did I just see an NaN?\"",
-            done() { return (challengeCompletions('saya', 42) >= 5) && (inChallenge('saya', 42)||(player.saya.CurrentPairChallenge!=null && tmp.saya.grid.ChallengeDepth[8]>=5)) && player.tab == 'light' },
-            tooltip: "See an NaN which won't break the game.",
-            image: "img/acv/NaN.png",
-        },
-        105: {
-            name: "Liner ≥ Softcaps",
-            done() { return hasUpgrade('lab', 194) },
-            tooltip: "Unlock Softcap Book.",
-        },
-        111: {
-            name: "Worldwide Paces",
-            done() { return player.ins.unlocked },
-            tooltip: "Unlock Institutions.",
-        },
-        112: {
-            name: "Seriously?",
-            done() { return player.yugamu.timesmoved.gte(50000) },
-            tooltip: "Move more than 50,000 times in Maze.<br>Rewards:Times moved in Maze slightly decrease Institution Fund requirement",
-            effect() {
-                return player.yugamu.timesmoved.max(1).log10().times(0.05).plus(1);
-            },
-        },
-        113: {
-            name: "You Can't Rely on These Forever",
-            done() { return player['lab'].buyables[12].gte(100) && player['lab'].buyables[13].gte(200) },
-            tooltip: "Reach Fragment Transformer & Memory Transformer's Effect Hardcap.<br>Rewards:Their overflowing levels provide weaker effects",
-        },
-        114: {
-            name: "One World, One Goal",
-            done() { return player.ins.inslevel.Eng.gte(1) && player.ins.inslevel.Fra.gte(1) && player.ins.inslevel.Deu.gte(1) && player.ins.inslevel.Che.gte(1) && player.ins.inslevel.Pol.gte(1) && player.ins.inslevel.Nor.gte(1) && player.ins.inslevel.Rus.gte(1) && player.ins.inslevel.Egy.gte(1) && player.ins.inslevel.Sau.gte(1) && player.ins.inslevel.Isr.gte(1) && player.ins.inslevel.Jpn.gte(1) && player.ins.inslevel.Ind.gte(1) && player.ins.inslevel.Kaz.gte(1) && player.ins.inslevel.Chn.gte(1) && player.ins.inslevel.Can.gte(1) && player.ins.inslevel.Usa.gte(1) && player.ins.inslevel.Bra.gte(1) && player.ins.inslevel.Arg.gte(1) && player.ins.inslevel.Nga.gte(1) && player.ins.inslevel.Zaf.gte(1) && player.ins.inslevel.Aus.gte(1) && player.ins.inslevel.Nzl.gte(1) },
-            tooltip: "Let all Institution sites work at least lv.1.",
-        },
-        115: {
-            name: "Power Awake",
-            done() { return player.awaken.points.gte(1) },
-            tooltip: "Unlock Awake layer.<br>Rewards:Unlock a new column of achievement.",
-        },
-        121: {
-            name: "Define Aspects®",
-            done() { return player.awaken.awakened.includes('light')&&player.awaken.awakened.includes('dark') },
-            tooltip: "Awake both Light and Dark layers.",
-            image:"img/acv/define aspects®.jpg"
-        },
-        122: {
-            name: "Sea of Happiness",
-            done() { return player.kou.points.gte(1000000) },
-            tooltip: "Have more than 1,000,000 Red Dolls.",
-        },
-        123: {
-            name: "The Researcher(!)",
-            done() { return player.lab.points.gte(1e100)&&player.ins.points.gte(10000) },
-            tooltip: "Have more than 1e100 Research Points and 10,000 Institution Funds.",
-        },
-        124: {
-            name: "Clusters of Stars",
-            done() { return player.etoluna.points.gte(1e100) },
-            tooltip: "Have more than 1e100 Gemini Bounds.",
-            image:"img/acv/clusters of stars.jpg"
-        },
-        125: {
-            name: "Strategist",
-            done() { return player.points.gte("1e5000")&&layers['lethe'].HyperBeaconLength() <= 12 },
-            tooltip: "Have more than 1e5000 Fragments when you have no more than 12 Hyper Beacons.",
-        },
-        131: {
-            name: "Define Aspects Co. Ltd",
-            done() { return player['awaken'].awakened.includes('rei')&&player['awaken'].awakened.includes('yugamu') },
-            tooltip: "Awake both Luminous & Flourish layers.",
-            image:"img/acv/define aspects coltd.jpg"
-        },
-        132: {
-            name: "Worldwide Communication",
-            done() { return hasUpgrade('storylayer',52) },
-            tooltip: "Unlock Institution Upgrades.",
-        },
-        133: {
-            name: "Alchemist",
-            done() { return player.fracture.ElementEssence.gte(500) },
-            tooltip: "Have more than 500 Element Essences.<br>Rewards: Element Essence itself now slightly boosts its cap.",
-        },
-        134: {
-            name: "Hold it!",
-            done() { return (player.etoluna.starbump>0.9 && player.etoluna.moonbump<0.1)||(player.etoluna.moonbump>0.9 && player.etoluna.starbump<0.1) },
-            tooltip: "Push Star/Moon Power while ignoring another.",
-        },
-        135: {
-            name: "\"Oh, No. Another Pair Challenge.\"",
-            done() { return (tmp.saya.grid.Sum_All_times>=5) },
-            tooltip: "Complete Merge Attachment 5 times.<br>Rewards: Fragment goal of Merge Attachment decreases by Merge Attachment you completed.",
-            effect(){
-                let eff = new Decimal(tmp.saya.grid.Sum_All_times/280)*0.2
-                return new Decimal(1).sub(eff);
-            },
-            image: "img/acv/PC.jpg",
-        },
-        141: {
-            name: "Super Expander",
-            done() { return (layers['fracture'].grid.return_Equiped_Equipment_Num(11)==9) },
-            tooltip: "Equip 9 Element Capacity++ in Equipment slot.",
-        },
-        142: {
-            name: "e(An Essence^2) of the Broken World",
-            done() { return player.mem.points.gte("1e10000") },
-            tooltip: "Gain 1e10000 Memories.",
-            image: "img/acv/e(mem^2).png",
-        },
-        16: {
-            name: "The Flash of Creation",
-            unlocked() { return hasAchievement('a', 115) },
-            done() { return player['awaken'].awakened.includes('light') },
-            tooltip: "Awake Light layer.",
-            image: "img/acv/the flash of creation.jpg",
-        },
-        26: {
-            name: "Hide Capacities",
-            unlocked() { return hasAchievement('a', 115) },
-            done() { return player['awaken'].awakened.includes('dark') },
-            tooltip: "Awake Dark layer.",
-            image: "img/acv/hide capacities.jpg",
-        },
-        36: {
-            name: "Gorgeous Petard",
-            unlocked() { return hasAchievement('a', 115) },
-            done() { return player['awaken'].awakened.includes('kou') },
-            tooltip: "Awake Red layer.",
-            image: "img/acv/Gorgeous Petard.jpg",
-        },
-        46: {
-            name: "Spiritfarer",
-            unlocked() { return hasAchievement('a', 115) },
-            done() { return player['awaken'].awakened.includes('lethe') },
-            tooltip: "Awake Forgotten layer.",
-            image: "img/acv/Spiritfarer.jpg",
-        },
-        56: {
-            name: "Uitima",
-            unlocked() { return hasAchievement('a', 115) },
-            done() { return player['awaken'].awakened.includes('rei') },
-            tooltip: "Awake Luminous layer.",
-            image: "img/acv/Ultima.jpg",
-        },
-        66: {
-            name: "Nightmare Before the Storm",
-            unlocked() { return hasAchievement('a', 115) },
-            done() { return player['awaken'].awakened.includes('yugamu') },
-            tooltip: "Awake Flourish layer.",
-            image: "img/acv/Nightmare before storm.jpg",
-        },
-        76: {
-            name: "Meteor Shower",
-            unlocked() { return hasAchievement('a', 115) },
-            done() { return player['awaken'].awakened.includes('etoluna') },
-            tooltip: "Awake Gemini layer.",
-            image: "img/acv/Meteor Shower.png",
-        },
-        86: {
-            name: "Merge Conflict of Mind",
-            unlocked() { return hasAchievement('a', 115) },
-            done() { return player['awaken'].awakened.includes('saya') },
-            tooltip: "Awake Knife layer.",
-            image: "img/acv/Merge Conflict of Mind.jpg",
         },
     },
     tabFormat: [
