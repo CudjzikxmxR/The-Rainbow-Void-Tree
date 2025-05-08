@@ -1,5 +1,5 @@
 // ************ Themes ************
-var themes = ["default", "aqua", "crazy"]
+var themes = ["default", "aqua", "crazy", "crimson"]
 
 var colors = {
 	default: {
@@ -35,6 +35,17 @@ var colors = {
 		background: "#1B0A3A",
 		background_tooltip: "rgba(0, 0, 0, 0.75)",
 	},
+	crimson: {
+		1: "#1E0000",
+		2: "#B45353",
+		3: "#B45353",
+		color: "#1E0000",
+		points: "#ff0000",
+		locked: "#A89D9D",
+		bought: "#921D1D",
+		background: "#001f3f",
+		background_tooltip: "rgba(0, 15, 31, 0.75)",
+	},
 }
 function changeTheme() {
 
@@ -52,7 +63,7 @@ function getThemeName() {
 
 function switchTheme() {
 	let index = themes.indexOf(options.theme)
-	if (options.theme === null || index > themes.length-1 || index < 0) {
+	if (options.theme === null || index >= themes.length-1 || index < 0) {
 		options.theme = themes[0];
 	}
 	else {
