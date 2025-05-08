@@ -433,7 +433,7 @@ addLayer("p", {
         "blank",
 
         ["display-text", function() {
-            if (hasUpgrade(this.layer, 29) && hasUpgrade('k', 25)) {
+            if (hasUpgrade(this.layer, 29) && hasMilestone('k', 25)) {
                 return "<h3>[SET 4]</h2>"
             }
             return ""
