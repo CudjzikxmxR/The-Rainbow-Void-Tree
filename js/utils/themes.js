@@ -1,5 +1,5 @@
 // ************ Themes ************
-var themes = ["default", "crazy", "crazy", "crimson"]
+var themes = ["default", "crimson", "crazy", "crimson"]
 
 var colors = {
 	default: {
