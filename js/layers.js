@@ -641,7 +641,7 @@ addLayer("g", {
         }
     },
     deactivated() {
-        if (player.LayerTwoChoice!=null && player.LayerTwoChoice!=this.layer && player.LayerTwoChoice!="!") {
+        if (player.LayerTwoChoice!="N/A" && player.LayerTwoChoice!=this.layer && player.LayerTwoChoice!="!") {
             return true
         }
         return false
@@ -834,7 +834,7 @@ addLayer("g", {
              }],
         ["display-text",
         function() {
-            if(player.LayerTwoChoice!=null && player.LayerTwoChoice!=this.layer && player.LayerTwoChoice!="!") {
+            if(player.LayerTwoChoice!="N/A" && player.LayerTwoChoice!=this.layer && player.LayerTwoChoice!="!") {
                 return "This layer is currently deactivated!"
             }
             return null
@@ -952,7 +952,7 @@ addLayer("k", {
         }
     },
     deactivated() {
-        if (player.LayerTwoChoice!=null && player.LayerTwoChoice!=this.layer && player.LayerTwoChoice!="!") {
+        if (player.LayerTwoChoice!="N/A" && player.LayerTwoChoice!=this.layer && player.LayerTwoChoice!="!") {
             return true
         }
         return false
@@ -1207,7 +1207,7 @@ addLayer("k", {
              }],
         ["display-text",
         function() {
-            if(player.LayerTwoChoice!=null && player.LayerTwoChoice!=this.layer && player.LayerTwoChoice!="!") {
+            if(player.LayerTwoChoice!="N/A" && player.LayerTwoChoice!=this.layer && player.LayerTwoChoice!="!") {
                 return "This layer is currently deactivated!"
             }
             return null
