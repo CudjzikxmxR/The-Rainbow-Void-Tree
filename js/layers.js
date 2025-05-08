@@ -544,7 +544,7 @@ addLayer("a", {
             return true
         },
         getCanClick(data, id) {
-            return player.points.eq(10)
+            return player.points.gte(10)
         },
         getStyle(data, id) {
             return {'background-color': '#'+ (data*1234%999999)}
