@@ -1126,11 +1126,11 @@ addLayer("k", {
             unlocked() {return hasMilestone(this.layer, this.id-1)}
         },
         20: {
-            requirementDescription: "90 Killstreak",
+            requirementDescription: "88 Killstreak",
             effectDescription() {
                 return "^1.15 Rainbows.<br>The <b>Bomb Strapped To Your Chest</b> is disarmed."
             },
-            done() {return player[this.layer].best.gte(90)},
+            done() {return player[this.layer].best.gte(88)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
         },
         21: {
