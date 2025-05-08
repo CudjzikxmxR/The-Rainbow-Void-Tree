@@ -1,5 +1,5 @@
 // ************ Themes ************
-var themes = ["default", "crimson", "crazy", "crimson"]
+var themes = ["default", "aqua", "crazy", "crimson"]
 
 var colors = {
 	default: {
@@ -36,14 +36,14 @@ var colors = {
 		background_tooltip: "rgba(0, 0, 0, 0.75)",
 	},
 	crimson: {
-		1: "#1E0000",
+		1: "#E5BEBE",
 		2: "#B45353",
 		3: "#B45353",
-		color: "#1E0000",
+		color: "#E5BEBE",
 		points: "#ff0000",
 		locked: "#A89D9D",
 		bought: "#921D1D",
-		background: "#001f3f",
+		background: "#1E0000",
 		background_tooltip: "rgba(0, 15, 31, 0.75)",
 	},
 }
