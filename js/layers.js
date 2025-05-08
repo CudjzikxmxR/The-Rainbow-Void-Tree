@@ -108,7 +108,7 @@ addLayer("p", {
             title: "Pride Month",
             description: "2x Rainbows",
             cost: new Decimal(5),
-            style: {width:'160px', order: 14},
+            style: {width:'160px', order: 1004},
         },
         12: {
             title: "Single Celled",
