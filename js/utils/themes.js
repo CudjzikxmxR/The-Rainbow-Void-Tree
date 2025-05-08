@@ -22,6 +22,17 @@ var colors = {
 		background: "#001f3f",
 		background_tooltip: "rgba(0, 15, 31, 0.75)",
 	},
+	crazy: {
+		1: "#E5C7F1",
+		2: "#A886C4",
+		3: "#6225D1",
+		color: "#E5C7F1",
+		points: "#6225D1",
+		locked: "#c4a7b3",
+		bought: "#6225D1",
+		background: "#1B0A3A",
+		background_tooltip: "rgba(0, 0, 0, 0.75)",
+	},
 }
 function changeTheme() {
 
