@@ -377,7 +377,7 @@ addLayer("p", {
             title: "Eternal Algebra Class",
             description: "Unlock the Math sublayer. This feature is currently uncoded, and you have beaten the game!! Yay",
             cost: new Decimal("ee7"),
-            style: {'width':'100px'},
+            style: {'width':'140px'},
             unlocked() {
                 return hasUpgrade(this.layer, 26) && hasMilestone('k', 25)
             },
