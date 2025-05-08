@@ -397,7 +397,7 @@ addLayer("p", {
             }],
         "blank",
         //"upgrades"
-        ["display-text", "<h1>[SET 1]</h1>"],
+        ["display-text", "<h3>[SET 1]</h3>"],
         ["row", [["upgrade",11],["upgrade",12],["upgrade",13]]],
         ["row", [["upgrade",14],["upgrade",15],["upgrade",16]]],
         "blank",
