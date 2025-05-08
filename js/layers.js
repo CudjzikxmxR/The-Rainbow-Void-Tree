@@ -831,7 +831,7 @@ addLayer("g", {
                     doReset(this.layer, true)
                 }
                 if (Math.random() >= 0.5 || hasUpgrade('g', 21)) {
-                    if (player.CoinflipMult<1024) {
+                    if (player.CoinflipMult<4096) {
                         player.CoinflipMult*=2
                     } else {
                         coinScaleNum = 777
@@ -896,6 +896,7 @@ addLayer("g", {
         }],
         "milestones",
         //"upgrades",
+
         ["display-text", "<h3>[SET 1]</h3>"],
         ["row", [["upgrade",11],["upgrade",12],["upgrade",13]]],
         ["row", [["upgrade",14],["upgrade",15],["upgrade",16]]],
