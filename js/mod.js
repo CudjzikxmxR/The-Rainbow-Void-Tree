@@ -165,7 +165,7 @@ function addedPlayerData() { return {
 	CoinflipMult: 1,
 	AxeCatMult: 1,
 	SymbolQOL: 0,
-	LayerTwoChoice: "N/A",
+	LayerTwoChoice: null,
 	AntivirusLevel: 0,
 }}
 
