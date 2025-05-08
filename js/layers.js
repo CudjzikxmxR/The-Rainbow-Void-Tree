@@ -1240,19 +1240,19 @@ addLayer("AAA", {
     achievements: {
         11: {
             name: "An Essence of the Broken World",
-            //done() { return player.mem.points.gte(100) },
+            done() { return true },
             tooltip: "Gain 100 Memories.<br>Rewards:Fragments generation is a little faster.",
             image: "img/acv/mem crystal.jpg",
         },
         12: {
             name: "A Stack",
-            //done() { return player.points.gte(9999) },
+            done() { return true },
             tooltip: "Gain 9999 Fragments.",
             image: "img/acv/12.png",
         },
         13: {
             name: "Two Stacks for Sure",
-            //done() { return player.points.gte(19998) && hasUpgrade("mem", 33) },
+            done() { return true },
             tooltip: "Gain 19998 Fragments With Directly Transfer.Rewards:You start at 5 Memories when reset.",
             image: "img/acv/13.png",
         },
