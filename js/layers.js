@@ -305,7 +305,7 @@ addLayer("p", {
             title: "Bomb Strapped To Your Chest",
             description: "1.00e7x Rainbows<br>After this upgrade is purchased, You have 10 seconds before a Kill reset is forced without awarding Knives.<br>Has no effect if you already have the Cherry layer unlocked.",
             cost: new Decimal(8e55),
-            style: {'width':'140px'},
+            style: {'width':'280px'},
             unlocked() {
                 return hasUpgrade(this.layer, 21) && hasUpgrade('k', 11)
             },
@@ -422,8 +422,8 @@ addLayer("p", {
             return ""
         }],
         ["row", [["upgrade",22],["upgrade",23],["upgrade",24]]],
-        ["row", [["upgrade",25],["upgrade",26],["upgrade",27]]],
-        ["row", [["upgrade",28],["upgrade",29]]],
+        ["row", [["upgrade",25],["upgrade",26],["upgrade",27],["upgrade",28]]],
+        ["upgrade",29],
         "blank",
 
         ["display-text", function() {
