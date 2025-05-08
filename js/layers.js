@@ -552,7 +552,7 @@ addLayer("a", {
         "blank",
         "blank",
         "grid",
-        ["row", [["achievements",11],["achievements",12],["achievements",13],["achievements",14],["achievements",15]]],
+        ["row", ["achievements",11],["achievements",12],["achievements",13],["achievements",14],["achievements",15]],
         "achievements",
     ],
     //midsection: ["grid", "blank"],
