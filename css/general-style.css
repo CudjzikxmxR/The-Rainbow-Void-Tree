@@ -52,12 +52,12 @@ h1, h2, h3, b, input {
 }
 
 .a.locked {
-	background-color: #6f6868;
+	background-color: #a7acd2;
 	cursor: not-allowed;
 }
 
 .a.bought {
-	background-color: #a7acd2;
+	background-color: #F7B100;
 	cursor: default;
 }
 
