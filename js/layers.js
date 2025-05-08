@@ -370,7 +370,7 @@ addLayer("p", {
             cost: new Decimal("1e150012"),
             style: {'width':'140px'},
             unlocked() {
-                return hasUpgrade(this.layer, 29) && hasMilestone('k', 25)
+                return hasUpgrade(this.layer, 34) && hasMilestone('k', 25)
             },
         },
         36: {
