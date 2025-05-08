@@ -108,13 +108,13 @@ addLayer("p", {
             title: "Pride Month",
             description: "2x Rainbows",
             cost: new Decimal(5),
-            style: {'width':'160px'},
+            style: {'width':'100px'},
         },
         12: {
             title: "Single Celled",
             description: "Rainbows scale based on your Amoebas.",
             cost: new Decimal(10),
-            style: {'width':'160px'},
+            style: {'width':'100px'},
             effect() {
                 return player[this.layer].points.add(1).pow(0.5)
             },
@@ -124,7 +124,7 @@ addLayer("p", {
             title: "Procrastination",
             description: "0.1x Rainbows<br>Rainbow gain now increases over time.",
             cost: new Decimal(50),
-            style: {'width':'160px'},
+            style: {'width':'100px'},
             effect() {
                 let scaleSpeed = 2
                 let scaleExpo = 1.77
@@ -160,7 +160,7 @@ addLayer("p", {
             title: "More Rainbow",
             description: "Rainbows scale based on your Rainbows.",
             cost: new Decimal(150),
-            style: {'width':'160px'},
+            style: {'width':'100px'},
             effect() {
                 return player.points.add(1).pow(0.25)
             },
@@ -170,13 +170,13 @@ addLayer("p", {
             title: "Stability Zest",
             description: "1.777x Rainbows",
             cost: new Decimal(500),
-            style: {'width':'160px'},
+            style: {'width':'100px'},
         },
         16: {
             title: "Activity Check",
             description: "Symbols now appear on the screen.\nClicking them gives temporary Rainbow multiplier.",
             cost: new Decimal(2000),
-            style: {'width':'160px'},
+            style: {'width':'100px'},
             effect() {
                 return player[this.layer].clickingMult
             },
@@ -186,7 +186,7 @@ addLayer("p", {
             title: "Mitosis",
             description: "2x Amoebas",
             cost: new Decimal(20000),
-            style: {'width':'160px'},
+            style: {'width':'100px'},
             unlocked() {
                 return hasUpgrade(this.layer, 16)
             },
@@ -195,7 +195,7 @@ addLayer("p", {
             title: "Anomaly Annihilating",
             description: "2.5x Rainbows<br>Clicking symbols is 4x as effective.",
             cost: new Decimal(100000),
-            style: {'width':'160px'},
+            style: {'width':'100px'},
             unlocked() {
                 return hasUpgrade(this.layer, 16)
             },
@@ -207,7 +207,7 @@ addLayer("p", {
             title: "Fallback",
             description: "Your Rainbow multiplier from clicking symbols can't decrease while below triple the total # of symbols you've ever clicked.",
             cost: new Decimal(1234567),
-            style: {'width':'160px'},
+            style: {'width':'100px'},
             effect() {
                 return player.minimumClickMult
             },
@@ -219,7 +219,7 @@ addLayer("p", {
             title: "This Is Overpowered",
             description: "Clicking symbols is 100000x as effective.",
             cost: new Decimal(10000000),
-            style: {'width':'160px'},
+            style: {'width':'100px'},
             unlocked() {
                 return hasUpgrade(this.layer, 16)
             },
@@ -231,7 +231,7 @@ addLayer("p", {
             title: "Woke Agenda?",
             description: "10x Rainbows",
             cost: new Decimal(1e12),
-            style: {'width':'160px'},
+            style: {'width':'100px'},
             unlocked() {
                 return hasUpgrade(this.layer, 21) && hasUpgrade('k', 11)
             },
@@ -240,7 +240,7 @@ addLayer("p", {
             title: "Deep Cut",
             description: "Rainbows scale based on your Knives.",
             cost: new Decimal(4e15),
-            style: {'width':'160px'},
+            style: {'width':'100px'},
             effect() {
                 return player['k'].points.add(1).pow(2)
             },
@@ -253,7 +253,7 @@ addLayer("p", {
             title: "[LITTLE SPONGE]",
             description: "Amoebas lightly scale based on your Rainbows.",
             cost: new Decimal(2e18),
-            style: {'width':'160px'},
+            style: {'width':'100px'},
             effect() {
                 return player.points.add(1).max(0).log(5)
             },
@@ -266,7 +266,7 @@ addLayer("p", {
             title: "Army of Amoebas",
             description: "<b>Procrastination</b>'s cap is 10x larger. <b>Procrastination</b> has an effect on Amoebas.",
             cost: new Decimal(5e22),
-            style: {'width':'160px'},
+            style: {'width':'100px'},
             effectDisplay() { return format(upgradeEffect(this.layer, 13))+"x" },
             unlocked() {
                 return hasUpgrade(this.layer, 21) && hasUpgrade('k', 11)
@@ -276,7 +276,7 @@ addLayer("p", {
             title: "Pride Year",
             description: "^1.1 Rainbows",
             cost: new Decimal(5e35),
-            style: {'width':'160px'},
+            style: {'width':'100px'},
             unlocked() {
                 return hasUpgrade(this.layer, 21) && hasUpgrade('k', 11)
             },
@@ -285,7 +285,7 @@ addLayer("p", {
             title: "Premeditated",
             description: "Knife requirement scaling is weaker.",
             cost: new Decimal(1e44),
-            style: {'width':'160px'},
+            style: {'width':'100px'},
             unlocked() {
                 return hasUpgrade(this.layer, 26) && hasUpgrade('k', 11)
             },
@@ -294,7 +294,7 @@ addLayer("p", {
             title: "Achieve Big",
             description: "+1 to achievement Rainbow multiplier base.<br>Achievements now give 2x Amoeba multiplier.<br>Knife requirement scaling is weaker.",
             cost: new Decimal(3.25e52),
-            style: {'width':'160px'},
+            style: {'width':'100px'},
             unlocked() {
                 return hasUpgrade(this.layer, 26) && hasUpgrade('k', 11)
             },
@@ -303,7 +303,7 @@ addLayer("p", {
             title: "Bomb Strapped To Your Chest",
             description: "1.00e7x Rainbows<br>After this upgrade is purchased, You have 10 seconds before a Kill reset is forced without awarding Knives.<br>Has no effect if you already have the Cherry layer unlocked.",
             cost: new Decimal(8e55),
-            style: {'width':'160px'},
+            style: {'width':'100px'},
             unlocked() {
                 return hasUpgrade(this.layer, 26) && hasUpgrade('k', 11)
             },
@@ -319,7 +319,7 @@ addLayer("p", {
             title: "Becoming Brave",
             description: "Clicking symbols is 5.55e55x as effective.<br>You feed Axe Cat 3x as much.<br>Axe cat evolves! It now slightly exponentates your Cherry gain.",
             cost: new Decimal("1e39000"),
-            style: {'width':'160px'},
+            style: {'width':'100px'},
             unlocked() {
                 return hasUpgrade(this.layer, 26) && hasMilestone('k', 25)
             },
@@ -328,7 +328,7 @@ addLayer("p", {
             title: "Energy Drink",
             description: "<b>Procrastination</b>'s base cap is now equal to your click power and scales faster over time.<br>Raise <b>Procrastination</b>'s cap ^1.5.<br>Coinflips are tripled.",
             cost: new Decimal("1e77000"),
-            style: {'width':'160px'},
+            style: {'width':'100px'},
             unlocked() {
                 return hasUpgrade(this.layer, 26) && hasMilestone('k', 25)
             },
@@ -337,7 +337,7 @@ addLayer("p", {
             title: "Cud Luck",
             description: "^1.1 Amoebas<br>This grants anywhere from ^0.95 to ^1 Rainbows at any given moment.",
             cost: new Decimal("7e80007"),
-            style: {'width':'160px'},
+            style: {'width':'100px'},
             unlocked() {
                 return hasUpgrade(this.layer, 26) && hasMilestone('k', 25)
             },
@@ -350,7 +350,7 @@ addLayer("p", {
             title: "Truly Symbolic",
             description: "<b>Click Your Way To Victory</b> scales 500x faster and multiplies coinflips.<br>Clicking symbols is ^1.05 as effective.<br>1.5x Knives",
             cost: new Decimal("1e150000"),
-            style: {'width':'160px'},
+            style: {'width':'100px'},
             unlocked() {
                 return hasUpgrade(this.layer, 26) && hasMilestone('k', 25)
             },
@@ -359,7 +359,7 @@ addLayer("p", {
             title: "<font color='#ff0000'>MALWARE</font>",
             description: "<font color='#ff0000'>Ameoba upgrades no-longer autobuy.<br>Axe Cat gets hungrier faster.</font>",
             cost: new Decimal("1e150012"),
-            style: {'width':'160px'},
+            style: {'width':'100px'},
             unlocked() {
                 return hasUpgrade(this.layer, 34) && hasMilestone('k', 25)
             },
@@ -368,7 +368,7 @@ addLayer("p", {
             title: "I Literally Clicked It Four Times Dude",
             description: "^1.07 Rainbows<br>You can feed Catfood to Axe Cat by passing over them.<br>More catfood spawns.",
             cost: new Decimal("1e500000"),
-            style: {'width':'160px'},
+            style: {'width':'100px'},
             unlocked() {
                 return hasUpgrade(this.layer, 26) && hasMilestone('k', 25)
             },
@@ -377,7 +377,7 @@ addLayer("p", {
             title: "Eternal Algebra Class",
             description: "Unlock the Math sublayer. This feature is currently uncoded, and you have beaten the game!! Yay",
             cost: new Decimal("ee7"),
-            style: {'width':'160px'},
+            style: {'width':'100px'},
             unlocked() {
                 return hasUpgrade(this.layer, 26) && hasMilestone('k', 25)
             },
@@ -664,13 +664,13 @@ addLayer("g", {
             title: "Masochism",
             description: "0.2x Rainbows<br>7x Amoebas",
             cost: new Decimal(7),
-            style: {'width':'160px'},
+            style: {'width':'100px'},
         },
         12: {
             title: "RNG",
             description: "This grants anywhere from 0.1x-10x Rainbows at any given moment.",
             cost: new Decimal(7),
-            style: {'width':'160px'},
+            style: {'width':'100px'},
             effect() {
                 return Math.max(Math.random()*10, 0.1)
             },
@@ -680,7 +680,7 @@ addLayer("g", {
             title: "I'm Gonna Shit",
             description: "Clicking symbols is 2x as effective.<br>Symbols spawn more often and continue spawning without <b>Activity Check</b>.",
             cost: new Decimal(17),
-            style: {'width':'160px'},
+            style: {'width':'100px'},
             onPurchase() {
                 resetClickMult()
             },
@@ -689,7 +689,7 @@ addLayer("g", {
             title: "Click Your Way To Victory",
             description: "This increases by +0.01x multiplier for Rainbows, Amoebas, and Cherries for every symbol clicked.",
             cost: new Decimal(50),
-            style: {'width':'160px'},
+            style: {'width':'100px'},
             effect() {
                 return player.cherryUpgrade14
             },
@@ -699,7 +699,7 @@ addLayer("g", {
             title: "Lets Go Gambling",
             description: "Clicking symbols has a 1 in 7 chance to instantly grant you Amoebas equal to what you'd earn from reset.<br>This effect persists while this layer is disabled.",
             cost: new Decimal(5000),
-            style: {'width':'160px'},
+            style: {'width':'100px'},
             onPurchase() {
                 if (player.SymbolQOL==0) {
                     player.SymbolQOL=1
@@ -712,7 +712,7 @@ addLayer("g", {
             title: "Cherry Tree",
             description: "Rainbows scale based on your Cherries.",
             cost: new Decimal(1000000),
-            style: {'width':'160px'},
+            style: {'width':'100px'},
             effect() {
                 return player[this.layer].points.add(1).pow(0.4)
             },
@@ -722,7 +722,7 @@ addLayer("g", {
             title: "THE BROTHERS COCK",
             description: "You automatically purchase Amoeba upgrades.",
             cost: new Decimal(5000000),
-            style: {'width':'160px'},
+            style: {'width':'100px'},
             unlocked() {
                 return hasUpgrade(this.layer, 16)
             },
@@ -731,7 +731,7 @@ addLayer("g", {
             title: "I Love Crack",
             description: "7x Cherries<br>Rainbows scale based on your Cherries and RNG.",
             cost: new Decimal(1.77e11),
-            style: {'width':'160px'},
+            style: {'width':'100px'},
             effect() {
                 return player[this.layer].points.add(1).pow(0.25).times(Math.max(Math.random()*5, 0.5))
             },
@@ -744,7 +744,7 @@ addLayer("g", {
             title: "Chris Luck",
             description: "Clicking symbols always grants Amoebas.",
             cost: new Decimal(7.77e17),
-            style: {'width':'160px'},
+            style: {'width':'100px'},
             unlocked() {
                 return hasUpgrade(this.layer, 16)
             },
@@ -753,7 +753,7 @@ addLayer("g", {
             title: "Deck of Cards",
             description: "52x Rainbows<br>Coinflips always grant multiplier and reset nothing.<br>Click-related multipliers can no longer drain..",
             cost: new Decimal(7.77e21),
-            style: {'width':'160px'},
+            style: {'width':'100px'},
             unlocked() {
                 return hasUpgrade(this.layer, 19)
             },
@@ -762,7 +762,7 @@ addLayer("g", {
             title: "Fortnite Balls",
             description: "1.777x Amoebas.",
             cost: new Decimal(1e24),
-            style: {'width':'160px'},
+            style: {'width':'100px'},
             unlocked() {
                 return hasUpgrade(this.layer, 19)
             },
@@ -771,7 +771,7 @@ addLayer("g", {
             title: "Surprise Guest Appearance",
             description: "^1.1 Rainbows<br>If this layer was picked last, re-enable the Knife layer.<br>A special little friend invades this reset layer...",
             cost: new Decimal(1e32),
-            style: {'width':'160px'},
+            style: {'width':'100px'},
             unlocked() {
                 return hasUpgrade(this.layer, 21)
             },
@@ -978,7 +978,7 @@ addLayer("k", {
             title: "DLC",
             description: "Unlock new Amoeba upgrades.",
             cost: new Decimal(1),
-            style: {'width':'160px'},
+            style: {'width':'100px'},
             onPurchase() {
                 player[this.layer].points = new Decimal(0)
                 doReset(this.layer, true)
@@ -988,7 +988,7 @@ addLayer("k", {
             title: "Blood Cells",
             description: "3x Amoebas",
             cost: new Decimal(4),
-            style: {'width':'160px'},
+            style: {'width':'100px'},
             onPurchase() {
                 player[this.layer].points = new Decimal(0)
                 doReset(this.layer, true)
@@ -998,7 +998,7 @@ addLayer("k", {
             title: "Good Thing I'm Straight",
             description: "0.01x Rainbows<br>Clicking symbols is 6.66e6x as effective.",
             cost: new Decimal(8),
-            style: {'width':'160px'},
+            style: {'width':'100px'},
             onPurchase() {
                 player[this.layer].points = new Decimal(0)
                 doReset(this.layer, true)
@@ -1009,7 +1009,7 @@ addLayer("k", {
             title: "Genocide",
             description: "Symbols spawn more often.<br>Clicking symbols is 10x as effective.",
             cost: new Decimal(12),
-            style: {'width':'160px'},
+            style: {'width':'100px'},
             onPurchase() {
                 player[this.layer].points = new Decimal(0)
                 doReset(this.layer, true)
@@ -1019,7 +1019,7 @@ addLayer("k", {
             title: "Adrenaline",
             description: "Procrastination reaches its cap faster.<br>Amoebas scale based on your knives.",
             cost: new Decimal(20),
-            style: {'width':'160px'},
+            style: {'width':'100px'},
             onPurchase() {
                 player[this.layer].points = new Decimal(0)
                 doReset(this.layer, true)
@@ -1033,7 +1033,7 @@ addLayer("k", {
             title: "This Is Overpowered [II]",
             description: "4x Amoebas<br>Clicking is 3x as effective<br>2x Knives<br>Rainbows scale based on Rainbows again, but weaker.",
             cost: new Decimal(32),
-            style: {'width':'160px'},
+            style: {'width':'100px'},
             onPurchase() {
                 player[this.layer].points = new Decimal(0)
                 doReset(this.layer, true)
