@@ -783,6 +783,7 @@ addLayer("g", {
             cost: new Decimal(7.77e17),
             style: {'width':'140px'},
         },
+        //Set 2
         21: {
             title: "Deck of Cards",
             description: "52x Rainbows<br>Click-related multipliers can no longer drain.",
@@ -1289,6 +1290,10 @@ addLayer("k", {
                 return "<font color='#ff0000'>All Knife upgrades set your Knives to 0 and force a Kill reset without awarding Knives!"
              }],
         "blank",
-        "upgrades",
+        //"upgrades",
+        ["display-text", "<h3>[SET 1]</h3>"],
+        ["row", [["upgrade",11],["upgrade",12],["upgrade",13]]],
+        ["row", [["upgrade",14],["upgrade",15],["upgrade",16]]],
+        "blank",
     ],
 })
