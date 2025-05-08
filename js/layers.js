@@ -533,7 +533,6 @@ addLayer("a", {
             tooltip: "Purchase <b>Achieve Big</b>.<br>Award: N/A.", 
         },
     },
-    midsection: ["achievements", "blank"],
     tabFormat: [
         //"main-display",
         ["display-text", function () {
@@ -552,9 +551,9 @@ addLayer("a", {
         }],
         "blank",
         "blank",
-        
-        ["row", ["achievements"]],
-        //"achievements",
+        ["row", [["achievement", 15], ["achievement", 12]]],
+        "grid",
+        "achievements",
     ],
     //midsection: ["grid", "blank"],
 })
