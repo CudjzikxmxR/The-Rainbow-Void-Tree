@@ -551,7 +551,7 @@ addLayer("a", {
         }],
         "blank",
         "blank",
-        ["row", ["achievements"],
+        ["row", ["achievements"]],
         "grid",
         "achievements",
     ],
