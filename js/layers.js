@@ -532,6 +532,13 @@ addLayer("a", {
             unlocked() {return true},
             tooltip: "Purchase <b>Achieve Big</b>.<br>Award: N/A.", 
         },
+        26: {
+            name: "Oh.",
+            image: "resources/Amoeba_Icon.png",
+            done() {return player.points.gte("1e20000")},
+            unlocked() {return true},
+            tooltip: "Didn't think you'd get to this point in the game so fast huh?<br>Award: N/A", 
+        },
     },
     tabFormat: [
         //"main-display",
@@ -554,7 +561,7 @@ addLayer("a", {
         "grid",
         ["row", [["achievement",11],["achievement",12],["achievement",13],["achievement",14],["achievement",15],["achievement",16]]], //Achievements 1-6
         ["row", [["achievement",17],["achievement",18],["achievement",19],["achievement",21],["achievement",22],["achievement",23]]], //7-12
-        ["row", [["achievement",24],["achievement",25]]], //13-18
+        ["row", [["achievement",24],["achievement",25],["achievement",26]]], //13-18
         //"achievements",
     ],
     //midsection: ["grid", "blank"],
