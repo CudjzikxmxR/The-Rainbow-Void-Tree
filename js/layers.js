@@ -779,7 +779,7 @@ addLayer("g", {
         },
         21: {
             title: "Deck of Cards",
-            description: "52x Rainbows<br>Coinflips always grant multiplier and reset nothing.<br>Click-related multipliers can no longer drain..",
+            description: "52x Rainbows<br>Coinflips always grant multiplier and reset nothing.<br>Click-related multipliers can no longer drain.",
             cost: new Decimal(7.77e21),
             style: {'width':'140px'},
             unlocked() {
@@ -1019,7 +1019,7 @@ addLayer("k", {
     upgrades: {
         11: {
             title: "DLC",
-            description: "Unlock new Amoeba upgrades.",
+            description: "Unlock [SET 3] of Amoeba upgrades.",
             cost: new Decimal(1),
             style: {'width':'140px'},
             onPurchase() {
@@ -1231,7 +1231,7 @@ addLayer("k", {
         25: {
             requirementDescription: "10000 Killstreak",
             effectDescription() {
-                return "Unlock more Amoeba upgrades."
+                return "Unlock [SET 4] of Amoeba upgrades."
             },
             done() {return player[this.layer].best.gte(10000)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
