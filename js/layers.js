@@ -397,7 +397,7 @@ addLayer("p", {
             }],
         "blank",
         //"upgrades"
-        ["row", ["upgrade", 11]]
+        ["row", [["upgrade", 11]]]
     ],
     /*
     infoboxes: {
