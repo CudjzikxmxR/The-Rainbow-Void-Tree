@@ -535,7 +535,7 @@ addLayer("a", {
     },
     grid: {
         maxRows: 3,
-        rows: 2,
+        rows: 3,
         cols: 2,
         getStartData(id) {
             return id
