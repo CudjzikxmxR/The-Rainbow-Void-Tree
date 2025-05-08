@@ -760,9 +760,6 @@ addLayer("g", {
             description: "You automatically purchase Amoeba upgrades.",
             cost: new Decimal(5000000),
             style: {'width':'140px'},
-            unlocked() {
-                return hasUpgrade(this.layer, 16)
-            },
         },
         18: {
             title: "I Love Crack",
@@ -773,18 +770,12 @@ addLayer("g", {
                 return player[this.layer].points.add(1).pow(0.25).times(Math.max(Math.random()*5, 0.5))
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
-            unlocked() {
-                return hasUpgrade(this.layer, 16)
-            },
         },
         19: {
             title: "Chris Luck",
             description: "Clicking symbols always grants Amoebas.",
             cost: new Decimal(7.77e17),
             style: {'width':'140px'},
-            unlocked() {
-                return hasUpgrade(this.layer, 16)
-            },
         },
         21: {
             title: "Deck of Cards",
@@ -810,7 +801,7 @@ addLayer("g", {
             cost: new Decimal(1e32),
             style: {'width':'140px'},
             unlocked() {
-                return hasUpgrade(this.layer, 21)
+                return hasUpgrade(this.layer, 19)
             },
             onPurchase() {
                 if (player.LayerTwoChoice=="g") {
@@ -904,7 +895,22 @@ addLayer("g", {
             return null
         }],
         "milestones",
-        "upgrades",
+        //"upgrades",
+
+        ["display-text", "<h3>[SET 1]</h3>"],
+        ["row", [["upgrade",11],["upgrade",12],["upgrade",13]]],
+        ["row", [["upgrade",14],["upgrade",15],["upgrade",16]]],
+        ["row", [["upgrade",17],["upgrade",18],["upgrade",19]]],
+        "blank",
+
+        ["display-text", function() {
+            if (hasUpgrade(this.layer, 19)) {
+                return "<h3>[SET 2]</h2>"
+            }
+            return ""
+        }],
+        ["row", [["upgrade",21],["upgrade",22],["upgrade",23]]],
+        "blank",
     ],
 })
 
