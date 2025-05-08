@@ -552,7 +552,9 @@ addLayer("a", {
         "blank",
         "blank",
         "grid",
-        ["row", [["achievement",11],["achievement",12],["achievement",13],["achievement",14],["achievement",15]]],
+        ["row", [["achievement",11],["achievement",12],["achievement",13],["achievement",14],["achievement",15],["achievement",16]]], //Achievements 1-6
+        ["row", [["achievement",17],["achievement",18],["achievement",19],["achievement",21],["achievement",22],["achievement",23]]], //7-12
+        ["row", [["achievement",24],["achievement",25]]], //13-18
         //"achievements",
     ],
     //midsection: ["grid", "blank"],
