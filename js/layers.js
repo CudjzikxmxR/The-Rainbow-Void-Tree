@@ -400,7 +400,7 @@ addLayer("p", {
         ["row", [["upgrade",11],["upgrade",12],["upgrade",13]]],
         ["row", [["upgrade",14],["upgrade",15],["upgrade",16]]],
         "blank",
-        ["row", [["upgrade",14],["upgrade",15],["upgrade",16]]],
+        ["row", [["upgrade",17],["upgrade",18],["upgrade",19],["upgrade",21]]],
     ],
     /*
     infoboxes: {
