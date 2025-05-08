@@ -33,6 +33,7 @@ function getStartPlayer() {
 		extradata = addedPlayerData();
 		for (thing in extradata)
 			playerdata[thing] = extradata[thing];
+		playerdata[LayerTwoChoice] = null;
 	}
 
 	playerdata.infoboxes = {};
