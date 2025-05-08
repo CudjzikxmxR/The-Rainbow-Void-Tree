@@ -396,8 +396,8 @@ addLayer("p", {
                 return "You have clicked " + player.minimumClickMult + " symbols."
             }],
         "blank",
-        //"upgrades"
-        ["row", [["upgrade",11],["upgrade",12],["upgrade",13],["upgrade",14],["upgrade",15],["upgrade",16]]]
+        "upgrades"
+        //["row", [["upgrade",11],["upgrade",12],["upgrade",13],["upgrade",14],["upgrade",15],["upgrade",16]]]
     ],
     /*
     infoboxes: {
