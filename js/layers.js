@@ -127,7 +127,7 @@ addLayer("p", {
             style: {'width':'140px'},
             effect() {
                 let scaleSpeed = 2
-                let scaleExpo = 1.77
+                let scaleExpo = 1.47
                 let scaleCap = new Decimal(1000)
                 if (hasUpgrade(this.layer, 32)) {
                     scaleSpeed = player[this.layer].resetTime*7
@@ -182,6 +182,7 @@ addLayer("p", {
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
+        //Set 2
         17: {
             title: "Mitosis",
             description: "2x Amoebas",
@@ -227,6 +228,7 @@ addLayer("p", {
                 resetClickMult()
             },
         },
+        //Set 3
         22: {
             title: "Woke Agenda?",
             description: "10x Rainbows",
@@ -287,7 +289,7 @@ addLayer("p", {
             cost: new Decimal(1e44),
             style: {'width':'140px'},
             unlocked() {
-                return hasUpgrade(this.layer, 26) && hasUpgrade('k', 11)
+                return hasUpgrade(this.layer, 21) && hasUpgrade('k', 11)
             },
         },
         28: {
@@ -296,7 +298,7 @@ addLayer("p", {
             cost: new Decimal(3.25e52),
             style: {'width':'140px'},
             unlocked() {
-                return hasUpgrade(this.layer, 26) && hasUpgrade('k', 11)
+                return hasUpgrade(this.layer, 21) && hasUpgrade('k', 11)
             },
         },
         29: {
@@ -305,7 +307,7 @@ addLayer("p", {
             cost: new Decimal(8e55),
             style: {'width':'140px'},
             unlocked() {
-                return hasUpgrade(this.layer, 26) && hasUpgrade('k', 11)
+                return hasUpgrade(this.layer, 21) && hasUpgrade('k', 11)
             },
             onPurchase() {
                 setTimeout(function () {
@@ -315,13 +317,14 @@ addLayer("p", {
                 }, 10000);
             }
         },
+        //Set 4
         31: {
             title: "Becoming Brave",
             description: "Clicking symbols is 5.55e55x as effective.<br>You feed Axe Cat 3x as much.<br>Axe cat evolves! It now slightly exponentates your Cherry gain.",
             cost: new Decimal("1e39000"),
             style: {'width':'140px'},
             unlocked() {
-                return hasUpgrade(this.layer, 26) && hasMilestone('k', 25)
+                return hasUpgrade(this.layer, 29) && hasMilestone('k', 25)
             },
         },
         32: {
@@ -330,7 +333,7 @@ addLayer("p", {
             cost: new Decimal("1e77000"),
             style: {'width':'140px'},
             unlocked() {
-                return hasUpgrade(this.layer, 26) && hasMilestone('k', 25)
+                return hasUpgrade(this.layer, 29) && hasMilestone('k', 25)
             },
         },
         33: {
@@ -339,7 +342,7 @@ addLayer("p", {
             cost: new Decimal("7e80007"),
             style: {'width':'140px'},
             unlocked() {
-                return hasUpgrade(this.layer, 26) && hasMilestone('k', 25)
+                return hasUpgrade(this.layer, 29) && hasMilestone('k', 25)
             },
             effect() {
                 return 0.9+Math.max(Math.random()/10, 0.05)
@@ -352,7 +355,7 @@ addLayer("p", {
             cost: new Decimal("1e150000"),
             style: {'width':'140px'},
             unlocked() {
-                return hasUpgrade(this.layer, 26) && hasMilestone('k', 25)
+                return hasUpgrade(this.layer, 29) && hasMilestone('k', 25)
             },
         },
         35: {
@@ -361,7 +364,7 @@ addLayer("p", {
             cost: new Decimal("1e150012"),
             style: {'width':'140px'},
             unlocked() {
-                return hasUpgrade(this.layer, 34) && hasMilestone('k', 25)
+                return hasUpgrade(this.layer, 29) && hasMilestone('k', 25)
             },
         },
         36: {
@@ -370,7 +373,7 @@ addLayer("p", {
             cost: new Decimal("1e500000"),
             style: {'width':'140px'},
             unlocked() {
-                return hasUpgrade(this.layer, 26) && hasMilestone('k', 25)
+                return hasUpgrade(this.layer, 29) && hasMilestone('k', 25)
             },
         },
         37: {
@@ -379,7 +382,7 @@ addLayer("p", {
             cost: new Decimal("ee7"),
             style: {'width':'140px'},
             unlocked() {
-                return hasUpgrade(this.layer, 26) && hasMilestone('k', 25)
+                return hasUpgrade(this.layer, 29) && hasMilestone('k', 25)
             },
         },
     },
