@@ -924,7 +924,7 @@ addLayer("k", {
     ],
     layerShown(){
         //return true
-        if (hasUpgrade(this.layer, 11) || hasUpgrade('g', 11) || hasUpgrade('p', 21) || player[this.layer].points.gte(new Decimal(1)) || player['g'].points.gte(new Decimal(1))) {
+        if (hasUpgrade(this.layer, 11) || hasUpgrade('g', 11) || hasMilestone('k', 11) || hasUpgrade('p', 21) || player[this.layer].points.gte(new Decimal(1)) || player['g'].points.gte(new Decimal(1))) {
             return true
         }
         return false
