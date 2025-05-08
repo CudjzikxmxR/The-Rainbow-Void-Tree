@@ -533,6 +533,32 @@ addLayer("a", {
             tooltip: "Purchase <b>Achieve Big</b>.<br>Award: N/A.", 
         },
     },
+    grid: {
+        maxRows: 3,
+        rows: 2,
+        cols: 2,
+        getStartData(id) {
+            return id
+        },
+        getUnlocked(id) { // Default
+            return true
+        },
+        getCanClick(data, id) {
+            return player.points.eq(10)
+        },
+        getStyle(data, id) {
+            return {'background-color': '#'+ (data*1234%999999)}
+        },
+        onClick(data, id) { // Don't forget onHold
+            player[this.layer].grid[id]++
+        },
+        getTitle(data, id) {
+            return "Gridable #" + id
+        },
+        getDisplay(data, id) {
+            return data
+        },
+    },
     tabFormat: [
         //"main-display",
         ["display-text", function () {
@@ -552,7 +578,7 @@ addLayer("a", {
         "blank",
         "blank",
         //["row", [["achievement", 11], ["achievement", 12]]],
-        ["grid", "achievements"],
+        "grid",
         "achievements",
     ],
     //midsection: ["grid", "blank"],
