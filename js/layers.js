@@ -533,7 +533,7 @@ addLayer("a", {
             tooltip: "Purchase <b>Achieve Big</b>.<br>Award: N/A.", 
         },
         26: {
-            name: "Oh.",
+            name: "Wait, OoMs/sec Already??",
             image: "resources/Amoeba_Icon.png",
             done() {return player.points.gte("1e20000")},
             unlocked() {return true},
