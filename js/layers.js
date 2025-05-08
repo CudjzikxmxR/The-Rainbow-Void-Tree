@@ -817,7 +817,11 @@ addLayer("g", {
             display() { // Everything else displayed in the buyable button after the title
                 var coinReq = 1e24
                 coinReq *= Math.pow(100, Math.log2(player.CoinflipMult))
-                return "Force a Gamble reset without earning Cherries for a 50% chance to earn Cherry multiplier.<br>(Requires " + format(coinReq) + " Rainbows)<br>Currently: "+format(player.CoinflipMult)+"x"
+                if (player.CoinflipMult<2^17) {
+                    return "Force a Gamble reset without earning Cherries for a 50% chance to double your Cherry multiplier.<br>(Requires " + format(coinReq) + " Rainbows)<br>Currently: "+format(player.CoinflipMult)+"x"
+                } else {
+                    return "Do a coinflip to gain Cherry multiplier.<br>(Requires " + format(coinReq) + " Rainbows)<br>Currently: "+format(player.CoinflipMult)+"x"
+                }
             },
             unlocked() { return player[this.layer].unlocked }, 
             canClick() {
@@ -831,7 +835,7 @@ addLayer("g", {
                     doReset(this.layer, true)
                 }
                 if (Math.random() >= 0.5 || hasUpgrade('g', 21)) {
-                    if (player.CoinflipMult<4096) {
+                    if (player.CoinflipMult<2^17) {
                         player.CoinflipMult*=2
                     } else {
                         coinScaleNum = 777
