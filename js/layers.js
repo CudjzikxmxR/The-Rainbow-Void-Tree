@@ -399,18 +399,42 @@ addLayer("p", {
                 return "You have clicked " + player.minimumClickMult + " symbols."
             }],
         "blank",
+
         //"upgrades"
         ["display-text", "<h3>[SET 1]</h3>"],
         ["row", [["upgrade",11],["upgrade",12],["upgrade",13]]],
         ["row", [["upgrade",14],["upgrade",15],["upgrade",16]]],
         "blank",
+
         ["display-text", function() {
-            if (hasUpgrade('p', 16)) {
+            if (hasUpgrade(this.layer, 16)) {
                 return "<h3>[SET 2]</h2>"
             }
             return ""
         }],
         ["row", [["upgrade",17],["upgrade",18],["upgrade",19],["upgrade",21]]],
+        "blank",
+
+        ["display-text", function() {
+            if (hasUpgrade(this.layer, 21) && hasUpgrade('k', 11)) {
+                return "<h3>[SET 3]</h2>"
+            }
+            return ""
+        }],
+        ["row", [["upgrade",22],["upgrade",23],["upgrade",24]]],
+        ["row", [["upgrade",25],["upgrade",26],["upgrade",27]]],
+        ["row", [["upgrade",28],["upgrade",29]]],
+        "blank",
+
+        ["display-text", function() {
+            if (hasUpgrade(this.layer, 29) && hasUpgrade('k', 25)) {
+                return "<h3>[SET 4]</h2>"
+            }
+            return ""
+        }],
+        ["row", [["upgrade",31],["upgrade",32],["upgrade",33]]],
+        ["row", [["upgrade",34],["upgrade",35],["upgrade",36],["upgrade",37]]],
+        "blank",
     ],
     /*
     infoboxes: {
