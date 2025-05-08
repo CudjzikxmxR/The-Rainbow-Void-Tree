@@ -91,7 +91,7 @@ td {
 }
 
 .hidden {
-	
+	visibility: hidden;
 	height: 50px !important;
 }
 
@@ -241,7 +241,7 @@ button > * {
 }
 
 .ghost {
-	visibility: hidden
+	
 }
 
 #treeTab td button {
