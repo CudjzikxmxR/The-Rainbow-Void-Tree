@@ -149,10 +149,20 @@ let tipMessages = [
 	"R.I.P. TFS tree.",
 	"🍞",
 	"It's probably in your best bet to double-click the symbols. The onClick function is an asshole.",
+	"more gay = more rainbow",
+	"The coin desires to be flipped.",
+	"Wait, hang on, this mod adds new themes?",
+	"I'm preeeeetty sure the achievements shouldn't be invisible.",
+	"https://www.roblox.com/games/10745195956/",
+	"Be cautious, <font color='#ff0000'>MALWARE</font> 'upgrades' are lurking.",
+	"Play Randomly Generated Voronezh.",
+	"Do you think these tips go by too quickly?",
+	"It all spirals into chaos.",
+	"get on your rod you gotta fish",
 
 	//Update
 	"This game currently has 3 total main layers.",
-	"There are currently 30 tips in the game!",
+	"There are currently 40 tips in the game!",
 	"At this current moment of you playing this game, Stability Test 1.7 is not released.",
 ]
 let tipTick = 0
