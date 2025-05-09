@@ -587,14 +587,7 @@ addLayer("a", {
         1001: {
             name: "Feeling Crazed",
             image: "resources/Secret.png",
-            done() {
-                let get2 = localStorage.getItem(getModID()+"_options");
-                if (get2) 
-                    options = Object.assign(getStartOptions(), JSON.parse(decodeURIComponent(escape(atob(get2)))));
-                else 
-                    options = getStartOptions()
-                if (themes.indexOf(options.theme) > 1) return true
-                },
+            done() {return player.SecretAch1},
             unlocked() {return true},
             tooltip: "Discover themes other than the base 2.<br>Award: N/A", 
         },

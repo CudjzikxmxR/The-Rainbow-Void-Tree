@@ -182,6 +182,7 @@ function addedPlayerData() { return {
 	SymbolQOL: 0,
 	LayerTwoChoice: null,
 	AntivirusLevel: 0,
+	SecretAch1: false,
 }}
 
 // Display extra things at the top of the page

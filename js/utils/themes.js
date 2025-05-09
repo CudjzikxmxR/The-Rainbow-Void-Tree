@@ -69,6 +69,9 @@ function switchTheme() {
 	else {
 		index++;
 		options.theme = themes[index];
+		if (index == 2) {
+			player.SecretAch1 = true
+		}
 	}
 	changeTheme();
 	resizeCanvas();
