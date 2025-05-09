@@ -578,10 +578,25 @@ addLayer("a", {
         },
         26: {
             name: "Wait, OoMs/sec Already??",
-            image: "resources/AchievementIcon.png",
+            image: "resources/WTF.png",
             done() {return player.points.gte("1e20000")},
             unlocked() {return true},
             tooltip: "Didn't think you'd get to this point in the game so fast huh?<br>Award: N/A", 
+        },
+
+        1001: {
+            name: "Feelin' Crazed",
+            image: "resources/Secret.png",
+            done() {
+                let get2 = localStorage.getItem(getModID()+"_options");
+                if (get2) 
+                    options = Object.assign(getStartOptions(), JSON.parse(decodeURIComponent(escape(atob(get2)))));
+                else 
+                    options = getStartOptions()
+                if (themes.indexOf(options.theme) > 1) return true
+                },
+            unlocked() {return true},
+            tooltip: "Discover themes other than the base 2.<br>Award: N/A", 
         },
     },
     tabFormat: [
