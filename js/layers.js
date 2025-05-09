@@ -873,6 +873,7 @@ addLayer("g", {
             //effectDescription: "You can feed Axe Cat, disabling Amoeba gain entirely and causing Catfood to spawn around the screen, but giving temporary Rainbow and Cherry multiplier for each Catfood clicked.<br>Currently "+format(player.AxeCatMult)+"x. (Capped at "+format(Math.log10(getClickPower()))+"x)",
             toggles: [
                 ["p", "feedingAxeCat"], 
+                ["g", "AxeCosmetic"],
             ],
             done() {return hasUpgrade(this.layer, 23)},
             unlocked() {return hasUpgrade(this.layer, 23)},
@@ -909,7 +910,6 @@ addLayer("g", {
             }
             return null
         }],
-        ["toggle", ["g", "AxeCosmetic"]],
         "milestones",
         //"upgrades",
 
