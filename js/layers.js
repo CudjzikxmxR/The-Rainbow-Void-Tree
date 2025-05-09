@@ -620,6 +620,7 @@ addLayer("g", {
         unlocked: false,
 		points: new Decimal(0),
         unlockOrder: 0,
+        AxeCosmetic: false,
     }},
     color: "#770000",
     requires() { // Can be a function that takes requirement increases into account
@@ -901,10 +902,14 @@ addLayer("g", {
         "resource-display",
         ["display-image", function () {
             if (hasUpgrade('g', 23)) {
+                if (hasUpgrade('p', 31) && !player[this.layer].AxeCosmetic) {
+                    return "resources/BraveCat.png"
+                }
                 return "resources/AxeCat.png"
             }
             return null
         }],
+        ["toggle", ["g", "AxeCosmetic"]],
         "milestones",
         //"upgrades",
 
