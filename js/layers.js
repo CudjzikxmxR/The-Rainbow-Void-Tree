@@ -385,7 +385,7 @@ addLayer("p", {
         37: {
             title: "Eternal Algebra Class",
             description: "Unlock the Math sublayer. This feature is currently uncoded, and you have beaten the game!! Yay",
-            cost: new Decimal("ee7"),
+            cost: new Decimal("e1.1e7"),
             style: {'width':'140px'},
             unlocked() {
                 return hasUpgrade(this.layer, 29) && hasMilestone('k', 25)
@@ -578,7 +578,7 @@ addLayer("a", {
         },
         26: {
             name: "Wait, OoMs/sec Already??",
-            image: "resources/Amoeba_Icon.png",
+            image: "resources/AchievementIcon.png",
             done() {return player.points.gte("1e20000")},
             unlocked() {return true},
             tooltip: "Didn't think you'd get to this point in the game so fast huh?<br>Award: N/A", 
