@@ -585,7 +585,7 @@ addLayer("a", {
         },
 
         1001: {
-            name: "Feelin' Crazed",
+            name: "Feeling Crazed",
             image: "resources/Secret.png",
             done() {
                 let get2 = localStorage.getItem(getModID()+"_options");
@@ -624,6 +624,7 @@ addLayer("a", {
         
         "blank",
         ["row", [["achievement",1001]]], //SECRETS
+
         //"achievements",
     ],
     //midsection: ["grid", "blank"],
