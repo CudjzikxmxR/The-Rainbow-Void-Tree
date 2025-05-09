@@ -159,10 +159,15 @@ let tipMessages = [
 	"Do you think these tips go by too quickly?",
 	"It all spirals into chaos.",
 	"get on your rod you gotta fish",
+	"i seem to have replicated the uhhhhh big bang in my own pants",
+	"nith can you say butt?",
+	"how long are you BLUE",
+	"theres 2 teams of 4",
+	"Hey Cud can you add an nMarkov layer to the game pls plz",
 
 	//Update
 	"This game currently has 3 total main layers.",
-	"There are currently 40 tips in the game!",
+	"There are currently 45 tips in the game!",
 	"At this current moment of you playing this game, Stability Test 1.7 is not released.",
 ]
 let tipTick = 0
