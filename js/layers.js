@@ -496,7 +496,7 @@ addLayer("a", {
         },
         14: {
             name: "I Love To Click",
-            image: "resources/aaaRune.png",
+            image: "resources/Rune_Icon.png",
             done() {return player.minimumClickMult >= 1000},
             unlocked() {return true},
             tooltip: "Click 1000 symbols.<br>Award: Clicking symbols is 3x as effective.", 
@@ -506,14 +506,14 @@ addLayer("a", {
         },
         15: {
             name: "So Much Clicking",
-            image: "resources/aaaRune.png",
+            image: "resources/Rune_Icon.png",
             done() {return player.minimumClickMult >= 5000},
             unlocked() {return true},
             tooltip: "Click 5000 symbols.<br>Award: Symbols spawn more often.", 
         },
         16: {
             name: "Carpal Tunnel",
-            image: "resources/aaaRune.png",
+            image: "resources/Rune_Icon.png",
             done() {return player.minimumClickMult >= 1e6},
             unlocked() {return true},
             tooltip: "Click 1.00e6 symbols.<br>Award: 2x Knives", 
