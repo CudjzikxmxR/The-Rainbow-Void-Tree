@@ -157,7 +157,7 @@ addLayer("p", {
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
         14: {
-            title: "More Rainbow",
+            title: "Trust Me, It Gets Gayer",
             description: "Rainbows scale based on your Rainbows.",
             cost: new Decimal(150),
             style: {'width':'140px'},
