@@ -411,6 +411,7 @@ addLayer("p", {
                 }
                 return "text-input"
             }],
+        "text-input",
         "blank",
 
         //"upgrades"
