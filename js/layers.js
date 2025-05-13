@@ -1275,7 +1275,7 @@ addLayer("k", {
         27: {
             requirementDescription: "700000 Killstreak",
             effectDescription() {
-                return "nothing lmao the game isnt that long yet"
+                return "Unlock The Textbox."
             },
             done() {return player[this.layer].best.gte(700000)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
