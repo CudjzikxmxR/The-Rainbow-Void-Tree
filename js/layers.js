@@ -8,7 +8,7 @@ addLayer("p", {
 		points: new Decimal(0),
         feedingAxeCat: false,
         clickingMult: new Decimal(1),
-        NonsenseString: "Hmm...",
+        NonsenseString: "The Textbox awaits your input...",
     }},
     color: "#006BF7",
     requires: new Decimal(5), // Can be a function that takes requirement increases into account
@@ -405,12 +405,12 @@ addLayer("p", {
                 }
                 return "You have clicked " + player.minimumClickMult + " symbols."
             }],
-        ["display-text",
+        ["text-input",
             function() {
                 if (!hasMilestone('k', 27)) {
                     return null
                 }
-                return "text-input"
+                return "NonsenseString"
             }],
         ["text-input", "NonsenseString"],
         "blank",
