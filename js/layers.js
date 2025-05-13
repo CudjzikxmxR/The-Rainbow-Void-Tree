@@ -404,6 +404,13 @@ addLayer("p", {
                 }
                 return "You have clicked " + player.minimumClickMult + " symbols."
             }],
+        ["display-text",
+            function() {
+                if (!hasMilestone('k', 27)) {
+                    return null
+                }
+                return "text-input"
+            }],
         "blank",
 
         //"upgrades"
