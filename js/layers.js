@@ -874,7 +874,7 @@ addLayer("g", {
                     } else {
                         coinScaleNum = 7777
                         if (hasMilestone('k', 28)) {
-                            coinScaleNum*=100
+                            coinScaleNum*=1000
                         }
                         if (hasUpgrade('p', 34)) {
                             coinScaleNum*=player.cherryUpgrade14
@@ -1300,7 +1300,7 @@ addLayer("k", {
         28: {
             requirementDescription: "800000 Killstreak",
             effectDescription() {
-                return "Coinflips are multiplied by 100."
+                return "Coinflips are multiplied by 1000."
             },
             done() {return player[this.layer].best.gte(800000)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
