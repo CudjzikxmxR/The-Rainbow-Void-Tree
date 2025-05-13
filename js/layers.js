@@ -873,6 +873,9 @@ addLayer("g", {
                         player.CoinflipMult*=2
                     } else {
                         coinScaleNum = 7777
+                        if (hasMilestone('k', 28)) {
+                            coinScaleNum*=100
+                        }
                         if (hasUpgrade('p', 34)) {
                             coinScaleNum*=player.cherryUpgrade14
                         }
@@ -1295,6 +1298,14 @@ addLayer("k", {
             unlocked() {return hasMilestone(this.layer, this.id-1)}
         },
         28: {
+            requirementDescription: "800000 Killstreak",
+            effectDescription() {
+                return "Coinflips are multiplied by 100."
+            },
+            done() {return player[this.layer].best.gte(800000)},
+            unlocked() {return hasMilestone(this.layer, this.id-1)}
+        },
+        29: {
             requirementDescription: "1.50e7 Killstreak",
             effectDescription() {
                 return "+0.55 to the <b>18 Killstreak</b> milestone effect base."
