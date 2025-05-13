@@ -407,12 +407,11 @@ addLayer("p", {
             }],
         ["text-input",
             function() {
-                if (!hasMilestone('k', 27)) {
+                if (!hasMilestone('k', 28)) {
                     return null
                 }
                 return "NonsenseString"
             }],
-        ["text-input", "NonsenseString"],
         "blank",
 
         //"upgrades"
@@ -1247,7 +1246,7 @@ addLayer("k", {
         23: {
             requirementDescription: "235 Killstreak",
             effectDescription() {
-                return "1.00e9x Rainbows<br>1000x Amoebas<br>2x Knives<br>+7 to <b>30 Killstreak</b> effect base."
+                return "1.00e9x Rainbows<br>1000x Amoebas<br>2x Knives<br>+7 to the <b>30 Killstreak</b> milestone effect base."
             },
             done() {return player[this.layer].best.gte(235)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
@@ -1287,6 +1286,14 @@ addLayer("k", {
                 return "Unlock The Textbox."
             },
             done() {return player[this.layer].best.gte(700000)},
+            unlocked() {return hasMilestone(this.layer, this.id-1)}
+        },
+        28: {
+            requirementDescription: "1.50e7 Killstreak",
+            effectDescription() {
+                return "+0.55 to the <b>18 Killstreak</b> milestone effect base."
+            },
+            done() {return player[this.layer].best.gte(1.5e7)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
         },
     },
