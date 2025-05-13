@@ -846,7 +846,7 @@ addLayer("g", {
                 var coinReq = new Decimal(1e24)
                 coinReq = coinReq.times(Math.pow(100, Math.log2(player.CoinflipMult)))
                 if (player.CoinflipMult > 2e10) {
-                    coinReq = (coinReq.times((new Decimal(1000)).pow(player.CoinflipMult/2e10))).pow(player.CoinflipMult/2e10)
+                    coinReq = (coinReq.times((new Decimal(10000)).pow(player.CoinflipMult/2e10))).pow(player.CoinflipMult/2e10)
                 }
                 if (player.CoinflipMult<Math.pow(2,22)) {
                     return "Force a Gamble reset without earning Cherries for a 50% chance to double your Cherry multiplier.<br>(Requires " + format(coinReq) + " Rainbows)<br>Currently: "+format(player.CoinflipMult)+"x"
@@ -859,7 +859,7 @@ addLayer("g", {
                 var coinReq = new Decimal(1e24)
                 coinReq = coinReq.times(Math.pow(100, Math.log2(player.CoinflipMult)))
                 if (player.CoinflipMult > 2e10) {
-                    coinReq = (coinReq.times((new Decimal(1000)).pow(player.CoinflipMult/2e10))).pow(player.CoinflipMult/2e10)
+                    coinReq = (coinReq.times((new Decimal(10000)).pow(player.CoinflipMult/2e10))).pow(player.CoinflipMult/2e10)
                 }
                 return player.points.gte(coinReq)
                 //return tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt)
