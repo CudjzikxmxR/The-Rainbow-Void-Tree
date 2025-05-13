@@ -8,6 +8,7 @@ addLayer("p", {
 		points: new Decimal(0),
         feedingAxeCat: false,
         clickingMult: new Decimal(1),
+        NonsenseString: "Hmm...",
     }},
     color: "#006BF7",
     requires: new Decimal(5), // Can be a function that takes requirement increases into account
@@ -411,7 +412,7 @@ addLayer("p", {
                 }
                 return "text-input"
             }],
-        "text-input",
+        ["text-input", "NonsenseString"],
         "blank",
 
         //"upgrades"
