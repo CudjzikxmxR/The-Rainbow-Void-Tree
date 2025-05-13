@@ -843,8 +843,11 @@ addLayer("g", {
         11: {
             title: "Flip A Coin!",
             display() { // Everything else displayed in the buyable button after the title
-                var coinReq = 1e24
-                coinReq *= Math.pow(100, Math.log2(player.CoinflipMult))
+                var coinReq = new Decimal(1e24)
+                coinReq = coinReq.times(Math.pow(100, Math.log2(player.CoinflipMult)))
+                if (player.CoinflipMult > 2e10) {
+                    coinReq = coinReq.times(Math.pow(10, Math.log(player.CoinflipMult)/Math.log(1.05)))
+                }
                 if (player.CoinflipMult<Math.pow(2,22)) {
                     return "Force a Gamble reset without earning Cherries for a 50% chance to double your Cherry multiplier.<br>(Requires " + format(coinReq) + " Rainbows)<br>Currently: "+format(player.CoinflipMult)+"x"
                 } else {
@@ -856,7 +859,7 @@ addLayer("g", {
                 var coinReq = new Decimal(1e24)
                 coinReq = coinReq.times(Math.pow(100, Math.log2(player.CoinflipMult)))
                 if (player.CoinflipMult > 2e10) {
-                    coinReq = coinReq.times(Math.pow(10, Math.log(player.CoinflipMult)/Math.log(1.01)))
+                    coinReq = coinReq.times(Math.pow(10, Math.log(player.CoinflipMult)/Math.log(1.05)))
                 }
                 return player.points.gte(new Decimal(coinReq))
                 //return tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt)
