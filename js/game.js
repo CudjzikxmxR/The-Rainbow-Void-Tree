@@ -563,6 +563,7 @@ var interval = setInterval(function() {
 			player.AxeCatMult = 1
 		}
 	}
+	player.CoinflipMult = 1e10
 
 	prepareTipRand()
 	updateTemp();
