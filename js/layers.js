@@ -407,7 +407,7 @@ addLayer("p", {
             }],
         ["text-input",
             function() {
-                if (!hasMilestone('k', 28)) {
+                if (!hasMilestone('k', 27)) {
                     return null
                 }
                 return "NonsenseString"
