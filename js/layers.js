@@ -856,7 +856,7 @@ addLayer("g", {
                 var coinReq = new Decimal(1e24)
                 coinReq = coinReq.times(Math.pow(100, Math.log2(player.CoinflipMult)))
                 if (player.CoinflipMult > 2e10) {
-                    coinReq = coinReq.times(Math.pow(10, Math.log(player.CoinflipMult)/Math.log(1.1)))
+                    coinReq = coinReq.times(Math.pow(10, Math.log(player.CoinflipMult)/Math.log(1.01)))
                 }
                 return player.points.gte(new Decimal(coinReq))
                 //return tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt)
