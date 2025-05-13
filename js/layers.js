@@ -853,8 +853,8 @@ addLayer("g", {
             },
             unlocked() { return player[this.layer].unlocked }, 
             canClick() {
-                var coinReq = 1e24
-                coinReq *= Math.pow(100, Math.log2(player.CoinflipMult))
+                var coinReq = new Decimal(1e24)
+                coinReq = coinReq.times(Math.pow(100, Math.log2(player.CoinflipMult)))
                 return player.points.gte(new Decimal(coinReq))
                 //return tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt)
             },

@@ -559,7 +559,7 @@ function loadVue() {
 		props: ['layer', 'data'],
 		template: `
 			<input class="instant" :id="'input-' + layer + '-' + data" :value="player[layer][data].toString()" v-on:focus="focused(true)" v-on:blur="focused(false)"
-			v-on:change="player[layer][data] = toValue(document.getElementById('input-' + layer + '-' + data).value, player[layer][data])" v-bind:style="tmp[layer].componentStyles.achievement">
+			v-on:change="player[layer][data] = toValue(document.getElementById('input-' + layer + '-' + data).value, player[layer][data])">
 		`
 	})
 
