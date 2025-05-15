@@ -1554,7 +1554,7 @@ addLayer("farm", {
             title: "Wheat",
             description: "<i>The first crop in the entire game. A long journey awaits...</i><br><br>Value: $"+format(getCropValue(0)[0])+"<br>Grow Speed: "+format(getCropValue(0)[1])+"s<br>Click Power Req: "+format(getCropValue(0)[2]),
             cost: new Decimal(0),
-            style: {'width':'220px', 'height': '30px'},
+            style: {'width':'240px'},
             onPurchase() {
                 player[this.layer].Crops.Wheat = getCropValue(0)[0]
             },
