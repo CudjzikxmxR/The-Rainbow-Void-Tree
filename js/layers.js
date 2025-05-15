@@ -1566,7 +1566,15 @@ addLayer("farm", {
 
         //CROPS
 
-       
+        1001: {
+            title: "Wheat",
+            description: "<i>The first crop in the entire game. A long journey awaits...</i><br><br>Value: $"+format(getCropValue(0)[0]),
+            cost: new Decimal(0),
+            style: {'width':'140px'},
+            onPurchase() {
+                player[this.layer].Crops.Wheat = getCropValue(this.id-1001)[0]
+            },
+        },
     },
 
     milestones: {
