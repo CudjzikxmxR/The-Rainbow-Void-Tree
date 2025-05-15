@@ -261,6 +261,10 @@ function resetClickMult() {
 	}
 }
 
+function getCropValue(ind) {
+	return player['farm'].CropValues[ind]
+}
+
 // Style for the background, can be a function
 var backgroundStyle = {
 

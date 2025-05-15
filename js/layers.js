@@ -1374,10 +1374,24 @@ addLayer("farm", {
     position: 2, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     prefix: "$",
     currencyOff: true,
+    CropValues: [
+        [new Decimal(1), new Decimal(20), new Decimal(1e150)], // wheat
+        [new Decimal(2), new Decimal(15), new Decimal(1e155)], // tomatoes
+        [new Decimal(4), new Decimal(20), new Decimal(1e160)], // carrots
+        [new Decimal(10), new Decimal(25), new Decimal(1e175)], // corn
+        [new Decimal(8), new Decimal(10), new Decimal(1e200)], // potatoes
+    ],
     image: "resources/Knives_Icon.png",
     startData() { return {
         unlocked: false,
 		points: new Decimal(0),
+        Crops: {
+            Wheat: new Decimal(1),
+            Tomatoes: null,
+            Carrots: null,
+            Corn: null,
+            Potatoes: null
+        },
     }},
     color: "#A7E984",
     requires() { // Can be a function that takes requirement increases into account
@@ -1411,6 +1425,9 @@ addLayer("farm", {
     hotkeys: [
         {key: "k", description: "K: Kill for knives!!!", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
+    doReset(resettingLayer){ // Triggers when this layer is being reset, along with the layer doing the resetting. Not triggered by lower layers resetting, but is by layers on the same row.
+        if(layers[resettingLayer].row > this.row) layerDataReset(this.layer, ["Crops"]) 
+    },
     layerShown(){
         //return true
         if (hasUpgrade('p', 38)) {
