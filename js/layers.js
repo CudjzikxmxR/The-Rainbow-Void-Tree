@@ -1468,10 +1468,10 @@ addLayer("farm", {
             cost: new Decimal(15),
             style: {'width':'140px'},
             onPurchase() {
-                player[this.layer].CropsAmount.Wheat = player[this.layer].CropsAmount.Wheat.add(new Decimal(-10))
+                player[this.layer].CropsCount.Wheat = player[this.layer].CropsCount.Wheat.add(new Decimal(-10))
             },
             canAfford() {
-                return player[this.layer].points.gte(15) && player[this.layer].CropsAmount.Wheat.gte(10)
+                return player[this.layer].points.gte(15) && player[this.layer].CropsCount.Wheat.gte(10)
             },
         },
         12: {
@@ -1483,11 +1483,11 @@ addLayer("farm", {
             cost: new Decimal(30),
             style: {'width':'140px'},
             onPurchase() {
-                player[this.layer].CropsAmount.Wheat = player[this.layer].CropsAmount.Wheat.add(new Decimal(-10))
-                player[this.layer].CropsAmount.Tomatoes = player[this.layer].CropsAmount.Tomatoes.add(new Decimal(-10))
+                player[this.layer].CropsCount.Wheat = player[this.layer].CropsCount.Wheat.add(new Decimal(-10))
+                player[this.layer].CropsCount.Tomatoes = player[this.layer].CropsCount.Tomatoes.add(new Decimal(-10))
             },
             canAfford() {
-                return player[this.layer].points.gte(30) && player[this.layer].CropsAmount.Wheat.gte(10) && player[this.layer].CropsAmount.Tomatoes.gte(10)
+                return player[this.layer].points.gte(30) && player[this.layer].CropsCount.Wheat.gte(10) && player[this.layer].CropsCount.Tomatoes.gte(10)
             },
         },
         13: {
@@ -1499,10 +1499,10 @@ addLayer("farm", {
             cost: new Decimal(50),
             style: {'width':'140px'},
             onPurchase() {
-                player[this.layer].CropsAmount.Carrots = player[this.layer].CropsAmount.Carrots.add(new Decimal(-20))
+                player[this.layer].CropsCount.Carrots = player[this.layer].CropsCount.Carrots.add(new Decimal(-20))
             },
             canAfford() {
-                return player[this.layer].points.gte(50) && player[this.layer].CropsAmount.Carrots.gte(20)
+                return player[this.layer].points.gte(50) && player[this.layer].CropsCount.Carrots.gte(20)
             },
         },
         14: {
@@ -1523,13 +1523,13 @@ addLayer("farm", {
             cost: new Decimal(1000),
             style: {'width':'140px'},
             onPurchase() {
-                player[this.layer].CropsAmount.Wheat = player[this.layer].CropsAmount.Wheat.add(new Decimal(-10))
-                player[this.layer].CropsAmount.Tomatoes = player[this.layer].CropsAmount.Tomatoes.add(new Decimal(-10))
-                player[this.layer].CropsAmount.Carrots = player[this.layer].CropsAmount.Carrots.add(new Decimal(-10))
-                player[this.layer].CropsAmount.Potatoes = player[this.layer].CropsAmount.Potatoes.add(new Decimal(-10))
+                player[this.layer].CropsCount.Wheat = player[this.layer].CropsCount.Wheat.add(new Decimal(-10))
+                player[this.layer].CropsCount.Tomatoes = player[this.layer].CropsCount.Tomatoes.add(new Decimal(-10))
+                player[this.layer].CropsCount.Carrots = player[this.layer].CropsCount.Carrots.add(new Decimal(-10))
+                player[this.layer].CropsCount.Potatoes = player[this.layer].CropsCount.Potatoes.add(new Decimal(-10))
             },
             canAfford() {
-                return player[this.layer].points.gte(1000) && player[this.layer].CropsAmount.Wheat.gte(10) && player[this.layer].CropsAmount.Tomatoes.gte(10) && player[this.layer].CropsAmount.Carrots.gte(10) && player[this.layer].CropsAmount.Potatoes.gte(10)
+                return player[this.layer].points.gte(1000) && player[this.layer].CropsCount.Wheat.gte(10) && player[this.layer].CropsCount.Tomatoes.gte(10) && player[this.layer].CropsCount.Carrots.gte(10) && player[this.layer].CropsCount.Potatoes.gte(10)
             },
         },
         16: {
@@ -1547,13 +1547,13 @@ addLayer("farm", {
             fullDisplay() {
                 return "<h3>True Form</h3><br>+1 Dark Fragment<br><br>Cost: 1000 wheat"
             },
-            cost: new Decimal(1),
+            cost: new Decimal(0),
             style: {'width':'140px'},
             onPurchase() {
-                player[this.layer].CropsAmount.Wheat = player[this.layer].CropsAmount.Wheat.add(new Decimal(-1000))
+                player[this.layer].CropsCount.Wheat = player[this.layer].CropsCount.Wheat.add(new Decimal(-1000))
             },
             canAfford() {
-                return player[this.layer].points.gte(1000) && player[this.layer].CropsAmount.Wheat.gte(1000)
+                return player[this.layer].CropsCount.Wheat.gte(1000)
             },
         },
     },
