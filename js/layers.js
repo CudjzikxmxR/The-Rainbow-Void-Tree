@@ -1461,9 +1461,9 @@ addLayer("farm", {
     upgrades: {
         11: {
             title: "Crop Farming",
-            description: "Unlock 2 new crops.",
+            description: "Unlock new crops.",
             fullDisplay() {
-                return "<h3>Crop Farming</h3><br>Unlock 2 new crops.<br><br>Cost: $15, 10 wheat"
+                return "<h3>Crop Farming</h3><br>Unlock new crops.<br><br>Cost: $15, 10 wheat"
             },
             cost: new Decimal(1),
             style: {'width':'140px'},
@@ -1479,6 +1479,51 @@ addLayer("farm", {
             description: "You have ^1.05 rainbows while the Textbox's text begins with the 'A' character, and ^1.05 amoebas while the text begins with the 'B' character.",
             fullDisplay() {
                 return "<h3>Texty Texty</h3><br>You have ^1.05 rainbows while the Textbox's text begins with the 'A' character, and ^1.05 amoebas while the text begins with the 'B' character.<br><br>Cost: $30, 10 wheat, 10 tomatoes"
+            },
+            cost: new Decimal(1),
+            style: {'width':'140px'},
+            onPurchase() {
+                player[this.layer].CropsAmount.Wheat = player[this.layer].CropsAmount.Wheat.add(new Decimal(10))
+            },
+            canAfford() {
+                return player[this.layer].points.gte(this.cost) && player[this.layer].CropsAmount.Wheat.gte(10)
+            },
+        },
+        13: {
+            title: "Back To Business",
+            description: "Knives slightly scale based on money, and crop grow speed slightly scales based on how many Killstreak milestones you have.",
+            fullDisplay() {
+                return "<h3>Back To Business</h3><br>Knives slightly scale based on money, and crop grow speed slightly scales based on how many Killstreak milestones you have.<br><br>Cost: $50, 20 carrots"
+            },
+            cost: new Decimal(1),
+            style: {'width':'140px'},
+            onPurchase() {
+                player[this.layer].CropsAmount.Wheat = player[this.layer].CropsAmount.Wheat.add(new Decimal(10))
+            },
+            canAfford() {
+                return player[this.layer].points.gte(this.cost) && player[this.layer].CropsAmount.Wheat.gte(10)
+            },
+        },
+        14: {
+            title: "Economic Boom",
+            description: "2x Money<br>Unlock [SET 3] of Cherry upgrades.<br>Unlock [SET 2] of Knife upgrades.",
+            fullDisplay() {
+                return "<h3>Economic Boom</h3><br>2x Money<br>Unlock [SET 3] of Cherry upgrades.<br>Unlock [SET 2] of Knife upgrades.<br><br>Cost: $150"
+            },
+            cost: new Decimal(1),
+            style: {'width':'140px'},
+            onPurchase() {
+                player[this.layer].CropsAmount.Wheat = player[this.layer].CropsAmount.Wheat.add(new Decimal(10))
+            },
+            canAfford() {
+                return player[this.layer].points.gte(this.cost) && player[this.layer].CropsAmount.Wheat.gte(10)
+            },
+        },
+        15: {
+            title: "Scarcity",
+            description: "^1.025 Cherries<br>Crops grow 50% faster if Axe Cat is unfed.",
+            fullDisplay() {
+                return "<h3>Back To Business</h3><br>^1.025 Cherries<br>Crops grow 50% faster if Axe Cat is unfed.<br><br>Cost: $1000, 10 wheat, 10 tomatoes, 10 carrots, 10 potatoes"
             },
             cost: new Decimal(1),
             style: {'width':'140px'},
