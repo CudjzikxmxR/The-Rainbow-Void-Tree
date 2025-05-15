@@ -1380,6 +1380,11 @@ addLayer("farm", {
         [new Decimal(4), new Decimal(20), new Decimal(1e160)], // carrots
         [new Decimal(10), new Decimal(25), new Decimal(1e175)], // corn
         [new Decimal(8), new Decimal(10), new Decimal(1e200)], // potatoes
+        [new Decimal(40), new Decimal(30), new Decimal(1e300)], // cucumbers
+        [new Decimal(36), new Decimal(16), new Decimal("e350")], // beetroot
+        [new Decimal(100), new Decimal(33), new Decimal("e500")], // cabbage
+        [new Decimal(150), new Decimal(17), new Decimal("e600")], // eggplant
+        [new Decimal(270), new Decimal(20), new Decimal("e800")], // celery
     ],
     image: "resources/Knives_Icon.png",
     startData() { return {
@@ -1390,14 +1395,24 @@ addLayer("farm", {
             Tomatoes: null,
             Carrots: null,
             Corn: null,
-            Potatoes: null
+            Potatoes: null,
+            Cucumbers: null,
+            Beetroots: null,
+            Cabbages: null,
+            Eggplants: null,
+            Celery: null,
         },
         CropsCount: {
             Wheat: new Decimal(0),
             Tomatoes: new Decimal(0),
             Carrots: new Decimal(0),
             Corn: new Decimal(0),
-            Potatoes: new Decimal(0)
+            Potatoes: new Decimal(0),
+            Cucumbers: new Decimal(0),
+            Beetroots: new Decimal(0),
+            Cabbages: new Decimal(0),
+            Eggplants: new Decimal(0),
+            Celery: new Decimal(0),
         },
     }},
     color: "#8EED5C",
@@ -1556,6 +1571,18 @@ addLayer("farm", {
                 return player[this.layer].CropsCount.Wheat.gte(1000)
             },
         },
+
+        //CROPS
+
+        1001: {
+            title: "Wheat",
+            description: "<i>The first crop in the entire game. A long journey awaits...</i><br>Worth $1",
+            cost: new Decimal(0),
+            style: {'width':'140px'},
+            onPurchase() {
+                player[this.layer].Crops.Wheat = getCropValue(this.id-1001)
+            },
+        },
     },
 
     milestones: {
@@ -1570,6 +1597,9 @@ addLayer("farm", {
     tabFormat: [
         "main-display",
         "blank",
+        //"crops",
+        ["display-text", "<h3>[CROPS]</h3>"],
+        ["row", [["upgrade",1001],["upgrade",1002],["upgrade",1003]]],
         //"upgrades",
         ["display-text", "<h3>[SET 1]</h3>"],
         ["row", [["upgrade",11],["upgrade",12],["upgrade",13]]],
