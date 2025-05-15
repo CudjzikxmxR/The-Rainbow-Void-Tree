@@ -1392,6 +1392,13 @@ addLayer("farm", {
             Corn: null,
             Potatoes: null
         },
+        CropsCount: {
+            Wheat: new Decimal(0),
+            Tomatoes: new Decimal(0),
+            Carrots: new Decimal(0),
+            Corn: new Decimal(0),
+            Potatoes: new Decimal(0)
+        },
     }},
     color: "#8EED5C",
     requires() { // Can be a function that takes requirement increases into account
@@ -1453,13 +1460,18 @@ addLayer("farm", {
 
     upgrades: {
         11: {
-            title: "idk",
-            description: "Unlock [SET 3] of Amoeba upgrades.",
+            title: "Crop Farming",
+            description: "Unlock 2 new crops",
+            fullDisplay() {
+                return "<h3>Crop Farming</h3><br>Unlock 2 new crops.<br><br>Cost: $15, 10 wheat"
+            },
             cost: new Decimal(1),
             style: {'width':'140px'},
             onPurchase() {
-                player[this.layer].points = new Decimal(0)
-                doReset(this.layer, true)
+                player[this.layer].CropsAmount.Wheat = player[this.layer].CropsAmount.Wheat.add(new Decimal(10))
+            },
+            canAfford() {
+                return player[this.layer].points.gte(this.cost) && player[this.layer].CropsAmount.Wheat.gte(10)
             },
         },
     },
