@@ -1487,7 +1487,7 @@ addLayer("farm", {
                 player[this.layer].CropsAmount.Tomatoes = player[this.layer].CropsAmount.Tomatoes.add(new Decimal(-10))
             },
             canAfford() {
-                return player[this.layer].points.gte(new Decimal(30)) && player[this.layer].CropsAmount.Wheat.gte(10) && player[this.layer].CropsAmount.Tomatoes.gte(10)
+                return player[this.layer].points.gte(30) && player[this.layer].CropsAmount.Wheat.gte(10) && player[this.layer].CropsAmount.Tomatoes.gte(10)
             },
         },
         
