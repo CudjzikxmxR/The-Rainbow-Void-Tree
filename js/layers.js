@@ -1557,7 +1557,7 @@ addLayer("farm", {
                 return "<i>The first crop in the entire game. A long journey awaits...</i><br><br>Value: $"+format(getCropValue(cropID)[0])+"<br>Grow Speed: "+format(getCropValue(cropID)[1])+"s<br>Click Power Req: "+format(getCropValue(cropID)[2])
             },
             cost: new Decimal(0),
-            style: {'width':'240px'},
+            style: {'width':'180px'},
             onPurchase() {
                 player[this.layer].Crops.Wheat = getCropValue(0)[0]
             },
@@ -1567,9 +1567,12 @@ addLayer("farm", {
         },
         1002: {
             title: "Tomatoes",
-            description: "<i>Not a vegetable.</i><br><br>Value: $"+format(getCropValue(1)[0])+"<br>Grow Speed: "+format(getCropValue(1)[1])+"s<br>Click Power Req: "+format(getCropValue(1)[2]),
+            description() {
+                var cropID = 1
+                return "<i>Not a vegetable.</i><br><br>Value: $"+format(getCropValue(cropID)[0])+"<br>Grow Speed: "+format(getCropValue(cropID)[1])+"s<br>Click Power Req: "+format(getCropValue(cropID)[2])
+            },
             cost: new Decimal(10),
-            style: {'width':'240px'},
+            style: {'width':'180px'},
             onPurchase() {
                 player[this.layer].Crops.Tomatoes = getCropValue(1)[0]
             },
@@ -1579,9 +1582,12 @@ addLayer("farm", {
         },
         1003: {
             title: "Carrots",
-            description: "<i>Not a vegetable.</i><br><br>Value: $"+format(getCropValue(1)[0])+"<br>Grow Speed: "+format(getCropValue(1)[1])+"s<br>Click Power Req: "+format(getCropValue(1)[2]),
-            cost: new Decimal(10),
-            style: {'width':'240px'},
+            description() {
+                var cropID = 2
+                return "<i>Great for your eyesight.</i><br><br>Value: $"+format(getCropValue(cropID)[0])+"<br>Grow Speed: "+format(getCropValue(cropID)[1])+"s<br>Click Power Req: "+format(getCropValue(cropID)[2])
+            },
+            cost: new Decimal(25),
+            style: {'width':'180px'},
             onPurchase() {
                 player[this.layer].Crops.Tomatoes = getCropValue(1)[0]
             },
