@@ -1578,7 +1578,6 @@ addLayer("farm", {
     tabFormat: [
         "main-display",
         "blank",
-        "prestige-button",
         //"crops",
         ["display-text", "<h3>[CROPS]</h3>"],
         ["row", [["upgrade",1001],["upgrade",1002],["upgrade",1003]]],
