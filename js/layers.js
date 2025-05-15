@@ -392,6 +392,15 @@ addLayer("p", {
                 return hasUpgrade(this.layer, 29) && hasMilestone('k', 25)
             },
         },
+        38: {
+            title: "Anomaly Agriculture",
+            description: "Unlock the Anomaly Farm.",
+            cost: new Decimal("e1.4e7"),
+            style: {'width':'140px'},
+            unlocked() {
+                return hasUpgrade(this.layer, 29) && hasMilestone('k', 25)
+            },
+        },
     },
     tabFormat: [
         "main-display",
@@ -447,7 +456,8 @@ addLayer("p", {
             return ""
         }],
         ["row", [["upgrade",31],["upgrade",32],["upgrade",33]]],
-        ["row", [["upgrade",34],["upgrade",35],["upgrade",36],["upgrade",37]]],
+        ["row", [["upgrade",34],["upgrade",35],["upgrade",36],["upgrade",37],["upgrade",38]]],
+        //["upgrade",38],
         "blank",
     ],
     /*
@@ -1138,8 +1148,7 @@ addLayer("k", {
         11: {
             requirementDescription: "1 Killstreak",
             effectDescription() {
-                return player['p'].NonsenseString
-                //return "3x Rainbows<br>1.5x Amoebas"
+                return "3x Rainbows<br>1.5x Amoebas"
             },
             done() {return player[this.layer].best.gte(1)},
         },
