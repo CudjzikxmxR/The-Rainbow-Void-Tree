@@ -1541,7 +1541,21 @@ addLayer("farm", {
             cost: new Decimal(5000),
             style: {'width':'140px'},
         },
-        
+        17: {
+            title: "True Form",
+            description: "+1 Dark Fragment",
+            fullDisplay() {
+                return "<h3>True Form</h3><br>+1 Dark Fragment<br><br>Cost: 1000 wheat"
+            },
+            cost: new Decimal(1),
+            style: {'width':'140px'},
+            onPurchase() {
+                player[this.layer].CropsAmount.Wheat = player[this.layer].CropsAmount.Wheat.add(new Decimal(-1000))
+            },
+            canAfford() {
+                return player[this.layer].CropsAmount.Wheat.gte(0)
+            },
+        },
     },
 
     milestones: {
