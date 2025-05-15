@@ -1457,14 +1457,6 @@ addLayer("farm", {
         }
         return false
     },
-    canReset() {
-        return tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt)
-        //return hasUpgrade('p', 21) && player.points.gte(tmp[this.layer].requires())
-        //return tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt)
-    },
-    canBuyMax() {
-        return hasMilestone(this.layer, 13)
-    },
     branches: ["p", "g", "k"],
     onPrestige() {
         if (this.getUnlockOrder()!=0 && player.LayerTwoChoice!="!") {
