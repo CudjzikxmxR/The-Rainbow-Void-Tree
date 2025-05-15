@@ -1445,7 +1445,7 @@ addLayer("farm", {
         return false
     },
     canReset() {
-        return tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt)
+        return false
     },
     branches: ["p", "g", "k"],
 
