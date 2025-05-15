@@ -306,7 +306,7 @@ addLayer("p", {
             },
         },
         29: {
-            title: "<h3>Bomb Strapped To Your Chest</h3>",
+            title: "Bomb Strapped To Your Chest",
             description() {
                 if (!hasMilestone('k', 20) && !hasUpgrade('g', 23)) {
                     return "1.00e7x Rainbows<br>After this upgrade is purchased, You have 10 seconds before a Kill reset is forced without awarding Knives.<br>Has no effect if you already have the Cherry layer unlocked."
