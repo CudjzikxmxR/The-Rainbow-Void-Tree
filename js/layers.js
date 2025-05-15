@@ -1471,7 +1471,7 @@ addLayer("farm", {
                 player[this.layer].CropsAmount.Wheat = player[this.layer].CropsAmount.Wheat.add(new Decimal(-10))
             },
             canAfford() {
-                return player[this.layer].points.gte(this.cost) && player[this.layer].CropsAmount.Wheat.gte(10)
+                return player[this.layer].points.gte(15) && player[this.layer].CropsAmount.Wheat.gte(10)
             },
         },
         12: {
@@ -1487,7 +1487,7 @@ addLayer("farm", {
                 player[this.layer].CropsAmount.Tomatoes = player[this.layer].CropsAmount.Tomatoes.add(new Decimal(-10))
             },
             canAfford() {
-                return player[this.layer].points.gte(this.cost) && player[this.layer].CropsAmount.Wheat.gte(10) && player[this.layer].CropsAmount.Tomatoes.gte(10)
+                return player[this.layer].points.gte(30) && player[this.layer].CropsAmount.Wheat.gte(10) && player[this.layer].CropsAmount.Tomatoes.gte(10)
             },
         },
         13: {
@@ -1502,7 +1502,7 @@ addLayer("farm", {
                 player[this.layer].CropsAmount.Carrots = player[this.layer].CropsAmount.Carrots.add(new Decimal(-20))
             },
             canAfford() {
-                return player[this.layer].points.gte(this.cost) && player[this.layer].CropsAmount.Carrots.gte(20)
+                return player[this.layer].points.gte(50) && player[this.layer].CropsAmount.Carrots.gte(20)
             },
         },
         14: {
@@ -1529,7 +1529,7 @@ addLayer("farm", {
                 player[this.layer].CropsAmount.Potatoes = player[this.layer].CropsAmount.Potatoes.add(new Decimal(-10))
             },
             canAfford() {
-                return player[this.layer].points.gte(this.cost) && player[this.layer].CropsAmount.Wheat.gte(10) && player[this.layer].CropsAmount.Tomatoes.gte(10) && player[this.layer].CropsAmount.Carrots.gte(10) && player[this.layer].CropsAmount.Potatoes.gte(10)
+                return player[this.layer].points.gte(1000) && player[this.layer].CropsAmount.Wheat.gte(10) && player[this.layer].CropsAmount.Tomatoes.gte(10) && player[this.layer].CropsAmount.Carrots.gte(10) && player[this.layer].CropsAmount.Potatoes.gte(10)
             },
         },
         16: {
@@ -1553,7 +1553,7 @@ addLayer("farm", {
                 player[this.layer].CropsAmount.Wheat = player[this.layer].CropsAmount.Wheat.add(new Decimal(-1000))
             },
             canAfford() {
-                return player[this.layer].points.gte(this.cost) && player[this.layer].CropsAmount.Wheat.gte(1000)
+                return player[this.layer].CropsAmount.Wheat.gte(1000)
             },
         },
     },
