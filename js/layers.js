@@ -1554,14 +1554,12 @@ addLayer("farm", {
 
         //CROPS
 
-        1: {
+        1001: {
             title: "Wheat",
             description: "<i>The first crop in the entire game. A long journey awaits...</i><br><br>Value: $"+format(getCropValue(0)[0])+"<br>Grow Speed: "+format(getCropValue(0)[1])+"s<br>Click Power Req: "+format(getCropValue(0)[2]),
             cost: new Decimal(0),
             style: {'width':'140px'},
-            onPurchase() {
-                player[this.layer].Crops.Wheat = getCropValue(0)[0]
-            },
+            
             unlocked() {
                 return true
             },
@@ -1582,7 +1580,7 @@ addLayer("farm", {
         "blank",
         //"crops",
         ["display-text", "<h3>[CROPS]</h3>"],
-        ["row", [["upgrade",1],["upgrade",102],["upgrade",103]]],
+        ["row", [["upgrade",1001],["upgrade",1002],["upgrade",1003]]],
         "blank",
         //"upgrades",
         ["display-text", "<h3>[SET 1]</h3>"],
