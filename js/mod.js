@@ -261,8 +261,21 @@ function resetClickMult() {
 	}
 }
 
+const CropValues = [
+	[new Decimal(1), new Decimal(20), new Decimal(1e150)], // wheat
+	[new Decimal(2), new Decimal(15), new Decimal(1e155)], // tomatoes
+	[new Decimal(4), new Decimal(20), new Decimal(1e160)], // carrots
+	[new Decimal(10), new Decimal(25), new Decimal(1e175)], // corn
+	[new Decimal(8), new Decimal(10), new Decimal(1e200)], // potatoes
+	[new Decimal(40), new Decimal(30), new Decimal(1e300)], // cucumbers
+	[new Decimal(36), new Decimal(16), new Decimal("e350")], // beetroot
+	[new Decimal(100), new Decimal(33), new Decimal("e500")], // cabbage
+	[new Decimal(150), new Decimal(17), new Decimal("e600")], // eggplant
+	[new Decimal(270), new Decimal(20), new Decimal("e800")], // celery
+]
+
 function getCropValue(ind) {
-	return tmp['farm'].CropValues
+	return CropValues[0]
 	//return [new Decimal(1), new Decimal(10), new Decimal(1e150)]
 	//return tmp['farm'].CropValues[ind]
 }
