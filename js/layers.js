@@ -8,7 +8,7 @@ addLayer("p", {
 		points: new Decimal(0),
         feedingAxeCat: false,
         clickingMult: new Decimal(1),
-        NonsenseString: "The Textbox awaits your input...",
+        NonsenseString: "...",
     }},
     color: "#006BF7",
     requires: new Decimal(5), // Can be a function that takes requirement increases into account
@@ -1138,7 +1138,8 @@ addLayer("k", {
         11: {
             requirementDescription: "1 Killstreak",
             effectDescription() {
-                return "3x Rainbows<br>1.5x Amoebas"
+                return tmp['p'].NonsenseString
+                //return "3x Rainbows<br>1.5x Amoebas"
             },
             done() {return player[this.layer].best.gte(1)},
         },
