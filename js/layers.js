@@ -1560,7 +1560,7 @@ addLayer("farm", {
             cost: new Decimal(0),
             style: {'width':'140px'},
             onPurchase() {
-                player[this.layer].Crops.Wheat = getCropValue(this.id-1001)[0]
+                //player[this.layer].Crops.Wheat = getCropValue(this.id-1001)[0]
             },
         },
     },
