@@ -1552,7 +1552,10 @@ addLayer("farm", {
 
         1001: {
             title: "Wheat",
-            description: "<i>The first crop in the entire game. A long journey awaits...</i><br><br>Value: $"+format(getCropValue(0)[0])+"<br>Grow Speed: "+format(getCropValue(0)[1])+"s<br>Click Power Req: "+format(getCropValue(0)[2]),
+            description() {
+                var cropID = 0
+                return "<i>The first crop in the entire game. A long journey awaits...</i><br><br>Value: $"+format(getCropValue(cropID)[0])+"<br>Grow Speed: "+format(getCropValue(cropID)[1])+"s<br>Click Power Req: "+format(getCropValue(cropID)[2])
+            },
             cost: new Decimal(0),
             style: {'width':'240px'},
             onPurchase() {
@@ -1568,7 +1571,19 @@ addLayer("farm", {
             cost: new Decimal(10),
             style: {'width':'240px'},
             onPurchase() {
-                player[this.layer].Crops.Wheat = getCropValue(1)[0]
+                player[this.layer].Crops.Tomatoes = getCropValue(1)[0]
+            },
+            unlocked() {
+                return true
+            },
+        },
+        1003: {
+            title: "Carrots",
+            description: "<i>Not a vegetable.</i><br><br>Value: $"+format(getCropValue(1)[0])+"<br>Grow Speed: "+format(getCropValue(1)[1])+"s<br>Click Power Req: "+format(getCropValue(1)[2]),
+            cost: new Decimal(10),
+            style: {'width':'240px'},
+            onPurchase() {
+                player[this.layer].Crops.Tomatoes = getCropValue(1)[0]
             },
             unlocked() {
                 return true
