@@ -1547,7 +1547,7 @@ addLayer("farm", {
             fullDisplay() {
                 return "<h3>True Form</h3><br>+1 Dark Fragment<br><br>Cost: 1000 wheat"
             },
-            cost: new Decimal(0),
+            cost: new Decimal(0.001),
             style: {'width':'140px'},
             onPurchase() {
                 player[this.layer].CropsAmount.Wheat = player[this.layer].CropsAmount.Wheat.add(new Decimal(-1000))
