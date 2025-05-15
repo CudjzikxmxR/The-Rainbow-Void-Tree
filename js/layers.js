@@ -1450,12 +1450,6 @@ addLayer("farm", {
         return tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt)
     },
     branches: ["p", "g", "k"],
-    onPrestige() {
-        if (this.getUnlockOrder()!=0 && player.LayerTwoChoice!="!") {
-            this.unlockOrder = 0
-            player.LayerTwoChoice = "k"
-        }
-    },
 
     upgrades: {
         11: {
