@@ -1433,9 +1433,7 @@ addLayer("farm", {
     },
     resetsNothing: true,
     row: 2, // Row the layer is in on the tree (0 is the first row)
-    hotkeys: [
-        {key: "`", description: "Ehrm", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
-    ],
+    
     doReset(resettingLayer){ // Triggers when this layer is being reset, along with the layer doing the resetting. Not triggered by lower layers resetting, but is by layers on the same row.
         if(layers[resettingLayer].row > this.row) layerDataReset(this.layer, ["Crops"]) 
     },
