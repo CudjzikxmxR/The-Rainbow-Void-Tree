@@ -1391,7 +1391,7 @@ addLayer("farm", {
         unlocked: false,
 		points: new Decimal(0),
         Crops: {
-            Wheat: null,
+            Wheat: new Decimal(1),
             Tomatoes: null,
             Carrots: null,
             Corn: null,
@@ -1462,7 +1462,16 @@ addLayer("farm", {
         //return hasUpgrade('p', 21) && player.points.gte(tmp[this.layer].requires())
         //return tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt)
     },
+    canBuyMax() {
+        return hasMilestone(this.layer, 13)
+    },
     branches: ["p", "g", "k"],
+    onPrestige() {
+        if (this.getUnlockOrder()!=0 && player.LayerTwoChoice!="!") {
+            this.unlockOrder = 0
+            player.LayerTwoChoice = "k"
+        }
+    },
 
     upgrades: {
         11: {
