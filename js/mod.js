@@ -275,7 +275,7 @@ const CropValues = [
 ]
 
 function getCropValue(ind) {
-	return CropValues[0]
+	return CropValues[ind]
 }
 
 // Style for the background, can be a function
