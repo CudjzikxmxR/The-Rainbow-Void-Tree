@@ -262,7 +262,7 @@ function resetClickMult() {
 }
 
 function getCropValue(ind) {
-	return tmp['farm'].CropValues[1]
+	return tmp['farm'].CropValues
 	//return [new Decimal(1), new Decimal(10), new Decimal(1e150)]
 	//return tmp['farm'].CropValues[ind]
 }
