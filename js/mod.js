@@ -275,9 +275,7 @@ const CropValues = [
 ]
 
 function getCropValue(ind) {
-	return CropValues[0]
-	//return [new Decimal(1), new Decimal(10), new Decimal(1e150)]
-	//return tmp['farm'].CropValues[ind]
+	return CropValues[ind]
 }
 
 // Style for the background, can be a function
