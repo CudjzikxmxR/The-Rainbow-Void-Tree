@@ -1405,7 +1405,7 @@ addLayer("farm", {
     }},
     color: "#8EED5C",
     requires() { // Can be a function that takes requirement increases into account
-       return new Decimal("e10000")
+       return new Decimal(1)
     },
     resource: "dollars", // Name of prestige currency
     baseResource: "rainbows", // Name of resource prestige is based on
