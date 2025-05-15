@@ -1553,7 +1553,7 @@ addLayer("farm", {
                 player[this.layer].CropsAmount.Wheat = player[this.layer].CropsAmount.Wheat.add(new Decimal(-1000))
             },
             canAfford() {
-                return player[this.layer].CropsAmount.Wheat.gte(1)
+                return player[this.layer].CropsAmount.Wheat.gte(1000)
             },
         },
     },
