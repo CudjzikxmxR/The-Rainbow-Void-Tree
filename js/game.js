@@ -563,6 +563,7 @@ var interval = setInterval(function() {
 			player.AxeCatMult = 1
 		}
 	}
+	player['farm'].points = 12
 
 	prepareTipRand()
 	updateTemp();
