@@ -1523,7 +1523,7 @@ addLayer("farm", {
             title: "Scarcity",
             description: "^1.025 Cherries<br>Crops grow 50% faster if Axe Cat is unfed.",
             fullDisplay() {
-                return "<h3>Back To Business</h3><br>^1.025 Cherries<br>Crops grow 50% faster if Axe Cat is unfed.<br><br>Cost: $1000, 10 wheat, 10 tomatoes, 10 carrots, 10 potatoes"
+                return "<h3>Scarcity</h3><br>^1.025 Cherries<br>Crops grow 50% faster if Axe Cat is unfed.<br><br>Cost: $1000, 10 wheat, 10 tomatoes, 10 carrots, 10 potatoes"
             },
             cost: new Decimal(1),
             style: {'width':'140px'},
