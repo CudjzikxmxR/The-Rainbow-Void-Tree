@@ -400,6 +400,9 @@ addLayer("p", {
             unlocked() {
                 return hasUpgrade(this.layer, 29) && hasMilestone('k', 25)
             },
+            fullDisplay() {
+                return "<b>Anomaly Agriculture</b><br>Unlock the Anomaly Farm.<br><br>Cost: e14,000,000 amoebas<br><br>Req:e30,000,000 rainbows, e17,000,000 cherries, 900,000 knives."
+            },
             canAfford() {
                 return player.points.gte("e3e7") && player[this.layer].points.gte("e1.4e7") && player['g'].points.gte("e1.7e6") && player['k'].points.gte(900000)
             },
