@@ -94,6 +94,9 @@ addLayer("p", {
     hotkeys: [
         {key: "a", description: "A: Reset for amoebas!!!", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
+    doReset(resettingLayer){ // Triggers when this layer is being reset, along with the layer doing the resetting. Not triggered by lower layers resetting, but is by layers on the same row.
+        if(layers[resettingLayer].row > this.row) layerDataReset(this.layer, ["NonsenseString"]) 
+    },
     layerShown(){return true},
     
     getAxeStatus() {
