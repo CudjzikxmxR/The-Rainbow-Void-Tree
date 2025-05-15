@@ -1391,7 +1391,7 @@ addLayer("farm", {
         unlocked: false,
 		points: new Decimal(0),
         Crops: {
-            Wheat: new Decimal(1),
+            Wheat: null,
             Tomatoes: null,
             Carrots: null,
             Corn: null,
@@ -1462,16 +1462,7 @@ addLayer("farm", {
         //return hasUpgrade('p', 21) && player.points.gte(tmp[this.layer].requires())
         //return tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt)
     },
-    canBuyMax() {
-        return hasMilestone(this.layer, 13)
-    },
     branches: ["p", "g", "k"],
-    onPrestige() {
-        if (this.getUnlockOrder()!=0 && player.LayerTwoChoice!="!") {
-            this.unlockOrder = 0
-            player.LayerTwoChoice = "k"
-        }
-    },
 
     upgrades: {
         11: {
@@ -1576,11 +1567,11 @@ addLayer("farm", {
 
         1001: {
             title: "Wheat",
-            description: "<i>The first crop in the entire game. A long journey awaits...</i><br>Worth $1",
+            description: "<i>The first crop in the entire game. A long journey awaits...</i><br><br>Value: $"+format(getCropValue(this.id-1001)[0]),
             cost: new Decimal(0),
             style: {'width':'140px'},
             onPurchase() {
-                player[this.layer].Crops.Wheat = getCropValue(this.id-1001)
+                player[this.layer].Crops.Wheat = getCropValue(this.id-1001)[0]
             },
         },
     },
