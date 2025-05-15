@@ -1511,7 +1511,7 @@ addLayer("farm", {
             fullDisplay() {
                 return "<h3>Economic Boom</h3><br>2x Money<br>Unlock [SET 3] of Cherry upgrades.<br>Unlock [SET 2] of Knife upgrades.<br><br>Cost: $150"
             },
-            cost: new Decimal(250),
+            cost: new Decimal(150),
             style: {'width':'140px'},
         },
         15: {
