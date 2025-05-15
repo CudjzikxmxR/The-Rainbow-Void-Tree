@@ -1561,7 +1561,7 @@ addLayer("farm", {
             cost: new Decimal(0),
             style: {'width':'140px'},
             onPurchase() {
-                player[this.layer].Crops.Wheat = getCropValue(this.cropID)[0]
+                player[this.layer].Crops.Wheat = getCropValue(cropID)[0]
             },
         },
     },
