@@ -1465,10 +1465,10 @@ addLayer("farm", {
             fullDisplay() {
                 return "<h3>Crop Farming</h3><br>Unlock new crops.<br><br>Cost: $15, 10 wheat"
             },
-            cost: new Decimal(1),
+            cost: new Decimal(15),
             style: {'width':'140px'},
             onPurchase() {
-                player[this.layer].CropsAmount.Wheat = player[this.layer].CropsAmount.Wheat.add(new Decimal(10))
+                player[this.layer].CropsAmount.Wheat = player[this.layer].CropsAmount.Wheat.add(new Decimal(-10))
             },
             canAfford() {
                 return player[this.layer].points.gte(this.cost) && player[this.layer].CropsAmount.Wheat.gte(10)
@@ -1480,13 +1480,14 @@ addLayer("farm", {
             fullDisplay() {
                 return "<h3>Texty Texty</h3><br>You have ^1.05 rainbows while the Textbox's text begins with the 'A' character, and ^1.05 amoebas while the text begins with the 'B' character.<br><br>Cost: $30, 10 wheat, 10 tomatoes"
             },
-            cost: new Decimal(1),
+            cost: new Decimal(30),
             style: {'width':'140px'},
             onPurchase() {
-                player[this.layer].CropsAmount.Wheat = player[this.layer].CropsAmount.Wheat.add(new Decimal(10))
+                player[this.layer].CropsAmount.Wheat = player[this.layer].CropsAmount.Wheat.add(new Decimal(-10))
+                player[this.layer].CropsAmount.Tomatoes = player[this.layer].CropsAmount.Tomatoes.add(new Decimal(-10))
             },
             canAfford() {
-                return player[this.layer].points.gte(this.cost) && player[this.layer].CropsAmount.Wheat.gte(10)
+                return player[this.layer].points.gte(this.cost) && player[this.layer].CropsAmount.Wheat.gte(10) && player[this.layer].CropsAmount.Tomatoes.gte(10)
             },
         },
         13: {
@@ -1495,13 +1496,13 @@ addLayer("farm", {
             fullDisplay() {
                 return "<h3>Back To Business</h3><br>Knives slightly scale based on money, and crop grow speed slightly scales based on how many Killstreak milestones you have.<br><br>Cost: $50, 20 carrots"
             },
-            cost: new Decimal(1),
+            cost: new Decimal(50),
             style: {'width':'140px'},
             onPurchase() {
-                player[this.layer].CropsAmount.Wheat = player[this.layer].CropsAmount.Wheat.add(new Decimal(10))
+                player[this.layer].CropsAmount.Carrots = player[this.layer].CropsAmount.Carrots.add(new Decimal(-20))
             },
             canAfford() {
-                return player[this.layer].points.gte(this.cost) && player[this.layer].CropsAmount.Wheat.gte(10)
+                return player[this.layer].points.gte(this.cost) && player[this.layer].CropsAmount.Carrots.gte(20)
             },
         },
         14: {
@@ -1510,28 +1511,49 @@ addLayer("farm", {
             fullDisplay() {
                 return "<h3>Economic Boom</h3><br>2x Money<br>Unlock [SET 3] of Cherry upgrades.<br>Unlock [SET 2] of Knife upgrades.<br><br>Cost: $150"
             },
-            cost: new Decimal(1),
+            cost: new Decimal(150),
             style: {'width':'140px'},
-            onPurchase() {
-                player[this.layer].CropsAmount.Wheat = player[this.layer].CropsAmount.Wheat.add(new Decimal(10))
-            },
-            canAfford() {
-                return player[this.layer].points.gte(this.cost) && player[this.layer].CropsAmount.Wheat.gte(10)
-            },
         },
         15: {
             title: "Scarcity",
-            description: "^1.025 Cherries<br>Crops grow 50% faster if Axe Cat is unfed.",
+            description: "^1.025 Cherries<br>Crops grow 1.5x faster if Axe Cat is unfed.",
             fullDisplay() {
                 return "<h3>Scarcity</h3><br>^1.025 Cherries<br>Crops grow 50% faster if Axe Cat is unfed.<br><br>Cost: $1000, 10 wheat, 10 tomatoes, 10 carrots, 10 potatoes"
             },
-            cost: new Decimal(1),
+            cost: new Decimal(1000),
             style: {'width':'140px'},
             onPurchase() {
-                player[this.layer].CropsAmount.Wheat = player[this.layer].CropsAmount.Wheat.add(new Decimal(10))
+                player[this.layer].CropsAmount.Wheat = player[this.layer].CropsAmount.Wheat.add(new Decimal(-10))
+                player[this.layer].CropsAmount.Tomatoes = player[this.layer].CropsAmount.Tomatoes.add(new Decimal(-10))
+                player[this.layer].CropsAmount.Carrots = player[this.layer].CropsAmount.Carrots.add(new Decimal(-10))
+                player[this.layer].CropsAmount.Potatoes = player[this.layer].CropsAmount.Potatoes.add(new Decimal(-10))
             },
             canAfford() {
-                return player[this.layer].points.gte(this.cost) && player[this.layer].CropsAmount.Wheat.gte(10)
+                return player[this.layer].points.gte(this.cost) && player[this.layer].CropsAmount.Wheat.gte(10) && player[this.layer].CropsAmount.Tomatoes.gte(10) && player[this.layer].CropsAmount.Carrots.gte(10) && player[this.layer].CropsAmount.Potatoes.gte(10)
+            },
+        },
+        16: {
+            title: "Embrace The Farmlife",
+            description: "Unlock a second farm plot.",
+            fullDisplay() {
+                return "<h3>Embrace The Farmlife</h3><br>Unlock a second farm plot.<br><br>Cost: $5000"
+            },
+            cost: new Decimal(5000),
+            style: {'width':'140px'},
+        },
+        17: {
+            title: "True Form",
+            description: "+1 Dark Fragment",
+            fullDisplay() {
+                return "<h3>True Form</h3><br>+1 Dark Fragment<br><br>Cost: 1000 wheat"
+            },
+            cost: new Decimal(0),
+            style: {'width':'140px'},
+            onPurchase() {
+                player[this.layer].CropsAmount.Wheat = player[this.layer].CropsAmount.Wheat.add(new Decimal(-1000))
+            },
+            canAfford() {
+                return player[this.layer].points.gte(this.cost) && player[this.layer].CropsAmount.Wheat.gte(1000)
             },
         },
     },
@@ -1542,7 +1564,7 @@ addLayer("farm", {
             effectDescription() {
                 return "3x Rainbows<br>1.5x Amoebas"
             },
-            done() {return player[this.layer].best.gte(1)},
+            done() {return player[this.layer].best.gte("e100000")},
         },
     },
     tabFormat: [
@@ -1551,8 +1573,7 @@ addLayer("farm", {
         //"upgrades",
         ["display-text", "<h3>[SET 1]</h3>"],
         ["row", [["upgrade",11],["upgrade",12],["upgrade",13]]],
-        ["row", [["upgrade",14],["upgrade",15]]],
-        ["upgrade",16],
+        ["row", [["upgrade",14],["upgrade",15],["upgrade",16],["upgrade",17]]],
         "blank",
     ],
 })
