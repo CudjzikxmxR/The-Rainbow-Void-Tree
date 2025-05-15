@@ -1511,7 +1511,7 @@ addLayer("farm", {
             fullDisplay() {
                 return "<h3>Economic Boom</h3><br>2x Money<br>Unlock [SET 3] of Cherry upgrades.<br>Unlock [SET 2] of Knife upgrades.<br><br>Cost: $150"
             },
-            cost: new Decimal(150),
+            cost: new Decimal(250),
             style: {'width':'140px'},
         },
         15: {
@@ -1541,7 +1541,21 @@ addLayer("farm", {
             cost: new Decimal(5000),
             style: {'width':'140px'},
         },
-        
+        17: {
+            title: "True Form",
+            description: "+1 Dark Fragment",
+            fullDisplay() {
+                return "<h3>True Form</h3><br>+1 Dark Fragment<br><br>Cost: 1000 wheat"
+            },
+            cost: new Decimal(1),
+            style: {'width':'140px'},
+            onPurchase() {
+                player[this.layer].CropsAmount.Wheat = player[this.layer].CropsAmount.Wheat.add(new Decimal(-1000))
+            },
+            canAfford() {
+                return player[this.layer].CropsAmount.Wheat.gte(1000)
+            },
+        },
     },
 
     milestones: {
