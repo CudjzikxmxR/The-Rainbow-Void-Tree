@@ -1453,29 +1453,6 @@ addLayer("farm", {
     },
     tabFormat: [
         "main-display",
-        ["display-text",
-            function() {
-                if (player[this.layer].points.gte(1e6)) {
-                   return "Knife gain is softcapped after 1.00e6."
-                }
-                return null
-             }],
-        ["display-text",
-        function() {
-            if(player.LayerTwoChoice!=null && player.LayerTwoChoice!=this.layer && player.LayerTwoChoice!="!") {
-                return "This layer is currently deactivated!"
-            }
-            return null
-            }],
-        "blank",
-        "prestige-button",
-        "blank",
-        "resource-display",
-        "milestones",
-        ["display-text",
-            function() {
-                return "<font color='#ff0000'>All Knife upgrades set your Knives to 0 and force a Kill reset without awarding Knives!"
-             }],
         "blank",
         //"upgrades",
         ["display-text", "<h3>[SET 1]</h3>"],
