@@ -1369,7 +1369,7 @@ addLayer("k", {
 })
 
 addLayer("farm", {
-    name: "afarm", // This is optional, only used in a few places, If absent it just uses the layer id.
+    name: "farmm", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "F", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 2, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     prefix: "$",
@@ -1558,18 +1558,7 @@ addLayer("farm", {
 
         //CROPS
 
-        1001: {
-            title: "Wheat",
-            description: "<i>The first crop in the entire game. A long journey awaits...</i><br><br>Value: $"+format(getCropValue(0)[0])+"<br>Grow Speed: "+format(getCropValue(0)[1])+"s<br>Click Power Req: "+format(getCropValue(0)[2]),
-            cost: new Decimal(0),
-            style: {'width':'140px'},
-            onPurchase() {
-                player[this.layer].Crops.Wheat = getCropValue(0)[0]
-            },
-            unlocked() {
-                return true
-            },
-        },
+       
     },
 
     milestones: {
@@ -1584,6 +1573,7 @@ addLayer("farm", {
     tabFormat: [
         "main-display",
         "blank",
+
         //"crops",
         ["display-text", "<h3>[CROPS]</h3>"],
         ["row", [["upgrade",1001],["upgrade",1002],["upgrade",1003]]],
