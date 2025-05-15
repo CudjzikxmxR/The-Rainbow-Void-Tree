@@ -1367,3 +1367,121 @@ addLayer("k", {
         "blank",
     ],
 })
+
+addLayer("farm", {
+    name: "afarm", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "F", // This appears on the layer's node. Default is the id with the first letter capitalized
+    position: 2, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    image: "resources/Knives_Icon.png",
+    startData() { return {
+        unlocked: false,
+		points: new Decimal(0),
+    }},
+    color: "#A7E984",
+    requires() { // Can be a function that takes requirement increases into account
+       return new Decimal("e10000")
+    },
+    resource: "dollars", // Name of prestige currency
+    baseResource: "rainbows", // Name of resource prestige is based on
+    resetDescription: "Farm for ",
+    baseAmount() {return player.points}, // Get the current amount of baseResource
+    type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    softcap: new Decimal(1e6), 
+    softcapPower: new Decimal(0.1), 
+    exponent() { // Prestige currency exponent
+        return 2
+    }, 
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+        return mult
+    },
+    directMult() {
+        mult = new Decimal(1)
+        return mult
+    },
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        return new Decimal(1)
+    },
+    row: 2, // Row the layer is in on the tree (0 is the first row)
+    hotkeys: [
+        {key: "k", description: "K: Kill for knives!!!", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+    ],
+    layerShown(){
+        //return true
+        if (hasUpgrade('p', 38)) {
+            return true
+        }
+        return false
+    },
+    canReset() {
+        return tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt)
+        //return hasUpgrade('p', 21) && player.points.gte(tmp[this.layer].requires())
+        //return tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt)
+    },
+    canBuyMax() {
+        return hasMilestone(this.layer, 13)
+    },
+    branches: ["p", "g", "k"],
+    onPrestige() {
+        if (this.getUnlockOrder()!=0 && player.LayerTwoChoice!="!") {
+            this.unlockOrder = 0
+            player.LayerTwoChoice = "k"
+        }
+    },
+
+    upgrades: {
+        11: {
+            title: "idk",
+            description: "Unlock [SET 3] of Amoeba upgrades.",
+            cost: new Decimal(1),
+            style: {'width':'140px'},
+            onPurchase() {
+                player[this.layer].points = new Decimal(0)
+                doReset(this.layer, true)
+            },
+        },
+    },
+
+    milestones: {
+        11: {
+            requirementDescription: "1 Killstreak",
+            effectDescription() {
+                return "3x Rainbows<br>1.5x Amoebas"
+            },
+            done() {return player[this.layer].best.gte(1)},
+        },
+    },
+    tabFormat: [
+        "main-display",
+        ["display-text",
+            function() {
+                if (player[this.layer].points.gte(1e6)) {
+                   return "Knife gain is softcapped after 1.00e6."
+                }
+                return null
+             }],
+        ["display-text",
+        function() {
+            if(player.LayerTwoChoice!=null && player.LayerTwoChoice!=this.layer && player.LayerTwoChoice!="!") {
+                return "This layer is currently deactivated!"
+            }
+            return null
+            }],
+        "blank",
+        "prestige-button",
+        "blank",
+        "resource-display",
+        "milestones",
+        ["display-text",
+            function() {
+                return "<font color='#ff0000'>All Knife upgrades set your Knives to 0 and force a Kill reset without awarding Knives!"
+             }],
+        "blank",
+        //"upgrades",
+        ["display-text", "<h3>[SET 1]</h3>"],
+        ["row", [["upgrade",11],["upgrade",12],["upgrade",13]]],
+        ["row", [["upgrade",14],["upgrade",15]]],
+        ["upgrade",16],
+        "blank",
+    ],
+})
