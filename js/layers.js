@@ -1564,7 +1564,7 @@ addLayer("farm", {
             effectDescription() {
                 return "3x Rainbows<br>1.5x Amoebas"
             },
-            done() {return player[this.layer].best.gte("e100000")},
+            done() {return player[this.layer].best.gte(1)},
         },
     },
     tabFormat: [
