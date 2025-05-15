@@ -1393,7 +1393,7 @@ addLayer("farm", {
             Potatoes: null
         },
     }},
-    color: "#85E053",
+    color: "#8EED5C",
     requires() { // Can be a function that takes requirement increases into account
        return new Decimal("e10000")
     },
