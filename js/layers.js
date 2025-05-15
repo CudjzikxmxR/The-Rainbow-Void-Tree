@@ -1431,9 +1431,10 @@ addLayer("farm", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
+    resetsNothing: true,
     row: 2, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
-        {key: "k", description: "K: Kill for knives!!!", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "`", description: "Ehrm", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     doReset(resettingLayer){ // Triggers when this layer is being reset, along with the layer doing the resetting. Not triggered by lower layers resetting, but is by layers on the same row.
         if(layers[resettingLayer].row > this.row) layerDataReset(this.layer, ["Crops"]) 
@@ -1444,6 +1445,9 @@ addLayer("farm", {
             return true
         }
         return false
+    },
+    canReset() {
+        return tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt)
     },
     branches: ["p", "g", "k"],
     onPrestige() {
@@ -1565,12 +1569,6 @@ addLayer("farm", {
             unlocked() {
                 return true
             },
-        },
-        1002: {
-            title: "DLC",
-            description: "Unlock [SET 3] of Amoeba upgrades.",
-            cost: new Decimal(1),
-            style: {'width':'140px'},
         },
     },
 
