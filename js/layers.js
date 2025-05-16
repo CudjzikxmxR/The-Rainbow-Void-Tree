@@ -1672,10 +1672,6 @@ addLayer("farm", {
     clickables: {
         11: {
             title: "<",
-            display() { 
-               return null
-            },
-            unlocked() { return player[this.layer].unlocked }, 
             canClick: true,
             onClick() { 
                 player[this.layer].SelectedIndex--
@@ -1692,10 +1688,6 @@ addLayer("farm", {
             title() {
                 return "Harvest"
             },
-            display() { 
-               return null
-            },
-            unlocked() { return player[this.layer].unlocked }, 
             canClick: true,
             onClick() { 
                 /*
@@ -1708,10 +1700,6 @@ addLayer("farm", {
         },
         13: {
             title: ">",
-            display() { 
-               return null
-            },
-            unlocked() { return player[this.layer].unlocked }, 
             canClick: true,
             onClick() { 
                 player[this.layer].SelectedIndex++
