@@ -1425,10 +1425,10 @@ addLayer("farm", {
     },
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    softcap: new Decimal(1e6), 
+    softcap: new Decimal(1e9), 
     softcapPower: new Decimal(0.1), 
     exponent() { // Prestige currency exponent
-        return 5
+        return new Decimal(2)
     }, 
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
@@ -1436,121 +1436,32 @@ addLayer("farm", {
     },
     directMult() {
         mult = new Decimal(1)
-        
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
+    resetsNothing: true,
     row: 2, // Row the layer is in on the tree (0 is the first row)
+    doReset(resettingLayer){ // Triggers when this layer is being reset, along with the layer doing the resetting. Not triggered by lower layers resetting, but is by layers on the same row.
+        if(layers[resettingLayer].row > this.row) layerDataReset(this.layer, ["Crops"]) 
+    },
     layerShown(){
+        if (hasUpgrade('p', 38)) {
+            return true
+        }
+        return false
+    },
+    unlocked(){
         return true
     },
     canReset() {
-        return tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt)
-        //return hasUpgrade('p', 21) && player.points.gte(tmp[this.layer].requires())
-        //return tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt)
+        return true
     },
     branches: ["p", "g", "k"],
 
     upgrades: {
-        11: {
-            title: "Crop Farming",
-            description: "Unlock new crops.",
-            fullDisplay() {
-                return "<h3>Crop Farming</h3><br>Unlock new crops.<br><br>Cost: $15, 10 wheat"
-            },
-            cost: new Decimal(15),
-            style: {'width':'140px'},
-            onPurchase() {
-                player[this.layer].CropsCount.Wheat = player[this.layer].CropsCount.Wheat.add(new Decimal(-10))
-            },
-            canAfford() {
-                return player[this.layer].points.gte(15) && player[this.layer].CropsCount.Wheat.gte(10)
-            },
-        },
-        12: {
-            title: "Texty Texty",
-            description: "You have ^1.05 rainbows while the Textbox's text begins with the 'A' character, and ^1.05 amoebas while the text begins with the 'B' character.",
-            fullDisplay() {
-                return "<h3>Texty Texty</h3><br>You have ^1.05 rainbows while the Textbox's text begins with the 'A' character, and ^1.05 amoebas while the text begins with the 'B' character.<br><br>Cost: $30, 10 wheat, 10 tomatoes"
-            },
-            cost: new Decimal(30),
-            style: {'width':'140px'},
-            onPurchase() {
-                player[this.layer].CropsCount.Wheat = player[this.layer].CropsCount.Wheat.add(new Decimal(-10))
-                player[this.layer].CropsCount.Tomatoes = player[this.layer].CropsCount.Tomatoes.add(new Decimal(-10))
-            },
-            canAfford() {
-                return player[this.layer].points.gte(30) && player[this.layer].CropsCount.Wheat.gte(10) && player[this.layer].CropsCount.Tomatoes.gte(10)
-            },
-        },
-        13: {
-            title: "Back To Business",
-            description: "Knives slightly scale based on money, and crop grow speed slightly scales based on how many Killstreak milestones you have.",
-            fullDisplay() {
-                return "<h3>Back To Business</h3><br>Knives slightly scale based on money, and crop grow speed slightly scales based on how many Killstreak milestones you have.<br><br>Cost: $50, 20 carrots"
-            },
-            cost: new Decimal(50),
-            style: {'width':'140px'},
-            onPurchase() {
-                player[this.layer].CropsCount.Carrots = player[this.layer].CropsCount.Carrots.add(new Decimal(-20))
-            },
-            canAfford() {
-                return player[this.layer].points.gte(50) && player[this.layer].CropsCount.Carrots.gte(20)
-            },
-        },
-        14: {
-            title: "Economic Boom",
-            description: "2x Money<br>Unlock [SET 3] of Cherry upgrades.<br>Unlock [SET 2] of Knife upgrades.",
-            fullDisplay() {
-                return "<h3>Economic Boom</h3><br>2x Money<br>Unlock [SET 3] of Cherry upgrades.<br>Unlock [SET 2] of Knife upgrades.<br><br>Cost: $150"
-            },
-            cost: new Decimal(150),
-            style: {'width':'140px'},
-        },
-        15: {
-            title: "Scarcity",
-            description: "^1.025 Cherries<br>Crops grow 1.5x faster if Axe Cat is hungry.",
-            fullDisplay() {
-                return "<h3>Scarcity</h3><br>^1.025 Cherries<br>Crops grow 1.5x faster if Axe Cat is hungry.<br><br>Cost: $1000, 10 wheat, 10 tomatoes, 10 carrots, 10 potatoes"
-            },
-            cost: new Decimal(1000),
-            style: {'width':'140px'},
-            onPurchase() {
-                player[this.layer].CropsCount.Wheat = player[this.layer].CropsCount.Wheat.add(new Decimal(-10))
-                player[this.layer].CropsCount.Tomatoes = player[this.layer].CropsCount.Tomatoes.add(new Decimal(-10))
-                player[this.layer].CropsCount.Carrots = player[this.layer].CropsCount.Carrots.add(new Decimal(-10))
-                player[this.layer].CropsCount.Potatoes = player[this.layer].CropsCount.Potatoes.add(new Decimal(-10))
-            },
-            canAfford() {
-                return player[this.layer].points.gte(1000) && player[this.layer].CropsCount.Wheat.gte(10) && player[this.layer].CropsCount.Tomatoes.gte(10) && player[this.layer].CropsCount.Carrots.gte(10) && player[this.layer].CropsCount.Potatoes.gte(10)
-            },
-        },
-        16: {
-            title: "Embrace The Farmlife",
-            description: "Crops grow 1.5x faster.<br>The plot is now larger..",
-            fullDisplay() {
-                return "<h3>Embrace The Farmlife</h3><br>Crops grow 1.5x faster.<br>The plot is now larger.<br><br>Cost: $5000"
-            },
-            cost: new Decimal(5000),
-            style: {'width':'140px'},
-        },
-        17: {
-            title: "True Form",
-            description: "+1 Dark Fragment",
-            fullDisplay() {
-                return "<h3>True Form</h3><br>+1 Dark Fragment<br><br>Cost: 1000 wheat"
-            },
-            cost: new Decimal(0),
-            style: {'width':'140px'},
-            onPurchase() {
-                player[this.layer].CropsCount.Wheat = player[this.layer].CropsCount.Wheat.add(new Decimal(-1000))
-            },
-            canAfford() {
-                return player[this.layer].CropsCount.Wheat.gte(1000)
-            },
-        },
+        
 
         //CROPS
 
