@@ -1711,7 +1711,8 @@ addLayer("farm", {
             return "Empty"
         },
         getDisplay(data, id) {
-            return data
+            return null
+            //return data
         },
     },
 
