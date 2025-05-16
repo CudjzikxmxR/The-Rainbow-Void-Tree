@@ -1585,7 +1585,7 @@ addLayer("farm", {
                 player[this.layer].Crops.Tomatoes = getCropValue(1)[0]
             },
             unlocked() {
-                return true
+                return hasUpgrade(this.layer, 11)
             },
         },
         1003: {
@@ -1600,7 +1600,7 @@ addLayer("farm", {
                 player[this.layer].Crops.Tomatoes = getCropValue(2)[0]
             },
             unlocked() {
-                return true
+                return hasUpgrade(this.layer, 11)
             },
         },
         1004: {
@@ -1609,13 +1609,13 @@ addLayer("farm", {
                 var cropID = 3
                 return "<i>Corn. Corn. Corn.</i><br><br>Value: $"+format(getCropValue(cropID)[0])+"<br>Grow Speed: "+format(getCropValue(cropID)[1])+"s<br>Click Power Req: "+format(getCropValue(cropID)[2])
             },
-            cost: new Decimal(60),
+            cost: new Decimal(100),
             style: {'width':'180px'},
             onPurchase() {
                 player[this.layer].Crops.Corn = getCropValue(3)[0]
             },
             unlocked() {
-                return true
+                return hasUpgrade(this.layer, 11)
             },
         },
         1005: {
@@ -1624,13 +1624,13 @@ addLayer("farm", {
                 var cropID = 4
                 return "<i>Not worth all too much, but certainly fast to grow.</i><br><br>Value: $"+format(getCropValue(cropID)[0])+"<br>Grow Speed: "+format(getCropValue(cropID)[1])+"s<br>Click Power Req: "+format(getCropValue(cropID)[2])
             },
-            cost: new Decimal(100),
+            cost: new Decimal(200),
             style: {'width':'180px'},
             onPurchase() {
                 player[this.layer].Crops.Potatoes = getCropValue(4)[0]
             },
             unlocked() {
-                return true
+                return hasUpgrade(this.layer, 11)
             },
         },
         1006: {
@@ -1639,13 +1639,28 @@ addLayer("farm", {
                 var cropID = 5
                 return "<i>Huh, did you hear that? Must have been the wind.</i><br><br>Value: $"+format(getCropValue(cropID)[0])+"<br>Grow Speed: "+format(getCropValue(cropID)[1])+"s<br>Click Power Req: "+format(getCropValue(cropID)[2])
             },
-            cost: new Decimal(150),
+            cost: new Decimal(2000),
             style: {'width':'180px'},
             onPurchase() {
                 player[this.layer].Crops.Cucumbers = getCropValue(5)[0]
             },
             unlocked() {
-                return true
+                return hasUpgrade(this.layer, 11)
+            },
+        },
+        1007: {
+            title: "Beetroot",
+            description() {
+                var cropID = 6
+                return "<i>I can't fucking come up with a description for this.</i><br><br>Value: $"+format(getCropValue(cropID)[0])+"<br>Grow Speed: "+format(getCropValue(cropID)[1])+"s<br>Click Power Req: "+format(getCropValue(cropID)[2])
+            },
+            cost: new Decimal(4000),
+            style: {'width':'180px'},
+            onPurchase() {
+                player[this.layer].Crops.Beetroots = getCropValue(6)[0]
+            },
+            unlocked() {
+                return false
             },
         },
     },
