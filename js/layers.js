@@ -1448,14 +1448,12 @@ addLayer("farm", {
         if(layers[resettingLayer].row > this.row) layerDataReset(this.layer, ["Crops"]) 
     },
     layerShown(){
-        //return true
         if (hasUpgrade('p', 38)) {
             return true
         }
         return false
     },
     unlocked(){
-        //return true
         if (hasUpgrade('p', 38)) {
             return true
         }
@@ -1674,62 +1672,7 @@ addLayer("farm", {
         },
     },
 
-    clickables: {
-        11: {
-            title: "<",
-            display() { 
-               return null
-            },
-            unlocked() { return player[this.layer].unlocked }, 
-            canClick: true,
-            onClick() { 
-                player[this.layer].SelectedIndex--
-                if (player[this.layer].Crops[player[this.layer].SelectedIndex] != null) {
-                    player[this.layer].SelectedCrop = CropOrder[player[this.layer].SelectedIndex]
-                } else {
-                    player[this.layer].SelectedCrop = "Wheat"
-                    player[this.layer].SelectedIndex = 0
-                }
-            },
-            style: {'width':'50px'},
-        },
-        12: {
-            title() {
-                return "Harvest"
-            },
-            display() { 
-               return null
-            },
-            unlocked() { return player[this.layer].unlocked }, 
-            canClick: true,
-            onClick() { 
-                /*
-                for (g_id in player[this.layer].grid) {
-                    player[this.layer].grid[data].ChosenCrop = null
-                }
-                */
-            },
-            style: {'width':'120px'},
-        },
-        13: {
-            title: ">",
-            display() { 
-               return null
-            },
-            unlocked() { return player[this.layer].unlocked }, 
-            canClick: true,
-            onClick() { 
-                player[this.layer].SelectedIndex++
-                if (player[this.layer].Crops[player[this.layer].SelectedIndex] != null) {
-                    player[this.layer].SelectedCrop = CropOrder[player[this.layer].SelectedIndex]
-                } else {
-                    player[this.layer].SelectedCrop = "Wheat"
-                    player[this.layer].SelectedIndex = 0
-                }
-            },
-            style: {'width':'50px'},
-        },
-    },
+    
 
     grid: {
         maxRows: 7,
