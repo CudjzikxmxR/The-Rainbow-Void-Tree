@@ -1541,24 +1541,7 @@ addLayer("farm", {
         "main-display",
         "blank",
         //"upgrades",
-        ["display-text", "<h3>[SET 1]</h3>"],
-        ["row", [["upgrade",11],["upgrade",12],["upgrade",13]]],
-        ["row", [["upgrade",14],["upgrade",15],["upgrade",16],["upgrade",17]]],
-        "blank",
-        "clickables",
-        "blank",
-        ["display-text",
-            function() {
-                if (player[this.layer].SelectedCrop) {
-                    return "Currently selected: "+player[this.layer].SelectedCrop
-                }
-                return "Currently selected: N/A"
-            }
-        ],
-        "blank",
-        "grid",
-        "blank",
-        //"crops",
+       
         ["display-text", "<h3>[CROPS]</h3>"],
         ["row", [["upgrade",1001],["upgrade",1002],["upgrade",1003]]],
         ["row", [["upgrade",1004],["upgrade",1005],["upgrade",1006]]],
