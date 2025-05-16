@@ -1696,12 +1696,8 @@ addLayer("farm", {
             unlocked() { return player[this.layer].unlocked }, 
             canClick: true,
             onClick() { 
-                player[this.layer].SelectedIndex--
-                if (player[this.layer].Crops[player[this.layer].SelectedIndex] != null) {
-                    player[this.layer].SelectedCrop = CropOrder[player[this.layer].SelectedIndex]
-                } else {
-                    player[this.layer].SelectedCrop = "Wheat"
-                    player[this.layer].SelectedIndex = 0
+                for (g_id in player[this.layer].grid) {
+                    player[this.layer].grid[g_id].Crop = null
                 }
             },
             style: {'width':'120px'},
@@ -1758,12 +1754,11 @@ addLayer("farm", {
             return {'background-color': '#98562E'}
         },
         onClick(data, id) {
-            player[this.layer].grid[data].Crop = player[this.layer].SelectedCrop
-            player[this.layer].grid[id]++
+            player[this.layer].grid[id].Crop = player[this.layer].SelectedCrop
         },
         getTitle(data, id) {
-            if (player[this.layer].grid[data].Crop != null) {
-                return player[this.layer].grid[data].Crop
+            if (player[this.layer].grid[id].Crop != null) {
+                return player[this.layer].grid[id].Crop
             }
             return "Empty"
         },
