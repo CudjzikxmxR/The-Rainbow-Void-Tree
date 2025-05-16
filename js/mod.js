@@ -272,6 +272,10 @@ const CropValues = [
 	[new Decimal(100), new Decimal(33), new Decimal("e500")], // cabbage
 	[new Decimal(150), new Decimal(17), new Decimal("e600")], // eggplant
 	[new Decimal(270), new Decimal(20), new Decimal("e800")], // celery
+	[new Decimal(300), new Decimal(11), new Decimal("e1000")], // sugarcane
+	[new Decimal(1000), new Decimal(30), new Decimal("e1200")], // watermelon
+	[new Decimal(30000), new Decimal(600), new Decimal("e1400")], // catfruit
+	[new Decimal(2000), new Decimal(38), new Decimal("e1600")], // pumpkin
 ]
 
 function getCropValue(ind) {

@@ -1389,6 +1389,10 @@ addLayer("farm", {
             Cabbages: null,
             Eggplants: null,
             Celery: null,
+            Sugarcane: null,
+            Watermelon: null,
+            Catfruit: null,
+            Pumpkin: null,
         },
         CropsCount: {
             Wheat: new Decimal(0),
@@ -1401,6 +1405,10 @@ addLayer("farm", {
             Cabbages: new Decimal(0),
             Eggplants: new Decimal(0),
             Celery: new Decimal(0),
+            Sugarcane: new Decimal(0),
+            Watermelon: new Decimal(0),
+            Catfruit: new Decimal(0),
+            Pumpkin: new Decimal(0),
         },
     }},
     color: "#8EED5C",
@@ -1589,7 +1597,52 @@ addLayer("farm", {
             cost: new Decimal(30),
             style: {'width':'180px'},
             onPurchase() {
-                player[this.layer].Crops.Tomatoes = getCropValue(1)[0]
+                player[this.layer].Crops.Tomatoes = getCropValue(2)[0]
+            },
+            unlocked() {
+                return true
+            },
+        },
+        1004: {
+            title: "Corn",
+            description() {
+                var cropID = 3
+                return "<i>Corn. Corn. Corn.</i><br><br>Value: $"+format(getCropValue(cropID)[0])+"<br>Grow Speed: "+format(getCropValue(cropID)[1])+"s<br>Click Power Req: "+format(getCropValue(cropID)[2])
+            },
+            cost: new Decimal(60),
+            style: {'width':'180px'},
+            onPurchase() {
+                player[this.layer].Crops.Corn = getCropValue(3)[0]
+            },
+            unlocked() {
+                return true
+            },
+        },
+        1005: {
+            title: "Potatoes",
+            description() {
+                var cropID = 4
+                return "<i>Not worth all too much, but certainly fast to grow.</i><br><br>Value: $"+format(getCropValue(cropID)[0])+"<br>Grow Speed: "+format(getCropValue(cropID)[1])+"s<br>Click Power Req: "+format(getCropValue(cropID)[2])
+            },
+            cost: new Decimal(100),
+            style: {'width':'180px'},
+            onPurchase() {
+                player[this.layer].Crops.Potatoes = getCropValue(4)[0]
+            },
+            unlocked() {
+                return true
+            },
+        },
+        1006: {
+            title: "Cucumbers",
+            description() {
+                var cropID = 5
+                return "<i>Huh, did you hear that? Must have been the wind.</i><br><br>Value: $"+format(getCropValue(cropID)[0])+"<br>Grow Speed: "+format(getCropValue(cropID)[1])+"s<br>Click Power Req: "+format(getCropValue(cropID)[2])
+            },
+            cost: new Decimal(150),
+            style: {'width':'180px'},
+            onPurchase() {
+                player[this.layer].Crops.Cucumbers = getCropValue(5)[0]
             },
             unlocked() {
                 return true
@@ -1617,5 +1670,9 @@ addLayer("farm", {
         //"crops",
         ["display-text", "<h3>[CROPS]</h3>"],
         ["row", [["upgrade",1001],["upgrade",1002],["upgrade",1003]]],
+        ["row", [["upgrade",1004],["upgrade",1005],["upgrade",1006]]],
+        ["row", [["upgrade",1007],["upgrade",1008],["upgrade",1009]]],
+        ["row", [["upgrade",1010],["upgrade",1011],["upgrade",1012]]],
+        ["row", [["upgrade",1013],["upgrade",1014],["upgrade",1015]]],
     ],
 })
