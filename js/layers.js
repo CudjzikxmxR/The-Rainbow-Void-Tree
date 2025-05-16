@@ -1696,7 +1696,7 @@ addLayer("farm", {
             canClick: true,
             onClick() { 
                 player[this.layer].SelectedIndex--
-                if (player[this.layer].Crops[player[this.layer].SelectedIndex] != null) {
+                if (player[this.layer].Crops[player[this.layer].SelectedIndex] != null && player[this.layer].SelectedIndex>0) {
                     player[this.layer].SelectedCrop = toString(player[this.layer].Crops[player[this.layer].SelectedIndex])
                 } else {
                     player[this.layer].SelectedCrop = "Wheat"
