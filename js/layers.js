@@ -1678,7 +1678,7 @@ addLayer("farm", {
             onClick() { 
                 player[this.layer].SelectedIndex--
                 if (player[this.layer].Crops[player[this.layer].SelectedIndex] != null) {
-                    player[this.layer].SelectedCrop = toString(player[this.layer].Crops[player[this.layer].SelectedIndex])
+                    player[this.layer].SelectedCrop = CropOrder[player[this.layer].SelectedIndex]
                 } else {
                     player[this.layer].SelectedCrop = "Wheat"
                     player[this.layer].SelectedIndex = 0
@@ -1698,7 +1698,7 @@ addLayer("farm", {
             onClick() { 
                 player[this.layer].SelectedIndex--
                 if (player[this.layer].Crops[player[this.layer].SelectedIndex] != null) {
-                    player[this.layer].SelectedCrop = toString(player[this.layer].Crops[player[this.layer].SelectedIndex])
+                    player[this.layer].SelectedCrop = CropOrder[player[this.layer].SelectedIndex]
                 } else {
                     player[this.layer].SelectedCrop = "Wheat"
                     player[this.layer].SelectedIndex = 0
@@ -1716,7 +1716,7 @@ addLayer("farm", {
             onClick() { 
                 player[this.layer].SelectedIndex++
                 if (player[this.layer].Crops[player[this.layer].SelectedIndex] != null) {
-                    player[this.layer].SelectedCrop = toString(player[this.layer].Crops[player[this.layer].SelectedIndex])
+                    player[this.layer].SelectedCrop = CropOrder[player[this.layer].SelectedIndex]
                 } else {
                     player[this.layer].SelectedCrop = "Wheat"
                     player[this.layer].SelectedIndex = 0
@@ -1770,7 +1770,7 @@ addLayer("farm", {
         getDisplay(data, id) {
             //return null
             //return data
-            return player[this.layer].SelectedCrop + ":" + player[this.layer].SelectedIndex + ":" + data.Crop
+            return player[this.layer].SelectedCrop + ":" + player[this.layer].SelectedIndex + ":" + data
         },
     },
 
