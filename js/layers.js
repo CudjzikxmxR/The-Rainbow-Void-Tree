@@ -1768,8 +1768,9 @@ addLayer("farm", {
             return "Empty"
         },
         getDisplay(data, id) {
-            return null
+            //return null
             //return data
+            return player[this.layer].SelectedIndex
         },
     },
 
@@ -1791,6 +1792,7 @@ addLayer("farm", {
         ["row", [["upgrade",14],["upgrade",15],["upgrade",16],["upgrade",17]]],
         "blank",
         "clickables",
+        "blank",
         "grid",
         "blank",
         //"crops",
