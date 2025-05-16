@@ -404,7 +404,7 @@ addLayer("p", {
                 return hasUpgrade(this.layer, 29) && hasMilestone('k', 25)
             },
             fullDisplay() {
-                return "<h3>Anomaly Agriculture</h3><br>Unlock the Anomaly Farm.<br><br>Cost: e14,000,000 amoebas<br><br>Req: e30,000,000 rainbows, e17,000,000 cherries, 900,000 knives."
+                return "<h3>Anomaly Agriculture</h3><br>Unlock the Anomaly Farm.<br><br>Cost: e14,000,000 amoebas<br><br>Req: e30,000,000 rainbows, e1,700,000 cherries, 900,000 knives."
             },
             canAfford() {
                 return player.points.gte("e3e7") && player[this.layer].points.gte("e1.4e7") && player['g'].points.gte("e1.7e6") && player['k'].points.gte(900000)
@@ -1415,7 +1415,7 @@ addLayer("farm", {
     }},
     color: "#8EED5C",
     requires() { // Can be a function that takes requirement increases into account
-       return new Decimal(1)
+       return new Decimal("e3e7")
     },
     resource: "dollars", // Name of prestige currency
     baseResource: "rainbows", // Name of resource prestige is based on
