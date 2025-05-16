@@ -1696,9 +1696,11 @@ addLayer("farm", {
             unlocked() { return player[this.layer].unlocked }, 
             canClick: true,
             onClick() { 
+                /*
                 for (g_id in player[this.layer].grid) {
                     player[this.layer].grid[data].ChosenCrop = null
                 }
+                */
             },
             style: {'width':'120px'},
         },
