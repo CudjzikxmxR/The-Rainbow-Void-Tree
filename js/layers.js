@@ -1575,9 +1575,6 @@ addLayer("farm", {
             unlocked() {
                 return true
             },
-            canAfford() {
-                return true
-            },
         },
         1002: {
             title: "Tomatoes",
@@ -1635,9 +1632,6 @@ addLayer("farm", {
             onPurchase() {
                 player[this.layer].Crops.Potatoes = getCropValue(4)[0]
             },
-            unlocked() {
-                return hasUpgrade(this.layer, 11)
-            },
         },
         1006: {
             title: "Cucumbers",
@@ -1650,9 +1644,6 @@ addLayer("farm", {
             onPurchase() {
                 player[this.layer].Crops.Cucumbers = getCropValue(5)[0]
             },
-            unlocked() {
-                return hasUpgrade(this.layer, 11)
-            },
         },
         1007: {
             title: "Beetroot",
@@ -1664,9 +1655,6 @@ addLayer("farm", {
             style: {'width':'180px'},
             onPurchase() {
                 player[this.layer].Crops.Beetroots = getCropValue(6)[0]
-            },
-            unlocked() {
-                return false
             },
         },
     },
