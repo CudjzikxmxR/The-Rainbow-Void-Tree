@@ -1454,6 +1454,13 @@ addLayer("farm", {
         }
         return false
     },
+    unlocked(){
+        //return true
+        if (hasUpgrade('p', 38)) {
+            return true
+        }
+        return false
+    },
     canReset() {
         return true
     },
@@ -1696,7 +1703,6 @@ addLayer("farm", {
             unlocked() { return player[this.layer].unlocked }, 
             canClick: true,
             onClick() { 
-                console.log('hi')
                 /*
                 for (g_id in player[this.layer].grid) {
                     player[this.layer].grid[data].ChosenCrop = null
