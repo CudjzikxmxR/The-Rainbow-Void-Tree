@@ -1758,12 +1758,12 @@ addLayer("farm", {
             return {'background-color': '#98562E'}
         },
         onClick(data, id) {
-            player[this.layer].grid[id].Crop = player[this.layer].SelectedCrop
-            //player[this.layer].grid[id]++
+            player[this.layer].grid[data].Crop = player[this.layer].SelectedCrop
+            player[this.layer].grid[id]++
         },
         getTitle(data, id) {
-            if (player[this.layer].grid[id].Crop != null) {
-                return player[this.layer].grid[id].Crop
+            if (player[this.layer].grid[data].Crop != null) {
+                return player[this.layer].grid[data].Crop
             }
             return "Empty"
         },
