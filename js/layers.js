@@ -1758,7 +1758,7 @@ addLayer("farm", {
             return {'background-color': '#98562E'}
         },
         onClick(data, id) {
-            data.Crop = player[this.layer].SelectedCrop
+            player[this.layer].grid[data].Crop = player[this.layer].SelectedCrop
             //player[this.layer].grid[id]++
         },
         getTitle(data, id) {
