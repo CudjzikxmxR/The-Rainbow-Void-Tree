@@ -1421,7 +1421,7 @@ addLayer("farm", {
     baseResource: "rainbows", // Name of resource prestige is based on
     resetDescription: "Farm for ",
     effectDescription() {
-        return "which boosts your click power by "+format((new Decimal(1.25)).pow(player[this.layer].points))+"x"
+        return "which multiplies your click power by "+format((new Decimal(1.25)).pow(player[this.layer].points))+"x"
     },
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
