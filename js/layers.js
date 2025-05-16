@@ -1428,38 +1428,15 @@ addLayer("farm", {
     softcap: new Decimal(1e6), 
     softcapPower: new Decimal(0.1), 
     exponent() { // Prestige currency exponent
-        if (this.getUnlockOrder()==0 || hasUpgrade(this.layer, 16)) {
-            if (hasUpgrade('p', 28)) {
-                return 1.6
-            }
-            if (hasUpgrade('p', 27)) {
-                return 1.8
-            }
-            return 2
-        }
         return 5
     }, 
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
-        if (hasUpgrade('p', 27)) {
-            mult = mult.times(0.5)
-        }
         return mult
     },
     directMult() {
         mult = new Decimal(1)
-        if (hasUpgrade('k', 16)) {
-            mult = mult.times(2)
-        }
-        if (hasMilestone('k', 22)) {
-            mult = mult.times(1.5)
-        }
-        if (hasMilestone('k', 23)) {
-            mult = mult.times(2)
-        }
-        if (hasUpgrade('p', 34)) {
-            mult = mult.times(1.5)
-        }
+        
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
