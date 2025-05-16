@@ -1674,53 +1674,6 @@ addLayer("farm", {
 
     
 
-    grid: {
-        maxRows: 7,
-        maxCols: 7,
-        rows() {
-            var rowCount = 3
-            if (hasUpgrade(this.layer, 16)) {
-                rowCount++
-            }
-            return rowCount
-        },
-        cols() {
-            var colCount = 3
-            if (hasUpgrade(this.layer, 16)) {
-                colCount++
-            }
-            return colCount
-        },
-        getStartData(id) {
-            return {
-                ChosenCrop: null,
-            }
-        },
-        getUnlocked(id) { // Default
-            return true
-        },
-        getStyle(data, id) {
-            if (player[this.layer].grid[data].ChosenCrop != null) {
-                return {'background-color': tmp['farm'.color]}
-            }
-            return {'background-color': '#98562E'}
-        },
-        onClick(data, id) {
-            player[this.layer].grid[data].ChosenCrop = player[this.layer].SelectedCrop
-        },
-        getTitle(data, id) {
-            if (player[this.layer].grid[data].ChosenCrop != null) {
-                return player[this.layer].grid[data].ChosenCrop
-            }
-            return "Empty"
-        },
-        getDisplay(data, id) {
-            //return null
-            //return data
-            return player[this.layer].SelectedCrop + ":" + player[this.layer].SelectedIndex + ":" + data
-        },
-    },
-
     milestones: {
         11: {
             requirementDescription: "1 Killstreak",
