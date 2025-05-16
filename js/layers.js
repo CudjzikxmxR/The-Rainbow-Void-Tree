@@ -1793,6 +1793,12 @@ addLayer("farm", {
         "blank",
         "clickables",
         "blank",
+        ["display-text",
+            function() {
+                return "Currently selected: "+player[this.layer].SelectedCrop
+            }
+        ],
+        "blank",
         "grid",
         "blank",
         //"crops",
