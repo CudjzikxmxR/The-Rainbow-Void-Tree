@@ -1411,6 +1411,7 @@ addLayer("farm", {
             Pumpkin: new Decimal(0),
         },
         SelectedCrop: null,
+        SelectedIndex: 0,
     }},
     color: "#8EED5C",
     requires() { // Can be a function that takes requirement increases into account
@@ -1666,6 +1667,41 @@ addLayer("farm", {
         },
     },
 
+    clickables: {
+        11: {
+            title: "<",
+            display() { 
+               return null
+            },
+            unlocked() { return player[this.layer].unlocked }, 
+            onClick() { 
+                player[this.layer].SelectedIndex--
+                if (player[this.layer].Crops[player[this.layer].SelectedIndex] != null) {
+                    player[this.layer].SelectedCrop = toString(player[this.layer].Crops[player[this.layer].SelectedIndex])
+                } else {
+                    player[this.layer].SelectedCrop = "Wheat"
+                }
+            },
+            style: {'height':'30px', 'width':'30px'},
+        },
+        13: {
+            title: ">",
+            display() { 
+               return null
+            },
+            unlocked() { return player[this.layer].unlocked }, 
+            onClick() { 
+                player[this.layer].SelectedIndex++
+                if (player[this.layer].Crops[player[this.layer].SelectedIndex] != null) {
+                    player[this.layer].SelectedCrop = toString(player[this.layer].Crops[player[this.layer].SelectedIndex])
+                } else {
+                    player[this.layer].SelectedCrop = "Wheat"
+                }
+            },
+            style: {'height':'30px', 'width':'30px'},
+        },
+    },
+
     grid: {
         maxRows: 7,
         maxCols: 7,
@@ -1733,6 +1769,7 @@ addLayer("farm", {
         ["row", [["upgrade",11],["upgrade",12],["upgrade",13]]],
         ["row", [["upgrade",14],["upgrade",15],["upgrade",16],["upgrade",17]]],
         "blank",
+        "clickables",
         "grid",
         "blank",
         //"crops",
