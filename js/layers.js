@@ -1665,6 +1665,33 @@ addLayer("farm", {
         },
     },
 
+    grid: {
+        maxRows: 3,
+        rows: 3,
+        cols: 3,
+        getStartData(id) {
+            return id
+        },
+        getUnlocked(id) { // Default
+            return true
+        },
+        getCanClick(data, id) {
+            return player.points.gte(10)
+        },
+        getStyle(data, id) {
+            return {'background-color': '#'+ (data*1234%999999)}
+        },
+        onClick(data, id) { // Don't forget onHold
+            player[this.layer].grid[id]++
+        },
+        getTitle(data, id) {
+            return "Gridable #" + id
+        },
+        getDisplay(data, id) {
+            return data
+        },
+    },
+
     milestones: {
         11: {
             requirementDescription: "1 Killstreak",
@@ -1681,6 +1708,8 @@ addLayer("farm", {
         ["display-text", "<h3>[SET 1]</h3>"],
         ["row", [["upgrade",11],["upgrade",12],["upgrade",13]]],
         ["row", [["upgrade",14],["upgrade",15],["upgrade",16],["upgrade",17]]],
+        "blank",
+        "grid",
         "blank",
         //"crops",
         ["display-text", "<h3>[CROPS]</h3>"],
