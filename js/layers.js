@@ -1683,7 +1683,7 @@ addLayer("farm", {
                     player[this.layer].SelectedCrop = "Wheat"
                 }
             },
-            style: {'height':'30px', 'width':'30px'},
+            style: {'width':'50px'},
         },
         12: {
             title() {
@@ -1702,7 +1702,7 @@ addLayer("farm", {
                     player[this.layer].SelectedCrop = "Wheat"
                 }
             },
-            style: {'height':'30px', 'width':'120px'},
+            style: {'width':'120px'},
         },
         13: {
             title: ">",
@@ -1719,7 +1719,7 @@ addLayer("farm", {
                     player[this.layer].SelectedCrop = "Wheat"
                 }
             },
-            style: {'height':'30px', 'width':'30px'},
+            style: {'width':'50px'},
         },
     },
 
