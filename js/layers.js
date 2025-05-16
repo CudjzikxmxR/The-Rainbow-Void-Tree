@@ -1696,10 +1696,9 @@ addLayer("farm", {
             unlocked() { return player[this.layer].unlocked }, 
             canClick: true,
             onClick() { 
-                var loopNum = 0
                 for (g_id in player[this.layer].grid) {
                     loopNum++
-                    player[this.layer].grid[g_id] = loopNum
+                    player[this.layer].grid[g_id] = 101
                     player[this.layer].grid[g_id].Crop = null
                 }
             },
