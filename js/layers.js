@@ -1770,10 +1770,7 @@ addLayer("farm", {
         getDisplay(data, id) {
             //return null
             //return data
-            return [
-                player[this.layer].SelectedIndex,
-                player[this.layer].SelectedCrop,
-            ]
+            return player[this.layer].SelectedIndex + player[this.layer].SelectedCrop
         },
     },
 
