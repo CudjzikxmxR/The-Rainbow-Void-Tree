@@ -1455,7 +1455,7 @@ addLayer("farm", {
         return false
     },
     canReset() {
-        return false
+        return true
     },
     branches: ["p", "g", "k"],
 
