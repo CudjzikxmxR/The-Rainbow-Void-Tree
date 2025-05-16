@@ -1697,7 +1697,7 @@ addLayer("farm", {
             canClick: true,
             onClick() { 
                 for (g_id in player[this.layer].grid) {
-                    player[this.layer].grid[g_id].Crop = null
+                    player[this.layer].grid[data].Crop = null
                 }
             },
             style: {'width':'120px'},
