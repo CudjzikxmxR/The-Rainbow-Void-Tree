@@ -1378,57 +1378,233 @@ addLayer("farm", {
     startData() { return {
         unlocked: false,
 		points: new Decimal(0),
-        
+        Crops: {
+            Wheat: new Decimal(1),
+            Tomatoes: null,
+            Carrots: null,
+            Corn: null,
+            Potatoes: null,
+            Cucumbers: null,
+            Beetroots: null,
+            Cabbages: null,
+            Eggplants: null,
+            Celery: null,
+            Sugarcane: null,
+            Watermelon: null,
+            Catfruit: null,
+            Pumpkin: null,
+        },
+        CropsCount: {
+            Wheat: new Decimal(0),
+            Tomatoes: new Decimal(0),
+            Carrots: new Decimal(0),
+            Corn: new Decimal(0),
+            Potatoes: new Decimal(0),
+            Cucumbers: new Decimal(0),
+            Beetroots: new Decimal(0),
+            Cabbages: new Decimal(0),
+            Eggplants: new Decimal(0),
+            Celery: new Decimal(0),
+            Sugarcane: new Decimal(0),
+            Watermelon: new Decimal(0),
+            Catfruit: new Decimal(0),
+            Pumpkin: new Decimal(0),
+        },
+        SelectedCrop: null,
+        SelectedIndex: 0,
     }},
     color: "#8EED5C",
     requires() { // Can be a function that takes requirement increases into account
-       return new Decimal("e3e7")
+        if (this.getUnlockOrder()==0||player.LayerTwoChoice==this.layer) {
+            return new Decimal(1e21)
+        }
+        return (new Decimal(10)).pow(500)
     },
-    resource: "dollars", // Name of prestige currency
+    resource: "knives", // Name of prestige currency
     baseResource: "rainbows", // Name of resource prestige is based on
-    resetDescription: "Farm for ",
-    effectDescription() {
-        return "which multiplies your click power by "+format((new Decimal(1.25)).pow(player[this.layer].points))+"x"
-    },
+    resetDescription: "Kill for ",
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    softcap: new Decimal(1e9), 
+    softcap: new Decimal(1e6), 
     softcapPower: new Decimal(0.1), 
     exponent() { // Prestige currency exponent
-        return new Decimal(2)
+        if (this.getUnlockOrder()==0 || hasUpgrade(this.layer, 16)) {
+            if (hasUpgrade('p', 28)) {
+                return 1.6
+            }
+            if (hasUpgrade('p', 27)) {
+                return 1.8
+            }
+            return 2
+        }
+        return 5
     }, 
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+        if (hasUpgrade('p', 27)) {
+            mult = mult.times(0.5)
+        }
         return mult
     },
     directMult() {
         mult = new Decimal(1)
+        if (hasUpgrade('k', 16)) {
+            mult = mult.times(2)
+        }
+        if (hasMilestone('k', 22)) {
+            mult = mult.times(1.5)
+        }
+        if (hasMilestone('k', 23)) {
+            mult = mult.times(2)
+        }
+        if (hasUpgrade('p', 34)) {
+            mult = mult.times(1.5)
+        }
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
-    resetsNothing: true,
-    row: 2, // Row the layer is in on the tree (0 is the first row)
-    doReset(resettingLayer){ // Triggers when this layer is being reset, along with the layer doing the resetting. Not triggered by lower layers resetting, but is by layers on the same row.
-        if(layers[resettingLayer].row > this.row) layerDataReset(this.layer, ["Crops"]) 
-    },
+    row: 1, // Row the layer is in on the tree (0 is the first row)
+    hotkeys: [
+        {key: "`", description: "K: Kill for knives!!!", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+    ],
     layerShown(){
-        if (hasUpgrade('p', 38)) {
+        //return true
+        if (hasUpgrade(this.layer, 11) || hasUpgrade('g', 11) || hasMilestone('k', 11) || hasUpgrade('p', 21) || player[this.layer].points.gte(new Decimal(1)) || player['g'].points.gte(new Decimal(1))) {
             return true
         }
         return false
     },
-    unlocked(){
-        return true
-    },
     canReset() {
+        return tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt)
+        //return hasUpgrade('p', 21) && player.points.gte(tmp[this.layer].requires())
+        //return tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt)
+    },
+    canBuyMax() {
         return true
     },
-    branches: ["p", "g", "k"],
+    branches: ["p"],
+    increaseUnlockOrder: ["g"],
+    getUnlockOrder() {
+        if (player.LayerTwoChoice==this.layer||player.LayerTwoChoice=="!") {
+            return 0
+        }
+        return player[this.layer].unlockOrder
+    },
+    onPrestige() {
+        if (this.getUnlockOrder()!=0 && player.LayerTwoChoice!="!") {
+            this.unlockOrder = 0
+            player.LayerTwoChoice = "k"
+        }
+    },
+    deactivated() {
+        if (player.LayerTwoChoice!=null && player.LayerTwoChoice!=this.layer && player.LayerTwoChoice!="!") {
+            return true
+        }
+        return false
+    },
 
     upgrades: {
-        
+        11: {
+            title: "Crop Farming",
+            description: "Unlock new crops.",
+            fullDisplay() {
+                return "<h3>Crop Farming</h3><br>Unlock new crops.<br><br>Cost: $15, 10 wheat"
+            },
+            cost: new Decimal(15),
+            style: {'width':'140px'},
+            onPurchase() {
+                player[this.layer].CropsCount.Wheat = player[this.layer].CropsCount.Wheat.add(new Decimal(-10))
+            },
+            canAfford() {
+                return player[this.layer].points.gte(15) && player[this.layer].CropsCount.Wheat.gte(10)
+            },
+        },
+        12: {
+            title: "Texty Texty",
+            description: "You have ^1.05 rainbows while the Textbox's text begins with the 'A' character, and ^1.05 amoebas while the text begins with the 'B' character.",
+            fullDisplay() {
+                return "<h3>Texty Texty</h3><br>You have ^1.05 rainbows while the Textbox's text begins with the 'A' character, and ^1.05 amoebas while the text begins with the 'B' character.<br><br>Cost: $30, 10 wheat, 10 tomatoes"
+            },
+            cost: new Decimal(30),
+            style: {'width':'140px'},
+            onPurchase() {
+                player[this.layer].CropsCount.Wheat = player[this.layer].CropsCount.Wheat.add(new Decimal(-10))
+                player[this.layer].CropsCount.Tomatoes = player[this.layer].CropsCount.Tomatoes.add(new Decimal(-10))
+            },
+            canAfford() {
+                return player[this.layer].points.gte(30) && player[this.layer].CropsCount.Wheat.gte(10) && player[this.layer].CropsCount.Tomatoes.gte(10)
+            },
+        },
+        13: {
+            title: "Back To Business",
+            description: "Knives slightly scale based on money, and crop grow speed slightly scales based on how many Killstreak milestones you have.",
+            fullDisplay() {
+                return "<h3>Back To Business</h3><br>Knives slightly scale based on money, and crop grow speed slightly scales based on how many Killstreak milestones you have.<br><br>Cost: $50, 20 carrots"
+            },
+            cost: new Decimal(50),
+            style: {'width':'140px'},
+            onPurchase() {
+                player[this.layer].CropsCount.Carrots = player[this.layer].CropsCount.Carrots.add(new Decimal(-20))
+            },
+            canAfford() {
+                return player[this.layer].points.gte(50) && player[this.layer].CropsCount.Carrots.gte(20)
+            },
+        },
+        14: {
+            title: "Economic Boom",
+            description: "2x Money<br>Unlock [SET 3] of Cherry upgrades.<br>Unlock [SET 2] of Knife upgrades.",
+            fullDisplay() {
+                return "<h3>Economic Boom</h3><br>2x Money<br>Unlock [SET 3] of Cherry upgrades.<br>Unlock [SET 2] of Knife upgrades.<br><br>Cost: $150"
+            },
+            cost: new Decimal(150),
+            style: {'width':'140px'},
+        },
+        15: {
+            title: "Scarcity",
+            description: "^1.025 Cherries<br>Crops grow 1.5x faster if Axe Cat is hungry.",
+            fullDisplay() {
+                return "<h3>Scarcity</h3><br>^1.025 Cherries<br>Crops grow 1.5x faster if Axe Cat is hungry.<br><br>Cost: $1000, 10 wheat, 10 tomatoes, 10 carrots, 10 potatoes"
+            },
+            cost: new Decimal(1000),
+            style: {'width':'140px'},
+            onPurchase() {
+                player[this.layer].CropsCount.Wheat = player[this.layer].CropsCount.Wheat.add(new Decimal(-10))
+                player[this.layer].CropsCount.Tomatoes = player[this.layer].CropsCount.Tomatoes.add(new Decimal(-10))
+                player[this.layer].CropsCount.Carrots = player[this.layer].CropsCount.Carrots.add(new Decimal(-10))
+                player[this.layer].CropsCount.Potatoes = player[this.layer].CropsCount.Potatoes.add(new Decimal(-10))
+            },
+            canAfford() {
+                return player[this.layer].points.gte(1000) && player[this.layer].CropsCount.Wheat.gte(10) && player[this.layer].CropsCount.Tomatoes.gte(10) && player[this.layer].CropsCount.Carrots.gte(10) && player[this.layer].CropsCount.Potatoes.gte(10)
+            },
+        },
+        16: {
+            title: "Embrace The Farmlife",
+            description: "Crops grow 1.5x faster.<br>The plot is now larger..",
+            fullDisplay() {
+                return "<h3>Embrace The Farmlife</h3><br>Crops grow 1.5x faster.<br>The plot is now larger.<br><br>Cost: $5000"
+            },
+            cost: new Decimal(5000),
+            style: {'width':'140px'},
+        },
+        17: {
+            title: "True Form",
+            description: "+1 Dark Fragment",
+            fullDisplay() {
+                return "<h3>True Form</h3><br>+1 Dark Fragment<br><br>Cost: 1000 wheat"
+            },
+            cost: new Decimal(0),
+            style: {'width':'140px'},
+            onPurchase() {
+                player[this.layer].CropsCount.Wheat = player[this.layer].CropsCount.Wheat.add(new Decimal(-1000))
+            },
+            canAfford() {
+                return player[this.layer].CropsCount.Wheat.gte(1000)
+            },
+        },
+
+        //CROPS
 
         1001: {
             title: "Wheat",
@@ -1537,11 +1713,120 @@ addLayer("farm", {
         },
     },
 
+    clickables: {
+        11: {
+            title: "<",
+            canClick: true,
+            onClick() { 
+                player[this.layer].SelectedIndex--
+                if (player[this.layer].Crops[player[this.layer].SelectedIndex] != null) {
+                    player[this.layer].SelectedCrop = CropOrder[player[this.layer].SelectedIndex]
+                } else {
+                    player[this.layer].SelectedCrop = "Wheat"
+                    player[this.layer].SelectedIndex = 0
+                }
+            },
+            style: {'width':'50px'},
+        },
+        12: {
+            title() {
+                return "Harvest"
+            },
+            canClick: true,
+            onClick() { 
+                /*
+                for (g_id in player[this.layer].grid) {
+                    player[this.layer].grid[data].ChosenCrop = null
+                }
+                */
+            },
+            style: {'width':'120px'},
+        },
+        13: {
+            title: ">",
+            canClick: true,
+            onClick() { 
+                player[this.layer].SelectedIndex++
+                if (player[this.layer].Crops[player[this.layer].SelectedIndex] != null) {
+                    player[this.layer].SelectedCrop = CropOrder[player[this.layer].SelectedIndex]
+                } else {
+                    player[this.layer].SelectedCrop = "Wheat"
+                    player[this.layer].SelectedIndex = 0
+                }
+            },
+            style: {'width':'50px'},
+        },
+    },
+
+    grid: {
+        maxRows: 7,
+        maxCols: 7,
+        rows() {
+            var rowCount = 3
+            if (hasUpgrade(this.layer, 16)) {
+                rowCount++
+            }
+            return rowCount
+        },
+        cols() {
+            var colCount = 3
+            if (hasUpgrade(this.layer, 16)) {
+                colCount++
+            }
+            return colCount
+        },
+        getStartData(id) {
+            return {
+                ChosenCrop: null,
+            }
+        },
+        getUnlocked(id) { // Default
+            return true
+        },
+        getStyle(data, id) {
+            if (player[this.layer].grid[data].ChosenCrop != null) {
+                return {'background-color': tmp['farm'.color]}
+            }
+            return {'background-color': '#98562E'}
+        },
+        onClick(data, id) {
+            player[this.layer].grid[data].ChosenCrop = player[this.layer].SelectedCrop
+        },
+        getTitle(data, id) {
+            if (player[this.layer].grid[data].ChosenCrop != null) {
+                return player[this.layer].grid[data].ChosenCrop
+            }
+            return "Empty"
+        },
+        getDisplay(data, id) {
+            //return null
+            //return data
+            return player[this.layer].SelectedCrop + ":" + player[this.layer].SelectedIndex + ":" + data
+        },
+    },
+
     tabFormat: [
         "main-display",
         "blank",
         //"upgrades",
-       
+        ["display-text", "<h3>[SET 1]</h3>"],
+        ["row", [["upgrade",11],["upgrade",12],["upgrade",13]]],
+        ["row", [["upgrade",14],["upgrade",15],["upgrade",16],["upgrade",17]]],
+        "blank",
+        "clickables",
+        "blank",
+        ["display-text",
+            function() {
+                if (player[this.layer].SelectedCrop) {
+                    return "Currently selected: "+player[this.layer].SelectedCrop
+                }
+                return "Currently selected: N/A"
+            }
+        ],
+        "blank",
+        "grid",
+        "blank",
+        //"crops",
         ["display-text", "<h3>[CROPS]</h3>"],
         ["row", [["upgrade",1001],["upgrade",1002],["upgrade",1003]]],
         ["row", [["upgrade",1004],["upgrade",1005],["upgrade",1006]]],
