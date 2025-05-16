@@ -1741,24 +1741,24 @@ addLayer("farm", {
         },
         getStartData(id) {
             return {
-                Crop: null,
+                ChosenCrop: null,
             }
         },
         getUnlocked(id) { // Default
             return true
         },
         getStyle(data, id) {
-            if (data.Crop != null) {
+            if (player[this.layer].grid[data].ChosenCrop != null) {
                 return {'background-color': tmp['farm'.color]}
             }
             return {'background-color': '#98562E'}
         },
         onClick(data, id) {
-            player[this.layer].grid[data].Crop = player[this.layer].SelectedCrop
+            player[this.layer].grid[data].ChosenCrop = player[this.layer].SelectedCrop
         },
         getTitle(data, id) {
-            if (player[this.layer].grid[data].Crop != null) {
-                return player[this.layer].grid[data].Crop
+            if (player[this.layer].grid[data].ChosenCrop != null) {
+                return player[this.layer].grid[data].ChosenCrop
             }
             return "Empty"
         },
