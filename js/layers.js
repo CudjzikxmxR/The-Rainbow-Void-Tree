@@ -1425,7 +1425,7 @@ addLayer("farm", {
     },
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    softcap: new Decimal(1e6), 
+    softcap: new Decimal(1e9), 
     softcapPower: new Decimal(0.1), 
     exponent() { // Prestige currency exponent
         return 2
@@ -1454,10 +1454,7 @@ addLayer("farm", {
         return false
     },
     unlocked(){
-        if (hasUpgrade('p', 38)) {
-            return true
-        }
-        return false
+        return true
     },
     canReset() {
         return true
@@ -1672,17 +1669,110 @@ addLayer("farm", {
         },
     },
 
-    
-
-    milestones: {
+    clickables: {
         11: {
-            requirementDescription: "1 Killstreak",
-            effectDescription() {
-                return "3x Rainbows<br>1.5x Amoebas"
+            title: "<",
+            display() { 
+               return null
             },
-            done() {return player[this.layer].best.gte(1)},
+            unlocked() { return player[this.layer].unlocked }, 
+            canClick: true,
+            onClick() { 
+                player[this.layer].SelectedIndex--
+                if (player[this.layer].Crops[player[this.layer].SelectedIndex] != null) {
+                    player[this.layer].SelectedCrop = CropOrder[player[this.layer].SelectedIndex]
+                } else {
+                    player[this.layer].SelectedCrop = "Wheat"
+                    player[this.layer].SelectedIndex = 0
+                }
+            },
+            style: {'width':'50px'},
+        },
+        12: {
+            title() {
+                return "Harvest"
+            },
+            display() { 
+               return null
+            },
+            unlocked() { return player[this.layer].unlocked }, 
+            canClick: true,
+            onClick() { 
+                /*
+                for (g_id in player[this.layer].grid) {
+                    player[this.layer].grid[data].ChosenCrop = null
+                }
+                */
+            },
+            style: {'width':'120px'},
+        },
+        13: {
+            title: ">",
+            display() { 
+               return null
+            },
+            unlocked() { return player[this.layer].unlocked }, 
+            canClick: true,
+            onClick() { 
+                player[this.layer].SelectedIndex++
+                if (player[this.layer].Crops[player[this.layer].SelectedIndex] != null) {
+                    player[this.layer].SelectedCrop = CropOrder[player[this.layer].SelectedIndex]
+                } else {
+                    player[this.layer].SelectedCrop = "Wheat"
+                    player[this.layer].SelectedIndex = 0
+                }
+            },
+            style: {'width':'50px'},
         },
     },
+
+    grid: {
+        maxRows: 7,
+        maxCols: 7,
+        rows() {
+            var rowCount = 3
+            if (hasUpgrade(this.layer, 16)) {
+                rowCount++
+            }
+            return rowCount
+        },
+        cols() {
+            var colCount = 3
+            if (hasUpgrade(this.layer, 16)) {
+                colCount++
+            }
+            return colCount
+        },
+        getStartData(id) {
+            return {
+                ChosenCrop: null,
+            }
+        },
+        getUnlocked(id) { // Default
+            return true
+        },
+        getStyle(data, id) {
+            if (player[this.layer].grid[data].ChosenCrop != null) {
+                return {'background-color': tmp['farm'.color]}
+            }
+            return {'background-color': '#98562E'}
+        },
+        onClick(data, id) {
+            player[this.layer].grid[data].ChosenCrop = player[this.layer].SelectedCrop
+        },
+        getTitle(data, id) {
+            if (player[this.layer].grid[data].ChosenCrop != null) {
+                return player[this.layer].grid[data].ChosenCrop
+            }
+            return "Empty"
+        },
+        getDisplay(data, id) {
+            //return null
+            //return data
+            return player[this.layer].SelectedCrop + ":" + player[this.layer].SelectedIndex + ":" + data
+        },
+    },
+
     tabFormat: [
         "main-display",
         "blank",
