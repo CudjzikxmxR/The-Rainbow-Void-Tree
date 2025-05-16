@@ -563,7 +563,7 @@ var interval = setInterval(function() {
 			player.AxeCatMult = 1
 		}
 	}
-	player['farm'].points = new Decimal(1000)
+	player['farm'].points = new Decimal(0)
 
 	prepareTipRand()
 	updateTemp();
