@@ -1371,7 +1371,7 @@ addLayer("k", {
 addLayer("farm", {
     name: "farmm", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "F", // This appears on the layer's node. Default is the id with the first letter capitalized
-    position: 2, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    position: 1, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     prefix: "$",
     currencyOff: true,
     image: "resources/AnomalyFarm_Icon.png",
@@ -1415,95 +1415,50 @@ addLayer("farm", {
     }},
     color: "#8EED5C",
     requires() { // Can be a function that takes requirement increases into account
-        if (this.getUnlockOrder()==0||player.LayerTwoChoice==this.layer) {
-            return new Decimal(1e21)
-        }
-        return (new Decimal(10)).pow(500)
+       return new Decimal("e3e7")
     },
-    resource: "knives", // Name of prestige currency
+    resource: "dollars", // Name of prestige currency
     baseResource: "rainbows", // Name of resource prestige is based on
-    resetDescription: "Kill for ",
+    resetDescription: "Farm for ",
+    effectDescription() {
+        return "which multiplies your click power by "+format((new Decimal(1.25)).pow(player[this.layer].points))+"x"
+    },
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    softcap: new Decimal(1e6), 
+    softcap: new Decimal(1e9), 
     softcapPower: new Decimal(0.1), 
     exponent() { // Prestige currency exponent
-        if (this.getUnlockOrder()==0 || hasUpgrade(this.layer, 16)) {
-            if (hasUpgrade('p', 28)) {
-                return 1.6
-            }
-            if (hasUpgrade('p', 27)) {
-                return 1.8
-            }
-            return 2
-        }
-        return 5
+        return new Decimal(2)
     }, 
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
-        if (hasUpgrade('p', 27)) {
-            mult = mult.times(0.5)
-        }
         return mult
     },
     directMult() {
         mult = new Decimal(1)
-        if (hasUpgrade('k', 16)) {
-            mult = mult.times(2)
-        }
-        if (hasMilestone('k', 22)) {
-            mult = mult.times(1.5)
-        }
-        if (hasMilestone('k', 23)) {
-            mult = mult.times(2)
-        }
-        if (hasUpgrade('p', 34)) {
-            mult = mult.times(1.5)
-        }
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
-    row: 1, // Row the layer is in on the tree (0 is the first row)
-    hotkeys: [
-        {key: "`", description: "K: Kill for knives!!!", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
-    ],
+    resetsNothing: true,
+    row: 2, // Row the layer is in on the tree (0 is the first row)
+    doReset(resettingLayer){ // Triggers when this layer is being reset, along with the layer doing the resetting. Not triggered by lower layers resetting, but is by layers on the same row.
+        if(layers[resettingLayer].row > this.row) layerDataReset(this.layer, ["Crops"]) 
+    },
     layerShown(){
-        //return true
-        if (hasUpgrade(this.layer, 11) || hasUpgrade('g', 11) || hasMilestone('k', 11) || hasUpgrade('p', 21) || player[this.layer].points.gte(new Decimal(1)) || player['g'].points.gte(new Decimal(1))) {
+        if (hasUpgrade('p', 38)) {
             return true
         }
         return false
     },
-    canReset() {
-        return tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt)
-        //return hasUpgrade('p', 21) && player.points.gte(tmp[this.layer].requires())
-        //return tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt)
-    },
-    canBuyMax() {
+    unlocked(){
         return true
     },
-    branches: ["p"],
-    increaseUnlockOrder: ["g"],
-    getUnlockOrder() {
-        if (player.LayerTwoChoice==this.layer||player.LayerTwoChoice=="!") {
-            return 0
-        }
-        return player[this.layer].unlockOrder
+    canReset() {
+        return true
     },
-    onPrestige() {
-        if (this.getUnlockOrder()!=0 && player.LayerTwoChoice!="!") {
-            this.unlockOrder = 0
-            player.LayerTwoChoice = "k"
-        }
-    },
-    deactivated() {
-        if (player.LayerTwoChoice!=null && player.LayerTwoChoice!=this.layer && player.LayerTwoChoice!="!") {
-            return true
-        }
-        return false
-    },
+    branches: ["p", "g", "k"],
 
     upgrades: {
         11: {
@@ -1618,6 +1573,9 @@ addLayer("farm", {
                 player[this.layer].Crops.Wheat = getCropValue(0)[0]
             },
             unlocked() {
+                return true
+            },
+            canAfford() {
                 return true
             },
         },
