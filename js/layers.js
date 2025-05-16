@@ -1700,6 +1700,7 @@ addLayer("farm", {
                     player[this.layer].SelectedCrop = toString(player[this.layer].Crops[player[this.layer].SelectedIndex])
                 } else {
                     player[this.layer].SelectedCrop = "Wheat"
+                    player[this.layer].SelectedIndex = 0
                 }
             },
             style: {'width':'120px'},
@@ -1717,6 +1718,7 @@ addLayer("farm", {
                     player[this.layer].SelectedCrop = toString(player[this.layer].Crops[player[this.layer].SelectedIndex])
                 } else {
                     player[this.layer].SelectedCrop = "Wheat"
+                    player[this.layer].SelectedIndex = 0
                 }
             },
             style: {'width':'50px'},
@@ -1747,9 +1749,6 @@ addLayer("farm", {
         },
         getUnlocked(id) { // Default
             return true
-        },
-        getCanClick(data, id) {
-            return player.points.gte(10)
         },
         getStyle(data, id) {
             if (data.Crop != null) {
