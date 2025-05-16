@@ -1674,6 +1674,7 @@ addLayer("farm", {
                return null
             },
             unlocked() { return player[this.layer].unlocked }, 
+            canClick: true,
             onClick() { 
                 player[this.layer].SelectedIndex--
                 if (player[this.layer].Crops[player[this.layer].SelectedIndex] != null) {
@@ -1684,12 +1685,32 @@ addLayer("farm", {
             },
             style: {'height':'30px', 'width':'30px'},
         },
+        12: {
+            title() {
+                return "Harvest"
+            },
+            display() { 
+               return null
+            },
+            unlocked() { return player[this.layer].unlocked }, 
+            canClick: true,
+            onClick() { 
+                player[this.layer].SelectedIndex--
+                if (player[this.layer].Crops[player[this.layer].SelectedIndex] != null) {
+                    player[this.layer].SelectedCrop = toString(player[this.layer].Crops[player[this.layer].SelectedIndex])
+                } else {
+                    player[this.layer].SelectedCrop = "Wheat"
+                }
+            },
+            style: {'height':'30px', 'width':'120px'},
+        },
         13: {
             title: ">",
             display() { 
                return null
             },
             unlocked() { return player[this.layer].unlocked }, 
+            canClick: true,
             onClick() { 
                 player[this.layer].SelectedIndex++
                 if (player[this.layer].Crops[player[this.layer].SelectedIndex] != null) {
