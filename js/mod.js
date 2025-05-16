@@ -279,6 +279,22 @@ const CropValues = [
 	[new Decimal(2000), new Decimal(38), new Decimal("e1600")], // pumpkin
 ]
 
+const CropOrder = [
+	"Wheat",
+	"Tomatoes",
+	"Corn",
+	"Potatoes",
+	"Cucumbers",
+	"Beetroots",
+	"Cabbages",
+	"Eggplants",
+	"Celery",
+	"Sugarcane",
+	"Watermelon",
+	"Catfruit",
+	"Pumpkin",
+]
+
 function getCropValue(ind) {
 	return CropValues[ind]
 }
