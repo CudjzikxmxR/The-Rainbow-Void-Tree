@@ -1410,8 +1410,7 @@ addLayer("farm", {
             Catfruit: new Decimal(0),
             Pumpkin: new Decimal(0),
         },
-        SelectedCrop: null,
-        SelectedIndex: 0,
+        
     }},
     color: "#8EED5C",
     requires() { // Can be a function that takes requirement increases into account
