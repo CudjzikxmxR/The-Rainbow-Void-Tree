@@ -1465,24 +1465,14 @@ addLayer("farm", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
-    row: 1, // Row the layer is in on the tree (0 is the first row)
-    hotkeys: [
-        {key: "k", description: "K: Kill for knives!!!", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
-    ],
+    row: 2, // Row the layer is in on the tree (0 is the first row)
     layerShown(){
-        //return true
-        if (hasUpgrade(this.layer, 11) || hasUpgrade('g', 11) || hasMilestone('k', 11) || hasUpgrade('p', 21) || player[this.layer].points.gte(new Decimal(1)) || player['g'].points.gte(new Decimal(1))) {
-            return true
-        }
-        return false
+        return true
     },
     canReset() {
         return tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt)
         //return hasUpgrade('p', 21) && player.points.gte(tmp[this.layer].requires())
         //return tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt)
-    },
-    canBuyMax() {
-        return hasMilestone(this.layer, 13)
     },
     branches: ["p", "g", "k"],
 
