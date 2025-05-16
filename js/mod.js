@@ -252,7 +252,7 @@ function getClickPower() {
 		baseClickPower = baseClickPower.times(new Decimal(1.25)).pow(player['farm'].points)
 	}
 
-	return baseClickPower
+	return baseClickPower.times(3)
 }
 
 function resetClickMult() {
