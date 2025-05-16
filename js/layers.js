@@ -1374,7 +1374,7 @@ addLayer("farm", {
     position: 2, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     prefix: "$",
     currencyOff: true,
-    image: "resources/Knives_Icon.png",
+    image: "resources/AnomalyFarm_Icon.png",
     startData() { return {
         unlocked: false,
 		points: new Decimal(0),
