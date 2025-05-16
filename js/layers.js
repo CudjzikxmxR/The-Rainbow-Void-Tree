@@ -1410,7 +1410,8 @@ addLayer("farm", {
             Catfruit: new Decimal(0),
             Pumpkin: new Decimal(0),
         },
-        
+        SelectedCrop: null,
+        SelectedIndex: 0,
     }},
     color: "#8EED5C",
     requires() { // Can be a function that takes requirement increases into account
@@ -1427,7 +1428,7 @@ addLayer("farm", {
     softcap: new Decimal(1e9), 
     softcapPower: new Decimal(0.1), 
     exponent() { // Prestige currency exponent
-        return 2
+        return new Decimal(2)
     }, 
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
