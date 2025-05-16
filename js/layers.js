@@ -1410,6 +1410,7 @@ addLayer("farm", {
             Catfruit: new Decimal(0),
             Pumpkin: new Decimal(0),
         },
+        SelectedCrop: null,
     }},
     color: "#8EED5C",
     requires() { // Can be a function that takes requirement increases into account
@@ -1533,9 +1534,9 @@ addLayer("farm", {
         },
         16: {
             title: "Embrace The Farmlife",
-            description: "Unlock a second farm plot.",
+            description: "Crops grow 1.5x faster.<br>The plot is now larger..",
             fullDisplay() {
-                return "<h3>Embrace The Farmlife</h3><br>Unlock a second farm plot.<br><br>Cost: $5000"
+                return "<h3>Embrace The Farmlife</h3><br>Crops grow 1.5x faster.<br>The plot is now larger.<br><br>Cost: $5000"
             },
             cost: new Decimal(5000),
             style: {'width':'140px'},
@@ -1666,11 +1667,26 @@ addLayer("farm", {
     },
 
     grid: {
-        maxRows: 3,
-        rows: 3,
-        cols: 3,
+        maxRows: 7,
+        maxCols: 7,
+        rows() {
+            var rowCount = 3
+            if (hasUpgrade(this.layer, 16)) {
+                rowCount++
+            }
+            return rowCount
+        },
+        cols() {
+            var colCount = 3
+            if (hasUpgrade(this.layer, 16)) {
+                colCount++
+            }
+            return colCount
+        },
         getStartData(id) {
-            return id
+            return {
+                Crop: null,
+            }
         },
         getUnlocked(id) { // Default
             return true
@@ -1679,13 +1695,20 @@ addLayer("farm", {
             return player.points.gte(10)
         },
         getStyle(data, id) {
-            return {'background-color': '#'+ (data*1234%999999)}
+            if (data.Crop != null) {
+                return {'background-color': tmp['farm'.color]}
+            }
+            return {'background-color': '#98562E'}
         },
-        onClick(data, id) { // Don't forget onHold
-            player[this.layer].grid[id]++
+        onClick(data, id) {
+            data.Crop = player[this.layer].SelectedCrop
+            //player[this.layer].grid[id]++
         },
         getTitle(data, id) {
-            return "Gridable #" + id
+            if (data.Crop != null) {
+                return data.Crop
+            }
+            return "Empty"
         },
         getDisplay(data, id) {
             return data
