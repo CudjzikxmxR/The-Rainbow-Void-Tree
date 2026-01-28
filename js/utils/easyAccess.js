@@ -62,6 +62,10 @@ function upgradeEffect(layer, id) {
 	return (tmp[layer].upgrades[id].effect)
 }
 
+function upgradeEffect2(layer, id) {
+	return (tmp[layer].upgrades[id].effect2)
+}
+
 function challengeEffect(layer, id) {
 	return (tmp[layer].challenges[id].rewardEffect)
 }

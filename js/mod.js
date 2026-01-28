@@ -12,14 +12,25 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.1",
-	name: "v0.0",
+	num: "0.2",
+	name: "The Farm Update",
 }
 
-let changelog = `<h1>Changelog:</h1><br>
-	<h3>v0.1</h3><br>
+let changelog = `<h1>Changelog:</h1><br><br>
+	<h3>v0.2 - The Farm Update</h3><br>
+		- New layer: The Anomaly Farm.<br>
+		- New sublayer: Darkness.<br>
+		- Rebalanced majority of the game.<br>
+		- Adjusted UI.<br>
+		- Polished the game up.<br>
+		- Added SOUND!!! What???<br>
+		- Fixed several bugs.<br><br>
+	<h3>v0.1 - Update 1</h3><br>
 		- Added things.<br>
-		- Added stuff.`
+		- Added stuff.
+		`
+
+	
 
 let winText = `Congratulations! You have reached the end and beaten this game, but for now...`
 
@@ -39,9 +50,9 @@ function canGenPoints(){
 // Calculate points/sec!
 function getPointGen() {
 	if(!canGenPoints())
-		return new Decimal(0)
+		return decimalZero
 
-	let gain = new Decimal(1)
+	let gain = decimalOne
 	//Cud Layer Upgrades
 	if (hasUpgrade('p', 11))
 		gain = gain.times(2)
@@ -52,7 +63,7 @@ function getPointGen() {
 	if (hasUpgrade('p', 14))
 		gain = gain.times(upgradeEffect('p', 14))
 	if (hasUpgrade('p', 15))
-		gain = gain.times(1.77)
+		gain = gain.times(1.477)
 	if (hasUpgrade('p', 16))
 		gain = gain.times(upgradeEffect('p', 16))
 	if (hasUpgrade('p', 18))
@@ -63,58 +74,82 @@ function getPointGen() {
 	if (hasUpgrade('p', 23))
 		gain = gain.times(upgradeEffect('p', 23))
 	if (hasUpgrade('p', 29))
-		gain = gain.times(1e7)
+		gain = gain.times(7.77e17)
+	//Cud Set 4
+	if (hasUpgrade('p', 31)) 
+        gain = gain.times(upgradeEffect('p', 31))
+	if (hasUpgrade('p', 33)) 
+        gain = gain.times(player['g'].CoinflipMult)
+
 
 	//Chris Layer Upgrades
 	if (hasUpgrade('g', 11))
-		gain = gain.times(0.2)
+		gain = gain.times(0.25)
 	if (hasUpgrade('g', 12))
 		gain = gain.times(upgradeEffect('g', 12))
 	if (hasUpgrade('g', 14))
 		gain = gain.times(upgradeEffect('g', 14))
 	if (hasUpgrade('g', 16))
 		gain = gain.times(upgradeEffect('g', 16))
-	if (hasUpgrade('g', 18))
-		gain = gain.times(upgradeEffect('g', 18))
 	if (hasUpgrade('g', 21))
 		gain = gain.times(52)
 
 	//Pac Layer Content
 	if (hasMilestone('k', 11))
 		gain = gain.times(3)
+	if (hasMilestone('k', 13)) 
+		gain = gain.times(4)
 	if (hasUpgrade('k', 13))
-		gain = gain.times(0.01)
+		gain = gain.times(0.0001)
 	if (hasMilestone('k', 16))
-		gain = gain.times(Math.pow((2.5+Math.max(0, (player['k'].milestones.length-7))*15/100), player['k'].milestones.length))
+		//gain = gain.times(Math.pow((2.5+Math.max(0, (player['k'].milestones.length-7))*15/100), player['k'].milestones.length))
+		var kEffectBase = new Decimal(2.5)
+		var kScale = decimalZero
+		var scalingScale = 15
+		if (hasMilestone('k', 29)) {
+			scalingScale = 70
+		}
+		if (hasMilestone('k', 18)) {
+			kScale = new Decimal((player['k'].milestones.length-7)*scalingScale/100)
+		}
+		gain = gain.times((kEffectBase.add(kScale)).pow(player['k'].milestones.length))
+	if (hasMilestone('k', 17))
+		gain = gain.times(0.01)
 	if (hasUpgrade('k', 16))
 		gain = gain.times(upgradeEffect('k', 16))
 	if (hasUpgrade('k', 23))
-		gain = gain.times(1e9)
+		gain = gain.times(1e7)
+	if (hasMilestone('k', 29))
+		gain = gain.times(1000)
 
 	//Achievements
 	var achieveBase = 2
 	if (hasMilestone('p', 28))
 		achieveBase += 1
 	gain = gain.times((new Decimal(achieveBase)).pow(player['a'].achievements.length))
+	if (hasAchievement('a', 1002))
+		gain = gain.pow(0.99)
+
+	//DARKNESS
+	if (hasMilestone('darkness', 11))
+		gain = gain.times(5e7)
 
 	//Other
-	gain = gain.times(player.AxeCatMult)
+	gain = gain.times(player['g'].AxeCatMult)
 
 	//Exponents
-	if (hasUpgrade('g', 23))
-		gain = gain.pow(1.1)
 	if (hasAchievement('a', 13))
-		gain = gain.pow(1.07)
+		gain = gain.pow(1.01)
 	if (hasUpgrade('p', 26))
-		gain = gain.pow(1.1)
+		gain = gain.pow(1.05)
 	if (hasMilestone('k', 20))
-		gain = gain.pow(1.15)
-	if (hasUpgrade('p', 31))
-		gain = gain.pow(1+Math.log(player.AxeCatMult)/Math.log(5)/200)
-	if (hasUpgrade('p', 33))
-		gain = gain.pow(upgradeEffect('p', 33))
+		gain = gain.pow(1.05)
 	if (hasUpgrade('p', 36))
 		gain = gain.pow(1.07)
+	if (hasUpgrade('k', 19))
+		gain = gain.pow(1.1)
+	if (hasUpgrade('p', 32))
+		gain = gain.pow(1.01)
 
 	return gain
 }
@@ -129,11 +164,13 @@ let tipMessages = [
 	"Fortnite balls, all in yo face. Aye!",
 	"If you're close to completing an achievement, go for it before doing any kind of significant reset.",
 	"The first of the 'This Is Overpowered' upgrades used to work differently, but it crashed the game a lot so it was changed.",
-	"Upgrades in the 'This Is Overpowered' series are usually the last upgrade you purchase before you can access a new main layer.",
+	"Upgrades in the 'This Is Overpowered' series are usually the last upgrade in a set, and signify that you're close to a new feature.",
 	"Make sure to tie the poll.",
 	"<h2><font color='#ff0000'>Beware the wrath of yes_man.</font></h2>",
 	"Fun Fact: This game's inital release delayed Stability Test 1.7 by a week.",
 	"vwow ., wh[at] a [b. >STUPID<///b> ga.me, ppl4y St7b7l7t7 T7st_ insT-instea. :p",
+	"This has truly been our Void of Rainbows.",
+	"㊗️",
 	"🤓",
 	"Make sure to be clicking those symbols!",
 	"You'll have to revisit earlier layers a lot throughout the game.",
@@ -165,11 +202,24 @@ let tipMessages = [
 	"theres 2 teams of 4",
 	"Hey Cud can you add an nMarkov layer to the game pls plz",
 	"Gooning my gourd rn 🎃",
+	"These inside jokes continue to age extremely badly.",
+	"ANYTHING but working on ST, huh?",
+	"Play Sorbet's Convulution it's cool: https://sorbettheshark.github.io/SConvolution-0.3.0/",
+	"i am a hunter droid i am as fast as sonic, i zoom like an automobile",
+	"... .--. .. -. / -- -.-- / .-- .... . . .-.. -.-.--",
+	"im statix and I voice fear!!!!",
+	"Slavery? Is this slavery? Where is the 13th amendment? What the fuck?",
+	"I am not going to die. That would ruin my sex life!",
+	"pee essay",
+	"Play <font color='#0d69ac'>Division Among Clarity</font>.",
+	"I, I love you like a love song baby!",
+	"<font color='#5050a2'>DR Fan: I think I am a Boy.</font>",
+	"I do not believe in people who use mm/dd/yyyy.",
 
 	//Update
 	"This game currently has 3 total main layers.",
-	"There are currently 46 tips in the game!",
-	"At this current moment of you playing this game, Stability Test 1.7 is not released.",
+	"There are currently 60 tips in the game!",
+	"At this current moment of you playing this game, Stability Test 1.7 is still not released.",
 ]
 let tipTick = 0
 let randomTipIndex = Math.floor(Math.random() * tipMessages.length)
@@ -177,18 +227,27 @@ let randomTipIndex = Math.floor(Math.random() * tipMessages.length)
 // You can add non-layer related variables that should to into "player" and be saved here, along with default values
 function addedPlayerData() { return {
 	minimumClickMult: 0,
-	cherryUpgrade14: 1,
-	CoinflipMult: 1,
-	AxeCatMult: 1,
+	//AxeCatMult: 1,
 	SymbolQOL: 0,
 	LayerTwoChoice: null,
 	AntivirusLevel: 0,
 	SecretAch1: false,
+	SecretAch2: false,
 }}
 
 // Display extra things at the top of the page
 var displayThings = [
 	function() {return "<div class='ghost'>aaa</div>"},
+	function() {
+		if (player['darkness'].DarkFragments.gt(0)) 
+			return "You have <font color='#e70ce7'><h2>" + formatWhole(player['darkness'].DarkFragments) + "</h2></font> dark fragments...<br>"+"<div class='ghost'>aaa</div>"
+		return ""
+	},
+	function() {
+		if (hasUpgrade('p', 16) || player['g'].unlocked || player['k'].unlocked) 
+			return "You have clicked <h3>" + player.minimumClickMult + "</h3> symbols.<br>"+"<div class='ghost'>aaa</div>"
+		return ""
+	},
 	function() {return tipMessages[randomTipIndex]},
 ]
 function prepareTipRand() {
@@ -217,13 +276,13 @@ function randNum(min, max) {
 
 // Get rune click power
 function getClickPower() {
-	let baseClickPower = new Decimal(0.5)
+	let baseClickPower = decimalOne
 	if (hasUpgrade('p', 18))
 		baseClickPower = baseClickPower.times(4)
 	if (hasUpgrade('p', 21))
-		baseClickPower = baseClickPower.times(100000)
+		baseClickPower = baseClickPower.times(100)
 	if (hasUpgrade('g', 13))
-		baseClickPower = baseClickPower.times(2)
+		baseClickPower = baseClickPower.times(2.5)
 	if (hasAchievement('a', 14))
 		baseClickPower = baseClickPower.times(3)
 	if (hasUpgrade('k', 13))
@@ -240,17 +299,32 @@ function getClickPower() {
 		baseClickPower = baseClickPower.times(player.points.add(1).max(0).log(1.01))
 	if (hasUpgrade('k', 16))
 		baseClickPower = baseClickPower.times(3)
-	if (hasMilestone('k', 24))
-		baseClickPower = baseClickPower.times(upgradeEffect('p', 16).pow(0.4))
-	if (hasUpgrade('p', 31))
-		baseClickPower = baseClickPower.times(5.55e55)
 
 	if (hasUpgrade('p', 34))
-		baseClickPower = baseClickPower.pow(1.05)
+		baseClickPower = baseClickPower.times(7777)
 
-	if (player['farm'].points.gte(1)) {
-		baseClickPower = baseClickPower.times((new Decimal(1.25)).pow(player['farm'].points))
+	if (hasMilestone('k', 25))
+		baseClickPower = baseClickPower.times(baseClickPower.pow(0.1))
+	
+	baseClickPower = baseClickPower.times(player['k'].yes_power)
+
+	if (player['farm'].unlocked) {
+		baseClickPower = baseClickPower.times(player['farm'].points.add(1).max(1).pow(2))
 	}
+
+	if (hasUpgrade('g', 26))
+		baseClickPower = baseClickPower.times(500)
+	if (hasUpgrade('g', 27))
+		baseClickPower = baseClickPower.times(1000)
+	if (hasMilestone('k', 29))
+		baseClickPower = baseClickPower.times(1000)
+	if (hasAchievement('a', 43))
+		baseClickPower = baseClickPower.times(1000)
+
+	//EXPONENTS
+
+	if (hasUpgrade('p', 35))
+		baseClickPower = baseClickPower.pow(1.04)
 
 	return baseClickPower
 }
@@ -260,31 +334,66 @@ function resetClickMult() {
 		if (hasUpgrade('p', 19)) {
 			player['p'].clickingMult = new Decimal(player.minimumClickMult * 3)
 		} else {
-			player['p'].clickingMult = new Decimal(1)
+			player['p'].clickingMult = decimalOne
 		}
 	}
 }
 
+function gainCropMult() {
+    mult = decimalOne
+	if (hasUpgrade('g', 29)) {
+		mult = mult.times(upgradeEffect('g', 29))
+	}
+	if (hasUpgrade('p', 33)) {
+		mult = mult.times(3)
+	}
+	if (hasUpgrade('p', 34)) {
+		mult = mult.times(1.25)
+	}
+	if (hasMilestone('k', 29)) {
+		mult = mult.times(1.2)
+    }
+	if (hasAchievement('a', 39)) {
+		mult = mult.times(1.1)
+    }
+	if (hasMilestone('darkness', 12)) {
+		mult = mult.times(1.25)
+	}
+	return mult
+}
+
+//Get Axe Cat Cap
+function getAxeCap() {
+	var axeExp = 0.5
+	if (hasUpgrade('k', 20)) {
+	    axeExp = 0.7
+    }
+	return player['p'].clickingMult.pow(axeExp)
+}
+
 const CropValues = [
-	[new Decimal(1), new Decimal(20), new Decimal(1e150)], // wheat
-	[new Decimal(2), new Decimal(15), new Decimal(1e155)], // tomatoes
-	[new Decimal(4), new Decimal(20), new Decimal(1e160)], // carrots
-	[new Decimal(10), new Decimal(25), new Decimal(1e175)], // corn
-	[new Decimal(8), new Decimal(10), new Decimal(1e200)], // potatoes
-	[new Decimal(40), new Decimal(30), new Decimal(1e300)], // cucumbers
-	[new Decimal(36), new Decimal(16), new Decimal("e350")], // beetroot
-	[new Decimal(100), new Decimal(33), new Decimal("e500")], // cabbage
-	[new Decimal(150), new Decimal(17), new Decimal("e600")], // eggplant
-	[new Decimal(270), new Decimal(20), new Decimal("e800")], // celery
-	[new Decimal(300), new Decimal(11), new Decimal("e1000")], // sugarcane
-	[new Decimal(1000), new Decimal(30), new Decimal("e1200")], // watermelon
-	[new Decimal(30000), new Decimal(600), new Decimal("e1400")], // catfruit
-	[new Decimal(2000), new Decimal(38), new Decimal("e1600")], // pumpkin
+	//MoneyValue, GrowTime, ClickReq, Color
+	[decimalOne, 20, decimalZero, "#ffff88"], // wheat
+	[new Decimal(2), 15, new Decimal(1e30), "#ff2222"], // tomatoes
+	[new Decimal(4), 20, new Decimal(1e36), "#ff932e"], // carrots
+	[new Decimal(10), 25, new Decimal(1e40), "#e9e63d"], // corn
+	[new Decimal(8), 10, new Decimal(1e50), "#c0992f"], // potatoes
+	[new Decimal(40), 30, new Decimal(1e56), "#0c8019"], // cucumbers
+	[new Decimal(36), 16, new Decimal(4e70), "#d969ae"], // beetroot
+	[new Decimal(120), 33, new Decimal(1e80), "#58de7c"], // cabbage
+	[new Decimal(150), 17, new Decimal("e100"), "#9b278c"], // eggplant
+	[new Decimal(270), 20, new Decimal("e152"), "#b5ef8c"], // celery
+	[new Decimal(400), 11, new Decimal("e178"), "#a2ffb6"], // sugarcane
+	[new Decimal(1000), 30, new Decimal("e300"), "#f898a6"], // watermelon
+	[new Decimal(30000), 600, new Decimal("e700"), "#ff0000"], // catfruit
+	[new Decimal(2000), 38, new Decimal("e1000"), "#ff8800"], // pumpkin
+	[new Decimal(1500), 8, new Decimal("e1200"), "#ac349a"], // yoyleberries
 ]
 
 const CropOrder = [
 	"Wheat",
 	"Tomatoes",
+	"Carrots",
 	"Corn",
 	"Potatoes",
 	"Cucumbers",
@@ -293,13 +402,22 @@ const CropOrder = [
 	"Eggplants",
 	"Celery",
 	"Sugarcane",
-	"Watermelon",
+	"Watermelons",
 	"Catfruit",
 	"Pumpkin",
 ]
 
-function getCropValue(ind) {
-	return CropValues[ind]
+function getCropValue(i) {
+	return CropValues[i]
+}
+
+function getCropIndexFromName(Name) {
+	for (i in CropOrder) {
+		if (CropOrder[i] == Name) {
+			return i
+		}
+	}
+	return null
 }
 
 // Style for the background, can be a function
@@ -315,4 +433,13 @@ function maxTickLength() {
 // Use this if you need to undo inflation from an older version. If the version is older than the version that fixed the issue,
 // you can cap their current resources with this.
 function fixOldSave(oldVersion){
+}
+
+function playSound(name, soundFormat="mp3", vol=1) {
+	if (options.soundOn) {
+		var sound = new Audio("audio/"+name+"."+soundFormat)
+		sound.currentTime = 0
+		sound.volume = vol
+		sound.play()
+	}
 }

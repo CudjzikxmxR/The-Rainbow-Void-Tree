@@ -173,8 +173,14 @@ var systemComponents = {
 				</tr> 
 			<tr>
                 <td><button class="opt" onclick="toggleOpt('hideMilestonePopups')">Show Milestone Popups: {{ formatOption(!options.hideMilestonePopups) }}</button></td>
-            </tr>
-        </table>`
+           		<td><button class="opt" onclick="toggleOpt('soundOn')">Sound: {{ options.soundOn?"ON":"OFF" }}</button></td>
+				<td><button class="opt" onclick="switchSong()">Current Music: {{ getSongName() }}</button></td>
+			</tr>
+			<tr>
+				<td><button class="opt" onclick="toggleOpt('musicOn')">Current Music: {{ options.musicOn?"ON":"OFF" }}</button></td>
+			</tr>
+        </table>
+		`
     },
 
     'back-button': {
