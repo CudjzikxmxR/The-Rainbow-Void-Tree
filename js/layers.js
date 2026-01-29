@@ -1122,6 +1122,7 @@ addLayer("g", {
                     player.LayerTwoChoice = "!"
                 }
             },
+            buySound: ["AxeCatArrives"]
             //buySound: ["AxeCatArrives"]
         },
         //Set 3
@@ -1349,6 +1350,7 @@ addLayer("g", {
                 ["p", "feedingAxeCat"], 
                 ["g", "AxeCosmetic"],
             ],
+            completeSound: "N/A",
             //completeSound: "N/A",
             done() {return hasUpgrade(this.layer, 23)},
             unlocked() {return hasUpgrade(this.layer, 23)},
