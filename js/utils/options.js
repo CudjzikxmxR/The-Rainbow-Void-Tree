@@ -15,6 +15,9 @@ function getStartOptions() {
 		oldStyle: false,
 		forceTooltips: true,
 		hideMilestonePopups: false,
+		currentSong: "ElevatorMusic1",
+		soundOn: true,
+		musicOn: false,
 	}
 }
 
@@ -27,6 +30,13 @@ function toggleOpt(name) {
 		changeTreeQuality();
 	if (name == "oldStyle")
 		updateStyle();
+	if (name == "musicOn")
+		if (options.musicOn) {
+			bgSong.play()
+		} else {
+			bgSong.pause()
+		}
+		changeSong();
 }
 var styleCooldown = 0;
 function updateStyle() {

@@ -217,7 +217,9 @@ function doReset(layer, force=false) {
 	if (run(layers[layer].resetsNothing, layers[layer])) return
 	tmp[layer].baseAmount = decimalZero // quick fix
 
-	resetClickMult()
+	if (!hasMilestone('k', 26)) {
+		resetClickMult()
+	}
 
 	for (layerResetting in layers) {
 		if (row >= layers[layerResetting].row && (!force || layerResetting != layer)) completeChallenge(layerResetting)
@@ -324,11 +326,12 @@ VERSION.withoutName = "v" + VERSION.num + (VERSION.pre ? " Pre-Release " + VERSI
 VERSION.withName = VERSION.withoutName + (VERSION.name ? ": " + VERSION.name : "")
 
 
-function autobuyUpgrades(layer){
+function autobuyUpgrades(layer, limit){
 	if (!tmp[layer].upgrades) return
 	for (id in tmp[layer].upgrades)
-		if (isPlainObject(tmp[layer].upgrades[id]) && (layers[layer].upgrades[id].canAfford === undefined || layers[layer].upgrades[id].canAfford() === true))
-			buyUpg(layer, id) 
+		if (isPlainObject(tmp[layer].upgrades[id]) && (layers[layer].upgrades[id].canAfford === undefined || (layers[layer].upgrades[id].canAfford() === true)))
+			if (layers[layer].upgrades[id].id <= limit)
+				buyUpg(layer, id) 
 }
 
 function gameLoop(diff) {
@@ -375,7 +378,7 @@ function gameLoop(diff) {
 			let layer = TREE_LAYERS[x][item]
 			if (tmp[layer].autoPrestige && tmp[layer].canReset) doReset(layer);
 			if (layers[layer].automate) layers[layer].automate();
-			if (tmp[layer].autoUpgrade) autobuyUpgrades(layer)
+			if (tmp[layer].autoUpgrade) autobuyUpgrades(layer, tmp[layer].autoUpgrade)
 		}
 	}
 
@@ -385,7 +388,7 @@ function gameLoop(diff) {
 			if (tmp[layer].autoPrestige && tmp[layer].canReset) doReset(layer);
 			if (layers[layer].automate) layers[layer].automate();
 				player[layer].best = player[layer].best.max(player[layer].points)
-			if (tmp[layer].autoUpgrade) autobuyUpgrades(layer)
+			if (tmp[layer].autoUpgrade) autobuyUpgrades(layer, tmp[layer].autoUpgrade)
 		}
 	}
 
@@ -425,19 +428,30 @@ const cudGrade16 = {
 			player['p'].clickingMult = player['p'].clickingMult.add(getClickPower())
 			player.minimumClickMult+=1
 			if (hasUpgrade('g', 14)) {
-				if (hasUpgrade('p', 34)) {
-					player.cherryUpgrade14+=5
-				} else {
-					player.cherryUpgrade14+=0.01
+				var CarpalScale = new Decimal(0.01)
+				if (hasUpgrade('g', 18)) {
+					CarpalScale = CarpalScale.times(777)
 				}
+				if (hasUpgrade('p', 34)) {
+					CarpalScale = CarpalScale.times(5)
+				}
+				CarpalScale = CarpalScale.times(player['k'].yes_power)
+				player['g'].CarpalValue = player['g'].CarpalValue.add(CarpalScale)
 			}
-			if ((hasUpgrade('g', 15) || player.SymbolQOL==1 || player.SymbolQOL==3) && (Math.floor(Math.random()*7+1)==7 || hasUpgrade('g', 19))) {
+			var GambleRange = 15
+			if (hasUpgrade('g', 19))
+				GambleRange = 6
+			if (hasUpgrade('g', 25))
+				GambleRange = 3
+			if ((hasUpgrade('g', 15) || player.SymbolQOL==1 || player.SymbolQOL==3) && (Math.floor(Math.random()*GambleRange+1)==GambleRange)) {
 				this.color = "#770000"
 				addPoints("p", getResetGain("p"))
 				updateMilestones("p")
 				updateAchievements("p")
+				playSound('Critical', 'ogg', 0.13)
 			} else {
 				this.color = "#6225D1"
+				playSound('SymbolClick', 'ogg', 0.107)
 			}
 		}
 	},
@@ -454,7 +468,7 @@ const catFood = {
 	width: 81,
 	height: 66,
     time: 5,
-	pressed: false,
+	//pressed: false,
     rotation (id) {
         return 0.2 * (id - 1.5) + (Math.random() - 0.5) * 10
     },
@@ -465,21 +479,62 @@ const catFood = {
         return (Math.random()) * 3 
     },
 	onClick() {
-		if ((!this.pressed && player.AxeCatMult <= (1+Math.log(getClickPower())/Math.log(3.07))*10*player.CoinflipMult/200)) {
-			this.pressed = true
-			catMult = 1
-			if (hasUpgrade('p', 31)) {
-				catMult = 3
+		if (player['g'].AxeCatMult && player['p'].clickingMult && player['g'].AxeCatMult.lt(getAxeCap())) {
+			//this.pressed = true
+			catMult = 1/16
+			if (hasUpgrade('k', 20)) {
+				catMult = 1/8
 			}
-			player.AxeCatMult=Math.min(player.AxeCatMult+30*catMult*player.CoinflipMult/200, (1+Math.log(getClickPower())/Math.log(3.07)*10*player.CoinflipMult/200))
-			this.time = 0
+			if (player['g'].AxeCatMult.add(getAxeCap()*catMult).gt(getAxeCap())) {
+				player['g'].AxeCatMult = getAxeCap()
+			} else {
+				player['g'].AxeCatMult = player['g'].AxeCatMult.add(getAxeCap().times(catMult))
+			}
+			if (Math.random()>=0.5) {
+				playSound('CatEat1', 'ogg', 0.4)
+			} else {
+				playSound('CatEat2', 'ogg', 0.4)
+			}
 		}
+		this.time = 0
 	},
-	onMouseLeave() {
-		if (hasUpgrade('p', 36)) {
+	onMouseEnter() {
+		if (hasUpgrade('g', 27)) {
 			this.onClick()
 		}
 	},
+}
+
+const yes_face = {
+    image:"resources/yes.png",
+    spread: 20,
+	width: 77,
+	height: 77,
+    time: 4,
+	//color: "#FFFFFF",
+    rotation (id) {
+        return 3 * (id - 1.5) + (Math.random() - 0.5) * 10
+    },
+    dir() {
+        return (Math.random() - 0.5) * 10
+    },
+    speed() {
+        return (Math.random()) * 2
+    },
+	onClick() {
+		if (this.image == "resources/yes.png") {
+			this.image = "resources/yes2.png"
+			var YesGain = player['k'].points.pow(1.5)
+			var YesIncrement = player['k'].points.sub(1500).div(100).floor()
+			YesGain = YesGain.times((new Decimal(5)).pow(YesIncrement).max(1))
+			player['k'].yes_power = player['k'].yes_power.add(YesGain)
+			doReset('k', true)
+			playSound('YES_ENCOUNTER', 'ogg', 0.6)
+		}
+	},
+	onMouseEnter() {
+		this.onClick()
+	}
 }
 
 var ticking = false
@@ -499,46 +554,72 @@ var interval = setInterval(function() {
 			player.offTime.remain -= offlineDiff
 			diff += offlineDiff
 			resetClickMult()
-			player.AxeCatMult = 1
+			player['g'].AxeCatMult = new Decimal(1)
+			for (i in player['farm'].grid) {
+				setGridData('farm', i, {CurrentCrop: null, Ready: false})
+			}
+			options.musicOn = false
+			if (bgSong)
+				bgSong.pause()
 		}
-		if (!options.offlineProd || player.offTime.remain <= 0) player.offTime = undefined
+		if (!options.offlineProd || player.offTime.remain <= 0) 
+			player.offTime = undefined
 	}
 	if (player.devSpeed) diff *= player.devSpeed
 	player.time = now
 	if (needCanvasUpdate){ resizeCanvas();
 		needCanvasUpdate = false;
 	}
+	player.points = decimalOne
+	player['p'].points = decimalOne
+	player['g'].points = decimalOne
+	player['k'].points = decimalOne
+	player['farm'].points = decimalOne
+	player['p'].clickingMult = decimalOne
 	tmp.scrolled = document.getElementById('treeTab') && document.getElementById('treeTab').scrollTop > 30
-	var symbolReq = 0.92
+	var symbolReq = 0.97
 	if (hasUpgrade('g', 13)) {
-		symbolReq = 0.77
+		symbolReq = 0.9
 	}
 	if (hasAchievement('a', 15)) {
-		symbolReq -= 0.07
+		symbolReq -= 0.017
 	}
 	if (hasAchievement('a', 23)) {
-		symbolReq -= 0.07
+		symbolReq -= 0.017
 	}
 	if (hasUpgrade('k', 14)) {
-		symbolReq -= 0.05
-	}
-	if (hasMilestone('k', 22)) {
-		symbolReq /= 1.1
+		symbolReq -= 0.01
 	}
 	if (hasMilestone('k', 26)) {
 		symbolReq /= 1.05
 	}
+	if (player['p'].feedingAxeCat) {
+		symbolReq = 1
+	}
 	if ((hasUpgrade('p', 16) || hasUpgrade('g', 13)) && Math.random()>= symbolReq) {
-		makeShinies(cudGrade16, 1)
+		if (hasUpgrade('k', 22) && Math.random() >= 0.99) {
+			makeShinies(yes_face, 1)
+		} else {
+			if (hasUpgrade('g', 27) && Math.random() >= 0.995) {
+				makeShinies(catFood, 1)
+			} else {
+				makeShinies(cudGrade16, 1)
+			}
+		}
 	}
 	if ((hasUpgrade('p', 19) && player['p'].clickingMult.gt(player.minimumClickMult*3)) || (!(hasUpgrade('p', 19)) && player['p'].clickingMult.gt(1))) {
-		if (!hasUpgrade('g', 22) && !hasMilestone('k', 24)) {
-			var minClickM = new Decimal(1)
-			if (hasUpgrade('p', 19)) {
-				minClickM = new Decimal(player.minimumClickMult * 3)
-			}
-			player['p'].clickingMult = player['p'].clickingMult.add(-getClickPower()/50).max(minClickM)
+		var drain = 60
+		if (hasMilestone('k', 25)) {
+			drain *= 2
 		}
+		if (hasMilestone('darkness', 13)) {
+			drain *= 3
+		}
+		var minClickM = new Decimal(1)
+		if (hasUpgrade('p', 19)) {
+			minClickM = new Decimal(player.minimumClickMult * 3)
+		}
+		player['p'].clickingMult = player['p'].clickingMult.sub(getClickPower().div(drain)).max(minClickM)
 	} else {
 		resetClickMult()
 	}
@@ -549,18 +630,19 @@ var interval = setInterval(function() {
 	if ((hasMilestone('g', 17) && player['p'].feedingAxeCat) && Math.random()>=catfoodChance) {
 		makeShinies(catFood, 1)
 	}
-	if (player.AxeCatMult) {
-		catMult = 1
-			if (hasUpgrade('p', 31)) {
-				catMult *= 3
+	if (player['g'].AxeCatMult) {
+		if (player['g'].AxeCatMult && player['p'].clickingMult) {
+			var axeExp = 0.5
+			var axeDrain = 2000
+			if (hasUpgrade('k', 20)) {
+				axeExp = 0.7
+				axeDrain *= 2
 			}
-			if (hasUpgrade('p', 35) && !player.AntivirusLevel>0) {
-				catMult *= 2
+			if (player['g'].AxeCatMult.gt(getAxeCap().div(axeDrain).add(1))) {
+				player['g'].AxeCatMult = player['g'].AxeCatMult.add(getAxeCap().div(-axeDrain))
+			} else {
+				player['g'].AxeCatMult = new Decimal(1)
 			}
-		if (player.AxeCatMult > Math.max(player.CoinflipMult/1250*catMult, 1)) {
-			player.AxeCatMult = Math.max(player.AxeCatMult-player.CoinflipMult/1250*catMult, 1)
-		} else {
-			player.AxeCatMult = 1
 		}
 	}
 
@@ -573,6 +655,7 @@ var interval = setInterval(function() {
 	fixNaNs()
 	adjustPopupTime(trueDiff)
 	updateParticles(trueDiff)
+	//changeSong()
 	ticking = false
 }, 50)
 

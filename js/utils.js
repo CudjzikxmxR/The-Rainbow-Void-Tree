@@ -87,7 +87,14 @@ function buyUpg(layer, id) {
 	player[layer].upgrades.push(id);
 	if (upg.onPurchase != undefined)
 		run(upg.onPurchase, upg)
+	if ((tmp[layer].autoUpgrade || 0) < id)
+		if (upg.buySound != undefined) {
+			playSound(upg.buySound[0] || 'Upgrade', upg.buySound[1] || 'ogg', upg.buySound[2] || 1)
+		} else {
+			playSound('Upgrade', 'ogg', 0.7)
+		}
 	needCanvasUpdate = true
+	
 }
 
 function buyMaxBuyable(layer, id) {
@@ -260,6 +267,11 @@ function updateMilestones(layer) {
 	for (id in layers[layer].milestones) {
 		if (!(hasMilestone(layer, id)) && layers[layer].milestones[id].done()) {
 			player[layer].milestones.push(id)
+			if (layers[layer].milestones[id].completeSound) {
+				playSound(layers[layer].milestones[id].completeSound[0] || 'Milestone', layers[layer].milestones[id].completeSound[1] || 'ogg')
+			} else {
+				playSound('Milestone', 'ogg')
+			}
 			if (layers[layer].milestones[id].onComplete) layers[layer].milestones[id].onComplete()
 			if ((tmp[layer].milestonePopups || tmp[layer].milestonePopups === undefined) && !options.hideMilestonePopups) doPopup("milestone", tmp[layer].milestones[id].requirementDescription, "Milestone Gotten!", 3, tmp[layer].color);
 			player[layer].lastMilestone = id
@@ -272,6 +284,7 @@ function updateAchievements(layer) {
 	for (id in layers[layer].achievements) {
 		if (isPlainObject(layers[layer].achievements[id]) && !(hasAchievement(layer, id)) && layers[layer].achievements[id].done()) {
 			player[layer].achievements.push(id)
+			playSound('Achievement')
 			if (layers[layer].achievements[id].onComplete) layers[layer].achievements[id].onComplete()
 			if (tmp[layer].achievementPopups || tmp[layer].achievementPopups === undefined) doPopup("achievement", tmp[layer].achievements[id].name, "Achievement Gotten!", 3, tmp[layer].color);
 		}
