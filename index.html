@@ -35,6 +35,8 @@
 	<script src="js/utils/save.js"></script>
 	<script src="js/utils/themes.js"></script>
 
+	<link rel="icon" href="resources/RainbowVoid.webp">
+
 </head>
 
 
@@ -48,7 +50,7 @@
 		<div class="vl" v-if="player.navTab !== 'none' && tmp.other.splitScreen && player.tab!='none' && !(tmp.gameEnded && !player.keepGoing)"></div>
 		<div v-if="(tmp.gameEnded && !player.keepGoing)" class="fullWidth">
 			<br>
-			<h2>{{modInfo.name}} {{VERSION.withoutName}}</h2><br><br>
+			<h2>"Rainbow Void Tree v0.2"</h2><br><br>
 			<h3 v-html="modInfo.winText"></h3><br>
 			<h3>Please check the Discord to see if there are new content updates!</h3><br><br>
 			<div v-if="!player.timePlayedReset">It took you {{formatTime(player.timePlayed)}} to beat the game.</div>

@@ -425,7 +425,6 @@ const cudGrade16 = {
     },
 	onClick() {
 		if (this.color == "#006BF7") {
-			player['p'].clickingMult = player['p'].clickingMult.add(getClickPower())
 			player.minimumClickMult+=1
 			if (hasUpgrade('g', 14)) {
 				var CarpalScale = new Decimal(0.01)
@@ -443,15 +442,30 @@ const cudGrade16 = {
 				GambleRange = 6
 			if (hasUpgrade('g', 25))
 				GambleRange = 3
+			if (player['k'].precisionMode)
+				GambleRange *= 20
+
 			if ((hasUpgrade('g', 15) || player.SymbolQOL==1 || player.SymbolQOL==3) && (Math.floor(Math.random()*GambleRange+1)==GambleRange)) {
+				var critPower = decimalOne
+				if (hasUpgrade('a', 18))
+					critPower = critPower.times(7)
+				if (hasUpgrade('k', 19))
+					critPower = critPower.times(3)
+				if (hasUpgrade('g', 27))
+					critPower = critPower.times(5)
+				if (player['k'].precisionMode) {
+					critPower = critPower.times(1000)
+				}
+				player['p'].clickingMult = player['p'].clickingMult.add(getClickPower().times(critPower.times(5)))
 				this.color = "#770000"
-				addPoints("p", getResetGain("p"))
+				addPoints("p", getResetGain("p").times(critPower))
 				updateMilestones("p")
 				updateAchievements("p")
-				playSound('Critical', 'ogg', 0.13)
+				playSound('Critical', 'ogg', 0.137)
 			} else {
+				player['p'].clickingMult = player['p'].clickingMult.add(getClickPower())
 				this.color = "#6225D1"
-				playSound('SymbolClick', 'ogg', 0.107)
+				playSound('SymbolClick', 'ogg', 0.207)
 			}
 		}
 	},
@@ -570,12 +584,6 @@ var interval = setInterval(function() {
 	if (needCanvasUpdate){ resizeCanvas();
 		needCanvasUpdate = false;
 	}
-	player.points = decimalOne
-	player['p'].points = decimalOne
-	player['g'].points = decimalOne
-	player['k'].points = decimalOne
-	player['farm'].points = decimalOne
-	player['p'].clickingMult = decimalOne
 	tmp.scrolled = document.getElementById('treeTab') && document.getElementById('treeTab').scrollTop > 30
 	var symbolReq = 0.97
 	if (hasUpgrade('g', 13)) {
@@ -606,6 +614,9 @@ var interval = setInterval(function() {
 				makeShinies(cudGrade16, 1)
 			}
 		}
+	}
+	if (!player['farm'].WheatOwned && player['farm'].points.eq(0)) {
+		doReset('farm')
 	}
 	if ((hasUpgrade('p', 19) && player['p'].clickingMult.gt(player.minimumClickMult*3)) || (!(hasUpgrade('p', 19)) && player['p'].clickingMult.gt(1))) {
 		var drain = 60

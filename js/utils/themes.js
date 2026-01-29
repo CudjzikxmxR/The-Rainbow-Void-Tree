@@ -2,7 +2,7 @@
 var themes = ["default", "aqua", "crazy", "crimson", "envious"]
 var songList = [
 	"ElevatorMusic1", "FatCat", "DR_Hometown", "DR_Home", "DR_HipShop", 
-	"DR_GreenRoom", "DR_AnotherHometown", "DR_DarkSanctuary",
+	"DR_GreenRoom", "DR_AnotherHometown", "DR_Spamton", "DR_DarkSanctuary",
 	"SKIBIDILOVANIA"
 ]
 
@@ -105,6 +105,12 @@ var songs = {
 	DR_AnotherHometown: {
 		name: "DELTARUNE - Another Day In Hometown",
 		path: "DeltaruneAnotherDayInHometown",
+		fileType: "mp3",
+		volume: 1,
+	},
+	DR_Spamton: {
+		name: "DELTARUNE - Spamton",
+		path: "Spamton",
 		fileType: "mp3",
 		volume: 1,
 	},

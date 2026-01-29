@@ -1,12 +1,13 @@
 let modInfo = {
 	name: "The Rainbow Void Tree",
-	author: "CudjzikxmxR",
+	author: "nobody",
+	//id: "idk777",
 	pointsName: "rainbows",
-	modFiles: ["layers.js", "tree.js"],
+	modFiles: ["layers.js", "guide.js", "tree.js"],
 
 	discordName: "",
 	discordLink: "",
-	initialStartPoints: new Decimal (5), // Used for hard resets and new players
+	initialStartPoints: new Decimal(5), // Used for hard resets and new players
 	offlineLimit: 1,  // In hours
 }
 
@@ -47,7 +48,6 @@ function canGenPoints(){
 	return true
 }
 
-// Calculate points/sec!
 function getPointGen() {
 	if(!canGenPoints())
 		return decimalZero
@@ -103,7 +103,6 @@ function getPointGen() {
 		gain = gain.times(0.0001)
 	if (hasMilestone('k', 16))
 		//gain = gain.times(Math.pow((2.5+Math.max(0, (player['k'].milestones.length-7))*15/100), player['k'].milestones.length))
-		var kEffectBase = new Decimal(2.5)
 		var kScale = decimalZero
 		var scalingScale = 15
 		if (hasMilestone('k', 29)) {
@@ -112,7 +111,7 @@ function getPointGen() {
 		if (hasMilestone('k', 18)) {
 			kScale = new Decimal((player['k'].milestones.length-7)*scalingScale/100)
 		}
-		gain = gain.times((kEffectBase.add(kScale)).pow(player['k'].milestones.length))
+		gain = gain.times((new Decimal(2.5)).add(kScale).pow(player['k'].milestones.length))
 	if (hasMilestone('k', 17))
 		gain = gain.times(0.01)
 	if (hasUpgrade('k', 16))
@@ -126,6 +125,7 @@ function getPointGen() {
 	var achieveBase = 2
 	if (hasMilestone('p', 28))
 		achieveBase += 1
+	
 	gain = gain.times((new Decimal(achieveBase)).pow(player['a'].achievements.length))
 	if (hasAchievement('a', 1002))
 		gain = gain.pow(0.99)
@@ -190,6 +190,7 @@ let tipMessages = [
 	"The coin desires to be flipped.",
 	"Wait, hang on, this mod adds new themes?",
 	"I'm preeeeetty sure the achievements shouldn't be invisible.",
+	`<a class="link" href="https://www.youtube.com/watch?v=QdnhDj40gMo" target="_blank">You haven't truly heard "music" until you hear THIS.</a>`,
 	"https://www.roblox.com/games/10745195956/",
 	"Be cautious, <font color='#ff0000'>MALWARE</font> 'upgrades' are lurking.",
 	"Play Randomly Generated Voronezh.",
@@ -218,7 +219,7 @@ let tipMessages = [
 
 	//Update
 	"This game currently has 3 total main layers.",
-	"There are currently 60 tips in the game!",
+	"There are currently 61 tips in the game!",
 	"At this current moment of you playing this game, Stability Test 1.7 is still not released.",
 ]
 let tipTick = 0
@@ -233,6 +234,7 @@ function addedPlayerData() { return {
 	AntivirusLevel: 0,
 	SecretAch1: false,
 	SecretAch2: false,
+	SecretAch3: false,
 }}
 
 // Display extra things at the top of the page
@@ -252,7 +254,7 @@ var displayThings = [
 ]
 function prepareTipRand() {
 	tipTick+=1
-	if (tipTick%250==0) {
+	if (tipTick%170==0) {
 		tipTick = 0
 		randomTipIndex = Math.floor(Math.random() * tipMessages.length)
 	}
@@ -260,7 +262,7 @@ function prepareTipRand() {
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.points.gte(new Decimal("eee6"))
+	return player.points.gte(new Decimal("e280000000"))
 }
 
 // Less important things beyond this point!
@@ -283,6 +285,8 @@ function getClickPower() {
 		baseClickPower = baseClickPower.times(100)
 	if (hasUpgrade('g', 13))
 		baseClickPower = baseClickPower.times(2.5)
+	if (hasUpgrade('g', 19))
+		baseClickPower = baseClickPower.times(6)
 	if (hasAchievement('a', 14))
 		baseClickPower = baseClickPower.times(3)
 	if (hasUpgrade('k', 13))
@@ -340,7 +344,7 @@ function resetClickMult() {
 }
 
 function gainCropMult() {
-    mult = decimalOne
+    mult = decimalOne.times(20)
 	if (hasUpgrade('g', 29)) {
 		mult = mult.times(upgradeEffect('g', 29))
 	}
@@ -425,7 +429,7 @@ var backgroundStyle = {
 
 }
 
-// You can change this if You have things that can be messed up by long tick lengths
+// You can change this if you have things that can be messed up by long tick lengths
 function maxTickLength() {
 	return(3600) // Default is 1 hour which is just arbitrarily large
 }

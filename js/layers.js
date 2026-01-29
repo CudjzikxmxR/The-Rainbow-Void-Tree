@@ -2,7 +2,7 @@ addLayer("p", {
     name: "cuddy", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "A", // This appears on the layer's node. Default is the id with the first letter capitalized
     position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
-    image: "resources/Amoeba_Icon.png",
+    image: "resources/Amoeba.png",
     startData() { return {
         unlocked: true,
 		points: decimalZero,
@@ -10,10 +10,18 @@ addLayer("p", {
         clickingMult: decimalOne,
         NonsenseString: "...",
     }},
+    nodeStyle() {
+        return {
+            "background-size":"82.7%", 
+            "background-repeat":"no-repeat", 
+            "background-position":"center", 
+        }
+    },
     color: "#006BF7",
     requires: new Decimal(5), // Can be a function that takes requirement increases into account
     resource: "amoebas", // Name of prestige currency
     baseResource: "rainbows", // Name of resource prestige is based on
+    setDescription: "Perform cellular division for ",
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.5, // Prestige currency exponent
@@ -126,7 +134,7 @@ addLayer("p", {
     },
     row: 0,
     hotkeys: [
-        {key: "a", description: "A: Reset for amoebas!!!", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "a", description: "A: Divide for amoebas!!!", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     doReset(resettingLayer){ // Triggers when this layer is being reset, along with the layer doing the resetting. Not triggered by lower layers resetting, but is by layers on the same row.
         if (resettingLayer==this.layer) {
@@ -224,11 +232,11 @@ addLayer("p", {
         },
         16: {
             title: "Activity Check",
-            description: "Symbols now appear on the screen.\nClicking them gives temporary Rainbow multiplier.",
+            description: "Symbols now appear on the screen.\nClicking them gives temporary Rainbow multiplier.<br>Unlock [SET 2] of Amoeba upgrades.",
             cost: new Decimal(2000),
             style: {'width':'140px'},
             effect() {
-                return player[this.layer].clickingMult
+                return player[this.layer].clickingMult.max(1)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
@@ -376,7 +384,7 @@ addLayer("p", {
         //Set 4
         31: {
             title: "Cob Cannon",
-            description: "Rainbows and Amoebas scale based on your Corn.<br>Unlock Plot #5.",
+            description: "Rainbows, Amoebas, and Cherries scale based on your Corn.<br>Unlock Plot #5.",
             cost: new Decimal("1e2400"),
             style: {'width':'140px'},
             unlocked() {
@@ -552,6 +560,13 @@ addLayer("a", {
         return "which multiplies Rainbow gain by " + format((new Decimal(2)).pow(player['A'].points)) +"x"
     },
     */
+    nodeStyle() {
+        return {
+            "background-size":"90%", 
+            "background-repeat":"no-repeat", 
+            "background-position":"center", 
+        }
+    },
     tooltip() {
         return ("Achievements")
     },
@@ -605,7 +620,7 @@ addLayer("a", {
         },
         //Chris Layer Achievements
         17: {
-            name: "Let's Go Gambling",
+            name: "The Slots Call",
             image: "resources/Cherries_Icon.png",
             done() {return player['g'].points.gte(1)},
             unlocked() {return player['g'].unlocked},
@@ -815,6 +830,13 @@ addLayer("a", {
             tooltip: "Painfully discover the last of the music this game has to offer.<br>Award: 0.99x Rainbows", 
         },
         1003: {
+            name: "Dude, You Good????",
+            image: "resources/Knives_Icon.png",
+            done() {return player.SecretAch3},
+            unlocked() {return this.done()},
+            tooltip: "1 in 100 chance to be granted when playing the Kill reset noise in the Guide.<br>Award: N/A", 
+        },
+        1004: {
             name: "LORE",
             image: "resources/Rune_Icon.png",
             done() {return player.minimumClickMult>=77777},
@@ -867,8 +889,15 @@ addLayer("g", {
         CoinflipMult: decimalOne,
         AxeCatMult: decimalOne,
         CarpalValue: decimalOne,
+        precisionMode: false,
     }},
-    
+    nodeStyle() {
+        return {
+            "background-size":"82.7%", 
+            "background-repeat":"no-repeat", 
+            "background-position":"center", 
+        }
+    },
     color: "#770000",
     requires() { // Can be a function that takes requirement increases into account
         if (this.getUnlockOrder()==0||player.LayerTwoChoice==this.layer) {
@@ -910,6 +939,9 @@ addLayer("g", {
         }
         if (hasUpgrade('g', 24)) {
             mult = mult.times(upgradeEffect('g', 24))
+        }
+        if (hasUpgrade('p', 31)) {
+            mult = mult.times(upgradeEffect('p', 31))
         }
         if (hasMilestone('k', 29)) {
 		    mult = mult.times(1000)
@@ -1018,10 +1050,10 @@ addLayer("g", {
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
         15: {
-            title: "Lets Go Gambling",
-            description: "Clicking symbols has a 1 in 15 chance to instantly grant Amoebas equal to what you'd earn from reset.<br><br>This effect is permanent.",
+            title: "Let's Go Gambling",
+            description: "You have a 1 in 15 chance to critically click a symbol. Critical clicks are 5x stronger and instantly grant Amoebas equal to what you'd earn from reset.",
             cost: new Decimal(7777),
-            style: {'width':'140px'},
+            style: {'width':'140px', 'background-image':'url(resources/RoyalBorder.png)', "background-size":"95%", "background-repeat":"no-repeat", "background-position":"center",},
             onPurchase() {
                 if (player.SymbolQOL==0) {
                     player.SymbolQOL=1
@@ -1048,13 +1080,13 @@ addLayer("g", {
         },
         18: {
             title: "I Love Crack",
-            description: "<b>Carpal Tunnel</b> scales 777x faster.",
+            description: "<b>Carpal Tunnel</b> scales 777x faster.<br>7x Critical Power",
             cost: new Decimal(1.77e10),
             style: {'width':'140px'},
         },
         19: {
             title: "Revolver",
-            description: "The chance of symbols granting Amoebas becomes 1 in 6.",
+            description: "6x Click Power<br>Critical clicks are now 1 in 6.<br>Unlock [SET 2] of Cherry upgrades.",
             cost: new Decimal(7.77e17),
             style: {'width':'140px'},
         },
@@ -1102,13 +1134,13 @@ addLayer("g", {
                 return hasUpgrade('farm', 14)
             },
             effect() {
-                return player[this.layer].points.div("7e707").add(1).log(2).pow(0.8)
+                return player[this.layer].points.div("7e707").add(1).log(2).pow(1.5)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
         25: {
             title: "Bountiful Harvest",
-            description: "The chance of symbols granting Amoebas becomes 1 in 3.<br>Money lightly scales based on Axe Cat multiplier past 1.00e36x.",
+            description: "Critical clicks are now 1 in 3.<br>Money lightly scales based on Axe Cat multiplier past 1.00e36x.",
             cost: new Decimal("1e820"),
             style: {'width':'140px'},
             unlocked() {
@@ -1120,8 +1152,8 @@ addLayer("g", {
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
         26: {
-            title: "<img src='resources/THEBROTHERSCOCK.png' alt='Image failed to load.' width='100px' height='40px'>",
-            description: "You automatically purchase [SET 3] Amoeba upgrades.<br>500x Click Power",
+            title: "<img src='resources/THEBROTHERSCOCK.png' alt='Image failed to load.' width='100px' height='30px'>",
+            description: "500x Click Power<br>You automatically purchase [SET 3] Amoeba upgrades.",
             cost: new Decimal("1e900"),
             style: {'width':'140px'},
             fullDisplay() {
@@ -1139,7 +1171,7 @@ addLayer("g", {
         },
         27: {
             title: "Constant Presence",
-            description: "Catfood has a 1 in 200 chance to replace a symbol outside of feeding Axe Cat.<br>Catfood is fed to Axe Cat by hovering over it.<br>1,000x Click Power",
+            description: "1,000x Click Power<br>5x Critical Power<br>Catfood has a 1 in 200 chance to replace a symbol outside of feeding Axe Cat.<br>Catfood is fed to Axe Cat by hovering over it.",
             cost: new Decimal("6e1070"),
             style: {'width':'140px'},
             unlocked() {
@@ -1272,9 +1304,9 @@ addLayer("g", {
                 }
                 if (Math.random() >= odds) {
                     player['g'].CoinflipMult = player['g'].CoinflipMult.times(2)
-                    playSound('CoinflipSuccess')
+                    playSound('CoinflipSuccess', 'mp3', 0.4)
                 } else {
-                    playSound('CoinflipFail')
+                    playSound('CoinflipFail', 'mp3', 0.4)
                 }
                 doReset(this.layer, true)
             },
@@ -1393,6 +1425,13 @@ addLayer("k", {
         yes_power: decimalOne,
         unlockOrder: 0,
     }},
+    nodeStyle() {
+        return {
+            "background-size":"82.7%", 
+            "background-repeat":"no-repeat", 
+            "background-position":"center", 
+        }
+    },
     color: "#DCD200",
     requires() { // Can be a function that takes requirement increases into account
         if (this.getUnlockOrder()==0||player.LayerTwoChoice==this.layer) {
@@ -1577,6 +1616,10 @@ addLayer("k", {
                 player[this.layer].points = decimalZero
                 doReset(this.layer, true)
                 resetClickMult()
+
+                if (player.LayerTwoChoice=="k") {
+                    player.LayerTwoChoice = "!"
+                }
             },
             effect() {
                 return player.points.add(1).pow(0.04)
@@ -1622,7 +1665,7 @@ addLayer("k", {
         },
         19: {
             title: "This Is The Relationship I Want To Have With You",
-            description: "/10,000,000 Amoebas.<br>^1.1 Rainbows",
+            description: "/10,000,000 Amoebas.<br>^1.1 Rainbows<br>3x Critical Power",
             cost: new Decimal(860),
             style: {'width':'140px'},
             unlocked() {
@@ -1662,7 +1705,7 @@ addLayer("k", {
                 resetClickMult()
             },
             effect() {
-                return player[this.layer].points.add(1).pow(4.07).times(player[this.layer].points.sub(1450).max(0).pow(2.7))
+                return player[this.layer].points.add(1).pow(4.07).times(player[this.layer].points.sub(1450).max(1).pow(2.7))
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
@@ -1696,8 +1739,9 @@ addLayer("k", {
         },
         12: {
             requirementDescription: "3 Killstreak",
+            style: {'background-image':'url(resources/RoyalBorder.png)', "background-size":"95%", "background-repeat":"no-repeat", "background-position":"center",},
             effectDescription() {
-                return 'You automatically "click" symbols when passing through them.<br>This effect is permanent.'
+                return 'You automatically "click" symbols when passing through them.'
             },
             done() {return player[this.layer].best.gte(3)},
             unlocked() {return hasMilestone(this.layer, this.id-1)},
@@ -1762,7 +1806,7 @@ addLayer("k", {
         17: {
             requirementDescription: "15 Killstreak",
             effectDescription() {
-                return "/100 Rainbows.<br>15x Amoebas.<br>You can earn max knives from Kill resets."
+                return "/100 Rainbows.<br>15x Amoebas.<br>You can earn max Knives from Kill resets."
             },
             done() {return player[this.layer].best.gte(15)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
@@ -1839,7 +1883,7 @@ addLayer("k", {
         26: {
             requirementDescription: "1,500 Killstreak",
             effectDescription() {
-                return "<b>Activity Check</b> is no longer reset upon Amoeba resets.<br><b>Activity Check</b> and Axe Cat are no longer reset upon Gamble resets."
+                return "<b>Activity Check</b> is no longer reset upon Cellular Division resets.<br><b>Activity Check</b> and Axe Cat are no longer reset upon Gamble resets."
             },
             done() {return player[this.layer].best.gte(1500)},
             unlocked() {return hasMilestone(this.layer, this.id-1)},
@@ -1855,10 +1899,13 @@ addLayer("k", {
         28: {
             requirementDescription: "12,000 Killstreak",
             effectDescription() {
-                return "Amoebas persist on Gamble resets.<br>Symbols spawn more often."
+                return "Amoebas persist on Gamble resets.<br>Symbols spawn more often.<br>Unlock the ability to toggle Precision Mode, which makes critical clicks 20x rarer but give 1,000x Critical Power."
             },
             done() {return player[this.layer].best.gte(12000)},
-            unlocked() {return hasMilestone(this.layer, this.id-1)}
+            unlocked() {return hasMilestone(this.layer, this.id-1)},
+            toggles: [
+                ["k", "precisionMode"],
+            ],
         },
         29: {
             requirementDescription: "20,000 Killstreak",
@@ -1992,6 +2039,13 @@ addLayer("farm", {
         SelectedCrop: null,
         SelectedIndex: 0,
     }},
+    nodeStyle() {
+        return {
+            "background-size":"94.7%", 
+            "background-repeat":"no-repeat", 
+            "background-position":"center", 
+        }
+    },
     color: "#8EED5C",
     requires() { // Can be a function that takes requirement increases into account
        return new Decimal("1e1100")
@@ -2049,8 +2103,10 @@ addLayer("farm", {
     },
     resetsNothing: true,
     row: 2,
-    doReset(resettingLayer){ // Triggers when this layer is being reset, along with the layer doing the resetting. Not triggered by lower layers resetting, but is by layers on the same row.
-       // if(layers[resettingLayer].row > this.row) layerDataReset(this.layer, ["Crops"]) 
+    doReset(resettingLayer) {
+        if (resettingLayer==this.layer) {
+            playSound('ChaChing')
+        }
     },
     layerShown(){
         if (hasUpgrade('k', 22)) {
@@ -3022,14 +3078,19 @@ addLayer("darkness", {
         return player['darkness'].DarkFragments.gt(0)
     },
     color: "#534a55",
-    row: "side",
-    image: "resources/Darkness_Icon.png",
+    row: 1,
+    image: "resources/Darkness.png",
     nodeStyle() {
         return {
-            'width': '100px',
-            'height': '100px',
+            'width': '75px',
+            'height': '75px',
+            "background-size":"90%", 
+            "background-repeat":"no-repeat", 
+            "background-position":"center", 
+            //"transform":`translate(${(player.cX^player.cY) * 15}px, ${(player.cY^player.cX) * 15}px)`
         }
     },
+    branches: [["g", "#e70ce7"]],
     /*
     effectDescription() {
         return "which multiplies Rainbow gain by " + format((new Decimal(2)).pow(player['A'].points)) +"x"
@@ -3055,7 +3116,7 @@ addLayer("darkness", {
             done() {return player['darkness'].DarkFragments.gte(2)},
         },
         13: {
-            requirementDescription: "3 Dark Fragments - Something Is Coming...",
+            requirementDescription: "3 Dark Fragments - Something Is Coming",
             effectDescription() {
                 return "500,000x Cherries<br><b>Activity Check</b> drains 3x slower."
             },
@@ -3071,6 +3132,8 @@ addLayer("darkness", {
     },
     
     tabFormat: [
+        ["display-text", "<h2><font color='#e70ce7'>Awaken the power of the Dark Knight.</font></h2>"],
+        "blank",
         "milestones",
         "blank",
     ],
