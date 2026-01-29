@@ -38,6 +38,7 @@ addLayer("loren", {
             onClick() { 
                 playSound("GambleReset", "wav")
             },
+            unlocked() {return player['g'].unlocked},
             style: {'background-color': '#770000', 'min-height':'0px', 'height':'37px', 'width':'277px', 'border-radius':'177px', 'border': '3px solid', 'border-color': 'rgba(0, 0, 0, 0.125)'},
         },
         13: {
@@ -49,6 +50,7 @@ addLayer("loren", {
                 playSound("KillReset")
                 if (randNum(1,100) == 7) player.SecretAch3 = true
             },
+            unlocked() {return player['k'].unlocked},
             style: {'background-color': '#DCD200', 'min-height':'0px', 'height':'37px', 'width':'277px', 'border-radius':'177px', 'border': '3px solid', 'border-color': 'rgba(0, 0, 0, 0.125)'},
         },
         14: {
@@ -59,6 +61,7 @@ addLayer("loren", {
             onClick() { 
                 playSound("ChaChing")
             },
+            unlocked() {return player['farm'].unlocked},
             style: {'background-color': '#8EED5C', 'min-height':'0px', 'height':'37px', 'width':'277px', 'border-radius':'177px', 'border': '3px solid', 'border-color': 'rgba(0, 0, 0, 0.125)'},
         },
     },
@@ -140,7 +143,8 @@ addLayer("loren", {
 
                         <h2>People Whose Work I Used In Some Way</h2><br>
                         Toby Fox - Creator of Deltarune which I used a fuckload of music from<br>
-                        pilotredsun - Composer of "Fat Cat" aka the Stability Test lobby theme.
+                        pilotredsun - Composer of "Fat Cat" aka the Stability Test lobby theme.<br>
+                        Popcap - Several PvZ1 sounds are used in this game.
                         `
                         if (player.SecretAch2) {
                             Credits += "<br>Moikey - SKIBIDILOVANIA"

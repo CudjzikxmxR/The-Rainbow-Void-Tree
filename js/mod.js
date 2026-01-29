@@ -232,6 +232,7 @@ function addedPlayerData() { return {
 	SymbolQOL: 0,
 	LayerTwoChoice: null,
 	AntivirusLevel: 0,
+	MustCrit: false,
 	SecretAch1: false,
 	SecretAch2: false,
 	SecretAch3: false,
@@ -344,7 +345,7 @@ function resetClickMult() {
 }
 
 function gainCropMult() {
-    mult = decimalOne.times(20)
+    mult = decimalOne
 	if (hasUpgrade('g', 29)) {
 		mult = mult.times(upgradeEffect('g', 29))
 	}

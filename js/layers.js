@@ -142,7 +142,7 @@ addLayer("p", {
         }
         if(layers[resettingLayer].row > this.row) {
             var keep = []
-            if ((hasMilestone('k', 26) && (resettingLayer=="g" || resettingLayer=="p")) || (hasUpgrade('p', 32) && resettingLayer=="k"))
+            if ((hasMilestone('k', 26) && (resettingLayer=="g" || resettingLayer=="p")))
                 keep.push('clickingMult')
             if (hasUpgrade('farm', 11) && resettingLayer=='g')
                 keep.push('upgrades')
@@ -396,8 +396,8 @@ addLayer("p", {
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
         32: {
-            title: "Ankh",
-            description: "^1.01 Rainbows<br>^1.01 Amoebas<br>^1.01 Money<br><b>Activity Check</b> is not reset upon Kill resets.",
+            title: "Hey Guys!",
+            description: "^1.01 Rainbows<br>^1.01 Amoebas<br>^1.01 Money<br>Whenever you perform a Kill reset of your own volition, yes_man will immediately appear and critical clicks are 1 in 1 for 10 seconds.",
             cost: new Decimal("1e2700"),
             style: {'width':'140px'},
             unlocked() {
@@ -406,8 +406,8 @@ addLayer("p", {
         },
         33: {
             title: "Energy Drink",
-            description: "3x Crops<br><b>Procrastination</b> scales much faster and its cap is raised ^1.1.<br>Coinflips affect Rainbows.",
-            cost: new Decimal("7e3100"),
+            description: "3x Crops<br>500x Critical Power while in Precision Mode<br><b>Procrastination</b> scales much faster and its cap is raised ^1.1.<br>Coinflips affect Rainbows.",
+            cost: new Decimal("7e3200"),
             style: {'width':'140px'},
             unlocked() {
                 return hasUpgrade(this.layer, 29) && hasMilestone('k', 27)
@@ -416,7 +416,7 @@ addLayer("p", {
         34: {
             title: "Cotton Cuddy",
             description: "1.02x Knives<br>2x Money<br>1.25x Crops<br>7,777x Click Power<br>Amoebas scale based on your Sugarcane.<br>Unlock Plot $6.",
-            cost: new Decimal("1e4300"),
+            cost: new Decimal("1e4400"),
             style: {'width':'210px'},
             unlocked() {
                 return hasUpgrade(this.layer, 29) && hasMilestone('k', 27)
@@ -429,7 +429,7 @@ addLayer("p", {
         35: {
             title: "Development Hell",
             description: "^1.04 Click Power<br>10x Money<br>/2 Crop Grow Speed",
-            cost: new Decimal("1e6000"),
+            cost: new Decimal("1e6300"),
             style: {'width':'210px'},
             unlocked() {
                 return hasUpgrade(this.layer, 29) && hasMilestone('k', 27)
@@ -1529,6 +1529,15 @@ addLayer("k", {
             playSound('KillReset')
         }
     },
+    onPrestige() {
+        if (hasUpgrade('p', 32)) {
+            makeShinies(yes_face, 1)
+            player.MustCrit = true
+            setTimeout(function () {
+                player.MustCrit = false
+            }, 10000);
+        }
+    },
     canBuyMax() {
         return hasMilestone(this.layer, 17)
     },
@@ -2185,7 +2194,7 @@ addLayer("farm", {
         },
         15: {
             title: "Scarcity",
-            description: "^1.025 Cherries<br>2x Crop Grow Speed while Axe Cat is hungry.",
+            description: "^1.025 Cherries<br>2x Crop Grow Speed while Axe Cat is hungry",
             fullDisplay() {
                 return "<h3>Scarcity</h3><br>" + this.description + "<br><br>Cost: $5,000, 10 wheat, 10 tomatoes, 10 carrots, 10 corn, 10 potatoes"
             },

@@ -30,13 +30,14 @@ function toggleOpt(name) {
 		changeTreeQuality();
 	if (name == "oldStyle")
 		updateStyle();
-	if (name == "musicOn")
+	if (name == "musicOn") {
 		if (options.musicOn) {
 			bgSong.play()
 		} else {
 			bgSong.pause()
 		}
 		changeSong();
+	}
 }
 var styleCooldown = 0;
 function updateStyle() {

@@ -442,6 +442,8 @@ const cudGrade16 = {
 				GambleRange = 6
 			if (hasUpgrade('g', 25))
 				GambleRange = 3
+			if (player.MustCrit)
+				GambleRange = 1
 			if (player['k'].precisionMode)
 				GambleRange *= 20
 
@@ -455,17 +457,18 @@ const cudGrade16 = {
 					critPower = critPower.times(5)
 				if (player['k'].precisionMode) {
 					critPower = critPower.times(1000)
+					if (hasUpgrade('p', 33)) critPower = critPower.times(500)
 				}
 				player['p'].clickingMult = player['p'].clickingMult.add(getClickPower().times(critPower.times(5)))
 				this.color = "#770000"
 				addPoints("p", getResetGain("p").times(critPower))
 				updateMilestones("p")
 				updateAchievements("p")
-				playSound('Critical', 'ogg', 0.137)
+				playSound('Critical', 'ogg', 0.147)
 			} else {
 				player['p'].clickingMult = player['p'].clickingMult.add(getClickPower())
 				this.color = "#6225D1"
-				playSound('SymbolClick', 'ogg', 0.207)
+				playSound('SymbolClick', 'ogg', 0.247)
 			}
 		}
 	},
@@ -568,6 +571,7 @@ var interval = setInterval(function() {
 			player.offTime.remain -= offlineDiff
 			diff += offlineDiff
 			resetClickMult()
+			player.MustCrit = false
 			player['g'].AxeCatMult = new Decimal(1)
 			for (i in player['farm'].grid) {
 				setGridData('farm', i, {CurrentCrop: null, Ready: false})
