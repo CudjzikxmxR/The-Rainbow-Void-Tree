@@ -1,13 +1,13 @@
 function hasUpgrade(layer, id) {
-	return ((player[layer].upgrades.includes(toNumber(id)) || player[layer].upgrades.includes(id.toString())) && !tmp[layer].deactivated)
+	return ((player[layer].upgrades.includes(toNumber(id)) || player[layer].upgrades.includes(id.toString())) && (!tmp[layer].deactivated || layers[layer].upgrades[id].persisting))
 }
 
 function hasMilestone(layer, id) {
-	return ((player[layer].milestones.includes(toNumber(id)) || player[layer].milestones.includes(id.toString())) && !tmp[layer].deactivated)
+	return ((player[layer].milestones.includes(toNumber(id)) || player[layer].milestones.includes(id.toString())) && (!tmp[layer].deactivated || layers[layer].milestones[id].persisting))
 }
 
 function hasAchievement(layer, id) {
-	return ((player[layer].achievements.includes(toNumber(id)) || player[layer].achievements.includes(id.toString())) && !tmp[layer].deactivated)
+	return ((player[layer].achievements.includes(toNumber(id)) || player[layer].achievements.includes(id.toString())) && (!tmp[layer].deactivated || layers[layer].achievements[id].persisting))
 }
 
 function hasChallenge(layer, id) {

@@ -229,9 +229,9 @@ let randomTipIndex = Math.floor(Math.random() * tipMessages.length)
 function addedPlayerData() { return {
 	minimumClickMult: 0,
 	//AxeCatMult: 1,
-	SymbolQOL: 0,
 	LayerTwoChoice: null,
 	AntivirusLevel: 0,
+	NonClickTime: decimalZero,
 	MustCrit: false,
 	SecretAch1: false,
 	SecretAch2: false,

@@ -157,9 +157,26 @@ function layerDataReset(layer, keep = []) {
 	Vue.set(player[layer], "grid", getStartGrid(layer))
 
 	layOver(player[layer], getStartLayerData(layer))
-	player[layer].upgrades = []
-	player[layer].milestones = []
-	player[layer].achievements = []
+	let newUpgrades = []
+	let newMilestones = []
+	let newAchievements = []
+	for (id in tmp[layer].upgrades) {
+		if (hasUpgrade(layer, id)) {
+			if (layers[layer].upgrades[id].persisting == true) {
+				newUpgrades.push(id)
+			}
+		}
+	}
+	for (id in tmp[layer].milestones) {
+		if (hasUpgrade(layer, id)) {
+			if (layers[layer].milestones[id].persisting == true) {
+				newMilestones.push(id)
+			}
+		}
+	}
+	player[layer].upgrades = newUpgrades
+	player[layer].milestones = newMilestones
+	player[layer].achievements = newAchievements
 
 	for (thing in storedData) {
 		player[layer][thing] =storedData[thing]
@@ -447,7 +464,7 @@ const cudGrade16 = {
 			if (player['k'].precisionMode)
 				GambleRange *= 20
 
-			if ((hasUpgrade('g', 15) || player.SymbolQOL==1 || player.SymbolQOL==3) && (Math.floor(Math.random()*GambleRange+1)==GambleRange)) {
+			if ((hasUpgrade('g', 15)) && (Math.floor(Math.random()*GambleRange+1)==GambleRange)) {
 				var critPower = decimalOne
 				if (hasUpgrade('a', 18))
 					critPower = critPower.times(7)
@@ -470,10 +487,11 @@ const cudGrade16 = {
 				this.color = "#6225D1"
 				playSound('SymbolClick', 'ogg', 0.247)
 			}
+			player.NonClickTime = decimalZero
 		}
 	},
 	onMouseLeave() {
-		if (hasMilestone('k', 12) || player.SymbolQOL==2 || player.SymbolQOL==3) {
+		if (hasMilestone('k', 12)) {
 			this.onClick()
 		}
 	},
@@ -570,15 +588,18 @@ var interval = setInterval(function() {
 			let offlineDiff = Math.max(player.offTime.remain / 10, diff)
 			player.offTime.remain -= offlineDiff
 			diff += offlineDiff
+			options.musicOn = false
+			if (bgSong)
+				bgSong.pause()
+
+			//RESETTING STUFF
 			resetClickMult()
 			player.MustCrit = false
+			player.NonClickTime = decimalZero
 			player['g'].AxeCatMult = new Decimal(1)
 			for (i in player['farm'].grid) {
 				setGridData('farm', i, {CurrentCrop: null, Ready: false})
 			}
-			options.musicOn = false
-			if (bgSong)
-				bgSong.pause()
 		}
 		if (!options.offlineProd || player.offTime.remain <= 0) 
 			player.offTime = undefined
@@ -638,6 +659,7 @@ var interval = setInterval(function() {
 	} else {
 		resetClickMult()
 	}
+	player.NonClickTime = player.NonClickTime.add(0.007)
 	var catfoodChance = 0.96
 	if (hasUpgrade('p', 36)) {
 		catfoodChance = 0.92

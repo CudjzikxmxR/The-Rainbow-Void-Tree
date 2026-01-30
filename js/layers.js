@@ -180,10 +180,7 @@ addLayer("p", {
         },
         13: {
             title: "Procrastination",
-            description: "0.1x Rainbows<br>Rainbow gain now increases over time.",
-            cost: new Decimal(50),
-            style: {'width':'140px'},
-            effect() {
+            getScaling() {
                 let scaleSpeed = new Decimal(2)
                 let scaleExpo = new Decimal(1.47)
                 let scaleCap = new Decimal(1000)
@@ -201,18 +198,32 @@ addLayer("p", {
                 }
                 if (hasUpgrade('farm', 17)) {
                     scaleCap = scaleCap.times(player['g'].AxeCatMult)
-                    scaleSpeed = scaleSpeed.times(17)
+                    scaleSpeed = scaleSpeed.times(7)
                     scaleExpo = scaleExpo.times(7)
                 }
                 if (hasUpgrade(this.layer, 33)) {
                     scaleSpeed = scaleSpeed.times(77)
-                    scaleExpo = scaleExpo.times(7)
-                    scaleCap = scaleCap.pow(1.1)
+                    scaleExpo = scaleExpo.times(1.47)
+                    scaleCap = scaleCap.pow(3)
                 }
-                return (((new Decimal(player[this.layer].resetTime)).times(scaleSpeed+1)).pow(scaleExpo)).min(scaleCap)
+                return [scaleCap, scaleSpeed, scaleExpo]
+            },
+            description() {
+                return "0.1x Rainbows<br>Rainbow gain now increases over time, capped at " + format(this.getScaling()[0]) + "x."
+            },
+            //description: "0.1x Rainbows<br>Rainbow gain now increases over time, capped at 1000x.",
+            cost: new Decimal(50),
+            style: {'width':'140px'},
+            effect() {
+                return (((new Decimal(player[this.layer].resetTime)).times(this.getScaling()[1].add(1))).pow(this.getScaling()[2])).min(this.getScaling()[0])
                 //return Math.min(Math.pow(player[this.layer].resetTime*scaleSpeed+1,scaleExpo)/10, scaleCap)
             },
-            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
+            effectDisplay() {
+                if (upgradeEffect(this.layer, this.id).eq(this.getScaling()[0])) {
+                    return format(upgradeEffect(this.layer, this.id))+"x (CAPPED)"
+                }
+                return format(upgradeEffect(this.layer, this.id))+"x"
+            },
         },
         14: {
             title: "Trust Me, It Gets Gayer",
@@ -429,12 +440,14 @@ addLayer("p", {
         35: {
             title: "Development Hell",
             description: "^1.04 Click Power<br>10x Money<br>/2 Crop Grow Speed",
-            cost: new Decimal("1e6300"),
-            style: {'width':'210px'},
+            cost: new Decimal("1e6000"),
+            style: {'width':'210px', 'background-image':'url(resources/RoyalBorder.png)', "background-size":"95% 95%", "background-repeat":"no-repeat", "background-position":"center",},
             unlocked() {
                 return hasUpgrade(this.layer, 29) && hasMilestone('k', 27)
             },
+            persisting: true,
         },
+        /*
         36: {
             title: "Vitamin A",
             description: "10,000x Click Power<br>Symbols are pressed by hovering over them rather than passing through them.<br>Click Power scales based on your Carrots.",
@@ -448,10 +461,34 @@ addLayer("p", {
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
+        */
+        36: {
+            title: "Choke Point",
+            description() {
+                return "This rapidly increases in multiplier for Click Power, Money, Crops, Catfood Effectiveness, and yes_man but resets once you click a symbol, capped at "+format(this.getCap())+"x."
+            },
+            cost: new Decimal("1e7000"),
+            style: {'width':'140px'},
+            getCap() {
+                return new Decimal(5)
+            },
+            unlocked() {
+                return hasUpgrade(this.layer, 29) && hasMilestone('k', 27)
+            },
+            effect() {
+                return player.NonClickTime.add(1).min(5)
+            },
+            effectDisplay() {
+                if (upgradeEffect(this.layer, this.id).eq(this.getCap())) {
+                    return format(upgradeEffect(this.layer, this.id))+"x (CAPPED)"
+                }
+                return format(upgradeEffect(this.layer, this.id))+"x"
+            },
+        },
         37: {
             title: "My Best Buddy",
             description: "^1.1 Amoebas.",
-            cost: new Decimal("e25000"),
+            cost: new Decimal("e8000"),
             style: {'width':'140px'},
             unlocked() {
                 return hasUpgrade(this.layer, 29) && hasMilestone('k', 27)
@@ -459,18 +496,33 @@ addLayer("p", {
         },
         38: {
             title: "Anomaly Agriculture",
-            description: "GG! This is the end of the game. v0.3 coming not any fucking time soon",
-            cost: new Decimal("e100000"),
-            style: {'width':'140px'},
+            description: "Unlock [SET 2] of The Anomaly Farm... just kidding this is the end of the game until v0.3. Haha.",
+            cost: new Decimal("e12000"),
+            style: {'width':'140px', 'background-image':'url(resources/RoyalBorder.png)', "background-size":"95% 95%", "background-repeat":"no-repeat", "background-position":"center",},
             unlocked() {
                 return hasUpgrade(this.layer, 29) && hasMilestone('k', 27)
             },
             fullDisplay() {
-                return "<h3>Anomaly Agriculture</h3><br>GG! This is the end of the game. v0.3 coming not any fucking time soon<br><br>Cost: e100000 amoebas<br><br>Req: e500000 rainbows, e77777 cherries, 100,000 knives."
+                return "<h3>"+this.title+"</h3><br>"+this.description+"<br><br>Cost: 1e12,000 amoebas<br><br>Req: e20,000 rainbows, e7,777 cherries, 50,000 knives."
             },
             canAfford() {
-                return player.points.gte("e500000") && player[this.layer].points.gte("e100000") && player['g'].points.gte("e77777") && player['k'].points.gte(100000)
+                return player.points.gte("e20000") && player[this.layer].points.gte("e12000") && player['g'].points.gte("e7777") && player['k'].points.gte(50000)
             },
+            persisting: true,
+        },
+        39: {
+            title: "Realm of Carnage",
+            description: "+1 Dark Fragment<br>Click Power scales based on Dark Fragments.",
+            cost: new Decimal("e50000"),
+            style: {'width':'420px','height':'200px','corner-radius':'30px', 'background-image':'url(resources/RoyalBorder.png)', "background-size":"95% 95%", "background-repeat":"no-repeat", "background-position":"center",},
+            unlocked() {
+                return hasUpgrade(this.layer, 29) && hasMilestone('k', 27)
+            },
+            effect() {
+                return player['darkness'].DarkFragments.div(20).add(1)
+            },
+            effectDisplay() { return "^"+format(upgradeEffect(this.layer, this.id)) },
+            persisting: true,
         },
     },
     tabFormat: [
@@ -529,6 +581,7 @@ addLayer("p", {
         ["row", [["upgrade",31],["upgrade",32],["upgrade",33]]],
         ["row", [["upgrade",34],["upgrade",35]]],
         ["row", [["upgrade",36],["upgrade",37],["upgrade",38]]],
+        ["upgrade",39],
         //["upgrade",38],
         "blank",
     ],
@@ -1053,14 +1106,8 @@ addLayer("g", {
             title: "Let's Go Gambling",
             description: "You have a 1 in 15 chance to critically click a symbol. Critical clicks are 5x stronger and instantly grant Amoebas equal to what you'd earn from reset.",
             cost: new Decimal(7777),
-            style: {'width':'140px', 'background-image':'url(resources/RoyalBorder.png)', "background-size":"95%", "background-repeat":"no-repeat", "background-position":"center",},
-            onPurchase() {
-                if (player.SymbolQOL==0) {
-                    player.SymbolQOL=1
-                } else {
-                    player.SymbolQOL=3
-                }
-            }
+            style: {'width':'140px', 'background-image':'url(resources/RoyalBorder.png)', "background-size":"95% 95%", "background-repeat":"no-repeat", "background-position":"center",},
+            persisting: true,
         },
         16: {
             title: "Cherry Tree",
@@ -1658,9 +1705,14 @@ addLayer("k", {
         },
         18: {
             title: "What Is Wrong With You?",
-            description: "Knives ever-so-slightly scale based on your Cherries, capped at 3.50x.",
+            description() {
+                return "Knives ever-so-slightly scale based on your Cherries, capped at "+format(this.getCap())+"x."
+            },
             cost: new Decimal(580),
             style: {'width':'140px'},
+            getCap() {
+                return new Decimal(3.5)
+            },
             unlocked() {
                 return hasMilestone(this.layer, 24)
             },
@@ -1672,7 +1724,12 @@ addLayer("k", {
             effect() {
                 return player['g'].points.pow(0.5).max(1).log(25).div(200).add(1).min(3.5)
             },
-            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
+            effectDisplay() {
+                if (upgradeEffect(this.layer, this.id).eq(this.getCap())) {
+                    return format(upgradeEffect(this.layer, this.id))+"x (CAPPED)"
+                }
+                return format(upgradeEffect(this.layer, this.id))+"x"
+            },
         },
         19: {
             title: "This Is The Relationship I Want To Have With You",
@@ -1750,19 +1807,13 @@ addLayer("k", {
         },
         12: {
             requirementDescription: "3 Killstreak",
+            persisting: true,
             style: {'background-image':'url(resources/RoyalBorder.png)', "background-size":"95%", "background-repeat":"no-repeat", "background-position":"center",},
             effectDescription() {
-                return 'You automatically "click" symbols when passing through them.'
+                return '2x Click Power<br>You automatically "click" symbols when passing through them.'
             },
             done() {return player[this.layer].best.gte(3)},
             unlocked() {return hasMilestone(this.layer, this.id-1)},
-            onComplete() {
-                if (player.SymbolQOL==0) {
-                    player.SymbolQOL=2
-                } else {
-                    player.SymbolQOL=3
-                }
-            }
         },
         13: {
             requirementDescription: "4 Killstreak",
@@ -3115,28 +3166,28 @@ addLayer("darkness", {
         11: {
             requirementDescription: "1 Dark Fragment - Into Darkness",
             effectDescription() {
-                return "50,000,000x Rainbows"
+                return "50,000,000x Rainbows<br>Symbols are pressed by hovering over them rather than passing through them.<br><font color='#ff0000'>Axe Cat is hungrier, making the multiplier drain twice as fast.</font>"
             },
             done() {return player['darkness'].DarkFragments.gte(1)},
         },
         12: {
             requirementDescription: "2 Dark Fragments - Darker Yet Darker",
             effectDescription() {
-                return "1,000,000x Amoebas<br>3x Money<br>1.25x Crops"
+                return "1,000,000x Amoebas<br>3x Money<br>1.25x Crops<br><font color='#ff0000'>Axe Cat wants to try more food, so it'll start consuming your crops! You lose a random crop every second while feeding Axe Cat.</font>"
             },
             done() {return player['darkness'].DarkFragments.gte(2)},
         },
         13: {
             requirementDescription: "3 Dark Fragments - Something Is Coming",
             effectDescription() {
-                return "500,000x Cherries<br><b>Activity Check</b> drains 3x slower."
+                return "1.00e20x and ^1.01 Cherries<br><font color='#ff0000'>Axe Cat demands more attention. You are unable to earn Cherries, Knives, Money, or Crops while feeding Axe Cat. You can no longer critically click while feeding Axe Cat.</font>"
             },
             done() {return player['darkness'].DarkFragments.gte(3)},
         },
         14: {
             requirementDescription: "4 Dark Fragments - True Form",
             effectDescription() {
-                return "Axe Cat unlocks its true potential."
+                return "Axe Cat unlocks its true potential.<br><font color='#e70ce7'><b>You won't ever be able to turn back. It's too late.</b></font>"
             },
             done() {return player['darkness'].DarkFragments.gte(4)},
         },
