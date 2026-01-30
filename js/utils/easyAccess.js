@@ -10,6 +10,16 @@ function hasAchievement(layer, id) {
 	return ((player[layer].achievements.includes(toNumber(id)) || player[layer].achievements.includes(id.toString())) && (!tmp[layer].deactivated || layers[layer].achievements[id].persisting))
 }
 
+function hasPersistingUpdateOfSet(layer, setNum) {
+	for (id in tmp[layer].upgrades) {
+		if (hasUpgrade(layer, id)) {
+			if (layers[layer].upgrades[id].persisting == true && layers[layer].upgrades[id].set == setNum) {
+				return true
+			}
+		}
+	}
+}
+
 function hasChallenge(layer, id) {
 	return ((player[layer].challenges[id]) && !tmp[layer].deactivated)
 }

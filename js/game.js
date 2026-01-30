@@ -174,6 +174,13 @@ function layerDataReset(layer, keep = []) {
 			}
 		}
 	}
+	for (id in tmp[layer].achievements) {
+		if (hasUpgrade(layer, id)) {
+			if (layers[layer].achievements[id].persisting == true) {
+				newAchievements.push(id)
+			}
+		}
+	}
 	player[layer].upgrades = newUpgrades
 	player[layer].milestones = newMilestones
 	player[layer].achievements = newAchievements

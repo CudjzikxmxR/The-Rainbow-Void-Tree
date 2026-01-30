@@ -167,12 +167,14 @@ addLayer("p", {
             description: "2x Rainbows",
             cost: new Decimal(5),
             style: {'width':'140px'},
+            set: 1,
         },
         12: {
             title: "Single Celled",
             description: "Rainbows scale based on your Amoebas.",
             cost: new Decimal(10),
             style: {'width':'140px'},
+            set: 1,
             effect() {
                 return player[this.layer].points.add(1).pow(0.5)
             },
@@ -203,8 +205,8 @@ addLayer("p", {
                 }
                 if (hasUpgrade(this.layer, 33)) {
                     scaleSpeed = scaleSpeed.times(77)
-                    scaleExpo = scaleExpo.times(1.47)
-                    scaleCap = scaleCap.pow(3)
+                    scaleExpo = scaleExpo.times(1.6)
+                    scaleCap = scaleCap.pow(1.1)
                 }
                 return [scaleCap, scaleSpeed, scaleExpo]
             },
@@ -214,6 +216,7 @@ addLayer("p", {
             //description: "0.1x Rainbows<br>Rainbow gain now increases over time, capped at 1000x.",
             cost: new Decimal(50),
             style: {'width':'140px'},
+            set: 1,
             effect() {
                 return (((new Decimal(player[this.layer].resetTime)).times(this.getScaling()[1].add(1))).pow(this.getScaling()[2])).min(this.getScaling()[0])
                 //return Math.min(Math.pow(player[this.layer].resetTime*scaleSpeed+1,scaleExpo)/10, scaleCap)
@@ -230,6 +233,7 @@ addLayer("p", {
             description: "Rainbows scale based on your Rainbows.",
             cost: new Decimal(150),
             style: {'width':'140px'},
+            set: 1,
             effect() {
                 return player.points.add(1).pow(0.2)
             },
@@ -240,12 +244,14 @@ addLayer("p", {
             description: "1.477x Rainbows",
             cost: new Decimal(500),
             style: {'width':'140px'},
+            set: 1,
         },
         16: {
             title: "Activity Check",
             description: "Symbols now appear on the screen.\nClicking them gives temporary Rainbow multiplier.<br>Unlock [SET 2] of Amoeba upgrades.",
             cost: new Decimal(2000),
             style: {'width':'140px'},
+            set: 1,
             effect() {
                 return player[this.layer].clickingMult.max(1)
             },
@@ -257,6 +263,7 @@ addLayer("p", {
             description: "2x Amoebas",
             cost: new Decimal(20000),
             style: {'width':'140px'},
+            set: 2,
             unlocked() {
                 return hasUpgrade(this.layer, 16)
             },
@@ -266,6 +273,7 @@ addLayer("p", {
             description: "2.5x Rainbows<br>4x Click Power",
             cost: new Decimal(1e6),
             style: {'width':'140px'},
+            set: 2,
             unlocked() {
                 return hasUpgrade(this.layer, 16)
             },
@@ -278,6 +286,7 @@ addLayer("p", {
             description: "<b>Activity Check</b>'s multiplier can't decrease while below triple the total # of symbols you've ever clicked.",
             cost: new Decimal(12345678),
             style: {'width':'140px'},
+            set: 2,
             effect() {
                 return player.minimumClickMult
             },
@@ -290,6 +299,7 @@ addLayer("p", {
             description: "100x Click Power",
             cost: new Decimal(1e8),
             style: {'width':'140px'},
+            set: 2,
             unlocked() {
                 return hasUpgrade(this.layer, 16)
             },
@@ -303,6 +313,7 @@ addLayer("p", {
             description: "10x Rainbows",
             cost: new Decimal(1e12),
             style: {'width':'140px'},
+            set: 3,
             unlocked() {
                 return hasUpgrade(this.layer, 21) && hasUpgrade('k', 11)
             },
@@ -312,6 +323,7 @@ addLayer("p", {
             description: "Rainbows scale based on your Knives.",
             cost: new Decimal(4e15),
             style: {'width':'140px'},
+            set: 3,
             effect() {
                 return player['k'].points.add(1).pow(2)
             },
@@ -325,6 +337,7 @@ addLayer("p", {
             description: "Amoebas lightly scale based on your Rainbows.",
             cost: new Decimal(2e22),
             style: {'width':'140px'},
+            set: 3,
             effect() {
                 return player.points.add(1).max(0).log(17)
             },
@@ -338,6 +351,7 @@ addLayer("p", {
             description: "<b>Procrastination</b>'s cap is 10x larger. <b>Procrastination</b> has an effect on Amoebas.",
             cost: new Decimal(5e25),
             style: {'width':'140px'},
+            set: 3,
             effectDisplay() { return format(upgradeEffect(this.layer, 13))+"x" },
             unlocked() {
                 return hasUpgrade(this.layer, 21) && hasUpgrade('k', 11)
@@ -348,6 +362,7 @@ addLayer("p", {
             description: "^1.05 Rainbows<br>/50,000 Kill requirement",
             cost: new Decimal(1e36),
             style: {'width':'140px'},
+            set: 3,
             unlocked() {
                 return hasUpgrade(this.layer, 21) && hasUpgrade('k', 11)
             },
@@ -357,15 +372,17 @@ addLayer("p", {
             description: "Kill requirement scaling is weaker.",
             cost: new Decimal(6e39),
             style: {'width':'140px'},
+            set: 3,
             unlocked() {
                 return hasUpgrade(this.layer, 21) && hasUpgrade('k', 11)
             },
         },
         28: {
             title: "Achieve Big",
-            description: "+1 to achievement Rainbow multiplier base.<br>Achievements now give 2x Amoeba multiplier.<br>Knife requirement scaling is weaker.",
+            description: "+1 to achievement Rainbow multiplier base.<br>Achievements now give 2x Amoeba multiplier.<br>Kill requirement scaling is weaker.",
             cost: new Decimal(5.25e70),
             style: {'width':'140px'},
+            set: 3,
             unlocked() {
                 return hasUpgrade(this.layer, 21) && hasUpgrade('k', 11)
             },
@@ -381,6 +398,7 @@ addLayer("p", {
             },
             cost: new Decimal(7e135),
             style: {'width':'280px'},
+            set: 3,
             unlocked() {
                 return hasUpgrade(this.layer, 21) && hasUpgrade('k', 11)
             },
@@ -398,6 +416,7 @@ addLayer("p", {
             description: "Rainbows, Amoebas, and Cherries scale based on your Corn.<br>Unlock Plot #5.",
             cost: new Decimal("1e2400"),
             style: {'width':'140px'},
+            set: 4,
             unlocked() {
                 return hasUpgrade(this.layer, 29) && hasMilestone('k', 27)
             },
@@ -410,16 +429,19 @@ addLayer("p", {
             title: "Hey Guys!",
             description: "^1.01 Rainbows<br>^1.01 Amoebas<br>^1.01 Money<br>Whenever you perform a Kill reset of your own volition, yes_man will immediately appear and critical clicks are 1 in 1 for 10 seconds.",
             cost: new Decimal("1e2700"),
-            style: {'width':'140px'},
+            style: {'width':'140px', 'background-image':'url(resources/RoyalBorder.png)', "background-size":"95% 95%", "background-repeat":"no-repeat", "background-position":"center",},
+            set: 4,
             unlocked() {
                 return hasUpgrade(this.layer, 29) && hasMilestone('k', 27)
             },
+            persisting: true,
         },
         33: {
             title: "Energy Drink",
             description: "3x Crops<br>500x Critical Power while in Precision Mode<br><b>Procrastination</b> scales much faster and its cap is raised ^1.1.<br>Coinflips affect Rainbows.",
             cost: new Decimal("7e3200"),
             style: {'width':'140px'},
+            set: 4,
             unlocked() {
                 return hasUpgrade(this.layer, 29) && hasMilestone('k', 27)
             },
@@ -429,6 +451,7 @@ addLayer("p", {
             description: "1.02x Knives<br>2x Money<br>1.25x Crops<br>7,777x Click Power<br>Amoebas scale based on your Sugarcane.<br>Unlock Plot $6.",
             cost: new Decimal("1e4400"),
             style: {'width':'210px'},
+            set: 4,
             unlocked() {
                 return hasUpgrade(this.layer, 29) && hasMilestone('k', 27)
             },
@@ -442,6 +465,7 @@ addLayer("p", {
             description: "^1.04 Click Power<br>10x Money<br>/2 Crop Grow Speed",
             cost: new Decimal("1e6000"),
             style: {'width':'210px', 'background-image':'url(resources/RoyalBorder.png)', "background-size":"95% 95%", "background-repeat":"no-repeat", "background-position":"center",},
+            set: 4,
             unlocked() {
                 return hasUpgrade(this.layer, 29) && hasMilestone('k', 27)
             },
@@ -453,6 +477,7 @@ addLayer("p", {
             description: "10,000x Click Power<br>Symbols are pressed by hovering over them rather than passing through them.<br>Click Power scales based on your Carrots.",
             cost: new Decimal("1e15000"),
             style: {'width':'140px'},
+            set: 4,
             unlocked() {
                 return hasUpgrade(this.layer, 29) && hasMilestone('k', 27)
             },
@@ -469,6 +494,7 @@ addLayer("p", {
             },
             cost: new Decimal("1e7000"),
             style: {'width':'140px'},
+            set: 4,
             getCap() {
                 return new Decimal(5)
             },
@@ -490,10 +516,12 @@ addLayer("p", {
             description: "^1.1 Amoebas.",
             cost: new Decimal("e8000"),
             style: {'width':'140px'},
+            set: 4,
             unlocked() {
                 return hasUpgrade(this.layer, 29) && hasMilestone('k', 27)
             },
         },
+        /*
         38: {
             title: "Anomaly Agriculture",
             description: "Unlock [SET 2] of The Anomaly Farm... just kidding this is the end of the game until v0.3. Haha.",
@@ -510,11 +538,36 @@ addLayer("p", {
             },
             persisting: true,
         },
+        */
+        38: {
+            title: "Anomaly Agriculture",
+            description: "Crops scale based on your Amoebas, Cherries, and Knives.",
+            cost: new Decimal("e12000"),
+            style: {'width':'140px'},
+            set: 4,
+            unlocked() {
+                return hasUpgrade(this.layer, 29) && hasMilestone('k', 27)
+            },
+            calculateMultipleEffects() {
+                return [player['p'].points.max(1).log(10000).div(100).pow(0.1).add(1), player['g'].points.max(1).log(1000).div(77).pow(0.15).add(1), player['k'].points.max(1).log(10).div(5).pow(0.5).add(1)]
+            },
+            effect() {
+                return this.calculateMultipleEffects()[0].times(this.calculateMultipleEffects()[1]).times(this.calculateMultipleEffects()[2])
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
+            fullDisplay() {
+                return "<h3>"+this.title+"</h3><br>"+this.description+"<br>Currently: ("+format(this.calculateMultipleEffects()[0])+"x,"+format(this.calculateMultipleEffects()[1])+"x,"+format(this.calculateMultipleEffects()[2])+"x):"+this.effectDisplay()+"<br><br>Cost: 1e12,000 amoebas, 1e7,777 cherries, 50,000 knives"
+            },
+            canAfford() {
+                return player.points.gte("e20000") && player[this.layer].points.gte("e12000") && player['g'].points.gte("e7777") && player['k'].points.gte(50000)
+            },
+        },
         39: {
             title: "Realm of Carnage",
             description: "+1 Dark Fragment<br>Click Power scales based on Dark Fragments.",
             cost: new Decimal("e50000"),
             style: {'width':'420px','height':'200px','corner-radius':'30px', 'background-image':'url(resources/RoyalBorder.png)', "background-size":"95% 95%", "background-repeat":"no-repeat", "background-position":"center",},
+            set: 4,
             unlocked() {
                 return hasUpgrade(this.layer, 29) && hasMilestone('k', 27)
             },
@@ -562,7 +615,7 @@ addLayer("p", {
         "blank",
 
         ["display-text", function() {
-            if (hasUpgrade(this.layer, 21) && hasUpgrade('k', 11)) {
+            if ((hasUpgrade(this.layer, 21) && hasUpgrade('k', 11))) {
                 return "<h3>[SET 3]</h2>"
             }
             return ""
@@ -573,7 +626,7 @@ addLayer("p", {
         "blank",
 
         ["display-text", function() {
-            if (hasUpgrade(this.layer, 29) && hasMilestone('k', 27)) {
+            if ((hasUpgrade(this.layer, 29) && hasMilestone('k', 27)) || hasPersistingUpdateOfSet(this.layer, 4)) {
                 return "<h3>[SET 4]</h2>"
             }
             return ""
@@ -1149,7 +1202,7 @@ addLayer("g", {
         },
         22: {
             title: "Odds Against You",
-            description: "Coinflip scaling is weaker but only has a 1 in 4 chance to work.",
+            description: "Coinflip requirement scaling is weaker but only has a 1 in 4 chance to work.",
             cost: new Decimal(1e22),
             style: {'width':'140px'},
             unlocked() {

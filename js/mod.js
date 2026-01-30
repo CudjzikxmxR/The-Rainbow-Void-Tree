@@ -236,6 +236,7 @@ function addedPlayerData() { return {
 	SecretAch1: false,
 	SecretAch2: false,
 	SecretAch3: false,
+	SecretAch4: false,
 }}
 
 // Display extra things at the top of the page
