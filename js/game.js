@@ -453,7 +453,7 @@ const cudGrade16 = {
 			if (hasUpgrade('g', 14)) {
 				var CarpalScale = new Decimal(0.01)
 				if (hasUpgrade('g', 18)) {
-					CarpalScale = CarpalScale.times(777)
+					CarpalScale = CarpalScale.times(777.77)
 				}
 				if (hasUpgrade('p', 34)) {
 					CarpalScale = CarpalScale.times(5)
@@ -569,9 +569,12 @@ const yes_face = {
 			var YesGain = player['k'].points.pow(1.5)
 			var YesIncrement = player['k'].points.sub(1500).div(100).floor()
 			YesGain = YesGain.times((new Decimal(5)).pow(YesIncrement).max(1))
+			if (hasUpgrade('p', 36)) {
+            	YesGain = YesGain.times(upgradeEffect('p', 36))
+        	}
 			player['k'].yes_power = player['k'].yes_power.add(YesGain)
 			doReset('k', true)
-			playSound('YES_ENCOUNTER', 'ogg', 0.6)
+			playSound('YES_ENCOUNTER', 'ogg')
 		}
 	},
 	onMouseEnter() {
@@ -651,12 +654,9 @@ var interval = setInterval(function() {
 		doReset('farm')
 	}
 	if ((hasUpgrade('p', 19) && player['p'].clickingMult.gt(player.minimumClickMult*3)) || (!(hasUpgrade('p', 19)) && player['p'].clickingMult.gt(1))) {
-		var drain = 60
+		var drain = 30
 		if (hasMilestone('k', 25)) {
 			drain *= 2
-		}
-		if (hasMilestone('darkness', 13)) {
-			drain *= 3
 		}
 		var minClickM = new Decimal(1)
 		if (hasUpgrade('p', 19)) {
@@ -666,21 +666,24 @@ var interval = setInterval(function() {
 	} else {
 		resetClickMult()
 	}
-	player.NonClickTime = player.NonClickTime.add(0.007)
-	var catfoodChance = 0.96
-	if (hasUpgrade('p', 36)) {
-		catfoodChance = 0.92
-	}
-	if ((hasMilestone('g', 17) && player['p'].feedingAxeCat) && Math.random()>=catfoodChance) {
-		makeShinies(catFood, 1)
+	player.NonClickTime = player.NonClickTime.add(0.25)
+	var catfoodChance = 0.95
+	if ((hasMilestone('g', 17) && player['p'].feedingAxeCat)) {
+		if (Math.random()>=catfoodChance) {
+			makeShinies(catFood, 1)
+		}
+		if (hasMilestone('darkness', 12)) {
+			
+		}
 	}
 	if (player['g'].AxeCatMult) {
 		if (player['g'].AxeCatMult && player['p'].clickingMult) {
-			var axeExp = 0.5
 			var axeDrain = 2000
 			if (hasUpgrade('k', 20)) {
-				axeExp = 0.7
-				axeDrain *= 2
+				axeDrain *= 2.25
+			}
+			if (hasMilestone('darkness', 11)) {
+				axeDrain /= 2
 			}
 			if (player['g'].AxeCatMult.gt(getAxeCap().div(axeDrain).add(1))) {
 				player['g'].AxeCatMult = player['g'].AxeCatMult.add(getAxeCap().div(-axeDrain))

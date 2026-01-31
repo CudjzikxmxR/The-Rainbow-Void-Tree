@@ -207,7 +207,7 @@ addLayer("loren", {
         
         Dark: {
             title: "Darkness [Layer ∆]",
-            body() {return "Darkness in its purest form. Tracks how many Dark Fragments you have and grants bonuses for achieving milestones with them. All in the name of the almighty Axe Cat."},
+            body() {return "Darkness in its purest form. Tracks how many Dark Fragments you have. As you obtain more Dark Fragments, you'll get stronger, but at a cost... It's all in the name of the almighty Axe Cat."},
             titleStyle() {return {"background-color": tmp['darkness'].color}},
             bodyStyle() {return {"border-color":tmp['darkness'].color, "text-align":"left", "padding-left":"7px"}},
             style() {return {"border-color":tmp['darkness'].color}},

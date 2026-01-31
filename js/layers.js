@@ -88,7 +88,7 @@ addLayer("p", {
             mult = mult.div(1e7)
         }
         if (hasAchievement('a', 16)) {
-            mult = mult.times(5e10)
+            mult = mult.times(100)
         }
         if (hasUpgrade('p', 31)) {
             mult = mult.times(upgradeEffect('p', 31))
@@ -100,20 +100,20 @@ addLayer("p", {
 		    mult = mult.times(1000)
         }
         if (hasMilestone('k', 30)) {
-		    mult = mult.times("1e500")
+		    mult = mult.times("1e200")
         }
         if (hasMilestone('darkness', 12)) {
-		    mult = mult.times(1000000)
+		    mult = mult.times(7e9)
 	    }
-        if (this.getAxeStatus()) {
+        if (hasUpgrade('p', 36)) {
+            mult = mult.times(upgradeEffect('p', 36))
+        }
+        if (player['p'].feedingAxeCat && hasMilestone('g', 17)) {
             mult = mult.times(0)
         }
         return mult
     },
     autoUpgrade() {
-        if (hasUpgrade(this.layer, 35) && !player.AntivirusLevel>0) {
-            return false
-        }
         if (hasUpgrade('g', 26)) {
             return 29
         }
@@ -152,19 +152,11 @@ addLayer("p", {
         }  
     },
     layerShown(){return true},
-    
-    getAxeStatus() {
-        if (player[this.layer].feedingAxeCat && hasMilestone('g', 17)) {
-            return true
-        }
-        return false
-    },
-    
 
     upgrades: {
         11: {
             title: "Pride Month",
-            description: "2x Rainbows",
+            description: "2.00x Rainbows",
             cost: new Decimal(5),
             style: {'width':'140px'},
             set: 1,
@@ -200,18 +192,18 @@ addLayer("p", {
                 }
                 if (hasUpgrade('farm', 17)) {
                     scaleCap = scaleCap.times(player['g'].AxeCatMult)
-                    scaleSpeed = scaleSpeed.times(7)
+                    scaleSpeed = scaleSpeed.times(7.77)
                     scaleExpo = scaleExpo.times(7)
                 }
                 if (hasUpgrade(this.layer, 33)) {
                     scaleSpeed = scaleSpeed.times(77)
-                    scaleExpo = scaleExpo.times(1.6)
+                    scaleExpo = scaleExpo.times(1.77)
                     scaleCap = scaleCap.pow(1.1)
                 }
                 return [scaleCap, scaleSpeed, scaleExpo]
             },
             description() {
-                return "0.1x Rainbows<br>Rainbow gain now increases over time, capped at " + format(this.getScaling()[0]) + "x."
+                return "/10.00 Rainbows<br>Rainbow gain now increases over time, capped at " + format(this.getScaling()[0]) + "x."
             },
             //description: "0.1x Rainbows<br>Rainbow gain now increases over time, capped at 1000x.",
             cost: new Decimal(50),
@@ -260,7 +252,7 @@ addLayer("p", {
         //Set 2
         17: {
             title: "Mitosis",
-            description: "2x Amoebas",
+            description: "2.00x Amoebas",
             cost: new Decimal(20000),
             style: {'width':'140px'},
             set: 2,
@@ -270,7 +262,7 @@ addLayer("p", {
         },
         18: {
             title: "Anomaly Annihilating",
-            description: "2.5x Rainbows<br>4x Click Power",
+            description: "2.50x Rainbows<br>4.00x Click Power",
             cost: new Decimal(1e6),
             style: {'width':'140px'},
             set: 2,
@@ -296,7 +288,7 @@ addLayer("p", {
         },
         21: {
             title: "This Is Overpowered",
-            description: "100x Click Power",
+            description: "100.00x Click Power",
             cost: new Decimal(1e8),
             style: {'width':'140px'},
             set: 2,
@@ -310,7 +302,7 @@ addLayer("p", {
         //Set 3
         22: {
             title: "Woke Agenda",
-            description: "10x Rainbows",
+            description: "10.00x Rainbows",
             cost: new Decimal(1e12),
             style: {'width':'140px'},
             set: 3,
@@ -348,7 +340,7 @@ addLayer("p", {
         },
         25: {
             title: "Army of Amoebas",
-            description: "<b>Procrastination</b>'s cap is 10x larger. <b>Procrastination</b> has an effect on Amoebas.",
+            description: "<b>Procrastination</b>'s cap is 10.00x larger. <b>Procrastination</b> has an effect on Amoebas.",
             cost: new Decimal(5e25),
             style: {'width':'140px'},
             set: 3,
@@ -421,13 +413,13 @@ addLayer("p", {
                 return hasUpgrade(this.layer, 29) && hasMilestone('k', 27)
             },
             effect() {
-                return player['farm'].Corn.add(1).pow(5).max(1)
+                return player['farm'].Corn.add(1).pow(5).times(10).max(1)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
         32: {
             title: "Hey Guys!",
-            description: "^1.01 Rainbows<br>^1.01 Amoebas<br>^1.01 Money<br>Whenever you perform a Kill reset of your own volition, yes_man will immediately appear and critical clicks are 1 in 1 for 10 seconds.",
+            description: "^1.01 Rainbows<br>^1.01 Amoebas<br>^1.01 Money<br>Whenever you perform a Kill reset of your own volition, yes_man will immediately appear and critical clicks are 1 in 1 for 30 seconds.",
             cost: new Decimal("1e2700"),
             style: {'width':'140px', 'background-image':'url(resources/RoyalBorder.png)', "background-size":"95% 95%", "background-repeat":"no-repeat", "background-position":"center",},
             set: 4,
@@ -438,8 +430,8 @@ addLayer("p", {
         },
         33: {
             title: "Energy Drink",
-            description: "3x Crops<br>500x Critical Power while in Precision Mode<br><b>Procrastination</b> scales much faster and its cap is raised ^1.1.<br>Coinflips affect Rainbows.",
-            cost: new Decimal("7e3200"),
+            description: "3.00x Crops<br>500.00x Critical Power while in Precision Mode.<br><b>Procrastination</b> scales much faster and its cap is raised ^1.10.<br>Coinflips affect Rainbows.",
+            cost: new Decimal("7e3250"),
             style: {'width':'140px'},
             set: 4,
             unlocked() {
@@ -448,21 +440,21 @@ addLayer("p", {
         },
         34: {
             title: "Cotton Cuddy",
-            description: "1.02x Knives<br>2x Money<br>1.25x Crops<br>7,777x Click Power<br>Amoebas scale based on your Sugarcane.<br>Unlock Plot $6.",
-            cost: new Decimal("1e4400"),
+            description: "1.02x Knives<br>2.00x Money<br>1.25x Crops<br>7,777x Click Power<br>Amoebas scale based on your Sugarcane.<br>Unlock Plot $6.",
+            cost: new Decimal("1e4500"),
             style: {'width':'210px'},
             set: 4,
             unlocked() {
                 return hasUpgrade(this.layer, 29) && hasMilestone('k', 27)
             },
             effect() {
-                return player['farm'].Sugarcane.add(0).pow(5).times(100).max(1)
+                return player['farm'].Sugarcane.add(0).pow(5.5).times(100).max(1)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
         35: {
             title: "Development Hell",
-            description: "^1.04 Click Power<br>10x Money<br>/2 Crop Grow Speed",
+            description: "^1.07 Click Power<br>25.00x Money<br>/2.00 Crop Grow Speed",
             cost: new Decimal("1e6000"),
             style: {'width':'210px', 'background-image':'url(resources/RoyalBorder.png)', "background-size":"95% 95%", "background-repeat":"no-repeat", "background-position":"center",},
             set: 4,
@@ -490,19 +482,19 @@ addLayer("p", {
         36: {
             title: "Choke Point",
             description() {
-                return "This rapidly increases in multiplier for Click Power, Money, Crops, Catfood Effectiveness, and yes_man but resets once you click a symbol, capped at "+format(this.getCap())+"x."
+                return "This rapidly increases in multiplier for Rainbows, Amoebas, and yes_man but resets once you click a symbol, capped at "+format(this.getCap())+"x."
             },
-            cost: new Decimal("1e7000"),
+            cost: new Decimal("7e6543"),
             style: {'width':'140px'},
             set: 4,
             getCap() {
-                return new Decimal(5)
+                return new Decimal(45)
             },
             unlocked() {
                 return hasUpgrade(this.layer, 29) && hasMilestone('k', 27)
             },
             effect() {
-                return player.NonClickTime.add(1).min(5)
+                return player.NonClickTime.add(1).min(this.getCap())
             },
             effectDisplay() {
                 if (upgradeEffect(this.layer, this.id).eq(this.getCap())) {
@@ -512,9 +504,9 @@ addLayer("p", {
             },
         },
         37: {
-            title: "My Best Buddy",
-            description: "^1.1 Amoebas.",
-            cost: new Decimal("e8000"),
+            title: "<h2>E</h2>ternal<br><h2>X</h2>algebra<br><h2>I</h2>class<br><h2>T</h2>withcud",
+            description: "Unlock <b>The Equation</b>.<br>[Refer to the Guide, this is a doozy.]",
+            cost: new Decimal("e7500"),
             style: {'width':'140px'},
             set: 4,
             unlocked() {
@@ -542,27 +534,37 @@ addLayer("p", {
         38: {
             title: "Anomaly Agriculture",
             description: "Crops scale based on your Amoebas, Cherries, and Knives.",
-            cost: new Decimal("e12000"),
+            cost: new Decimal("e7000"),
             style: {'width':'140px'},
             set: 4,
             unlocked() {
                 return hasUpgrade(this.layer, 29) && hasMilestone('k', 27)
             },
             calculateMultipleEffects() {
-                return [player['p'].points.max(1).log(10000).div(100).pow(0.1).add(1), player['g'].points.max(1).log(1000).div(77).pow(0.15).add(1), player['k'].points.max(1).log(10).div(5).pow(0.5).add(1)]
+                return [player['p'].points.max(1).log(10000).div(1000).pow(0.1).add(1), player['g'].points.max(1).log(1000).div(777).pow(0.14).add(1), player['k'].points.max(1).log(20).div(10).pow(0.4).add(1)]
             },
             effect() {
                 return this.calculateMultipleEffects()[0].times(this.calculateMultipleEffects()[1]).times(this.calculateMultipleEffects()[2])
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
             fullDisplay() {
-                return "<h3>"+this.title+"</h3><br>"+this.description+"<br>Currently: ("+format(this.calculateMultipleEffects()[0])+"x,"+format(this.calculateMultipleEffects()[1])+"x,"+format(this.calculateMultipleEffects()[2])+"x):"+this.effectDisplay()+"<br><br>Cost: 1e12,000 amoebas, 1e7,777 cherries, 50,000 knives"
+                return "<h3>"+this.title+"</h3><br>"+this.description+"<br>Currently: ("+format(this.calculateMultipleEffects()[0])+"x,"+format(this.calculateMultipleEffects()[1])+"x,"+format(this.calculateMultipleEffects()[2])+"x):"+this.effectDisplay()+"<br><br>Cost: 1e9,000 amoebas, 1e7,777 cherries, 35,000 knives"
             },
             canAfford() {
-                return player.points.gte("e20000") && player[this.layer].points.gte("e12000") && player['g'].points.gte("e7777") && player['k'].points.gte(50000)
+                return player[this.layer].points.gte("e9000") && player['g'].points.gte("e7777") && player['k'].points.gte(35000)
             },
         },
         39: {
+            title: "My Best Buddy",
+            description: "^1.25 Amoebas...",
+            cost: new Decimal("e10000"),
+            style: {'width':'140px'},
+            set: 4,
+            unlocked() {
+                return hasUpgrade(this.layer, 29) && hasMilestone('k', 27)
+            },
+        },
+        41: {
             title: "Realm of Carnage",
             description: "+1 Dark Fragment<br>Click Power scales based on Dark Fragments.",
             cost: new Decimal("e50000"),
@@ -633,8 +635,8 @@ addLayer("p", {
         }],
         ["row", [["upgrade",31],["upgrade",32],["upgrade",33]]],
         ["row", [["upgrade",34],["upgrade",35]]],
-        ["row", [["upgrade",36],["upgrade",37],["upgrade",38]]],
-        ["upgrade",39],
+        ["row", [["upgrade",36],["upgrade",37],["upgrade",38],["upgrade",39]]],
+        ["upgrade",41],
         //["upgrade",38],
         "blank",
     ],
@@ -691,7 +693,7 @@ addLayer("a", {
             image: "resources/Amoeba_Icon.png",
             done() {return player['p'].points.gte(new Decimal(1e17))},
             unlocked() {return true},
-            tooltip: "Achieve 1.00e17 amoebas.<br>Award: 1.5x Amoebas", 
+            tooltip: "Achieve 1.00e17 amoebas.<br>Award: 1.50x Amoebas", 
         },
         13: {
             name: "A Cudillion Cuds",
@@ -705,7 +707,7 @@ addLayer("a", {
             image: "resources/Rune_Icon.png",
             done() {return player.minimumClickMult >= 1000},
             unlocked() {return hasUpgrade('p', 16) || player['g'].unlocked || player['k'].unlocked},
-            tooltip: "Click 1,000 symbols.<br>Award: 3x Click Power.", 
+            tooltip: "Click 1,000 symbols.<br>Award: 3.00x Click Power.", 
             onComplete() {
                 resetClickMult()
             },
@@ -722,7 +724,7 @@ addLayer("a", {
             image: "resources/Rune_Icon.png",
             done() {return player.minimumClickMult >= 50000},
             unlocked() {return hasUpgrade('p', 16) || player['g'].unlocked || player['k'].unlocked},
-            tooltip: "Click 50,000 symbols.<br>Award: 5.00e10x Amoebas", 
+            tooltip: "Click 50,000 symbols.<br>Award: 100.00x Amoebas", 
         },
         //Chris Layer Achievements
         17: {
@@ -740,11 +742,11 @@ addLayer("a", {
             tooltip: "Successfully gain Cherry multiplier from flipping a coin.<br>Award: N/A", 
         },
         19: {
-            name: "Crop Farming",
+            name: "Cherry Surplus",
             image: "resources/Cherries_Icon.png",
             done() {return player['g'].points.gte(new Decimal(1e7))},
             unlocked() {return player['g'].unlocked},
-            tooltip: "Achieve 1.00e7 Cherries.<br>Award: 2x Amoebas", 
+            tooltip: "Achieve 1.00e7 Cherries.<br>Award: 2.00x Amoebas", 
         },
         21: {
             name: "Crack Addict",
@@ -891,7 +893,7 @@ addLayer("a", {
             image: "resources/AnomalyFarm_Icon.png",
             done() {return player['farm'].Potatoes.gte(3000)},
             unlocked() {return player['farm'].unlocked},
-            tooltip: "Achieve 3,000 Potatoes.<br>Award: 1.1x Crops", 
+            tooltip: "Achieve 3,000 Potatoes.<br>Award: 1.10x Crops", 
         },
         41: {
             name: "Into Madness",
@@ -1053,11 +1055,14 @@ addLayer("g", {
 		    mult = mult.times(1000)
         }
         if (hasMilestone('darkness', 13)) {
-		    mult = mult.times(500000)
+		    mult = mult.times(1e7)
 	    }
         mult = mult.times(player['g'].CoinflipMult)
         mult = mult.times(player['g'].AxeCatMult)
         mult = mult.times(player['k'].yes_power)
+        if (player['p'].feedingAxeCat && hasMilestone('g', 17) && hasMilestone('darkness', 13)) {
+            mult = mult.times(0)
+        }
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -1068,9 +1073,12 @@ addLayer("g", {
         if (hasUpgrade('g', 31)) {
             exp = exp.times(upgradeEffect('g', 31))
         }
+        if (hasMilestone('darkness', 13)) {
+		    exp = exp.times(1.01)
+	    }
         return exp
     },
-    softcap: new Decimal("e7777"), 
+    softcap: new Decimal("e77777"), 
     softcapPower: new Decimal(0.1), 
     row: 1,
     hotkeys: [
@@ -1100,11 +1108,9 @@ addLayer("g", {
             this.unlockOrder = 0
             player.LayerTwoChoice = "g"
         }
+        playSound('GambleReset', 'wav')
     },
     doReset(resettingLayer) {
-        if (resettingLayer==this.layer) {
-            playSound('GambleReset', 'wav')
-        }
         var LoseAxe = true
         if (hasMilestone('k', 26) && resettingLayer == 'g')
             LoseAxe = false
@@ -1122,23 +1128,23 @@ addLayer("g", {
     upgrades: {
         11: {
             title: "Masochism",
-            description: "0.25x Rainbows<br>7x Amoebas",
+            description: "/4.00 Rainbows<br>7x Amoebas",
             cost: new Decimal(7),
             style: {'width':'140px'},
         },
         12: {
             title: "RNG",
-            description: "This grants anywhere from 0.1x-25x Rainbows at any given moment.",
+            description: "This grants anywhere from 0.01x-25.00x Rainbows at any given moment.",
             cost: new Decimal(27),
             style: {'width':'140px'},
             effect() {
-                return Math.max(Math.random()*25, 0.1)
+                return Math.max(Math.random()*25, 0.01)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
         13: {
             title: "I'm Gonna Shit",
-            description: "2.5x Click Power<br>Symbols spawn more often and continue spawning without <b>Activity Check</b>.",
+            description: "2.50x Click Power<br>Symbols spawn more often and continue spawning without <b>Activity Check</b>.",
             cost: new Decimal(57),
             style: {'width':'140px'},
             onPurchase() {
@@ -1180,20 +1186,20 @@ addLayer("g", {
         },
         18: {
             title: "I Love Crack",
-            description: "<b>Carpal Tunnel</b> scales 777x faster.<br>7x Critical Power",
+            description: "<b>Carpal Tunnel</b> scales 777.77x faster.<br>7.00x Critical Power",
             cost: new Decimal(1.77e10),
             style: {'width':'140px'},
         },
         19: {
             title: "Revolver",
-            description: "6x Click Power<br>Critical clicks are now 1 in 6.<br>Unlock [SET 2] of Cherry upgrades.",
+            description: "6.00x Click Power<br>Critical clicks are now 1 in 6.<br>Unlock [SET 2] of Cherry upgrades.",
             cost: new Decimal(7.77e17),
             style: {'width':'140px'},
         },
         //Set 2
         21: {
             title: "Inside Joke",
-            description: "52x Rainbows<br>(10 - 4)x Amoebas",
+            description: "<b>52</b>x Rainbows<br>(10 - 4)x Amoebas",
             cost: new Decimal(4e19),
             style: {'width':'140px'},
             unlocked() {
@@ -1254,7 +1260,7 @@ addLayer("g", {
         },
         26: {
             title: "<img src='resources/THEBROTHERSCOCK.png' alt='Image failed to load.' width='100px' height='30px'>",
-            description: "500x Click Power<br>You automatically purchase [SET 3] Amoeba upgrades.",
+            description: "500.00x Click Power<br>You automatically purchase [SET 3] Amoeba upgrades.",
             cost: new Decimal("1e900"),
             style: {'width':'140px'},
             fullDisplay() {
@@ -1294,7 +1300,7 @@ addLayer("g", {
         },
         29: {
             title: "First We Crop, Then We Farm",
-            description: "1.01x Crops for every 100 OoMs of Cherries.<br>1.5x Amoebas for every OoM of Axe Cat.",
+            description: "1.01x Crops for every 100 OoMs of Cherries.<br>1.50x Amoebas for every OoM of Axe Cat.",
             cost: new Decimal("7.77e2000"),
             style: {'width':'140px'},
             fullDisplay() {
@@ -1341,8 +1347,8 @@ addLayer("g", {
                 if (hasUpgrade('g', 22)) {
                     scale = new Decimal(17)
                 }
-                if (player['g'].CoinflipMult.gte("1e80")) {
-                    scale = scale.times(player['g'].CoinflipMult.log(10).div(10).add(1))
+                if (player['g'].CoinflipMult.gte("1e30")) {
+                    scale = scale.times(player['g'].CoinflipMult.log(7).div(4).add(1))
                 }
                 //coinReq = coinReq.times(Math.pow(scale, Math.log2(Math.pow(player['g'].CoinflipMult, 1.02))))
                 coinReq = coinReq.times(scale.pow(player['g'].CoinflipMult.pow(1.02).log2()))
@@ -1351,9 +1357,6 @@ addLayer("g", {
                 }
                 if (player['g'].CoinflipMult.gte("1e9")) {
                     coinReq = coinReq.pow(3)
-                }
-                if (player['g'].CoinflipMult.gte("1e12")) {
-                    coinReq = coinReq.pow(2)
                 }
                 if (player['g'].CoinflipMult.gte("1e60")) {
                     coinReq = coinReq.pow(1.2)
@@ -1375,8 +1378,8 @@ addLayer("g", {
                 if (hasUpgrade('g', 22)) {
                     scale = new Decimal(17)
                 }
-                if (player['g'].CoinflipMult.gte("1e80")) {
-                    scale = scale.times(player['g'].CoinflipMult.log(10).div(10).add(1))
+                if (player['g'].CoinflipMult.gte("1e30")) {
+                    scale = scale.times(player['g'].CoinflipMult.log(7).div(4).add(1))
                 }
                 //coinReq = coinReq.times(Math.pow(scale, Math.log2(Math.pow(player['g'].CoinflipMult, 1.02))))
                 coinReq = coinReq.times(scale.pow(player['g'].CoinflipMult.pow(1.02).log2()))
@@ -1385,9 +1388,6 @@ addLayer("g", {
                 }
                 if (player['g'].CoinflipMult.gte("1e9")) {
                     coinReq = coinReq.pow(3)
-                }
-                if (player['g'].CoinflipMult.gte("1e12")) {
-                    coinReq = coinReq.pow(2)
                 }
                 if (player['g'].CoinflipMult.gte("1e60")) {
                     coinReq = coinReq.pow(1.2)
@@ -1460,8 +1460,8 @@ addLayer("g", {
         "main-display",
         ["display-text",
             function() {
-                if (player[this.layer].points.gte(new Decimal("e7777"))) {
-                   return "Cherry gain is softcapped after 1.00e7777."
+                if (player[this.layer].points.gte(new Decimal("e77777"))) {
+                   return "Cherry gain is softcapped after 1.00e77777."
                 }
                 return null
              }],
@@ -1603,6 +1603,9 @@ addLayer("k", {
         if (hasMilestone('k', 29)) {
 		    mult = mult.times(1.1)
         }
+        if (player['p'].feedingAxeCat && hasMilestone('g', 17) && hasMilestone('darkness', 13)) {
+            mult = mult.times(0)
+        }
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -1624,20 +1627,6 @@ addLayer("k", {
         //return hasUpgrade('p', 21) && player.points.gte(tmp[this.layer].requires())
         //return tmp[this.layer].baseAmount.gte(tmp[this.layer].nextAt)
     },
-    doReset(resettingLayer) {
-        if (resettingLayer==this.layer) {
-            playSound('KillReset')
-        }
-    },
-    onPrestige() {
-        if (hasUpgrade('p', 32)) {
-            makeShinies(yes_face, 1)
-            player.MustCrit = true
-            setTimeout(function () {
-                player.MustCrit = false
-            }, 10000);
-        }
-    },
     canBuyMax() {
         return hasMilestone(this.layer, 17)
     },
@@ -1653,6 +1642,14 @@ addLayer("k", {
         if (this.getUnlockOrder()!=0 && player.LayerTwoChoice!="!") {
             this.unlockOrder = 0
             player.LayerTwoChoice = "k"
+        }
+        playSound('KillReset')
+        if (hasUpgrade('p', 32)) {
+            makeShinies(yes_face, 1)
+            player.MustCrit = true
+            setTimeout(function () {
+                player.MustCrit = false
+            }, 30000);
         }
     },
     deactivated() {
@@ -1675,7 +1672,7 @@ addLayer("k", {
         },
         12: {
             title: "Blood Cells",
-            description: "6x Amoebas",
+            description: "6.00x Amoebas",
             cost: new Decimal(4),
             style: {'width':'140px'},
             onPurchase() {
@@ -1696,7 +1693,7 @@ addLayer("k", {
         },
         14: {
             title: "Genocide",
-            description: "Symbols spawn more often.<br>10x Click Power",
+            description: "Symbols spawn more often.<br>10.00x Click Power",
             cost: new Decimal(12),
             style: {'width':'140px'},
             onPurchase() {
@@ -1706,7 +1703,7 @@ addLayer("k", {
         },
         15: {
             title: "Adrenaline",
-            description: "/10 Rainbows<br>2x Knives<br><b>Procrastination</b> reaches its cap faster.<br>Amoebas scale based on your Knives.",
+            description: "/10.00 Rainbows<br>2.00x Knives<br><b>Procrastination</b> reaches its cap faster.<br>Amoebas scale based on your Knives.",
             cost: new Decimal(20),
             style: {'width':'140px'},
             onPurchase() {
@@ -1720,7 +1717,7 @@ addLayer("k", {
         },
         16: {
             title: "This Is Overpowered [II]",
-            description: "4x Amoebas<br>3x Click Power<br>2x Knives<br>Rainbows scale based on Rainbows again, but weaker.<br><br>If this layer was picked last, re-enable the Cherry layer.",
+            description: "4.00x Amoebas<br>3.00x Click Power<br>2.00x Knives<br>Rainbows scale based on Rainbows again, but weaker.<br><br>If this layer was picked last, re-enable the Cherry layer.",
             cost: new Decimal(36),
             style: {'width':'240px'},
             onPurchase() {
@@ -1740,7 +1737,7 @@ addLayer("k", {
         //Set 2
         17: {
             title: "Dark And Twisted Upgrade",
-            description: "1.1x Knives.<br>Axe Cat affects Amoebas at a reduced rate.",
+            description: "1.10x Knives.<br>Axe Cat affects Amoebas at a reduced rate.",
             cost: new Decimal(500),
             style: {'width':'140px'},
             unlocked() {
@@ -1786,7 +1783,7 @@ addLayer("k", {
         },
         19: {
             title: "This Is The Relationship I Want To Have With You",
-            description: "/10,000,000 Amoebas.<br>^1.1 Rainbows<br>3x Critical Power",
+            description: "/10,000,000 Amoebas.<br>^1.10 Rainbows<br>3.00x Critical Power",
             cost: new Decimal(860),
             style: {'width':'140px'},
             unlocked() {
@@ -1832,7 +1829,7 @@ addLayer("k", {
         },
         22: {
             title: "yes_upgrade",
-            description: "Summon the wrath of yes_man to cause mass destruction. His face has a 1 in 100 chance to spawn in place of a symbol. When hovered over, a Kill reset is forced without awarding Knives, but it increases <b>Carpal Tunnel</b> and Click Power multiplier based on your Knives. Scales 5x more for every 100 Knives past 1500.",
+            description: "Summon the wrath of yes_man to cause mass destruction. His face has a 1 in 100 chance to spawn in place of a symbol. When hovered over, a Kill reset is forced without awarding Knives, but it increases <b>Carpal Tunnel</b> and Click Power multiplier based on your Knives. Scales 5.00x more for every 100 Knives past 1500.",
             cost: new Decimal(1600),
             style: {'width':'700px','corner-shape': 'squircle','corner-radius':'10px'},
             unlocked() {
@@ -1854,7 +1851,7 @@ addLayer("k", {
         11: {
             requirementDescription: "1 Killstreak",
             effectDescription() {
-                return "3x Rainbows<br>1.5x Amoebas"
+                return "3.00x Rainbows<br>1.50x Amoebas"
             },
             done() {return player[this.layer].best.gte(1)},
         },
@@ -1863,7 +1860,7 @@ addLayer("k", {
             persisting: true,
             style: {'background-image':'url(resources/RoyalBorder.png)', "background-size":"95%", "background-repeat":"no-repeat", "background-position":"center",},
             effectDescription() {
-                return '2x Click Power<br>You automatically "click" symbols when passing through them.'
+                return '2.00x Click Power<br>You automatically "click" symbols when passing through them.'
             },
             done() {return player[this.layer].best.gte(3)},
             unlocked() {return hasMilestone(this.layer, this.id-1)},
@@ -1871,7 +1868,7 @@ addLayer("k", {
         13: {
             requirementDescription: "4 Killstreak",
             effectDescription() {
-                return "4x Rainbows"
+                return "4.00x Rainbows"
             },
             done() {return player[this.layer].best.gte(4)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
@@ -1879,7 +1876,7 @@ addLayer("k", {
         14: {
             requirementDescription: "5 Killstreak",
             effectDescription() {
-                return "<b>Procrastination</b> reaches its cap faster.<br><b>Procrastination</b> now caps at 5000x."
+                return "<b>Procrastination</b> reaches its cap faster.<br><b>Procrastination</b> now caps at 5,000x."
             },
             done() {return player[this.layer].best.gte(5)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
@@ -1921,7 +1918,7 @@ addLayer("k", {
         17: {
             requirementDescription: "15 Killstreak",
             effectDescription() {
-                return "/100 Rainbows.<br>15x Amoebas.<br>You can earn max Knives from Kill resets."
+                return "/100.00 Rainbows<br>15.00x Amoebas<br>You can earn max Knives from Kill resets."
             },
             done() {return player[this.layer].best.gte(15)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
@@ -1950,7 +1947,7 @@ addLayer("k", {
         20: {
             requirementDescription: "300 Killstreak",
             effectDescription() {
-                return "^1.05 Rainbows."
+                return "^1.05 Rainbows"
             },
             done() {return player[this.layer].best.gte(300)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
@@ -1958,7 +1955,7 @@ addLayer("k", {
         21: {
             requirementDescription: "360 Killstreak",
             effectDescription() {
-                return "^1.05 Amoebas<br>Click Power scales based on your Rainbows.<br>Currently: "+format(player.points.add(1).max(0).log(1.01))+"x"
+                return "^1.05 Amoebas<br>Click Power scales based on your Rainbows.<br>Currently: "+format(player.points.max(1).log(1.001).times(10).add(1))+"x"
             },
             done() {return player[this.layer].best.gte(360)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
@@ -1998,7 +1995,7 @@ addLayer("k", {
         26: {
             requirementDescription: "1,500 Killstreak",
             effectDescription() {
-                return "<b>Activity Check</b> is no longer reset upon Cellular Division resets.<br><b>Activity Check</b> and Axe Cat are no longer reset upon Gamble resets."
+                return "<b>Activity Check</b>'s multiplier is no longer reset upon Cellular Division resets.<br><b>Activity Check</b>'s multiplier and Axe Cat are no longer reset upon Gamble resets."
             },
             done() {return player[this.layer].best.gte(1500)},
             unlocked() {return hasMilestone(this.layer, this.id-1)},
@@ -2033,7 +2030,7 @@ addLayer("k", {
         30: {
             requirementDescription: "30,000 Killstreak",
             effectDescription() {
-                return "+1 Dark Fragment<br>1.00e500x Amoebas"
+                return "+1 Dark Fragment<br>1.00e200x Amoebas"
             },
             done() {return player[this.layer].best.gte(30000)},
             unlocked() {return hasMilestone(this.layer, this.id-1)},
@@ -2202,11 +2199,14 @@ addLayer("farm", {
 		    mult = mult.times(1.5)
         }
         if (hasUpgrade('p', 35)) {
-		    mult = mult.times(10)
+		    mult = mult.times(25)
         }
         if (hasMilestone('darkness', 12)) {
 		    mult = mult.times(3)
 	    }
+        if (player['p'].feedingAxeCat && hasMilestone('g', 17) && hasMilestone('darkness', 13)) {
+            mult = mult.times(0)
+        }
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -2289,7 +2289,7 @@ addLayer("farm", {
         },
         14: {
             title: "Economic Boom",
-            description: "2x Money<br>Unlock [SET 3] of Cherry upgrades.<br>Unlock Plot #3.",
+            description: "2.00x Money<br>Unlock [SET 3] of Cherry upgrades.<br>Unlock Plot #3.",
             fullDisplay() {
                 return "<h3>Economic Boom</h3><br>" + this.description + "<br><br>Cost: $600"
             },
@@ -2298,7 +2298,7 @@ addLayer("farm", {
         },
         15: {
             title: "Scarcity",
-            description: "^1.025 Cherries<br>2x Crop Grow Speed while Axe Cat is hungry",
+            description: "^1.025 Cherries<br>2x Crop Grow Speed while Axe Cat is hungry.",
             fullDisplay() {
                 return "<h3>Scarcity</h3><br>" + this.description + "<br><br>Cost: $5,000, 10 wheat, 10 tomatoes, 10 carrots, 10 corn, 10 potatoes"
             },
@@ -2317,7 +2317,7 @@ addLayer("farm", {
         },
         16: {
             title: "Embrace The Farmlife",
-            description: "1.5x Crop Grow Speed.<br>Unlock new crops.<br>Unlock Plot #4.",
+            description: "1.50x Crop Grow Speed.<br>Unlock new crops.<br>Unlock Plot #4.",
             fullDisplay() {
                 return "<h3>Embrace The Farmlife</h3><br>" + this.description + "<br><br>Cost: $100,000"
             },
@@ -3219,21 +3219,27 @@ addLayer("darkness", {
         11: {
             requirementDescription: "1 Dark Fragment - Into Darkness",
             effectDescription() {
-                return "50,000,000x Rainbows<br>Symbols are pressed by hovering over them rather than passing through them.<br><font color='#ff0000'>Axe Cat is hungrier, making the multiplier drain twice as fast.</font>"
+                return "5.00e10x Rainbows<br>Symbols are pressed by hovering over them rather than passing through them.<br><font color='#ff0000'>Axe Cat is hungrier, making the multiplier drain twice as fast.</font>"
             },
             done() {return player['darkness'].DarkFragments.gte(1)},
         },
         12: {
             requirementDescription: "2 Dark Fragments - Darker Yet Darker",
             effectDescription() {
-                return "1,000,000x Amoebas<br>3x Money<br>1.25x Crops<br><font color='#ff0000'>Axe Cat wants to try more food, so it'll start consuming your crops! You lose a random crop every second while feeding Axe Cat.</font>"
+                return "7.00e9x Amoebas<br>3x Money<br>1.25x Crops<br><font color='#ff0000'>Axe Cat wants to try more food, so it'll start consuming your crops! You lose a random crop every second while feeding Axe Cat.</font>"
+            },
+            unlocked() {
+                return hasMilestone(this.layer, this.id-1)
             },
             done() {return player['darkness'].DarkFragments.gte(2)},
         },
         13: {
             requirementDescription: "3 Dark Fragments - Something Is Coming",
             effectDescription() {
-                return "1.00e20x and ^1.01 Cherries<br><font color='#ff0000'>Axe Cat demands more attention. You are unable to earn Cherries, Knives, Money, or Crops while feeding Axe Cat. You can no longer critically click while feeding Axe Cat.</font>"
+                return "10,000,000x and ^1.01 Cherries<br><font color='#ff0000'>Axe Cat demands more attention. You are unable to earn Cherries, Knives, Money, or Crops while feeding Axe Cat.</font>"
+            },
+            unlocked() {
+                return hasMilestone(this.layer, this.id-1)
             },
             done() {return player['darkness'].DarkFragments.gte(3)},
         },
@@ -3241,6 +3247,9 @@ addLayer("darkness", {
             requirementDescription: "4 Dark Fragments - True Form",
             effectDescription() {
                 return "Axe Cat unlocks its true potential.<br><font color='#e70ce7'><b>You won't ever be able to turn back. It's too late.</b></font>"
+            },
+            unlocked() {
+                return hasMilestone(this.layer, this.id-1)
             },
             done() {return player['darkness'].DarkFragments.gte(4)},
         },

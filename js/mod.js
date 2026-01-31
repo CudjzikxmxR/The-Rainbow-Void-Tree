@@ -80,6 +80,8 @@ function getPointGen() {
         gain = gain.times(upgradeEffect('p', 31))
 	if (hasUpgrade('p', 33)) 
         gain = gain.times(player['g'].CoinflipMult)
+	if (hasUpgrade('p', 36)) 
+        gain = gain.times(upgradeEffect('p', 36))
 
 
 	//Chris Layer Upgrades
@@ -132,7 +134,7 @@ function getPointGen() {
 
 	//DARKNESS
 	if (hasMilestone('darkness', 11))
-		gain = gain.times(5e7)
+		gain = gain.times(5e10)
 
 	//Other
 	gain = gain.times(player['g'].AxeCatMult)
@@ -144,8 +146,6 @@ function getPointGen() {
 		gain = gain.pow(1.05)
 	if (hasMilestone('k', 20))
 		gain = gain.pow(1.05)
-	if (hasUpgrade('p', 36))
-		gain = gain.pow(1.07)
 	if (hasUpgrade('k', 19))
 		gain = gain.pow(1.1)
 	if (hasUpgrade('p', 32))
@@ -249,7 +249,7 @@ var displayThings = [
 	},
 	function() {
 		if (hasUpgrade('p', 16) || player['g'].unlocked || player['k'].unlocked) 
-			return "You have clicked <h3>" + player.minimumClickMult + "</h3> symbols.<br>"+"<div class='ghost'>aaa</div>"
+			return "You have clicked <h3>" + format(player.minimumClickMult) + "</h3> symbols.<br>"+"<div class='ghost'>aaa</div>"
 		return ""
 	},
 	function() {return tipMessages[randomTipIndex]},
@@ -291,6 +291,8 @@ function getClickPower() {
 		baseClickPower = baseClickPower.times(6)
 	if (hasAchievement('a', 14))
 		baseClickPower = baseClickPower.times(3)
+	if (hasMilestone('k', 12))
+		baseClickPower = baseClickPower.times(2)
 	if (hasUpgrade('k', 13))
 		baseClickPower = baseClickPower.times(6.66e6)
 	if (hasUpgrade('k', 14))
@@ -302,7 +304,7 @@ function getClickPower() {
 			baseClickPower = baseClickPower.times(Math.pow(3, player['k'].milestones.length-9))
 		}
 	if (hasMilestone('k', 21))
-		baseClickPower = baseClickPower.times(player.points.add(1).max(0).log(1.01))
+		baseClickPower = baseClickPower.times(player.points.max(1).log(1.001).times(10).add(1))
 	if (hasUpgrade('k', 16))
 		baseClickPower = baseClickPower.times(3)
 
@@ -330,7 +332,7 @@ function getClickPower() {
 	//EXPONENTS
 
 	if (hasUpgrade('p', 35))
-		baseClickPower = baseClickPower.pow(1.04)
+		baseClickPower = baseClickPower.pow(1.07)
 
 	return baseClickPower
 }
@@ -365,6 +367,9 @@ function gainCropMult() {
 	if (hasMilestone('darkness', 12)) {
 		mult = mult.times(1.25)
 	}
+	if (player['p'].feedingAxeCat && hasMilestone('g', 17) && hasMilestone('darkness', 13)) {
+        mult = mult.times(0)
+    }
 	return mult
 }
 
