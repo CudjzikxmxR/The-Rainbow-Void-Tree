@@ -2103,7 +2103,7 @@ addLayer("k", {
         25: {
             requirementDescription: "800 Killstreak",
             effectDescription() {
-                return "<b>Activity Check</b> multiplier drains 5.00x faster.<br>Click power scales based on itself.<br>Currently: "+format(getClickPower().pow(0.1))+"x"
+                return "<b>Activity Check</b> multiplier drains 3.00x faster.<br>Click power scales based on itself.<br>Currently: "+format(getClickPower().pow(0.1))+"x"
             },
             done() {return player[this.layer].best.gte(800)},
             unlocked() {return hasMilestone(this.layer, this.id-1)},
