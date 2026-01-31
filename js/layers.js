@@ -406,10 +406,10 @@ addLayer("p", {
             },
             onPurchase() {
                 if (!hasMilestone('k', 22)) {
-                    for (let x = 100; x > 0; x--) {
+                    for (let x = 40; x > 0; x--) {
                         setTimeout(function () {
                             playSound("BombBeeping")
-                        }, 10000-Math.pow(x,2));
+                        }, 10250-Math.pow(x,2)*6.25);
                     }
                     setTimeout(function () {
                         playSound("Explosion")
