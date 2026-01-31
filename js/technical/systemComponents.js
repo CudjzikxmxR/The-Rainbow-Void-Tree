@@ -125,9 +125,9 @@ var systemComponents = {
     'info-tab': {
         template: `
         <div>
-        <h2>The Rainbow Void Tree</h2>
+        <h2><rainbow>The Rainbow Void Tree</rainbow></h2>
         <br>
-        <h3>{{VERSION.withName}}</h3>
+        <h3><rainbow>{{VERSION.withName}}</rainbow></h3>
         <span v-if="modInfo.author">
             <br>
             Made by CudjzikxmxR	

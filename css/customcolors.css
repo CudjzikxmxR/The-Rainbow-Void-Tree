@@ -1,0 +1,24 @@
+royalPurple {
+    color: #6225d1;
+    text-shadow: 0 0 2px #6225d1
+}
+
+rainbow {
+    animation: colorChange 4s infinite;
+    text-shadow: 0 0 2px
+}
+
+@keyframes darkColor {
+    0% { color: #e70ce7; }
+    25% { color: #ee46ee; }
+    50% { color: #9b0fc9; }
+	75% { color:#ee46ee; }
+    90% { color:#bf4be2; }
+	100% { color: #e70ce7; }
+}
+
+pinkDark {
+    color: #e70ce7;
+    animation: darkColor 3s infinite;
+    text-shadow: 0 0 7px
+}

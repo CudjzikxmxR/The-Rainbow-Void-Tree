@@ -609,7 +609,7 @@ addLayer("p", {
                 if (CalculateEquationCorrectness()) {
                     Str += "Which is CORRECT: ^"+format(this.effect()) + " rainbows"
                 } else {
-                    Str += "Which is INCORRECT: No bonus."
+                    Str += "Which is INCORRECT: No effect."
                 }
                 return Str
             },
@@ -2097,7 +2097,7 @@ addLayer("k", {
         25: {
             requirementDescription: "800 Killstreak",
             effectDescription() {
-                return "<b>Activity Check</b> multiplier drains 50% slower.<br>Click power scales based on itself.<br>Currently: "+format(getClickPower().pow(0.1))+"x"
+                return "<b>Activity Check</b> multiplier drains 10x faster.<br>Click power scales based on itself.<br>Currently: "+format(getClickPower().pow(0.1))+"x"
             },
             done() {return player[this.layer].best.gte(800)},
             unlocked() {return hasMilestone(this.layer, this.id-1)},
@@ -3367,7 +3367,7 @@ addLayer("darkness", {
         14: {
             requirementDescription: "4 Dark Fragments - True Form",
             effectDescription() {
-                return "Axe Cat unlocks its true potential.<br><font color='#e70ce7'><b>You won't ever be able to turn back. It's too late.</b></font>"
+                return "Axe Cat unlocks its true potential.<br><b><pinkDark>You won't ever be able to turn back. It's too late.</pinkDark></b>"
             },
             unlocked() {
                 return hasMilestone(this.layer, this.id-1)
@@ -3387,7 +3387,7 @@ addLayer("darkness", {
     },
 
     tabFormat: [
-        ["display-text", "<h2><font color='#e70ce7'>Awaken the power of the Dark Knight.</font></h2>"],
+        ["display-text", "<h2><pinkDark>Awaken the power of the Dark Knight.</pinkDark></h2>"],
         "blank",
         "milestones",
         "blank",

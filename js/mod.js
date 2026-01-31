@@ -14,21 +14,24 @@ let modInfo = {
 // Set your version in num and name
 let VERSION = {
 	num: "0.2",
-	name: "The Farm Update",
+	name: "The Farming Update",
 }
 
 let changelog = `<h1>Changelog:</h1><br><br>
-	<h3>v0.2 - The Farm Update</h3><br>
+	<h3><rainbow>v0.2 - The Farming Update</rainbow></h3><br>
 		- New layer: The Anomaly Farm.<br>
 		- New sublayer: Darkness.<br>
-		- Rebalanced majority of the game.<br>
-		- Adjusted UI.<br>
+		- Several new mechanics.<br>
+		- Heavily rebalanced majority of the game.<br>
 		- Polished the game up.<br>
+		- Adjusted UI.<br>
 		- Added SOUND!!! What???<br>
 		- Fixed several bugs.<br><br>
-	<h3>v0.1 - Update 1</h3><br>
+		<b>[Endgame: 1e150,000 rainbows]</b><br><br><br>
+	<h3><rainbow>v0.1 - Release</rainbow></h3><br>
 		- Added things.<br>
-		- Added stuff.
+		- Added stuff.<br><br>
+		<b>[Endgame: I have no idea I don't remember]</b>
 		`
 
 	
@@ -174,6 +177,7 @@ let tipMessages = [
 	"🤓",
 	"Meow",
 	"The gayest upgrade tree to ever exist.",
+	"<rainbow>RRRRAAAAAAAIIIINBOOOOW</rainbow>",
 	"Layers with direct relation to the Knife layer will tend to be static requirements. Layers with direct relation to the Cherry layer will tend to involve RNG in some way.",
 	"What the- What the fuck is Televex doing here??",
 	"Balala > Balatro",
@@ -206,7 +210,7 @@ let tipMessages = [
 	"pee essay",
 	"Play <font color='#0d69ac'>Division Among Clarity</font>.",
 	"I, I love you like a love song baby!",
-	"<font color='#5050a2'>DR Fan: I think I am a Boy.</font>",
+	"<b><font color='#5050a2'>DR Fan: I think I am a Boy.</font></b>",
 	"I do not believe in people who use mm/dd/yyyy.",
 	"The longer tips get hidden behind the Guide. Oops.",
 
@@ -214,6 +218,7 @@ let tipMessages = [
 	"This game currently has 3 total main layers.",
 	"At this current moment of you playing this game, Stability Test 1.7 is still not released.",
 ]
+let allTips = []
 let tipTick = 0
 let randomTipIndex = Math.floor(Math.random() * tipMessages.length)
 
@@ -239,12 +244,12 @@ var displayThings = [
 	function() {return "<div class='ghost'>aaa</div>"},
 	function() {
 		if (player['darkness'].DarkFragments.gt(0)) 
-			return "You have <font color='#e70ce7'><h2>" + formatWhole(player['darkness'].DarkFragments) + "</h2></font> dark fragments...<br>"+"<div class='ghost'>aaa</div>"
+			return "You have <h2><pinkDark>" + formatWhole(player['darkness'].DarkFragments) + "</pinkDark></h2> dark fragments...<br>"+"<div class='ghost'>aaa</div>"
 		return ""
 	},
 	function() {
 		if (hasUpgrade('p', 37)) 
-			return "<h2>"+player.CurrentEquation+"</h2><br><div class='ghost'>aaa</div>"
+			return "<h2>["+player.CurrentEquation+"]</h2><br><div class='ghost'>aaa</div>"
 		return ""
 	},
 	function() {
@@ -252,10 +257,13 @@ var displayThings = [
 			return "You have clicked <h3>" + format(player.minimumClickMult) + "</h3> symbols.<br>"+"<div class='ghost'>aaa</div>"
 		return ""
 	},
-	function() {return tipMessages[randomTipIndex]},
+	function() {return allTips[randomTipIndex]},
 ]
 function prepareTipRand() {
-	let allTips = tipMessages
+	allTips = []
+	for (i in tipMessages) {
+		allTips.push(tipMessages[i])
+	}
 	if (hasUpgrade('p', 16) || player['g'].unlocked || player['k'].unlocked) {
 		allTips.push(
 			"Make sure to be clicking those symbols!",
@@ -284,8 +292,8 @@ function prepareTipRand() {
 	if (hasUpgrade('g', 23)) {
 		if (player['darkness'].DarkFragments.gt(0)) {
 			var CatName = "Axe Cat"
-			if (player['darkness'].DarkFragments.gt(1)) CatName = "<font color='#e70ce7'>Axe Cat</font>"
-			if (player['darkness'].DarkFragments.gt(2)) CatName = "<font color='#e70ce7'>\"Axe Cat\"</font>"
+			if (player['darkness'].DarkFragments.gt(1)) CatName = "<pinkDark>Axe Cat</pinkDark>"
+			if (player['darkness'].DarkFragments.gt(2)) CatName = "<pinkDark>\"Axe Cat\"</pinkDark>"
 			allTips.push(
 				"Oh... "+CatName+"...?",
 				CatName+" is so... cute...",
@@ -335,7 +343,7 @@ function prepareTipRand() {
 	tipTick+=1
 	if (tipTick%177==0) {
 		tipTick = 0
-		randomTipIndex = Math.floor(Math.random() * tipMessages.length)
+		randomTipIndex = Math.floor(Math.random() * allTips.length)
 	}
 }
 
