@@ -175,6 +175,7 @@ let tipMessages = [
 	"Fun Fact: This game's inital release delayed Stability Test 1.7 by a week.",
 	"vwow ., wh[at] a [b. >STUPID<///b> ga.me, ppl4y St7b7l7t7 T7st_ insT-instea. :p",
 	"This has truly been our Void of Rainbows.",
+	"<font color='#ff0000'>Jajajaja. You Have Not Win.</font>",
 	"㊗️",
 	"🤓",
 	"Meow",
