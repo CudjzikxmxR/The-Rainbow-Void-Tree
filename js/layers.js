@@ -108,6 +108,12 @@ addLayer("p", {
         if (hasUpgrade('p', 36)) {
             mult = mult.times(upgradeEffect('p', 36))
         }
+        if (hasUpgrade('p', 39)) {
+            mult = mult.times("9.99e999")
+        }
+        if (hasAchievement('a', 45)) {
+            mult = mult.times(1e7)
+        }
         if (player['p'].feedingAxeCat && hasMilestone('g', 17)) {
             mult = mult.times(0)
         }
@@ -129,9 +135,6 @@ addLayer("p", {
         }
         if (hasUpgrade('p', 32)) {
             exp = exp.times(1.01)
-        }
-        if (hasUpgrade('p', 39)) {
-            exp = exp.times(1.11)
         }
         return exp
     },
@@ -563,7 +566,7 @@ addLayer("p", {
         },
         39: {
             title: "My Best Buddy",
-            description: "^1.11 Amoebas...",
+            description: "9.99e999x Amoebas...",
             cost: new Decimal("4.44e44444"),
             style: {'width':'140px'},
             set: 4,
@@ -573,15 +576,19 @@ addLayer("p", {
         },
         41: {
             title: "Realm of Carnage",
-            description: "+1 Dark Fragment<br>Click Power scales based on Dark Fragments.",
-            cost: new Decimal("e200000"),
+            description: "+1 Dark Fragment<br>Click Power scales based on Dark Fragments.<br><i>Note: This is the final upgrade of v0.2, and the effect for 4 Dark Fragments has not been coded.</i>",
+            cost: new Decimal("8e83333"),
             style: {'width':'420px','height':'200px','corner-radius':'30px', 'background-image':'url(resources/RoyalBorder.png)', "background-size":"95% 95%", "background-repeat":"no-repeat", "background-position":"center",},
             set: 4,
             unlocked() {
                 return hasUpgrade(this.layer, 29) && hasMilestone('k', 27)
             },
             effect() {
-                return player['darkness'].DarkFragments.div(100).add(1)
+                return player['darkness'].DarkFragments.div(100).times(3).add(1)
+            },
+            onPurchase() {
+                player['darkness'].DarkFragments = player['darkness'].DarkFragments.add(1)
+                doPopup("none","YAY!!! v0.3 coming never or about 10 years", "You win! (For Now)", 10, "#ffffff")
             },
             effectDisplay() { return "^"+format(upgradeEffect(this.layer, this.id)) },
             persisting: true,
@@ -939,10 +946,10 @@ addLayer("a", {
                 for (i in CropOrder) {
                     amount = amount.add(player['farm'][CropOrder[i]])
                 }
-                return amount.gte(500000)
+                return amount.gte(100000)
             },
             unlocked() {return player['farm'].unlocked},
-            tooltip: "Have at least 500,000 crops in total.<br>Award: N/A", 
+            tooltip: "Have at least 100,000 crops in total.<br>Award: N/A", 
         },
         43: {
             name: "Trillionaire",
@@ -950,6 +957,62 @@ addLayer("a", {
             done() {return player['farm'].points.gte(1e12)},
             unlocked() {return player['farm'].unlocked},
             tooltip: "Achieve $1.00e12.<br>Award: 1,000x Click Power", 
+        },
+        44: {
+            name: "SEVEN??!? STABILITYY TETS REFRENCE<<!",
+            image: "resources/Cherries_Icon.png",
+            done() {return player['g'].points.gte("7.77e77777")},
+            unlocked() {return hasUpgrade('p', 37) || player.CurrentEquation != ""},
+            tooltip: "Achieve 7e77,777 Cherries.<br>Award: 7,777,777x Cherries", 
+        },
+        45: {
+            name: "Purge",
+            image: "resources/Knives_Icon.png",
+            done() {return player['k'].points.gte(100000)},
+            unlocked() {return hasUpgrade('p', 37) || player.CurrentEquation != ""},
+            tooltip: "Achieve 100,000 Knives.<br>Award: 10,000,000x Amoebas", 
+        },
+        46: {
+            name: "Quintillionare",
+            image: "resources/AnomalyFarm_Icon.png",
+            done() {return player['farm'].points.gte(1e18)},
+            unlocked() {return hasUpgrade('p', 37) || player.CurrentEquation != ""},
+            tooltip: "Achieve $1.00e18.<br>Award: 1,000,000x Click Power", 
+        },
+        47: {
+            name: "You Can't Possibly Need All This",
+            image: "resources/AnomalyFarm_Icon.png",
+            done() {
+                var amount = decimalOne
+                for (i in CropOrder) {
+                    amount = amount.add(player['farm'][CropOrder[i]])
+                }
+                return amount.gte(1e7)
+            },
+            unlocked() {return hasUpgrade('p', 37) || player.CurrentEquation != ""},
+            tooltip: "Have at least 10,000,000 crops in total.<br>Award: 1.20x Money", 
+        },
+        48: {
+            name: "Sole Provider",
+            image: "resources/AnomalyFarm_Icon.png",
+            done() {
+                var count = 0
+                for (i in CropOrder) {
+                    if (player['farm'][CropOrder[i]].gte(500000)) {
+                        count++
+                    }
+                }
+                return count>=11
+            },
+            unlocked() {return hasUpgrade('p', 37) || player.CurrentEquation != ""},
+            tooltip: "Have at least 500,000 of 11 different crops.<br>Award: 1.25x Crop Grow Speed", 
+        },
+        49: {
+            name: "Turning Point",
+            image: "resources/Darkness_Icon.png",
+            done() {return player['darkness'].DarkFragments.gte(4)},
+            unlocked() {return hasUpgrade('p', 37) || player.CurrentEquation != ""},
+            tooltip: "Achieve 4 Dark Fragments. You'll never be the same.<br>Award: N/A", 
         },
 
         1001: {
@@ -1005,6 +1068,7 @@ addLayer("a", {
         ["row", [["achievement",24],["achievement",25],["achievement",26],["achievement",27],["achievement",28],["achievement",29]]], //13-18
         ["row", [["achievement",31],["achievement",32],["achievement",33],["achievement",34],["achievement",35],["achievement",36]]], //19-24
         ["row", [["achievement",37],["achievement",38],["achievement",39],["achievement",41],["achievement",42],["achievement",43]]], //25-30
+        ["row", [["achievement",44],["achievement",45],["achievement",46],["achievement",47],["achievement",48],["achievement",49]]], //31-36
         "blank",
         ["row", [["achievement",1001],["achievement",1002],["achievement",1003],["achievement",1004]]], //SECRETS
 
@@ -1086,6 +1150,9 @@ addLayer("g", {
         if (hasMilestone('darkness', 13)) {
 		    mult = mult.times(1e7)
 	    }
+        if (hasAchievement('a', 44)) {
+            mult = mult.times(7777777)
+        }
         mult = mult.times(player['g'].CoinflipMult)
         mult = mult.times(player['g'].AxeCatMult)
         mult = mult.times(player['k'].yes_power)
@@ -2247,6 +2314,9 @@ addLayer("farm", {
         if (hasMilestone('darkness', 12)) {
 		    mult = mult.times(3)
 	    }
+        if (hasAchievement('a', 47)) {
+		    mult = mult.times(1.2)
+        }
         if (player['p'].feedingAxeCat && hasMilestone('g', 17) && hasMilestone('darkness', 13)) {
             mult = mult.times(0)
         }
@@ -2822,12 +2892,17 @@ addLayer("farm", {
                 if (hasUpgrade('p', 35)) {
 		            GrowTime *= 2
                 }
+                if (hasAchievement('a', 48)) {
+		            GrowTime /= 1.25
+                }
                 setTimeout(() => {
                     setGridData('farm', id, {CurrentCrop: SCrop, Ready: true})
                 }, GrowTime*1000);
             } else {
                 if (data.Ready && data.CurrentCrop) {
-                    player['farm'][data.CurrentCrop] = player['farm'][data.CurrentCrop].add(gainCropMult())
+                    if (!(player['p'].feedingAxeCat && hasMilestone('g', 17) && hasMilestone('darkness', 13))) {
+                        player['farm'][data.CurrentCrop] = player['farm'][data.CurrentCrop].add(gainCropMult())
+                    }
                     setGridData('farm', id, {CurrentCrop: null, Ready: false})
                     playSound('HarvestCrop', 'mp3', 0.6)
                 }   
@@ -2845,6 +2920,9 @@ addLayer("farm", {
             //return data.CurrentCrop + " /// " + data.Ready
             if (data.CurrentCrop) {
                 if (data.Ready) {
+                    if (player['p'].feedingAxeCat && hasMilestone('g', 17) && hasMilestone('darkness', 13)) {
+                        return "Your feline friend needs your attention."
+                    }
                     return "Harvest for +" + format(gainCropMult()) + " " + data.CurrentCrop + "!"
                 }
                 return "Growing " + data.CurrentCrop + "..."

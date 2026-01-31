@@ -308,11 +308,11 @@ addLayer("loren", {
 
         Mechanic11: {
             title: "The Equation",
-            body() {return "Did you get used to managing everything so far? It's only going to get more and more complicated from here. Now that you've purchased the <b>E.X.I.T.</b> Amoeba upgrade, a random algebraic expression will be displayed on your screen, and it will occasionally change, along with changing everytime you repurchase the upgrade. Use the input box in the Amoeba layer to input an answer for what x equals and make sure you keep up! When the equation changes, immediately calculate the new value of x. Happy multitasking!<br>Note: If the answer is undefined, it'll be considered 0."},
+            body() {return "Did you get used to managing everything so far? It's only going to get more and more complicated from here. Now that you've purchased the <b>E.X.I.T.</b> Amoeba upgrade, a random algebraic expression will be displayed on your screen, and it will occasionally change, along with changing everytime you repurchase the upgrade. Use the input box in the Amoeba layer to input an answer for what x equals and make sure you keep up! When the equation changes, immediately calculate the new value of x. Happy multitasking!<br>Note: If the answer is undefined, it'll be considered 0 AFTER you refresh the page. If you don't refresh, no input will be considered correct."},
             titleStyle() {return {"background-color": tmp['p'].color}},
             bodyStyle() {return {"border-color":tmp['p'].color, "text-align":"left", "padding-left":"7px"}},
             style() {return {"border-color":tmp['p'].color}},
-            unlocked() {return hasUpgrade('p', 37)}
+            unlocked() {return hasUpgrade('p', 37) || player.CurrentEquation != ""}
         },
     },
     componentStyles: {

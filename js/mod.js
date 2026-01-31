@@ -165,8 +165,6 @@ let tipMessages = [
 	"Whaaaaaat, nooooo! These tip popups weren't inspired by any kind of cookie related clicking game!...",
 	"Fortnite balls, all in yo face. Aye!",
 	"If you're close to completing an achievement, go for it before doing any kind of significant reset.",
-	"The first of the 'This Is Overpowered' upgrades used to work differently, but it crashed the game a lot so it was changed.",
-	"Upgrades in the 'This Is Overpowered' series are usually the last upgrade in a set, and signify that you're close to a new feature.",
 	"Make sure to tie the poll.",
 	"<h2><font color='#ff0000'>Beware the wrath of yes_man.</font></h2>",
 	"Fun Fact: This game's inital release delayed Stability Test 1.7 by a week.",
@@ -174,27 +172,19 @@ let tipMessages = [
 	"This has truly been our Void of Rainbows.",
 	"㊗️",
 	"🤓",
-	"Make sure to be clicking those symbols!",
-	"You'll have to revisit earlier layers a lot throughout the game.",
-	'in the stripped club. straight up "jorkin it". and by "it", haha, well. '+"let's justr say. My peanits",
 	"Meow",
 	"The gayest upgrade tree to ever exist.",
 	"Layers with direct relation to the Knife layer will tend to be static requirements. Layers with direct relation to the Cherry layer will tend to involve RNG in some way.",
 	"What the- What the fuck is Televex doing here??",
 	"Balala > Balatro",
 	"Whenever there's a choice between multiple layers, you will be forced to play through all of the layers individually without access to the content of the other layers, excluding certain QoL features.",
-	"If it isn't clear, "+'"click power" refers to how much multiplier you gain from clicking symbols.',
 	"Huh? What's wrong with the word Festival???",
 	"R.I.P. TFS tree.",
 	"🍞",
-	"It's probably in your best bet to double-click the symbols. The onClick function is an asshole.",
 	"more gay = more rainbow",
-	"The coin desires to be flipped.",
-	"Wait, hang on, this mod adds new themes?",
-	"CUDDDD DO NOT ABBREVIATE CLICK POWERRR",
 	`<a class="link" href="https://www.youtube.com/watch?v=QdnhDj40gMo" target="_blank">You haven't truly heard "music" until you hear THIS.</a>`,
 	"https://www.roblox.com/games/10745195956/",
-	"Be cautious, <font color='#ff0000'>MALWARE</font> 'upgrades' are lurking.",
+	//"Be cautious, <font color='#ff0000'>MALWARE</font> 'upgrades' are lurking.",
 	"Play Randomly Generated Voronezh.",
 	"Do you think these tips go by too quickly?",
 	"It all spirals into chaos.",
@@ -218,10 +208,10 @@ let tipMessages = [
 	"I, I love you like a love song baby!",
 	"<font color='#5050a2'>DR Fan: I think I am a Boy.</font>",
 	"I do not believe in people who use mm/dd/yyyy.",
+	"The longer tips get hidden behind the Guide. Oops.",
 
 	//Update
 	"This game currently has 3 total main layers.",
-	"There are currently 61 tips in the game!",
 	"At this current moment of you playing this game, Stability Test 1.7 is still not released.",
 ]
 let tipTick = 0
@@ -265,8 +255,85 @@ var displayThings = [
 	function() {return tipMessages[randomTipIndex]},
 ]
 function prepareTipRand() {
+	let allTips = tipMessages
+	if (hasUpgrade('p', 16) || player['g'].unlocked || player['k'].unlocked) {
+		allTips.push(
+			"Make sure to be clicking those symbols!",
+			"You'll have to revisit earlier layers a lot throughout the game.",
+			"CUDDDD DO NOT ABBREVIATE CLICK POWERRR",
+			'in the stripped club. straight up "jorkin it". and by "it", haha, well. '+"let's justr say. My peanits",
+			"The first of the 'This Is Overpowered' upgrades used to work differently, but it crashed the game a lot so it was changed.",
+			"Upgrades in the 'This Is Overpowered' series are usually the last upgrade in a set, and signify that you're close to a new feature.",
+			"It's probably in your best bet to double-click the symbols. The onClick function is an asshole.",
+			"Ever feel lost and unable to progress? Check the Guide!<br>Remember that if there's any resource you can still be earning, you SHOULD be earning it.",
+		)
+	}
+	if (player['g'].unlocked) {
+		allTips.push(
+			"The coin desires to be flipped.",
+			"Let's go gambling!",
+			"Wait, hang on, this mod adds new themes?",
+		)
+	}
+	if (player['k'].unlocked) {
+		allTips.push(
+			"KILL. KILL. KILL.",
+			"Woooaaahhhhhhhhh Story Of Undertale",
+		)
+	}
+	if (hasUpgrade('g', 23)) {
+		if (player['darkness'].DarkFragments.gt(0)) {
+			var CatName = "Axe Cat"
+			if (player['darkness'].DarkFragments.gt(1)) CatName = "<font color='#e70ce7'>Axe Cat</font>"
+			if (player['darkness'].DarkFragments.gt(2)) CatName = "<font color='#e70ce7'>\"Axe Cat\"</font>"
+			allTips.push(
+				"Oh... "+CatName+"...?",
+				CatName+" is so... cute...",
+				CatName+"... could never do anything wrong...?",
+				CatName+" is a bundle of.....",
+				CatName+"... what are you?",
+			)
+		} else {
+			allTips.push(
+				"OMG!! AXE CAT!!!",
+				"Axe Cat so CUTE!!!",
+				"Axe Cat could never do anything wrong!",
+				"Axe Cat is a bundle of joy!",
+			)
+			var Weapon = "an axe"
+			if (hasUpgrade('k', 20) && !player['g'].AxeCosmetic) {
+				Weapon = "a sword"
+			} 
+			allTips.push("Awwww! That little cat's got " + Weapon + "!")
+		}
+	}
+	if (hasUpgrade('k', 22)) {
+		allTips.push(
+			"<h2><font color='#ff0000'>You were told be beware. Will you?</font></h2>",
+			"<h2><font color='#ff0000'>You will fall to yes_man. It is inevitable.</font></h2>",
+			"Have you or a loved one fallen to accidentally running into yes_man right before you performed a reset to earn more Cherries or Knives? You are not alone.<br>Call 1-800-777-GayPornography if you or a loved one has experienced unjust yes_manning.",
+			"You can't blame yes_man for getting in your way. He's having a bad day okay?",
+		)
+	}
+	if (player['farm'].unlocked) {
+		allTips.push(
+			"We've got to have money.",
+			"CHA-CHING!",
+			"anomaly farm some crazy elite ball knowledge yo",
+			"Alright guys, let's go Farm this Anomaly.<br>King, you go left.<br>Angel, you go right.<br>Voidling, you know what to do.<br>[Totally Real Fourth Character],<br>You just be [Totally Real Fourth Character].<br>Let's Farm this Anomaly,<br>because together we are THE ANOMALY FARM.",
+		)
+	}
+	if (hasUpgrade('p', 37) || player.CurrentEquation != "") {
+		allTips.push(
+			"Oh come on, you didn't seriously think Cud would code a game WITHOUT the inclusion of math?",
+			"Methmetics",
+			"WAH! WAH! WAH! I don't wanna fuckin' hear it!",
+			"You should be trying to get every achievement! Some are very important for progression.",
+		)
+	}
+	allTips.push("There are currently "+allTips.length+1+" tips you can encounter!",)
 	tipTick+=1
-	if (tipTick%170==0) {
+	if (tipTick%177==0) {
 		tipTick = 0
 		randomTipIndex = Math.floor(Math.random() * tipMessages.length)
 	}
@@ -338,6 +405,8 @@ function getClickPower() {
 		baseClickPower = baseClickPower.times(1000)
 	if (hasAchievement('a', 43))
 		baseClickPower = baseClickPower.times(1000)
+	if (hasAchievement('a', 46))
+		baseClickPower = baseClickPower.times(1000000)
 
 	//EXPONENTS
 
@@ -382,9 +451,6 @@ function gainCropMult() {
 	if (hasUpgrade('p', 38)) {
 		mult = mult.times(upgradeEffect('p', 38))
 	}
-	if (player['p'].feedingAxeCat && hasMilestone('g', 17) && hasMilestone('darkness', 13)) {
-        mult = mult.times(0)
-    }
 	return mult
 }
 

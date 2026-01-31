@@ -676,7 +676,7 @@ var interval = setInterval(function() {
 		if (hasMilestone('darkness', 12)) {
 			for (i in CropOrder) {
 				if (player['farm'][CropOrder[i]+"Owned"] && player['farm'][CropOrder[i]].gt(0)) {
-					player['farm'][CropOrder[i]] = player['farm'][CropOrder[i]].sub(0.03).max(0)
+					player['farm'][CropOrder[i]] = player['farm'][CropOrder[i]].sub(gainCropMult().div(100)).max(0)
 				}
 			}
 		}
