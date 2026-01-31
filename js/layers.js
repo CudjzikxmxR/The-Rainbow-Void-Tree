@@ -382,7 +382,7 @@ addLayer("p", {
         28: {
             title: "Achieve Big",
             description: "+1 to achievement Rainbow multiplier base.<br>Achievements now give 2x Amoeba multiplier.<br>Kill requirement scaling is weaker.",
-            cost: new Decimal(5.25e70),
+            cost: new Decimal(5.25e80),
             style: {'width':'140px'},
             set: 3,
             unlocked() {
@@ -405,11 +405,17 @@ addLayer("p", {
                 return hasUpgrade(this.layer, 21) && hasUpgrade('k', 11)
             },
             onPurchase() {
-                setTimeout(function () {
-                    if (!hasMilestone('k', 22)) {
-                        doReset('k', true)
+                if (!hasMilestone('k', 22)) {
+                    for (let x = 100; x > 0; x--) {
+                        setTimeout(function () {
+                            playSound("BombBeeping")
+                        }, 10000-Math.pow(x,2));
                     }
-                }, 10000);
+                    setTimeout(function () {
+                        playSound("Explosion")
+                        doReset('k', true)
+                    }, 10000);
+                }
             }
         },
         //Set 4
