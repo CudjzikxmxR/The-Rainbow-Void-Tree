@@ -502,6 +502,11 @@ const cudGrade16 = {
 			this.onClick()
 		}
 	},
+	onMouseEnter() {
+		if (hasMilestone('darkness', 11)) {
+			this.onClick()
+		}
+	},
 }
 
 const catFood = {
@@ -527,11 +532,7 @@ const catFood = {
 			if (hasUpgrade('k', 20)) {
 				catMult = 1/8
 			}
-			if (player['g'].AxeCatMult.add(getAxeCap()*catMult).gt(getAxeCap())) {
-				player['g'].AxeCatMult = getAxeCap()
-			} else {
-				player['g'].AxeCatMult = player['g'].AxeCatMult.add(getAxeCap().times(catMult))
-			}
+			player['g'].AxeCatMult = player['g'].AxeCatMult.add(getAxeCap().times(catMult)).min(getAxeCap())
 			if (Math.random()>=0.5) {
 				playSound('CatEat1', 'ogg', 0.4)
 			} else {
@@ -673,7 +674,11 @@ var interval = setInterval(function() {
 			makeShinies(catFood, 1)
 		}
 		if (hasMilestone('darkness', 12)) {
-			
+			for (i in CropOrder) {
+				if (player['farm'][CropOrder[i]+"Owned"] && player['farm'][CropOrder[i]].gt(0)) {
+					player['farm'][CropOrder[i]] = player['farm'][CropOrder[i]].sub(0.03).max(0)
+				}
+			}
 		}
 	}
 	if (player['g'].AxeCatMult) {
@@ -691,6 +696,9 @@ var interval = setInterval(function() {
 				player['g'].AxeCatMult = new Decimal(1)
 			}
 		}
+	}
+	if (hasUpgrade('p', 37) && Math.random()>=0.9997) {
+		NewEquation()
 	}
 
 	prepareTipRand()

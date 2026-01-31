@@ -150,6 +150,8 @@ function getPointGen() {
 		gain = gain.pow(1.1)
 	if (hasUpgrade('p', 32))
 		gain = gain.pow(1.01)
+	if (hasUpgrade('p', 37) && CalculateEquationCorrectness())
+		gain = gain.pow(clickableEffect('p', 11))
 
 	return gain
 }
@@ -189,7 +191,7 @@ let tipMessages = [
 	"more gay = more rainbow",
 	"The coin desires to be flipped.",
 	"Wait, hang on, this mod adds new themes?",
-	"I'm preeeeetty sure the achievements shouldn't be invisible.",
+	"CUDDDD DO NOT ABBREVIATE CLICK POWERRR",
 	`<a class="link" href="https://www.youtube.com/watch?v=QdnhDj40gMo" target="_blank">You haven't truly heard "music" until you hear THIS.</a>`,
 	"https://www.roblox.com/games/10745195956/",
 	"Be cautious, <font color='#ff0000'>MALWARE</font> 'upgrades' are lurking.",
@@ -233,6 +235,9 @@ function addedPlayerData() { return {
 	AntivirusLevel: 0,
 	NonClickTime: decimalZero,
 	MustCrit: false,
+	CurrentEquation: "",
+	CorrectAnswer: [decimalZero],
+	EquationInput: decimalZero,
 	SecretAch1: false,
 	SecretAch2: false,
 	SecretAch3: false,
@@ -245,6 +250,11 @@ var displayThings = [
 	function() {
 		if (player['darkness'].DarkFragments.gt(0)) 
 			return "You have <font color='#e70ce7'><h2>" + formatWhole(player['darkness'].DarkFragments) + "</h2></font> dark fragments...<br>"+"<div class='ghost'>aaa</div>"
+		return ""
+	},
+	function() {
+		if (hasUpgrade('p', 37)) 
+			return "<h2>"+player.CurrentEquation+"</h2><br><div class='ghost'>aaa</div>"
 		return ""
 	},
 	function() {
@@ -280,7 +290,7 @@ function randNum(min, max) {
 
 // Get rune click power
 function getClickPower() {
-	let baseClickPower = decimalOne
+	let baseClickPower = decimalOne.times(2)
 	if (hasUpgrade('p', 18))
 		baseClickPower = baseClickPower.times(4)
 	if (hasUpgrade('p', 21))
@@ -333,6 +343,8 @@ function getClickPower() {
 
 	if (hasUpgrade('p', 35))
 		baseClickPower = baseClickPower.pow(1.07)
+	if (hasUpgrade('p', 41))
+		baseClickPower = baseClickPower.pow(upgradeEffect('p', 41))
 
 	return baseClickPower
 }
@@ -367,6 +379,9 @@ function gainCropMult() {
 	if (hasMilestone('darkness', 12)) {
 		mult = mult.times(1.25)
 	}
+	if (hasUpgrade('p', 38)) {
+		mult = mult.times(upgradeEffect('p', 38))
+	}
 	if (player['p'].feedingAxeCat && hasMilestone('g', 17) && hasMilestone('darkness', 13)) {
         mult = mult.times(0)
     }
@@ -395,10 +410,10 @@ const CropValues = [
 	[new Decimal(150), 17, new Decimal("e100"), "#9b278c"], // eggplant
 	[new Decimal(270), 20, new Decimal("e152"), "#b5ef8c"], // celery
 	[new Decimal(400), 11, new Decimal("e178"), "#a2ffb6"], // sugarcane
-	[new Decimal(1000), 30, new Decimal("e300"), "#f898a6"], // watermelon
-	[new Decimal(30000), 600, new Decimal("e700"), "#ff0000"], // catfruit
-	[new Decimal(2000), 38, new Decimal("e1000"), "#ff8800"], // pumpkin
-	[new Decimal(1500), 8, new Decimal("e1200"), "#ac349a"], // yoyleberries
+	[new Decimal(3500), 45, new Decimal("e300"), "#f898a6"], // watermelon
+	[new Decimal(50000), 600, new Decimal("e700"), "#ff0000"], // catfruit
+	[new Decimal(7000), 56, new Decimal("e1000"), "#ff8800"], // pumpkin
+	[new Decimal(10500), 8, new Decimal("e1200"), "#ac349a"], // yoyleberries
 ]
 
 const CropOrder = [
@@ -429,6 +444,104 @@ function getCropIndexFromName(Name) {
 		}
 	}
 	return null
+}
+
+function NewEquation() {
+	playSound("EquationChange")
+	let RandomChoose = randNum(1,6)
+	let Rand1 = randNum(1,10)
+	let Rand2 = randNum(1,10)
+	let Rand3 = randNum(1,10)
+	let Rand4 = randNum(1,10)
+	function GetPref(number) {
+		if (number == 1) {
+			return ""
+		}
+		return number
+	}
+	if (RandomChoose <= 2) { // Extremely basic linear equation
+		if (Math.random()>=0.7) Rand1 *= (-1)
+		if (Math.random()>=0.7) Rand2 *= (-1)
+		if (Math.random()>=0.7) Rand3 *= (-1)
+		if (Math.sign(Rand2) == -1) {
+			player.CurrentEquation = GetPref(Rand1)+"x - "+Math.abs(Rand2)+" = "+Rand3
+		} else {
+			player.CurrentEquation = GetPref(Rand1)+"x + "+Rand2+" = "+Rand3
+		}
+		player.CorrectAnswer = [new Decimal((Rand3-Rand2)/Rand1)]
+	} else if (RandomChoose == 3) { // Linear equation with variables on both sides
+		if (Math.random()>=0.75) Rand1 *= (-1)
+		if (Math.random()>=0.75) Rand2 *= (-1)
+		if (Math.random()>=0.75) Rand3 *= (-1)
+		if (Math.random()>=0.75) Rand4 *= (-1)
+
+		if (Math.sign(Rand2) == -1) {
+			if (Math.sign(Rand4) == -1) {
+				player.CurrentEquation = GetPref(Rand1)+"x - "+Math.abs(Rand2)+" = "+GetPref(Rand3)+"x - "+Math.abs(Rand4)
+			} else {
+				player.CurrentEquation = GetPref(Rand1)+"x - "+Math.abs(Rand2)+" = "+GetPref(Rand3)+"x + "+Rand4
+			}
+		} else {
+			if (Math.sign(Rand4) == -1) {
+				player.CurrentEquation = GetPref(Rand1)+"x + "+Rand2+" = "+GetPref(Rand3)+"x - "+Math.abs(Rand4)
+			} else {
+				player.CurrentEquation = GetPref(Rand1)+"x + "+Rand2+" = "+GetPref(Rand3)+"x + "+Rand4
+			}
+		}
+		player.CorrectAnswer = [new Decimal((Rand4-Rand2)/(Rand1-Rand3))]
+	} else if (RandomChoose == 4) { // Annoyingly time wasting linear equation
+		let Rand5 = randNum(1,5)
+		let Rand6 = randNum(1,5)
+		if (Math.random()>=0.75) Rand1 *= (-1)
+		if (Math.random()>=0.75) Rand2 *= (-1)
+		if (Math.random()>=0.75) Rand3 *= (-1)
+		if (Math.random()>=0.75) Rand4 *= (-1)
+		if (Math.random()>=0.75) Rand5 *= (-1)
+		if (Math.random()>=0.75) Rand6 *= (-1)
+
+		if (Math.sign(Rand2) == -1) {
+			if (Math.sign(Rand4) == -1) {
+				player.CurrentEquation = Rand5+"("+GetPref(Rand1)+"x - "+Math.abs(Rand2)+") = "+Rand6+"("+GetPref(Rand3)+"x - "+Math.abs(Rand4)+")"
+			} else {
+				player.CurrentEquation = Rand5+"("+GetPref(Rand1)+"x - "+Math.abs(Rand2)+") = "+Rand6+"("+GetPref(Rand3)+"x + "+Rand4+")"
+			}
+		} else {
+			if (Math.sign(Rand4) == -1) {
+				player.CurrentEquation = Rand5+"("+GetPref(Rand1)+"x + "+Rand2+") = "+Rand6+"("+GetPref(Rand3)+"x - "+Math.abs(Rand4)+")"
+			} else {
+				player.CurrentEquation = Rand5+"("+GetPref(Rand1)+"x + "+Rand2+") = "+Rand6+"("+GetPref(Rand3)+"x + "+Rand4+")"
+			}
+		}
+		player.CorrectAnswer = [new Decimal((Rand4*Rand6-Rand2*Rand5)/(Rand1*Rand5-Rand3*Rand6))]
+	} else if (RandomChoose == 5) { // Generic quadratic factor
+		Rand3 = randNum(1,5)
+		if (Math.random()>=0.6) Rand1 *= (-1)
+		if (Math.random()>=0.6) Rand2 *= (-1)
+		let pre1 = " + "
+		let pre2 = " + "
+		if ((Rand1+Rand2)*Rand3 < 0) pre1 = " - "
+		if ((Rand1*Rand2)*Rand3 < 0) pre2 = " - "
+		let sum = Math.abs((Rand1+Rand2)*Rand3)
+		let product = Math.abs((Rand1*Rand2)*Rand3)
+		if (sum != 0) {
+			player.CurrentEquation = GetPref(Rand3) + "x²" + pre1+sum+"x" + pre2 + product + " = 0"
+		} else {
+			player.CurrentEquation = GetPref(Rand3) + "x²" + pre2 + product + " = 0"
+		}
+		player.CorrectAnswer = [(new Decimal(Rand1)).times(-1), (new Decimal(Rand2)).times(-1)]
+	} else if (RandomChoose == 6) { // Square!!
+		player.CurrentEquation = Rand1+"x² = "+(Rand1*Math.pow(Rand2, 2))
+		player.CorrectAnswer = [new Decimal(Rand2), (new Decimal(Rand2)).times(-1)]
+	}
+}
+
+function CalculateEquationCorrectness() {
+	for (i in player.CorrectAnswer) {
+		if (player.EquationInput.times(100).round().div(100).eq(new Decimal(player.CorrectAnswer[i]).times(100).round().div(100))) {
+			return true
+		}
+	}
+	return false
 }
 
 // Style for the background, can be a function

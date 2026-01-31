@@ -123,6 +123,10 @@ addLayer("loren", {
                     "blank",
                     ["infobox", "Mechanic9"],
                     "blank",
+                    ["infobox", "Mechanic10"],
+                    "blank",
+                    ["infobox", "Mechanic11"],
+                    "blank",
                     "blank",
                     "blank",
                     "blank",
@@ -242,8 +246,8 @@ addLayer("loren", {
         },
 
         Mechanic4: {
-            title: "Critical Power",
-            body() {return "After purchasing the <b>Let's Go Gambling</b> upgrade in the Cherry layer, symbols can crit when clicked, which grants more <b>Activity Check</b> multiplier and earns you Amoebas. Critical Power is essentially Click Power but it only applies to critical clicks, and it also multiplies Amoebas earned from critical clicks."},
+            title: "Critical Clicks",
+            body() {return "After purchasing the <b>Let's Go Gambling</b> upgrade in the Cherry layer, symbols can crit when clicked, which grants more <b>Activity Check</b> multiplier and earns you Amoebas. Critical Power is essentially Click Power but it only applies to critical clicks, and it also multiplies Amoebas earned from critical clicks. An important difference between the two is that Click Power affects how quickly <b>Activity Check</b> drains, while Critical Power does not."},
             titleStyle() {return {"background-color": tmp['g'].color}},
             bodyStyle() {return {"border-color":tmp['g'].color, "text-align":"left", "padding-left":"7px"}},
             style() {return {"border-color":tmp['g'].color}},
@@ -291,6 +295,24 @@ addLayer("loren", {
             bodyStyle() {return {"border-color":tmp['farm'].color, "text-align":"left", "padding-left":"7px"}},
             style() {return {"border-color":tmp['farm'].color}},
             unlocked() {return player['farm'].unlocked}
+        },
+
+        Mechanic10: {
+            title: "Precision Mode",
+            body() {return "Once you hit the 12,000 Killstreak milestone, you can now toggle Precision Mode! Precision Mode makes critical clicks a hell of a lot stronger, but it also makes them actually rare again. It's a good idea to enable it to get a stronger Axe Cat and earn some more Amoebas and Cherries before doing a Kill reset."},
+            titleStyle() {return {"background-color": tmp['k'].color}},
+            bodyStyle() {return {"border-color":tmp['k'].color, "text-align":"left", "padding-left":"7px"}},
+            style() {return {"border-color":tmp['k'].color}},
+            unlocked() {return hasMilestone('k', 28)}
+        },
+
+        Mechanic11: {
+            title: "The Equation",
+            body() {return "Did you get used to managing everything so far? It's only going to get more and more complicated from here. Now that you've purchased the <b>E.X.I.T.</b> Amoeba upgrade, a random algebraic expression will be displayed on your screen, and it will occasionally change, along with changing everytime you repurchase the upgrade. Use the input box in the Amoeba layer to input an answer for what x equals and make sure you keep up! When the equation changes, immediately calculate the new value of x. Happy multitasking!<br>Note: If the answer is undefined, it'll be considered 0."},
+            titleStyle() {return {"background-color": tmp['p'].color}},
+            bodyStyle() {return {"border-color":tmp['p'].color, "text-align":"left", "padding-left":"7px"}},
+            style() {return {"border-color":tmp['p'].color}},
+            unlocked() {return hasUpgrade('p', 37)}
         },
     },
     componentStyles: {

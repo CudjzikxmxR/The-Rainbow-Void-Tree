@@ -130,6 +130,9 @@ addLayer("p", {
         if (hasUpgrade('p', 32)) {
             exp = exp.times(1.01)
         }
+        if (hasUpgrade('p', 39)) {
+            exp = exp.times(1.11)
+        }
         return exp
     },
     row: 0,
@@ -199,6 +202,10 @@ addLayer("p", {
                     scaleSpeed = scaleSpeed.times(77)
                     scaleExpo = scaleExpo.times(1.77)
                     scaleCap = scaleCap.pow(1.1)
+                }
+                if (hasMilestone('k', 30)) {
+                    scaleSpeed = scaleSpeed.times(player['k'].points.log(500).times(1000))
+                    scaleExpo = scaleExpo.times(player['k'].points.log(1000).times(2.07))
                 }
                 return [scaleCap, scaleSpeed, scaleExpo]
             },
@@ -505,10 +512,13 @@ addLayer("p", {
         },
         37: {
             title: "<h2>E</h2>ternal<br><h2>X</h2>algebra<br><h2>I</h2>class<br><h2>T</h2>withcud",
-            description: "Unlock <b>The Equation</b>.<br>[Refer to the Guide, this is a doozy.]",
-            cost: new Decimal("e7500"),
+            description: "Unlock <b>The Equation</b>.",
+            cost: new Decimal("8.88e8888"),
             style: {'width':'140px'},
             set: 4,
+            onPurchase() {
+                NewEquation()
+            },
             unlocked() {
                 return hasUpgrade(this.layer, 29) && hasMilestone('k', 27)
             },
@@ -534,7 +544,7 @@ addLayer("p", {
         38: {
             title: "Anomaly Agriculture",
             description: "Crops scale based on your Amoebas, Cherries, and Knives.",
-            cost: new Decimal("e7000"),
+            cost: new Decimal("e40000"),
             style: {'width':'140px'},
             set: 4,
             unlocked() {
@@ -548,16 +558,13 @@ addLayer("p", {
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
             fullDisplay() {
-                return "<h3>"+this.title+"</h3><br>"+this.description+"<br>Currently: ("+format(this.calculateMultipleEffects()[0])+"x,"+format(this.calculateMultipleEffects()[1])+"x,"+format(this.calculateMultipleEffects()[2])+"x):"+this.effectDisplay()+"<br><br>Cost: 1e9,000 amoebas, 1e7,777 cherries, 35,000 knives"
-            },
-            canAfford() {
-                return player[this.layer].points.gte("e9000") && player['g'].points.gte("e7777") && player['k'].points.gte(35000)
+                return "<h3>"+this.title+"</h3><br>"+this.description+"<br>Currently: ("+format(this.calculateMultipleEffects()[0])+"x,"+format(this.calculateMultipleEffects()[1])+"x,"+format(this.calculateMultipleEffects()[2])+"x):"+this.effectDisplay()+"<br><br>Cost: 1e40,000 amoebas"
             },
         },
         39: {
             title: "My Best Buddy",
-            description: "^1.25 Amoebas...",
-            cost: new Decimal("e10000"),
+            description: "^1.11 Amoebas...",
+            cost: new Decimal("4.44e44444"),
             style: {'width':'140px'},
             set: 4,
             unlocked() {
@@ -567,40 +574,62 @@ addLayer("p", {
         41: {
             title: "Realm of Carnage",
             description: "+1 Dark Fragment<br>Click Power scales based on Dark Fragments.",
-            cost: new Decimal("e50000"),
+            cost: new Decimal("e200000"),
             style: {'width':'420px','height':'200px','corner-radius':'30px', 'background-image':'url(resources/RoyalBorder.png)', "background-size":"95% 95%", "background-repeat":"no-repeat", "background-position":"center",},
             set: 4,
             unlocked() {
                 return hasUpgrade(this.layer, 29) && hasMilestone('k', 27)
             },
             effect() {
-                return player['darkness'].DarkFragments.div(20).add(1)
+                return player['darkness'].DarkFragments.div(100).add(1)
             },
             effectDisplay() { return "^"+format(upgradeEffect(this.layer, this.id)) },
             persisting: true,
         },
     },
+
+    clickables: {
+        11: {
+            title() {
+                return "Input Answer"
+            },
+            effect() {
+                eqMult = new Decimal(1.1)
+                return eqMult
+            },
+            display() { // Everything else displayed in the buyable button after the title
+                var Str = "<b>[x = " + format(player.EquationInput) + "]</b><br>"
+                if (CalculateEquationCorrectness()) {
+                    Str += "Which is CORRECT: ^"+format(this.effect()) + " rainbows"
+                } else {
+                    Str += "Which is INCORRECT: No bonus."
+                }
+                return Str
+            },
+            unlocked() { return hasUpgrade(this.layer, 37)}, 
+            onClick() { 
+                let input = prompt("x = ?")
+                player.EquationInput = new Decimal(input, 9)
+                if (CalculateEquationCorrectness()) {
+                    playSound("CorrectAnswer")
+                } else {
+                    playSound("WrongAnswer")
+                }
+            },
+            canClick() { 
+                return true
+            },
+            style: {'background-color':'#ffffff','height':'47px', 'min-height':'47px', 'width':'477px', 'corner-shape':'bevel', 'border-radius':'30px', 'border': '5px solid', 'border-color': 'rgba(0, 0, 0, 0.125)'},
+        }
+    },
+
     tabFormat: [
         "main-display",
         "prestige-button",
         "blank",
         //"resource-display",
-        ["display-text",
-            function() {
-                if (!hasUpgrade('p', 16) && !hasUpgrade('g', 13)) {
-                    return ""
-                }
-                return "You have clicked " + player.minimumClickMult + " symbols."
-            }],
-        ["text-input",
-            function() {
-                if (!hasMilestone('k', 30)) {
-                    return null
-                }
-                return "NonsenseString"
-            }],
+        "clickables",
         "blank",
-
         //"upgrades"
         ["display-text", "<h3>[SET 1]</h3>"],
         ["row", [["upgrade",11],["upgrade",12],["upgrade",13]]],
@@ -1078,7 +1107,7 @@ addLayer("g", {
 	    }
         return exp
     },
-    softcap: new Decimal("e77777"), 
+    softcap: new Decimal("e777777"), 
     softcapPower: new Decimal(0.1), 
     row: 1,
     hotkeys: [
@@ -1300,7 +1329,7 @@ addLayer("g", {
         },
         29: {
             title: "First We Crop, Then We Farm",
-            description: "1.01x Crops for every 100 OoMs of Cherries.<br>1.50x Amoebas for every OoM of Axe Cat.",
+            description: "1.01x Crops for every 100 OoMs of Cherries, capped at 100.00x.<br>1.50x Amoebas for every OoM of Axe Cat.",
             cost: new Decimal("7.77e2000"),
             style: {'width':'140px'},
             fullDisplay() {
@@ -1310,12 +1339,17 @@ addLayer("g", {
                 return hasUpgrade('farm', 14)
             },
             effect() {
-                return (new Decimal(1.01)).pow(player[this.layer].points.log("1e100").floor())
+                return (new Decimal(1.01)).pow(player[this.layer].points.log("1e100").floor()).min(100)
             },
             effect2() {
                 return (new Decimal(1.5)).pow(player[this.layer].AxeCatMult.log(10).floor())
             },
-            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
+            effectDisplay() {
+                if (upgradeEffect(this.layer, this.id).eq(100)) {
+                    return format(upgradeEffect(this.layer, this.id))+"x (CAPPED)"
+                }
+                return format(upgradeEffect(this.layer, this.id))+"x"
+            },
             effectDisplay2() { return format(upgradeEffect2(this.layer, this.id))+"x" },
         },
         31: {
@@ -1339,7 +1373,13 @@ addLayer("g", {
     clickables: {
         11: {
             title() {
+                if (player['g'].CoinflipMult.gte(this.softcap())) {
+                    return "Flip A Coin! [SOFTCAPPED]"
+                }
                 return "Flip A Coin!"
+            },
+            softcap() {
+                return new Decimal("1e100")
             },
             display() { // Everything else displayed in the buyable button after the title
                 var coinReq = new Decimal(1e24)
@@ -1349,6 +1389,9 @@ addLayer("g", {
                 }
                 if (player['g'].CoinflipMult.gte("1e30")) {
                     scale = scale.times(player['g'].CoinflipMult.log(7).div(4).add(1))
+                }
+                if (player['g'].CoinflipMult.gte(this.softcap())) {
+                    scale = scale.times(player['g'].CoinflipMult.div(this.softcap()))
                 }
                 //coinReq = coinReq.times(Math.pow(scale, Math.log2(Math.pow(player['g'].CoinflipMult, 1.02))))
                 coinReq = coinReq.times(scale.pow(player['g'].CoinflipMult.pow(1.02).log2()))
@@ -1380,6 +1423,9 @@ addLayer("g", {
                 }
                 if (player['g'].CoinflipMult.gte("1e30")) {
                     scale = scale.times(player['g'].CoinflipMult.log(7).div(4).add(1))
+                }
+                if (player['g'].CoinflipMult.gte(this.softcap())) {
+                    scale = scale.times(player['g'].CoinflipMult.div(this.softcap()))
                 }
                 //coinReq = coinReq.times(Math.pow(scale, Math.log2(Math.pow(player['g'].CoinflipMult, 1.02))))
                 coinReq = coinReq.times(scale.pow(player['g'].CoinflipMult.pow(1.02).log2()))
@@ -1460,8 +1506,8 @@ addLayer("g", {
         "main-display",
         ["display-text",
             function() {
-                if (player[this.layer].points.gte(new Decimal("e77777"))) {
-                   return "Cherry gain is softcapped after 1.00e77777."
+                if (player[this.layer].points.gte(new Decimal("e777777"))) {
+                   return "Cherry gain is softcapped after 1.00e777777."
                 }
                 return null
              }],
@@ -1546,7 +1592,7 @@ addLayer("k", {
     resetDescription: "Kill for ",
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    softcap: new Decimal(100000), 
+    softcap: new Decimal(1000000), 
     softcapPower: new Decimal(1.07), 
     exponent() { // Prestige currency exponent
         if (this.getUnlockOrder()==0 || hasUpgrade(this.layer, 16)) {
@@ -1602,9 +1648,6 @@ addLayer("k", {
         }
         if (hasMilestone('k', 29)) {
 		    mult = mult.times(1.1)
-        }
-        if (player['p'].feedingAxeCat && hasMilestone('g', 17) && hasMilestone('darkness', 13)) {
-            mult = mult.times(0)
         }
         return mult
     },
@@ -2022,7 +2065,7 @@ addLayer("k", {
         29: {
             requirementDescription: "20,000 Killstreak",
             effectDescription() {
-                return "1,000x Rainbows<br>1,000x Amoebas<br>1,000x Cherries<br>1.1x Knives<br>1,000x Click Power<br>1.5x Money<br>1.2x Crops<br>1.2x Crop Grow Speed<br>+0.55 to the <b>18 Killstreak</b> milestone effect base.<br>Keep Plot #5 and #6 without <b>Cob Cannon</b> and <b>Cotton Cuddy</b>."
+                return "1,000x Rainbows<br>1,000x Amoebas<br>1,000x Cherries<br>1.10x Knives<br>1,000x Click Power<br>1.50x Money<br>1.20x Crops<br>1.20x Crop Grow Speed<br>+0.55 to the <b>18 Killstreak</b> milestone effect base.<br>Keep Plot #5 and #6 without <b>Cob Cannon</b> and <b>Cotton Cuddy</b>."
             },
             done() {return player[this.layer].best.gte(20000)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
@@ -2030,7 +2073,7 @@ addLayer("k", {
         30: {
             requirementDescription: "30,000 Killstreak",
             effectDescription() {
-                return "+1 Dark Fragment<br>1.00e200x Amoebas"
+                return "+1 Dark Fragment<br>1.00e200x Amoebas<br><b>Procrastination</b> scales faster, and gets even faster based on your Knives"
             },
             done() {return player[this.layer].best.gte(30000)},
             unlocked() {return hasMilestone(this.layer, this.id-1)},
@@ -2039,27 +2082,27 @@ addLayer("k", {
             },
         },
         31: {
-            requirementDescription: "100,000 Killstreak",
+            requirementDescription: "1,000,000 Killstreak",
             effectDescription() {
                 return ":)"
             },
-            done() {return player[this.layer].best.gte(100000)},
+            done() {return player[this.layer].best.gte(1000000)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
         },
         32: {
-            requirementDescription: "150,000 Killstreak",
+            requirementDescription: "1,500,000 Killstreak",
             effectDescription() {
                 return "Coinflips are multiplied by 1000."
             },
-            done() {return player[this.layer].best.gte(150000)},
+            done() {return player[this.layer].best.gte(1500000)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
         },
         33: {
-            requirementDescription: "1.50e7 Killstreak",
+            requirementDescription: "30,000,000 Killstreak",
             effectDescription() {
                 return "+0.55 to the <b>18 Killstreak</b> milestone effect base."
             },
-            done() {return player[this.layer].best.gte(1.5e7)},
+            done() {return player[this.layer].best.gte(3e7)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
         },
     },
@@ -2067,8 +2110,8 @@ addLayer("k", {
         "main-display",
         ["display-text",
             function() {
-                if (player[this.layer].points.gte(100000)) {
-                   return "Knife gain is softcapped after 100,000."
+                if (player[this.layer].points.gte(1000000)) {
+                   return "Knife gain is softcapped after 1,000,000."
                 }
                 return null
              }],
@@ -2082,7 +2125,7 @@ addLayer("k", {
         "blank",
         "prestige-button",
         "blank",
-        "resource-display",
+        //"resource-display",
         "milestones",
         ["display-text",
             function() {
@@ -2609,15 +2652,15 @@ addLayer("farm", {
                 return "<i>Puts the 'rind' in 'grind'.</i><br><br>Value: $"+format(getCropValue(cropID)[0])+"<br>Grow Speed: "+format(getCropValue(cropID)[1])+"s<br>Click Power Req: "+format(getCropValue(cropID)[2])
             },
             fullDisplay() {
-                return "<h3>" + this.title + "</h3><br>" + this.description() + "<br><br>Cost: $6.50e11"
+                return "<h3>" + this.title + "</h3><br>" + this.description() + "<br><br>Cost: $2.65e13"
             },
-            cost: new Decimal(6.5e11),
+            cost: new Decimal(2.65e13),
             style: {'width':'180px'},
             onPurchase() {
                 player['farm'][this.title+"Owned"] = true
             },
             unlocked() {
-                return false
+                return hasUpgrade(this.layer, 16)
             },
             canAfford() {
                 return player['farm'].points.gte(this.cost) && getClickPower().gte(getCropValue(11)[2])
@@ -3226,7 +3269,7 @@ addLayer("darkness", {
         12: {
             requirementDescription: "2 Dark Fragments - Darker Yet Darker",
             effectDescription() {
-                return "7.00e9x Amoebas<br>3x Money<br>1.25x Crops<br><font color='#ff0000'>Axe Cat wants to try more food, so it'll start consuming your crops! You lose a random crop every second while feeding Axe Cat.</font>"
+                return "7.00e9x Amoebas<br>3x Money<br>1.25x Crops<br><font color='#ff0000'>Axe Cat wants to try more food, so it'll start consuming your crops! You begin slowly draining in crops while feeding Axe Cat.</font>"
             },
             unlocked() {
                 return hasMilestone(this.layer, this.id-1)
@@ -3236,7 +3279,7 @@ addLayer("darkness", {
         13: {
             requirementDescription: "3 Dark Fragments - Something Is Coming",
             effectDescription() {
-                return "10,000,000x and ^1.01 Cherries<br><font color='#ff0000'>Axe Cat demands more attention. You are unable to earn Cherries, Knives, Money, or Crops while feeding Axe Cat.</font>"
+                return "10,000,000x and ^1.01 Cherries<br><font color='#ff0000'>Axe Cat demands more attention. You are unable to earn Cherries, Money, or Crops while feeding Axe Cat.</font>"
             },
             unlocked() {
                 return hasMilestone(this.layer, this.id-1)
@@ -3253,12 +3296,24 @@ addLayer("darkness", {
             },
             done() {return player['darkness'].DarkFragments.gte(4)},
         },
+        15: {
+            requirementDescription: "10 Dark Fragments - A Step Beyond",
+            effectDescription() {
+                return "This isn't possible to get rn wait until v0.3 BOZO. haha<br><font color='#ff0000'>Axe Cat sends a DRONE STRIKE to your HOUSE, which makes you get /100,000 Crops.</font>"
+            },
+            unlocked() {
+                return hasMilestone(this.layer, this.id-1)
+            },
+            done() {return player['darkness'].DarkFragments.gte(10)},
+        },
     },
-    
+
     tabFormat: [
         ["display-text", "<h2><font color='#e70ce7'>Awaken the power of the Dark Knight.</font></h2>"],
         "blank",
         "milestones",
+        "blank",
+        "bars",
         "blank",
     ],
 })
