@@ -225,6 +225,7 @@ let randomTipIndex = Math.floor(Math.random() * tipMessages.length)
 // You can add non-layer related variables that should to into "player" and be saved here, along with default values
 function addedPlayerData() { return {
 	minimumClickMult: 0,
+	criticalClicks: 0,
 	//AxeCatMult: 1,
 	LayerTwoChoice: null,
 	AntivirusLevel: 0,
@@ -253,8 +254,12 @@ var displayThings = [
 		return ""
 	},
 	function() {
-		if (hasUpgrade('p', 16) || player['g'].unlocked || player['k'].unlocked) 
-			return "You have clicked <h3>" + format(player.minimumClickMult) + "</h3> symbols.<br>"+"<div class='ghost'>aaa</div>"
+		if (hasUpgrade('p', 16) || player['g'].unlocked || player['k'].unlocked)
+			if (hasUpgrade('g', 15)) {
+				return "You have clicked <h3>" + format(player.minimumClickMult) + "</h3> symbols.<br>You have <font color='#770000'>critically</font> clicked <h3>" + format(player.criticalClicks) + "</h3> symbols."+"<div class='ghost'>aaa</div>"
+			} else {
+				return "You have clicked <h3>" + format(player.minimumClickMult) + "</h3> symbols.<br>"+"<div class='ghost'>aaa</div>"
+			}
 		return ""
 	},
 	function() {return allTips[randomTipIndex]},

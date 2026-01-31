@@ -449,7 +449,7 @@ const cudGrade16 = {
     },
 	onClick() {
 		if (this.color == "#006BF7") {
-			player.minimumClickMult+=1
+			player.minimumClickMult++
 			if (hasUpgrade('g', 14)) {
 				var CarpalScale = new Decimal(0.01)
 				if (hasUpgrade('g', 18)) {
@@ -489,6 +489,7 @@ const cudGrade16 = {
 				updateMilestones("p")
 				updateAchievements("p")
 				playSound('Critical', 'ogg', 0.147)
+				player.criticalClicks++
 			} else {
 				player['p'].clickingMult = player['p'].clickingMult.add(getClickPower())
 				this.color = "#6225D1"
