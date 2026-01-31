@@ -764,7 +764,7 @@ addLayer("a", {
         },
         //Chris Layer Achievements
         17: {
-            name: "The Slots Call",
+            name: "The Slots Call Your Name",
             image: "resources/Cherries_Icon.png",
             done() {return player['g'].points.gte(1)},
             unlocked() {return player['g'].unlocked},
@@ -2140,7 +2140,7 @@ addLayer("k", {
         30: {
             requirementDescription: "30,000 Killstreak",
             effectDescription() {
-                return "+1 Dark Fragment<br>1.00e200x Amoebas<br><b>Procrastination</b> scales faster, and gets even faster based on your Knives"
+                return "+1 Dark Fragment<br>1.00e200x Amoebas<br><b>Procrastination</b> reaches its cap faster, and gets even faster based on your Knives"
             },
             done() {return player[this.layer].best.gte(30000)},
             unlocked() {return hasMilestone(this.layer, this.id-1)},
@@ -2439,7 +2439,7 @@ addLayer("farm", {
         },
         17: {
             title: "Soon",
-            description: "<b>Procrastination</b>'s cap is affected by Axe Cat and scales faster.",
+            description: "<b>Procrastination</b>'s cap is affected by Axe Cat and reaches its cap faster.",
             effect() {
                 if (Math.random()>=0.97) {
                     return "Never, Or About Ten Years"
