@@ -658,7 +658,7 @@ var interval = setInterval(function() {
 	if ((hasUpgrade('p', 19) && player['p'].clickingMult.gt(player.minimumClickMult*3)) || (!(hasUpgrade('p', 19)) && player['p'].clickingMult.gt(1))) {
 		var drain = 60
 		if (hasMilestone('k', 25)) {
-			drain /= 10
+			drain /= 5
 		}
 		var minClickM = new Decimal(1)
 		if (hasUpgrade('p', 19)) {
