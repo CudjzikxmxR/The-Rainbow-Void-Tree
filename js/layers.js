@@ -1973,7 +1973,7 @@ addLayer("k", {
                 return '2.00x Click Power<br>You automatically "click" symbols when passing through them.'
             },
             done() {return player[this.layer].best.gte(3)},
-            unlocked() {return hasMilestone(this.layer, this.id-1)},
+            unlocked() {return hasMilestone(this.layer, this.id-1) || hasMilestone(this.layer, this.id)},
         },
         13: {
             requirementDescription: "4 Killstreak",
