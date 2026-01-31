@@ -1,4 +1,4 @@
-addLayer("loren", {
+addLayer("guide", {
     //CODE BORROWED FROM SCONVOLUTION CUZZ I WANTED TO CUT CORNERS GO PLAY IT
     //https://sorbettheshark.github.io/SConvolution-0.3.0/
     startData() {return {
@@ -10,7 +10,7 @@ addLayer("loren", {
     layerShown: true,
     type: "none",
     resource: "",
-    tooltip: "Info",
+    tooltip: "Guide",
     nodeStyle() {
         return {
             "top":"4px",
