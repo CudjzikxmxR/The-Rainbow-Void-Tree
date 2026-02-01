@@ -325,7 +325,7 @@ function prepareTipRand() {
 	}
 	if (hasUpgrade('k', 22)) {
 		allTips.push(
-			"<h2><font color='#ff0000'>You were told be beware. Will you?</font></h2>",
+			"<h2><font color='#ff0000'>You were told to beware. Will you?</font></h2>",
 			"<h2><font color='#ff0000'>You will fall to yes_man. It is inevitable.</font></h2>",
 			"Have you or a loved one fallen to accidentally running into yes_man right before you performed a reset to earn more Cherries or Knives? You are not alone.<br>Call 1-800-777-GayPornography if you or a loved one has experienced unjust yes_manning.",
 			"You can't blame yes_man for getting in your way. He's having a bad day okay?",
