@@ -72,7 +72,7 @@ addLayer("p", {
           // mult = mult.times(Math.pow(Math.pow((1.5+Math.max(0, (player['k'].milestones.length-7))/20), player['k'].milestones.length)))
         }
         if (hasMilestone('k', 17)) {
-            mult = mult.times(15)
+            mult = mult.times(25)
         }
         if (hasUpgrade('p', 28)) {
             var achieveBase = 2
@@ -97,7 +97,7 @@ addLayer("p", {
             mult = mult.times(upgradeEffect('p', 34))
         }
         if (hasMilestone('k', 29)) {
-		    mult = mult.times(1000)
+		    mult = mult.times(1000000)
         }
         if (hasMilestone('k', 30)) {
 		    mult = mult.times("1e200")
@@ -429,7 +429,7 @@ addLayer("p", {
                 return hasUpgrade(this.layer, 29) && hasMilestone('k', 27)
             },
             effect() {
-                return player['farm'].Corn.add(1).pow(5).times(10).max(1)
+                return player['farm'].Corn.add(1).pow(7).times(10).max(1)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
@@ -464,7 +464,7 @@ addLayer("p", {
                 return hasUpgrade(this.layer, 29) && hasMilestone('k', 27)
             },
             effect() {
-                return player['farm'].Sugarcane.add(0).pow(5.5).times(100).max(1)
+                return player['farm'].Sugarcane.add(0).pow(7.5).times(100).max(1)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
@@ -1151,7 +1151,7 @@ addLayer("g", {
             mult = mult.times(upgradeEffect('p', 31))
         }
         if (hasMilestone('k', 29)) {
-		    mult = mult.times(1000)
+		    mult = mult.times(1000000)
         }
         if (hasMilestone('darkness', 13)) {
 		    mult = mult.times(1e7)
@@ -1429,7 +1429,7 @@ addLayer("g", {
             title: "No More Bad Dreams",
             description: "+1 Dark Fragment<br>Cherries scale based on Dark Fragments.",
             cost: new Decimal("e3000"),
-            style: {'width':'420px','height':'200px','corner-radius':'30px'},
+            style: {'width':'420px','height':'200px','corner-radius':'30px', 'background-image':'url(resources/RoyalBorder.png)', "background-size":"95% 95%", "background-repeat":"no-repeat", "background-position":"center",},
             unlocked() {
                 return hasUpgrade('farm', 14)
             },
@@ -1440,6 +1440,7 @@ addLayer("g", {
                 return player['darkness'].DarkFragments.div(50).add(1)
             },
             effectDisplay() { return "^"+format(upgradeEffect(this.layer, this.id)) },
+            persisting: true,
         },
     },
 
@@ -1624,7 +1625,7 @@ addLayer("g", {
         "blank",
 
         ["display-text", function() {
-            if (hasUpgrade('farm', 15)) {
+            if (hasUpgrade('farm', 14)) {
                 return "<h3>[SET 3]</h2>"
             }
             return ""
@@ -1865,7 +1866,7 @@ addLayer("k", {
                 resetClickMult()
             },
             effect() {
-                return player['g'].AxeCatMult.pow(0.7)
+                return player['g'].AxeCatMult.pow(0.7017)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
@@ -1899,7 +1900,7 @@ addLayer("k", {
         },
         19: {
             title: "This Is The Relationship I Want To Have With You",
-            description: "/10,000,000 Amoebas.<br>^1.10 Rainbows<br>3.00x Critical Power",
+            description: "/10,000,000 Amoebas.<br>^1.10 Rainbows<br>4.00x Critical Power",
             cost: new Decimal(860),
             style: {'width':'140px'},
             unlocked() {
@@ -1939,7 +1940,7 @@ addLayer("k", {
                 resetClickMult()
             },
             effect() {
-                return player[this.layer].points.add(1).pow(4.07).times(player[this.layer].points.sub(1450).max(1).pow(2.7))
+                return player[this.layer].points.add(1).pow(5.07).times(player[this.layer].points.sub(1450).max(1).pow(4.7))
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
@@ -2034,7 +2035,7 @@ addLayer("k", {
         17: {
             requirementDescription: "15 Killstreak",
             effectDescription() {
-                return "/100.00 Rainbows<br>15.00x Amoebas<br>You can earn max Knives from Kill resets."
+                return "/100.00 Rainbows<br>25.00x Amoebas<br>You can earn max Knives from Kill resets."
             },
             done() {return player[this.layer].best.gte(15)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
@@ -2138,13 +2139,15 @@ addLayer("k", {
         29: {
             requirementDescription: "20,000 Killstreak",
             effectDescription() {
-                return "1,000x Rainbows<br>1,000x Amoebas<br>1,000x Cherries<br>1.10x Knives<br>1,000x Click Power<br>1.50x Money<br>1.20x Crops<br>1.20x Crop Grow Speed<br>+0.55 to the <b>18 Killstreak</b> milestone effect base.<br>Keep Plot #5 and #6 without <b>Cob Cannon</b> and <b>Cotton Cuddy</b>."
+                return "1,000,000x Rainbows<br>1,000,000x Amoebas<br>1,000,000x Cherries<br>1.10x Knives<br>1,000x Click Power<br>1.50x Money<br>1.20x Crops<br>1.20x Crop Grow Speed<br>+0.55 to the <b>18 Killstreak</b> milestone effect base.<br>Keep Plot #5 and #6 without <b>Cob Cannon</b> and <b>Cotton Cuddy</b>."
             },
             done() {return player[this.layer].best.gte(20000)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
         },
         30: {
             requirementDescription: "30,000 Killstreak",
+            persisting: true,
+            style: {'background-image':'url(resources/RoyalBorder.png)', "background-size":"95%", "background-repeat":"no-repeat", "background-position":"center",},
             effectDescription() {
                 return "+1 Dark Fragment<br>1.00e200x Amoebas<br><b>Procrastination</b> reaches its cap faster, and gets even faster based on your Knives"
             },
@@ -2472,7 +2475,7 @@ addLayer("farm", {
                 return "<h3>Unkept Promises</h3><br>" + this.description + "<br>Currently: " + this.effectDisplay() + "<br><br>Cost: 1,000 wheat, 250 potatoes, 100 cucumbers"
             },
             cost: decimalZero,
-            style: {'width':'420px','height':'200px','corner-radius':'30px'},
+            style: {'width':'420px','height':'200px','corner-radius':'30px', 'background-image':'url(resources/RoyalBorder.png)', "background-size":"95% 95%", "background-repeat":"no-repeat", "background-position":"center",},
             onPurchase() {
                 player[this.layer].Wheat = player[this.layer].Wheat.sub(new Decimal(1000))
                 player[this.layer].Potatoes = player[this.layer].Potatoes.sub(new Decimal(250))
@@ -2486,6 +2489,7 @@ addLayer("farm", {
                 return (new Decimal(5)).pow(player['darkness'].DarkFragments)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
+            persisting: true,
         },
 
         //CROPS
