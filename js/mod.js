@@ -124,7 +124,7 @@ function getPointGen() {
 	if (hasUpgrade('k', 23))
 		gain = gain.times(1e7)
 	if (hasMilestone('k', 29))
-		gain = gain.times(1000)
+		gain = gain.times(1000000)
 
 	//Achievements
 	var achieveBase = 2

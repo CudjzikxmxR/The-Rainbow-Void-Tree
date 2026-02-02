@@ -1276,7 +1276,7 @@ addLayer("g", {
             cost: new Decimal(1000000),
             style: {'width':'140px'},
             effect() {
-                return player[this.layer].points.add(1).pow(0.32)
+                return player[this.layer].points.add(1).pow(0.3207)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
