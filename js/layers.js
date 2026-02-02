@@ -850,9 +850,9 @@ addLayer("a", {
         29: {
             name: "Cellular Congregation",
             image: "resources/Amoeba_Icon.png",
-            done() {return player['p'].points.gte("1e500")},
+            done() {return player['p'].points.gte("7.77e777")},
             unlocked() {return player['p'].unlocked && player['k'].unlocked},
-            tooltip: "Achieve 1.00e500 Amoebas.<br>Award: N/A", 
+            tooltip: "Achieve 7.77e777 Amoebas.<br>Award: N/A", 
         },
         31: {
             name: "Lilly's Garden",
