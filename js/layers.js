@@ -3385,14 +3385,14 @@ addLayer("darkness", {
             done() {return player['darkness'].DarkFragments.gte(4)},
         },
         15: {
-            requirementDescription: "10 Dark Fragments - A Step Beyond",
+            requirementDescription: "6 Dark Fragments - A Step Beyond",
             effectDescription() {
                 return "This isn't possible to get rn wait until v0.3 BOZO. haha<br><font color='#ff0000'>Axe Cat sends a DRONE STRIKE to your HOUSE, which makes you get /100,000 Crops.</font>"
             },
             unlocked() {
                 return hasMilestone(this.layer, this.id-1)
             },
-            done() {return player['darkness'].DarkFragments.gte(10)},
+            done() {return player['darkness'].DarkFragments.gte(6)},
         },
     },
 
