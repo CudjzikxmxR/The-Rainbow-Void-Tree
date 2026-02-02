@@ -2422,9 +2422,9 @@ addLayer("farm", {
             title: "Scarcity",
             description: "^1.025 Cherries<br>2x Crop Grow Speed while Axe Cat is hungry.",
             fullDisplay() {
-                return "<h3>Scarcity</h3><br>" + this.description + "<br><br>Cost: $5,000, 10 wheat, 10 tomatoes, 10 carrots, 10 corn, 10 potatoes"
+                return "<h3>Scarcity</h3><br>" + this.description + "<br><br>Cost: $4,000, 10 wheat, 10 tomatoes, 10 carrots, 10 corn, 10 potatoes"
             },
-            cost: new Decimal(5000),
+            cost: new Decimal(4000),
             style: {'width':'140px'},
             onPurchase() {
                 player[this.layer].Wheat = player[this.layer].Wheat.sub(new Decimal(10))
