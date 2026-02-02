@@ -555,6 +555,7 @@ const yes_face = {
 	width: 77,
 	height: 77,
     time: 4,
+	active: false,
 	//color: "#FFFFFF",
     rotation (id) {
         return 3 * (id - 1.5) + (Math.random() - 0.5) * 10
@@ -579,8 +580,15 @@ const yes_face = {
 			playSound('YES_ENCOUNTER', 'ogg')
 		}
 	},
+	run() {
+		setTimeout(() => {
+			this.active = true
+        }, 1077);
+	},
 	onMouseEnter() {
-		this.onClick()
+		if (this.active) {
+			this.onClick()
+		}
 	}
 }
 
@@ -642,7 +650,7 @@ var interval = setInterval(function() {
 		symbolReq = 1
 	}
 	if ((hasUpgrade('p', 16) || hasUpgrade('g', 13)) && Math.random()>= symbolReq) {
-		if (hasUpgrade('k', 22) && Math.random() >= 0.99) {
+		if (hasUpgrade('k', 22) && Math.random() >= 0.9) {
 			makeShinies(yes_face, 1)
 		} else {
 			if (hasUpgrade('g', 27) && Math.random() >= 0.995) {

@@ -12,6 +12,7 @@ function makeParticles(data, amount=1, type = "normal") {
                 case 'onClick': // Functions that should be copied over
                 case 'onMouseEnter':
                 case 'onMouseLeave':
+                case 'run':
                 case 'update':
                     particle[thing] = data[thing]
                     break;
@@ -22,6 +23,9 @@ function makeParticles(data, amount=1, type = "normal") {
         }
         if (data.dir === undefined) {
             particle.dir = particle.angle
+        }
+        if (data.run != undefined) {
+            particle.run()
         }
         particle.dir = particle.dir + (particle.spread * (x- amount/2 + 0.5))
 
@@ -99,6 +103,7 @@ const newParticles = {
             fadeOutTime: 1,
             fadeInTimer: 0,
             fadeInTime: 0,
+            active: false,
         }
     },
     shiny() {
@@ -122,6 +127,7 @@ const newParticles = {
             fadeOutTime: 1,
             fadeInTimer: 0,
             fadeInTime: 0.5,
+            active: false,
         }
     },
 }
