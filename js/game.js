@@ -650,7 +650,7 @@ var interval = setInterval(function() {
 		symbolReq = 1
 	}
 	if ((hasUpgrade('p', 16) || hasUpgrade('g', 13)) && Math.random()>= symbolReq) {
-		if (hasUpgrade('k', 22) && Math.random() >= 0.9) {
+		if (hasUpgrade('k', 22) && Math.random() >= 0.99) {
 			makeShinies(yes_face, 1)
 		} else {
 			if (hasUpgrade('g', 27) && Math.random() >= 0.995) {
