@@ -1946,7 +1946,7 @@ addLayer("k", {
         },
         22: {
             title: "yes_upgrade",
-            description: "Summon the wrath of yes_man to cause mass destruction. His face has a 1 in 100 chance to spawn in place of a symbol. When hovered over, a Kill reset is forced without awarding Knives, but it increases <b>Carpal Tunnel</b> and Click Power multiplier based on your Knives. Scales 5.00x more for every 100 Knives past 1500.",
+            description: "Summon the wrath of yes_man to cause mass destruction. His face has a 1 in 50 chance to spawn in place of a symbol. When hovered over, a Kill reset is forced without awarding Knives, but it increases <b>Carpal Tunnel</b> and Click Power multiplier based on your Knives. Scales 5.00x more for every 100 Knives past 1500.",
             cost: new Decimal(1600),
             style: {'width':'700px','corner-shape': 'squircle','corner-radius':'10px'},
             unlocked() {
