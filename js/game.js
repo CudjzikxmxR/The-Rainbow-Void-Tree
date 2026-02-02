@@ -583,7 +583,7 @@ const yes_face = {
 	run() {
 		setTimeout(() => {
 			this.active = true
-        }, 1077);
+        }, 777);
 	},
 	onMouseEnter() {
 		if (this.active) {
