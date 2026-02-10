@@ -53,7 +53,7 @@
 	padding-right: 5px;
 
 	height: 75px;
-	background-color: #77bf5f;
+	background-color: #6bcf4d;
 	border: 4px solid;
 	border-radius: 4px;
 	border-color: rgba(0, 0, 0, 0.125);
@@ -73,7 +73,7 @@
 }
 
 .challenge.done {
-	background-color: #77bf5f;
+	background-color: #6bcf4d;
 }
 
 .challenge.canComplete {

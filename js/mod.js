@@ -347,7 +347,7 @@ function prepareTipRand() {
 			"You should be trying to get every achievement! Some are very important for progression.",
 		)
 	}
-	allTips.push("There are currently "+allTips.length+1+" tips you can encounter!",)
+	allTips.push("There are currently "+(allTips.length+1)+" tips you can encounter!",)
 	tipTick+=1
 	if (tipTick%177==0) {
 		tipTick = 0

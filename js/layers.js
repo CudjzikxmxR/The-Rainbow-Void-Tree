@@ -429,7 +429,7 @@ addLayer("p", {
                 return hasUpgrade(this.layer, 29) && hasMilestone('k', 27)
             },
             effect() {
-                return player['farm'].Corn.add(1).pow(7).times(10).max(1)
+                return player['farm'].Corn.add(1).pow(8).times(100).max(1)
             },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
@@ -470,7 +470,7 @@ addLayer("p", {
         },
         35: {
             title: "Development Hell",
-            description: "^1.07 Click Power<br>25.00x Money<br>/2.00 Crop Grow Speed",
+            description: "^1.07 Click Power<br>50.00x Money<br>/2.00 Crop Grow Speed",
             cost: new Decimal("1e6000"),
             style: {'width':'210px', 'background-image':'url(resources/RoyalBorder.png)', "background-size":"95% 95%", "background-repeat":"no-repeat", "background-position":"center",},
             set: 4,
@@ -504,13 +504,13 @@ addLayer("p", {
             style: {'width':'140px'},
             set: 4,
             getCap() {
-                return new Decimal(45)
+                return new Decimal(45000)
             },
             unlocked() {
                 return hasUpgrade(this.layer, 29) && hasMilestone('k', 27)
             },
             effect() {
-                return player.NonClickTime.add(1).min(this.getCap())
+                return player.NonClickTime.times(200).add(1).min(this.getCap())
             },
             effectDisplay() {
                 if (upgradeEffect(this.layer, this.id).eq(this.getCap())) {
@@ -584,7 +584,7 @@ addLayer("p", {
             title: "Realm of Carnage",
             description: "+1 Dark Fragment<br>Click Power scales based on Dark Fragments.<br><i>Note: This is the final upgrade of v0.2, and the effect for 4 Dark Fragments has not been coded.</i>",
             cost: new Decimal("8e83333"),
-            style: {'width':'420px','height':'200px','corner-radius':'30px', 'background-image':'url(resources/RoyalBorder.png)', "background-size":"95% 95%", "background-repeat":"no-repeat", "background-position":"center",},
+            style: {'width':'420px','height':'200px','corner-shape': 'squircle','corner-radius':'20px', 'background-image':'url(resources/RoyalBorder.png), linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(100, 87, 199, 0.25) 70%, rgba(98, 37, 209, 0.7) 100%)', "background-size":"95% 95%, 107% 107%", "background-repeat":"no-repeat, auto", "background-position":"center"},
             set: 4,
             unlocked() {
                 return hasUpgrade(this.layer, 29) && hasMilestone('k', 27)
@@ -1429,7 +1429,8 @@ addLayer("g", {
             title: "No More Bad Dreams",
             description: "+1 Dark Fragment<br>Cherries scale based on Dark Fragments.",
             cost: new Decimal("e3000"),
-            style: {'width':'420px','height':'200px','corner-radius':'30px', 'background-image':'url(resources/RoyalBorder.png)', "background-size":"95% 95%", "background-repeat":"no-repeat", "background-position":"center",},
+            style: {'width':'420px','height':'200px','corner-shape': 'squircle','corner-radius':'20px', 'background-image':'url(resources/RoyalBorder.png), linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(100, 87, 199, 0.25) 70%, rgba(98, 37, 209, 0.7) 100%)', "background-size":"95% 95%, 107% 107%", "background-repeat":"no-repeat, auto", "background-position":"center"},
+            //style: {'width':'420px','height':'200px','corner-shape': 'squircle','corner-radius':'20px', 'background-image':'url(resources/RoyalBorder.png)', "background-size":"95% 95%", "background-repeat":"no-repeat", "background-position":"center",},
             unlocked() {
                 return hasUpgrade('farm', 14)
             },
@@ -1535,7 +1536,7 @@ addLayer("g", {
         }
     },
     milestones: {
-        17: {
+        AxeCat: {
             requirementDescription() {
                 var CatName = "Axe Cat"
                 if (hasUpgrade('k', 20) && !player[this.layer].AxeCosmetic) {
@@ -1565,6 +1566,13 @@ addLayer("g", {
                 }
                 */
             },
+            style() {
+                return {
+                    'height': '177px',
+                    'background-color': '#f9d6a6',
+                    'border-color': '#b88423',
+                }
+            },
             //effectDescription: "You can feed Axe Cat, disabling Amoeba gain entirely and causing Catfood to spawn around the screen, but giving temporary Rainbow and Cherry multiplier for each Catfood clicked.<br>Currently "+format(player.AxeCatMult)+"x. (Capped at "+format(Math.log10(getClickPower()))+"x)",
             toggles: [
                 ["p", "feedingAxeCat"], 
@@ -1576,6 +1584,7 @@ addLayer("g", {
             unlocked() {return hasUpgrade(this.layer, 23)},
         }
     },
+    
     tabFormat: [
         "main-display",
         ["display-text",
@@ -2128,7 +2137,7 @@ addLayer("k", {
         28: {
             requirementDescription: "12,000 Killstreak",
             effectDescription() {
-                return "Amoebas persist on Gamble resets.<br>Symbols spawn more often.<br>Unlock the ability to toggle Precision Mode, which makes critical clicks 20x rarer but give 1,000x Critical Power."
+                return "Amoebas persist on Gamble resets.<br>Symbols spawn more often.<br>Unlock the ability to toggle Precision Mode, which makes critical clicks 10x rarer but give 1,000x Critical Power."
             },
             done() {return player[this.layer].best.gte(12000)},
             unlocked() {return hasMilestone(this.layer, this.id-1)},
@@ -2147,9 +2156,9 @@ addLayer("k", {
         30: {
             requirementDescription: "30,000 Killstreak",
             persisting: true,
-            style: {'background-image':'url(resources/RoyalBorder.png)', "background-size":"95%", "background-repeat":"no-repeat", "background-position":"center",},
+            style: {'background-image':'url(resources/RoyalBorder.png), linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(100, 87, 199, 0.25) 70%, rgba(98, 37, 209, 0.7) 100%)', "background-size":"95%, 107% 117%", "background-repeat":"no-repeat, auto", "background-position":"center",},
             effectDescription() {
-                return "+1 Dark Fragment<br>1.00e200x Amoebas<br><b>Procrastination</b> reaches its cap faster, and gets even faster based on your Knives"
+                return "+1 Dark Fragment<br>1.00e200x Amoebas<br><b>Procrastination</b> reaches its cap faster, and gets even faster based on your Knives."
             },
             done() {return player[this.layer].best.gte(30000)},
             unlocked() {return hasMilestone(this.layer, this.id-1)},
@@ -2277,7 +2286,8 @@ addLayer("farm", {
             "background-position":"center", 
         }
     },
-    color: "#8EED5C",
+    //color: "#8EED5C",
+    color: "#92e649",
     requires() { // Can be a function that takes requirement increases into account
        return new Decimal("1e1100")
     },
@@ -2318,7 +2328,7 @@ addLayer("farm", {
 		    mult = mult.times(1.5)
         }
         if (hasUpgrade('p', 35)) {
-		    mult = mult.times(25)
+		    mult = mult.times(50)
         }
         if (hasMilestone('darkness', 12)) {
 		    mult = mult.times(3)
@@ -2475,7 +2485,8 @@ addLayer("farm", {
                 return "<h3>Unkept Promises</h3><br>" + this.description + "<br>Currently: " + this.effectDisplay() + "<br><br>Cost: 1,000 wheat, 250 potatoes, 100 cucumbers"
             },
             cost: decimalZero,
-            style: {'width':'420px','height':'200px','corner-radius':'30px', 'background-image':'url(resources/RoyalBorder.png)', "background-size":"95% 95%", "background-repeat":"no-repeat", "background-position":"center",},
+            style: {'width':'420px','height':'200px','corner-shape': 'squircle','corner-radius':'20px', 'background-image':'url(resources/RoyalBorder.png), linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(100, 87, 199, 0.25) 70%, rgba(98, 37, 209, 0.7) 100%)', "background-size":"95% 95%, 107% 107%", "background-repeat":"no-repeat, auto", "background-position":"center"},
+            //style: {'width':'420px','height':'200px','corner-shape': 'squircle','corner-radius':'20px', 'background-image':'url(resources/RoyalBorder.png)', "background-size":"95% 95%", "background-repeat":"no-repeat", "background-position":"center",},
             onPurchase() {
                 player[this.layer].Wheat = player[this.layer].Wheat.sub(new Decimal(1000))
                 player[this.layer].Potatoes = player[this.layer].Potatoes.sub(new Decimal(250))
@@ -3349,6 +3360,7 @@ addLayer("darkness", {
     milestones: {
         11: {
             requirementDescription: "1 Dark Fragment - Into Darkness",
+            style: {'background-image':'linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(100, 87, 199, 0.25) 70%, rgba(98, 37, 209, 0.6) 100%)', "background-size":"107% 117%", "background-repeat":"no-repeat", "background-position":"center",},
             effectDescription() {
                 return "5.00e10x Rainbows<br>Symbols are pressed by hovering over them rather than passing through them.<br><font color='#ff0000'>Axe Cat is hungrier, making the multiplier drain twice as fast.</font>"
             },
@@ -3356,6 +3368,7 @@ addLayer("darkness", {
         },
         12: {
             requirementDescription: "2 Dark Fragments - Darker Yet Darker",
+            style: {'background-image':'linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(100, 87, 199, 0.25) 70%, rgba(98, 37, 209, 0.6) 100%)', "background-size":"107% 117%", "background-repeat":"no-repeat", "background-position":"center",},
             effectDescription() {
                 return "7.00e9x Amoebas<br>3x Money<br>1.25x Crops<br><font color='#ff0000'>Axe Cat wants to try more food, so it'll start consuming your crops! You begin slowly draining in crops while feeding Axe Cat.</font>"
             },
@@ -3366,6 +3379,7 @@ addLayer("darkness", {
         },
         13: {
             requirementDescription: "3 Dark Fragments - Something Is Coming",
+            style: {'background-image':'linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(100, 87, 199, 0.25) 70%, rgba(98, 37, 209, 0.6) 100%)', "background-size":"107% 117%", "background-repeat":"no-repeat", "background-position":"center",},
             effectDescription() {
                 return "10,000,000x and ^1.01 Cherries<br><font color='#ff0000'>Axe Cat demands more attention. You are unable to earn Cherries, Money, or Crops while feeding Axe Cat.</font>"
             },
@@ -3376,6 +3390,7 @@ addLayer("darkness", {
         },
         14: {
             requirementDescription: "4 Dark Fragments - True Form",
+            style: {'background-image':'linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(100, 87, 199, 0.25) 60%, rgba(98, 37, 209, 0.5) 100%)', "background-size":"107% 117%", "background-repeat":"no-repeat", "background-position":"center",},
             effectDescription() {
                 return "Axe Cat unlocks its true potential.<br><b><pinkDark>You won't ever be able to turn back. It's too late.</pinkDark></b>"
             },
@@ -3385,15 +3400,51 @@ addLayer("darkness", {
             done() {return player['darkness'].DarkFragments.gte(4)},
         },
         15: {
-            requirementDescription: "6 Dark Fragments - A Step Beyond",
+            requirementDescription: "5 Dark Fragments - A Step Beyond",
+            style: {'background-image':'linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(100, 87, 199, 0.25) 50%, rgba(98, 37, 209, 0.5) 100%)', "background-size":"107% 117%", "background-repeat":"no-repeat", "background-position":"center",},
             effectDescription() {
                 return "This isn't possible to get rn wait until v0.3 BOZO. haha<br><font color='#ff0000'>Axe Cat sends a DRONE STRIKE to your HOUSE, which makes you get /100,000 Crops.</font>"
             },
             unlocked() {
                 return hasMilestone(this.layer, this.id-1)
             },
-            done() {return player['darkness'].DarkFragments.gte(6)},
+            done() {return player['darkness'].DarkFragments.gte(5)},
         },
+    },
+
+    bars: {
+        nextGoal: {
+            direction: RIGHT,
+            width: 600,
+            height: 70,
+            getReq() {
+                if (!hasMilestone('darkness', 14)) {
+                    return new Decimal(4)
+                }
+                return new Decimal(7)
+            },
+            progress() {
+                if (!hasMilestone('darkness', 14)) {
+                    return player['darkness'].DarkFragments.div(4)
+                }
+                return player['darkness'].DarkFragments.div(7)
+            },
+            display() {
+                var Text = "The Dark Knight"
+                if (hasMilestone('darkness', 14)) {
+                    Text = "Something Crazy"
+                }
+                return `${formatWhole(player['darkness'].DarkFragments)}/${formatWhole(this.getReq())} Dark Fragments required for <pinkDark>${Text}.</pinkDark>`
+                //return `${format(this.progress().times(100), 3)}% to <pinkDark>something.</pinkDark>`
+            },
+            fillStyle() {
+                if (!hasMilestone('darkness', 14)) {
+                    return {'background-color':'#e70ce7'}
+                }
+                return {'background-color':'#6225d1'}
+            },
+            borderStyle() {return {'border-color':'#404040', 'border-radius':'50px'}}
+        }
     },
 
     tabFormat: [
@@ -3401,7 +3452,7 @@ addLayer("darkness", {
         "blank",
         "milestones",
         "blank",
-        "bars",
+        ["bar", "nextGoal"],
         "blank",
     ],
 })

@@ -469,7 +469,7 @@ const cudGrade16 = {
 			if (player.MustCrit)
 				GambleRange = 1
 			if (player['k'].precisionMode)
-				GambleRange *= 20
+				GambleRange *= 10
 
 			if ((hasUpgrade('g', 15)) && (Math.floor(Math.random()*GambleRange+1)==GambleRange)) {
 				var critPower = decimalOne

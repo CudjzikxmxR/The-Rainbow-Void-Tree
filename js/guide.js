@@ -62,7 +62,7 @@ addLayer("guide", {
                 playSound("ChaChing")
             },
             unlocked() {return player['farm'].unlocked},
-            style: {'background-color': '#8EED5C', 'min-height':'0px', 'height':'37px', 'width':'277px', 'border-radius':'177px', 'border': '3px solid', 'border-color': 'rgba(0, 0, 0, 0.125)'},
+            style: {'background-color': '#92e649', 'min-height':'0px', 'height':'37px', 'width':'277px', 'border-radius':'177px', 'border': '3px solid', 'border-color': 'rgba(0, 0, 0, 0.125)'},
         },
     },
     tabFormat: [
@@ -140,10 +140,11 @@ addLayer("guide", {
                     function() {
                         var Credits =  `
                         <h2>Creator</h2><br>
-                        CudjzikxmxR - Owner of TVoR and the creator of this game!<br><br>
+                        CudjzikxmxR - Owner of <rainbow>The Void of Rainbows</rainbow> and the creator of this game!<br><br>
 
                         <h2>Direct Contributors</h2><br>
-                        Chris - The sole playtester for this bombshell of a game.<br><br>
+                        Chris - Originally the sole playtester for this bombshell of a game, but he was TAKING TOO LONG.<br>
+                        Pac - Another playtester for the game. Managed to surpass Chris despite starting playtesting like 3 days later.<br><br>
 
                         <h2>People Whose Work I Used In Some Way</h2><br>
                         Toby Fox - Creator of Deltarune which I used a fuckload of music from<br>
