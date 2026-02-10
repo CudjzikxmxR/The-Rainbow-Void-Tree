@@ -259,7 +259,7 @@ var displayThings = [
 	function() {
 		if (hasUpgrade('p', 16) || player['g'].unlocked || player['k'].unlocked)
 			if (hasUpgrade('g', 15)) {
-				return "You have clicked <h3>" + formatWhole(player.minimumClickMult) + "</h3> symbols.<br>You have <font color='#770000'>critically</font> clicked <h3>" + format(player.criticalClicks) + "</h3> symbols."+"<div class='ghost'>aaa</div>"
+				return "You have clicked <h3>" + formatWhole(player.minimumClickMult) + "</h3> symbols.<br>You have <font color='#770000'>critically</font> clicked <h3>" + formatWhole(player.criticalClicks) + "</h3> symbols."+"<div class='ghost'>aaa</div>"
 			} else {
 				return "You have clicked <h3>" + formatWhole(player.minimumClickMult) + "</h3> symbols.<br>"+"<div class='ghost'>aaa</div>"
 			}
