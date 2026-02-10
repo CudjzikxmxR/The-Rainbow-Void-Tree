@@ -678,7 +678,7 @@ var interval = setInterval(function() {
 	}
 	player.NonClickTime = player.NonClickTime.add(0.25)
 	var catfoodChance = 0.95
-	if ((hasMilestone('g', 17) && player['p'].feedingAxeCat)) {
+	if ((hasMilestone('g', "AxeCat") && player['p'].feedingAxeCat)) {
 		if (Math.random()>=catfoodChance) {
 			makeShinies(catFood, 1)
 		}

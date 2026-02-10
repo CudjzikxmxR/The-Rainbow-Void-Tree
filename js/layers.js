@@ -114,7 +114,7 @@ addLayer("p", {
         if (hasAchievement('a', 45)) {
             mult = mult.times(1e7)
         }
-        if (player['p'].feedingAxeCat && hasMilestone('g', 17)) {
+        if (player['p'].feedingAxeCat && hasMilestone('g', "AxeCat")) {
             mult = mult.times(0)
         }
         return mult
@@ -1162,7 +1162,7 @@ addLayer("g", {
         mult = mult.times(player['g'].CoinflipMult)
         mult = mult.times(player['g'].AxeCatMult)
         mult = mult.times(player['k'].yes_power)
-        if (player['p'].feedingAxeCat && hasMilestone('g', 17) && hasMilestone('darkness', 13)) {
+        if (player['p'].feedingAxeCat && hasMilestone('g', "AxeCat") && hasMilestone('darkness', 13)) {
             mult = mult.times(0)
         }
         return mult
@@ -2336,7 +2336,7 @@ addLayer("farm", {
         if (hasAchievement('a', 47)) {
 		    mult = mult.times(1.2)
         }
-        if (player['p'].feedingAxeCat && hasMilestone('g', 17) && hasMilestone('darkness', 13)) {
+        if (player['p'].feedingAxeCat && hasMilestone('g', "AxeCat") && hasMilestone('darkness', 13)) {
             mult = mult.times(0)
         }
         return mult
@@ -2921,7 +2921,7 @@ addLayer("farm", {
                 }, GrowTime*1000);
             } else {
                 if (data.Ready && data.CurrentCrop) {
-                    if (!(player['p'].feedingAxeCat && hasMilestone('g', 17) && hasMilestone('darkness', 13))) {
+                    if (!(player['p'].feedingAxeCat && hasMilestone('g', "AxeCat") && hasMilestone('darkness', 13))) {
                         player['farm'][data.CurrentCrop] = player['farm'][data.CurrentCrop].add(gainCropMult())
                     }
                     setGridData('farm', id, {CurrentCrop: null, Ready: false})
@@ -2941,7 +2941,7 @@ addLayer("farm", {
             //return data.CurrentCrop + " /// " + data.Ready
             if (data.CurrentCrop) {
                 if (data.Ready) {
-                    if (player['p'].feedingAxeCat && hasMilestone('g', 17) && hasMilestone('darkness', 13)) {
+                    if (player['p'].feedingAxeCat && hasMilestone('g', "AxeCat") && hasMilestone('darkness', 13)) {
                         return "Your feline friend needs your attention."
                     }
                     return "Harvest for +" + format(gainCropMult()) + " " + data.CurrentCrop + "!"
