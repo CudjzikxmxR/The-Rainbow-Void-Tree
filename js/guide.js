@@ -62,7 +62,7 @@ addLayer("guide", {
                 playSound("ChaChing")
             },
             unlocked() {return player['farm'].unlocked},
-            style: {'background-color': '#92e649', 'min-height':'0px', 'height':'37px', 'width':'277px', 'border-radius':'177px', 'border': '3px solid', 'border-color': 'rgba(0, 0, 0, 0.125)'},
+            style: {'background-color': '#9ae649', 'min-height':'0px', 'height':'37px', 'width':'277px', 'border-radius':'177px', 'border': '3px solid', 'border-color': 'rgba(0, 0, 0, 0.125)'},
         },
     },
     tabFormat: [

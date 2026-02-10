@@ -510,7 +510,7 @@ addLayer("p", {
                 return hasUpgrade(this.layer, 29) && hasMilestone('k', 27)
             },
             effect() {
-                return player.NonClickTime.times(200).add(1).min(this.getCap())
+                return player.NonClickTime.times(200).min(this.getCap()).max(1)
             },
             effectDisplay() {
                 if (upgradeEffect(this.layer, this.id).eq(this.getCap())) {
@@ -2287,7 +2287,7 @@ addLayer("farm", {
         }
     },
     //color: "#8EED5C",
-    color: "#92e649",
+    color: "#9ae649",
     requires() { // Can be a function that takes requirement increases into account
        return new Decimal("1e1100")
     },
@@ -3218,7 +3218,7 @@ addLayer("farm", {
             },
             style() {
                 return {
-                    //'background-color': '#b17f7f',
+                    //'background-color': '#cf8989',
                     'width':'400px',
                     'min-height': '120px',
                     'border': '4px solid',
@@ -3239,7 +3239,7 @@ addLayer("farm", {
             },
             style() {
                 return {
-                    'background-color': '#b17f7f',
+                    'background-color': '#cf8989',
                     'width':'300px',
                     'min-height': '15px',
                     'border-radius': '3px',
