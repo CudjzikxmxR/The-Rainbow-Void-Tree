@@ -55,7 +55,7 @@ function getPointGen() {
 	if(!canGenPoints())
 		return decimalZero
 
-	let gain = decimalOne
+	let gain = decimalOne.times(1000000)
 	//Cud Layer Upgrades
 	if (hasUpgrade('p', 11))
 		gain = gain.times(2)
