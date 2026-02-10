@@ -13,7 +13,7 @@ var colors = {
 		3: "#7f7f7f",//Branch color 3
 		color: "#dfdfdf",
 		points: "#ffffff",
-		locked: "#bf8f8f",
+		locked: "#b17f7f",
 		bought: "#6bcf4d",
 		background: "#0f0f0f",
 		background_tooltip: "rgba(0, 0, 0, 0.75)",

@@ -3218,7 +3218,7 @@ addLayer("farm", {
             },
             style() {
                 return {
-                    //'background-color': '#bf8f8f',
+                    //'background-color': '#b17f7f',
                     'width':'400px',
                     'min-height': '120px',
                     'border': '4px solid',
@@ -3239,7 +3239,7 @@ addLayer("farm", {
             },
             style() {
                 return {
-                    'background-color': '#bf8f8f',
+                    'background-color': '#b17f7f',
                     'width':'300px',
                     'min-height': '15px',
                     'border-radius': '3px',

@@ -34,7 +34,7 @@ body {
 
 @keyframes upgradeBuy {
 	50% {
-		background-color: #ffffff; 
+		filter: brightness(127%);
 	}
 }
 
@@ -46,7 +46,7 @@ h1, h2, h3, b, input {
 
 /* These are styles for different states of components. You can make layer-specific versions with .c.locked, for example */
 .locked {
-	background-color: #bf8f8f;
+	background-color: #b17f7f;
 	cursor: not-allowed;
 }
 
