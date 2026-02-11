@@ -119,10 +119,10 @@ function getPointGen() {
 		gain = gain.times((new Decimal(2.5)).add(kScale).pow(player['k'].milestones.length))
 	if (hasMilestone('k', 17))
 		gain = gain.times(0.01)
+	if (hasMilestone('k', 22))
+        gain = gain.times(100000)
 	if (hasUpgrade('k', 16))
 		gain = gain.times(upgradeEffect('k', 16))
-	if (hasUpgrade('k', 23))
-		gain = gain.times(1e7)
 	if (hasMilestone('k', 29))
 		gain = gain.times(1000000)
 

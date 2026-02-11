@@ -81,8 +81,8 @@ addLayer("p", {
         if (hasUpgrade('k', 16)) {
             mult = mult.times(4)
         }
-        if (hasMilestone('k', 23)) {
-            mult = mult.times(1e7)
+        if (hasMilestone('k', 22)) {
+            mult = mult.times(100000)
         }
         if (hasUpgrade('k', 19)) {
             mult = mult.div(1e7)
@@ -392,7 +392,7 @@ addLayer("p", {
         29: {
             title: "<h2>Bomb Strapped To Your Chest</h2>",
             description() {
-                if (!hasMilestone('k', 22)) {
+                if (!hasUpgrade('k', 17)) {
                     return "7.77e17x Rainbows<br><br><h3><font color='#ff0000'>After this upgrade is purchased, You have 10 seconds before a Kill reset is forced without awarding Knives.</font></h3>"
                 } else {
                     return "7.77e17x Rainbows"
@@ -405,7 +405,7 @@ addLayer("p", {
                 return hasUpgrade(this.layer, 21) && hasUpgrade('k', 11)
             },
             onPurchase() {
-                if (!hasMilestone('k', 22)) {
+                if (!hasUpgrade('k', 17)) {
                     for (let x = 40; x > 0; x--) {
                         setTimeout(function () {
                             playSound("BombBeeping")
@@ -1141,6 +1141,9 @@ addLayer("g", {
         if (hasAchievement('a', 27)) {
             mult = mult.times(7777)
         }
+        if (hasMilestone('k', 22)) {
+            mult = mult.times(100000)
+        }
         if (hasUpgrade('farm', 11)) {
             mult = mult.times(5000)
         }
@@ -1863,7 +1866,7 @@ addLayer("k", {
         //Set 2
         17: {
             title: "Dark And Twisted Upgrade",
-            description: "1.10x Knives.<br>Axe Cat affects Amoebas at a reduced rate.",
+            description: "1.10x Knives.<br>The <b>Bomb Strapped To Your Chest</b> is disarmed.<br>Axe Cat affects Amoebas at a reduced rate.",
             cost: new Decimal(500),
             style: {'width':'140px'},
             unlocked() {
@@ -2089,7 +2092,7 @@ addLayer("k", {
         22: {
             requirementDescription: "425 Killstreak",
             effectDescription() {
-                return "The <h3>Bomb Strapped To Your Chest</h3> is disarmed."
+                return "100,000x Rainbows<br>100,000x Amoebas<br>100,000x Cherries"
             },
             done() {return player[this.layer].best.gte(425)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
@@ -2097,7 +2100,7 @@ addLayer("k", {
         23: {
             requirementDescription: "480 Killstreak",
             effectDescription() {
-                return "1.00e7x Rainbows<br>1.00e7x Amoebas<br>+7 to the <b>30 Killstreak</b> milestone effect base."
+                return "+7 to the <b>30 Killstreak</b> milestone effect base."
             },
             done() {return player[this.layer].best.gte(480)},
             unlocked() {return hasMilestone(this.layer, this.id-1)}
