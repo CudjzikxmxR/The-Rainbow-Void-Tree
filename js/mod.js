@@ -215,6 +215,11 @@ let tipMessages = [
 	"I, I love you like a love song baby!",
 	"<b><font color='#5050a2'>DR Fan: I think I am a Boy.</font></b>",
 	"I do not believe in people who use mm/dd/yyyy.",
+	"You're tailor-made for this day and age 'cuz you're powerless and look like prey.",
+	"COEMS!",
+	"im cryign",
+	"Ratio of helpful tips to nonsense: 1:7. Probably. Don't fact-check that.",
+	"Bored of playing? Just watch this tips go by. It's peak entertainment, really.",
 	"The longer tips get hidden behind the Guide. Oops.",
 
 	//Update
@@ -282,6 +287,7 @@ function prepareTipRand() {
 			"Upgrades in the 'This Is Overpowered' series are usually the last upgrade in a set, and signify that you're close to a new feature.",
 			"It's probably in your best bet to double-click the symbols. The onClick function is an asshole.",
 			"Ever feel lost and unable to progress? Check the Guide!<br>Remember that if there's any resource you can still be earning, you SHOULD be earning it.",
+			"okay fine<br>pulls down my pants<br><br>WOAAHH"
 		)
 	}
 	if (player['g'].unlocked) {
@@ -289,12 +295,14 @@ function prepareTipRand() {
 			"The coin desires to be flipped.",
 			"Let's go gambling!",
 			"Wait, hang on, this mod adds new themes?",
+			"@Chris The Cherry<br>Bottom boy.",
 		)
 	}
 	if (player['k'].unlocked) {
 		allTips.push(
 			"KILL. KILL. KILL.",
 			"Woooaaahhhhhhhhh Story Of Undertale",
+			"Murder, my favorite!",
 		)
 	}
 	if (hasUpgrade('g', 23)) {
@@ -329,11 +337,13 @@ function prepareTipRand() {
 			"<h2><font color='#ff0000'>You will fall to yes_man. It is inevitable.</font></h2>",
 			"Have you or a loved one fallen to accidentally running into yes_man right before you performed a reset to earn more Cherries or Knives? You are not alone.<br>Call 1-800-777-GayPornography if you or a loved one has experienced unjust yes_manning.",
 			"You can't blame yes_man for getting in your way. He's having a bad day okay?",
+			"Remember to earning more of every resource you could be earning, along with utilizing every mechanic/feature you have access to!<br>It's usually the solution to getting unstuck.",
 		)
 	}
 	if (player['farm'].unlocked) {
 		allTips.push(
 			"We've got to have money.",
+			"88 is my favorite letter.",
 			"CHA-CHING!",
 			"anomaly farm some crazy elite ball knowledge yo",
 			"Alright guys, let's go Farm this Anomaly.<br>King, you go left.<br>Angel, you go right.<br>Voidling, you know what to do.<br>[Totally Real Fourth Character],<br>You just be [Totally Real Fourth Character].<br>Let's Farm this Anomaly,<br>because together we are THE ANOMALY FARM.",
@@ -344,7 +354,9 @@ function prepareTipRand() {
 			"Oh come on, you didn't seriously think Cud would code a game WITHOUT the inclusion of math?",
 			"Methmetics",
 			"WAH! WAH! WAH! I don't wanna fuckin' hear it!",
+			"piss.",
 			"You should be trying to get every achievement! Some are very important for progression.",
+			"<img src='resources/fuckingsucks.png' alt='Image failed to load.' width='285px' height='88px'>"
 		)
 	}
 	allTips.push("There are currently "+(allTips.length+1)+" tips you can encounter!",)
