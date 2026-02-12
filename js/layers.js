@@ -583,7 +583,7 @@ addLayer("p", {
         41: {
             title: "Realm of Carnage",
             description: "+1 Dark Fragment<br>Click Power scales based on Dark Fragments.<br><i>Note: This is the final upgrade of v0.2, and the effect for 4 Dark Fragments has not been coded.</i>",
-            cost: new Decimal("8e83333"),
+            cost: new Decimal("5e58888"),
             style: {'width':'420px','height':'200px','corner-shape': 'squircle','corner-radius':'20px', 'background-image':'url(resources/RoyalBorder.png), linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(100, 87, 199, 0.25) 70%, rgba(98, 37, 209, 0.7) 100%)', "background-size":"95% 95%, 107% 107%", "background-repeat":"no-repeat, auto", "background-position":"center"},
             set: 4,
             unlocked() {
